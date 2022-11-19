@@ -1,0 +1,35 @@
+<div class="flex-col">
+<!--     <ms-infinite-scroll (scrolled)="genContentChat()" class="infinite-scroll-with-root"> -->
+        <div>
+        <ul infinite-scroll
+        [infiniteScrollDistance]="0"
+        [infiniteScrollThrottle]="50"
+        [scrollWindow]="false"
+        (scrolled)="onScroll()" class="chat-list" *ngIf="!chat">
+            <li *ngFor="let chat of chats" class="nav-item">
+
+                <div (click)="onUserChat(chat.id)" class="avatar">
+                    <div *ngFor="let user of chat.users">
+                        <div style="display: flex;" *ngIf="user.id != myUser.id">
+                            <img onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';"
+                                class="avatars-comments" src="{{user.poster_url}}">
+                            <div class="user-block">
+                                <a class="message-username" routerLink="/user-page/{{user.id}}">{{user.name}}</a>
+                                <p class="message-user_status">
+                                    Гамарджоба Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    Consectetur, modi repellat illo dicta tempore quasi provident delectus
+                                    architecto
+                                    eius
+                                    accusantium aliquid quam dolore iusto necessitatibus libero.
+                                    Deserunt temporibus voluptas magni!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button (click)="openModal(chat.id)" class="delete-chat"><i class="fas fa-window-close"></i></button>
+            </li> 
+        </ul>
+    </div>
+   <!--  </ms-infinite-scroll> -->
+</div>

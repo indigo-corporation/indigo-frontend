@@ -1,0 +1,106 @@
+<div class="container main">>
+            <form class="page" [formGroup]="settingForm">
+                <label class="field field-email field_v1">
+                    <input class="field__input" value="{{user.email}}" disabled>
+                    <span class="field__label-wrap">
+                        <span class="field__label">Email </span>
+                    </span>
+                </label>
+                <div>
+                    <form class="page" [formGroup]="imageForm" (ngSubmit)="postPicture()">
+                    <h1 class="label-input">Загрузить картинку</h1>
+                    <div>
+                        <img style="margin-bottom: 10px;" *ngIf="url" [src]="url" width="400" height="300" alt="">
+                    </div>
+
+                    <input mat-stroked-button class="imageupload" type="file" (change)="onFileSelected($event)">
+                    <button mat-stroked-button class="user-btn" type="submit">Загрузить</button>
+                    </form>
+                </div>
+
+                <label class="field field_v1">
+                    <input class="field__input" value="{{user.user_name}}" type="text" placeholder="karatel22"
+                        formControlName="user_name">
+                    <span class="field__label-wrap">
+                        <span class="field__label">Ваше имя пользователя</span>
+                    </span>
+                </label>
+                <label class="field field_v1">
+                    <input class="field__input" value="{{user.name}}" type="text" placeholder="Ваше Имя"
+                        formControlName="name">
+                    <span class="field__label-wrap">
+                        <span class="field__label">Имя</span>
+                    </span>
+                </label>
+                <!-- <h1 class="label-input date">Ваш день рождения</h1>
+                <mat-form-field appearance="fill">
+                    <mat-label>Ваш день рождения</mat-label>
+                    <input formControlName="birth_date" value="{{user.birth_date}}" matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <h1 class="label-input">Страна</h1>
+                        <ng-select [items]="data" bindLabel="name" bindValue="id" (change)="onChange($event)"
+                            (keypress)="onKeyPressEvent($event)" labelForId="state" placeholder="Выберите страну"
+                            clearAllText="Clear" formControlName="country"></ng-select>
+                            <ng-template ng-multi-label-tmp let-items="items" >
+                                <div class="ng-value" >
+                                    <span class="ng-value-label">Select your choice... </span>
+                                </div>
+                               </ng-template>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <h1 class="label-input">Город</h1>
+                        <ng-select [items]="citymain" bindLabel="name" bindValue="id"
+                            (keypress)="onKeyPressEventCity($event)" labelForId="state" placeholder="Выберите город"
+                            clearAllText="Clear" formControlName="city_id"></ng-select>
+                    </div>
+                </div> -->
+                <label class="field field_v1">
+                    <textarea style="height:100% ;" value="{{user.about}}" class="field__input text-input" rows="6" placeholder="О себе"
+                        formControlName="about"></textarea>
+                    <span class="field__label-wrap">
+                        <span class="field__label text-label">Немного о себе</span>
+                    </span>
+                </label>
+                <button mat-stroked-button class="user-btn" (click)="userChangeInfo(user)" type="submit">Изменить</button>
+            </form>
+            
+            
+            
+            <form [formGroup]="passChangeForm" (ngSubmit)="passChage()" class="page">
+                <h1 class="passname">Изменить пароль</h1>
+                <div class="line"></div>
+                <label class="field field_v1">
+                    <input type="password" class="field__input" placeholder="Пароль" formControlName="pass">
+                    <span class="field__label-wrap">
+                        <span class="field__label">Пароль</span>
+                    </span>
+                </label>
+                <div class="auth-error" *ngIf="pass.errors?.['required'] && (pass.touched || pass.dirty)">
+                    Заполните поле Пароль
+                </div>
+                <div class="auth-error"
+                    *ngIf="pass.errors?.['minlength'] || pass.errors?.['maxlength'] && (pass.touched || pass.dirty)">
+                    Пароль должен быть минимум 6 и максимум 15 символов
+                </div>
+                <label class="field field_v1">
+                    <input type="password" class="field__input" placeholder="Подтвердить пароль"
+                        formControlName="confPass">
+                    <span class="field__label-wrap">
+                        <span class="field__label">Подтвердить пароль</span>
+                    </span>
+                </label>
+                <div class="auth-error" *ngIf="confPass.errors?.['required'] && (confPass.touched || confPass.dirty)">
+                    Заполните поле Подтвердить Пароль
+                </div>
+                <div class="auth-error" *ngIf="confPass.errors?.MustMatch">
+                    Пароль не совпадает
+                </div>
+                <button mat-raised-button [disabled]="passChangeForm.invalid" class="user-btn" type="submit">Изменить</button>
+            </form>
+</div>

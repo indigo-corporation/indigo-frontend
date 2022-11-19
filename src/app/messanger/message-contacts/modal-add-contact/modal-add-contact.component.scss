@@ -1,0 +1,118 @@
+h1 {
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+.form-control {
+    font-family: "TT Norms Pro Light,Helvetica,sans-serif";
+}
+
+.modal-body {
+    display: flex;
+    font-family: "TT Norms Pro,Helvetica Regular,sans-serif";
+    justify-content: center;
+    flex-direction: column;
+    font-size: 16px;
+    background-color: #4a3783;
+    padding: 18px;
+}
+
+.modal-content {
+    background-color: none;
+}
+
+.message-username {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+}
+
+.add {
+    font-family: 'TT Norms Pro Regular,Helvetica,sans-serif';
+    font-weight: bold;
+    background-color: #3d833d;
+    color: white;
+    font-size: 16px;
+}
+
+.message-user_status {
+    font-family: "TT Norms Pro Light,Helvetica,sans-serif";
+    font-size: 10px;
+    color: #399d58;
+    font-weight: bold;
+}
+
+.modal-header {
+    border: none;
+}
+
+.user-block {
+    margin: 0px 10px;
+}
+
+.add {
+    background-color: #3d833d;
+}
+
+.modal-footer {
+    font-family: "TT Norms Pro,Helvetica Regular,sans-serif";
+    display: flex;
+    justify-content: space-around;
+    background-color: #320091e3;
+    border: none;
+    #btn-add {
+        font-family: "TT Norms Pro,Helvetica Regular,sans-serif";
+        color: white;
+        background-color: #3d833d;
+        font-size: 14px;
+    }
+
+    #btn-stop {
+        font-family: 'TT Norms Pro Regular,Helvetica,sans-serif';
+        color: white;
+        background-color: #a93939;
+        font-weight: bold;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+}
+
+.nav-item {
+    position: relative;
+    color: grey;
+    border-bottom: 1px solid #2e2b2b;
+    cursor: pointer;
+    &:hover {
+        background: #a99ad3bf;
+    }
+}
+
+img {
+    width: 50px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid;
+}
+
+input[type="checkbox"]:checked + li .nav-item {
+    background-color: black !important;
+}
+
+input:checked + .nav-item {
+    background-color: black;
+}
+
+#navitem {
+    font-family: "TT Norms Pro,Helvetica Regular,sans-serif";
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px;
+}

@@ -1,0 +1,52 @@
+<div class="block-message">
+    <div *ngIf="chat" class="message-history">
+        <div class="block-message_user">
+            <div>
+                <div *ngFor="let user of chat.users">
+                    <div *ngIf="user.id != myUser.id" class="avatar">
+                        <div class="user-info">
+                            <img class="message-avatar"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWA73D3QltIDvk4GCa1fzqINVgO-enubpjIg&usqp=CAU">
+                            <div>
+                                <a class="message-username" routerLink="/user-page/{{user.id}}">{{user.name}}</a>
+                                <p class="message-user_status">
+                                    Онлайн
+                                </p>
+                            </div>
+                        </div>
+                            <button *ngIf="!isBlock" (click)="blockUser(user.id)" class="btn-block" mat-raised-button>
+                                Заблокировать
+                            </button>
+                            <button *ngIf="isBlock" (click)="unblockUser(user.id)" class="btn-unblock" mat-raised-button>
+                                Разблокировать
+                            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="messages">
+            <div *ngFor="let message of chat.messages">
+                <div *ngIf="message.user_id === myUser.id" class="message-me">
+                    <p class="message-text-me">{{message.body}}<span class="meassage-time">{{message.created_at
+                            | date:'shortTime' }}</span>
+                        <i class="fas fa-check"></i>
+                        <button (click)="deleteMessage(message.id)" class="delete-message"><i
+                                class="fas fa-window-close"></i></button>
+                    </p>
+                </div>
+                <div *ngIf="message.user_id != myUser.id" class="message-friend">
+                    <p class="message-text-friend">{{message.body}}<span
+                            class="meassage-time_friend">{{message.created_at | date:'shortTime' }}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="message-form">
+                <textarea [(ngModel)]="textArea" class="col" rows='1' placeholder="Написать сообщение"></textarea>
+                <button (click)="onPostMessage()" type="button" mat-raised-button
+                    class="col-4 message-btn">Отправить</button>
+            </div>
+        </div>
+    </div>
+</div>

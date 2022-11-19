@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Oswald&family=Roboto:wght@300&display=swap");
+
+.avatars-comments {
+    max-width: 71px;
+    border: 1px solid transparent;
+    border-radius: 67px;
+    align-self: center;
+}
+
+p {
+    font-size: 14px;
+    line-height: 26px;
+    margin: 0;
+}
+
+label {
+    font-size: 14px;
+}
+
+i {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+a {
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    letter-spacing: 0.03em;
+}
+
+.comments-head {
+    padding: 1px;
+    margin-bottom: 23px;
+}
+
+h4 {
+    text-align: center;
+    color: white;
+}
+
+.col-2 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+hr {
+    background-color: #c500b4;
+    height: 1px;
+}
+
+.comments-block {
+    color: #ffffff;
+    font-size: 14px;
+    padding: 28px;
+    border-radius: 5px;
+    position: relative;
+    width: 100%;
+}
+
+.comment-text {
+    word-wrap: break-word;
+    padding: 15px;
+    max-width: 74%;
+}
+
+.comments-item {
+    color: white;
+    text-align: center;
+    font-size:12px;
+}
+
+.col-sub {
+    margin-left: 9rem !important;
+}
+
+.comments-user {
+    font-size: 14px;
+    cursor: pointer;
+    color: #c1b3b3;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    &:hover {
+        color: #535050;
+    }
+}
+
+.admin {
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #da7e7e;
+    text-align: center;
+    text-decoration: none;
+    &:hover {
+        color: #582e2e;
+    }
+}
+
+.form-control {
+    background-color: #1a1923;
+    color: white;
+}
+
+.form-group {
+    position: relative;
+}
+
+.comments-body {
+    display: flex;
+    padding: 9px;
+    background-color: #050505;
+    border: 1px solid #ffffff1c;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.smile-btn {
+    position: absolute;
+    right: 1px;
+    background: #1a1923;
+    border: none;
+    padding: 3px;
+    font-size: 20px;
+}
+
+.smile-btn:hover {
+    background-color: #701f9c;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100px;
+    width: 100%;
+}
+
+.comments-body_sub {
+    display: flex;
+    padding: 9px;
+    background-color: #202020;
+    border: 1px solid rgba(255, 255, 255, 0.1098039216);
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-right: 117px;
+    width: 100%;
+    max-width: 922px;
+}
+.comments-item_write-com {
+    cursor: pointer;
+    color: white;
+    margin-top: 5px;
+    background: #4c3f93;
+    border-radius: 5px;
+    text-decoration: none;
+    position: absolute;
+    bottom: -2px;
+    margin-left: 8px;
+    &:hover {
+        background: #1c1919;
+    }
+}
+
+.icon-com {
+    background-color: transparent !important;
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.icon-com2 {
+    background-color: transparent !important;
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    &:hover {
+        color: #0bfb86;
+    }
+}
+
+.icon-com2-down {
+    background-color: transparent !important;
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    &:hover {
+        color: #e95035;
+    }
+}
+
+.icons-comments {
+    font-size: 16px;
+    position: absolute;
+    bottom: 0px;
+    right: 88px;
+    margin-right: 13px;
+}
+
+button {
+    font-size: 15px;
+}
+
+.togle-coment {
+    background-color: transparent;
+    text-decoration-line: underline;
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+    &:hover {
+        color: orange;
+    }
+}
+
+.comment-form {
+    margin: 20px;
+}
+
+.btn-comment {
+    margin-top: 7px;
+}
+
+.comment-guard {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    margin: 30px;
+}
+.login {
+    color: red;
+    cursor: pointer;
+}
+
+.login:hover {
+    color: rgb(51, 50, 50);
+    cursor: pointer;
+}
+
+.dislike {
+    color: white;
+    margin: 0px 5px;
+    &:hover {
+        color: red;
+    }
+} 
+
+.like {
+   color: white;
+   margin: 0px 5px;
+    &:hover  {
+       color: green;
+   }
+} 
+
+.like.active {
+    color: green;
+}
+
+
+.dislike.active {
+    color: red;
+}
+

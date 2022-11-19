@@ -1,0 +1,23 @@
+.modal-body {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.modal-header {
+    border:none;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    #btn-delete {
+        color: white;
+        background-color: #3d833d;
+    }
+    
+    #btn-stop {
+        color: white;  
+        background-color: #912d2d;
+    }
+}

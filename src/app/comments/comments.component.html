@@ -1,0 +1,105 @@
+<div style="min-height: 40%" class="container main back">
+    <div class="comments-head">
+        <app-commentform (commentPosted)="onCommentPosted({comment:$event, parentId:null})" *ngIf="login" [comment]="comment" [filmId]="filmId"></app-commentform>
+        <div class="comment-guard" *ngIf="!login">
+            Для того чтобы оставить свой отзыв, вам нужно <span (click)="openDialog()" class="login">войти</span> или
+            <span routerLink="/reg" class="login">зарегистрироваться</span>.
+        </div>
+        <ms-infinite-scroll (scrolled)="genContent()">
+        <app-comment (likeSubmitted)="onlikePosted($event)" *ngFor="let comment of comments" [filmId]="filmId" [comment]="comment">
+        </app-comment>
+    </ms-infinite-scroll>
+       <!--  <div *ngIf="comments.length" class="paginate">
+            <pagination-controls id="listing_pagination" directionalLinks="true" (pageChange)="onPageChange($event)" previousLabel="Назад"
+            nextLabel="Вперед">
+    
+            </pagination-controls>
+          </div> -->
+    </div>
+</div>
+<router-outlet></router-outlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+    <div class="card">
+        <div class="commentbox">
+            <div class="col-12 col-sm-12 header">
+                <h4>Comments ({{count}})</h4>
+            </div>
+            <div class="col-12 col-sm-12 body">
+                <div class="comment-container">
+                    <div class="comment-form">
+                        <app-commentbox (usercomment)="receiveComment($event)"></app-commentbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-comments [postComment]="comments" (countComments)="recieveCount($event)"></app-comments>
+    </div>
+</div>
+
+<form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <textarea class="form-control" placeholder="Leave a comment" formControlName="comment"
+            [ngClass]="{ 'is-invalid': submitted && commentForm.controls['comment'].errors }"></textarea>
+        <div class="invalid-feedback" *ngIf="submitted && commentForm.controls['comment'].errors">
+            <div *ngIf="commentForm.controls['comment'].errors.required">Comment is required</div>
+            <div *ngIf="commentForm.controls['comment'].errors.minlength">Comment must be at least 6 characters</div>
+            <div *ngIf="commentForm.controls['comment'].errors.maxlength">Comment must be at most 100 characters</div>
+        </div>
+    </div>
+    <div class="form-group"><button type="submit" class="btn btn-success">Post Comment</button></div>
+</form>
+<div class="comments" *ngIf="postComment!==undefined">
+    <h6 *ngIf="postComment?.length<1">No Comments found</h6>
+    <ul *ngIf="postComment?.length>0">
+        <li *ngFor="let post of postComment; let i = index;">
+            <div class="col-12 col-sm-12 comment-container">
+                <p>{{post.commentTxt}}</p>
+                <div class="actions"><span>{{post.currentDate | date: 'dd/MM/yyyy'}}</span><span
+                        class="divider"></span><button class="btn btn-sm btn-info" (click)="replyComment(i)">
+                        Reply
+                    </button><span class="divider"></span><button class="btn btn-sm btn-danger"
+                        (click)="removeComment(i)"><i class="fa fa-trash"></i></button></div>
+                <div class="childCommentBox">
+                    <div datacontainer></div>
+                    <ul *ngIf="post?.replyComment?.length>0">
+                        <li *ngFor="let rl of post.replyComment">
+                            <div class="col-12 col-sm-12 comment-container">
+                                <p>{{rl.commentTxt}}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<form [formGroup]="childForm" (ngSubmit)="onSubmit()">
+    <div class="form-group"><textarea class="form-control" placeholder="Leave a comment" formControlName="comment"
+            [ngClass]="{ 'is-invalid': submitted && childForm.controls['comment'].errors }"></textarea>
+        <div class="invalid-feedback" *ngIf="submitted && childForm.controls['comment'].errors">
+            <div *ngIf="childForm.controls['comment'].errors.required">Comment is required</div>
+            <div *ngIf="childForm.controls['comment'].errors.minlength">Comment must be at least 6 characters</div>
+            <div *ngIf="childForm.controls['comment'].errors.maxlength">Comment must be at most 100 characters</div>
+        </div>
+    </div>
+    <div class="form-group"><button type="submit" class="btn btn-success">Post Comment</button></div>
+</form> -->

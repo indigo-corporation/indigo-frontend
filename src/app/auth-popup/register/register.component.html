@@ -1,0 +1,60 @@
+<div class="container main-r main block">
+  <h1 class="reg-title">Регистрация</h1>
+  <form class="reg-form" [formGroup]="authForm" (ngSubmit)="CreateUser()">
+    <div class="form-group">
+      <label class="reg-label" for="inputUserEmail">Email</label>
+      <input type="text" placeholder="Введите Email" class="form-control" formControlName="email">
+      <div class="auth-error" *ngIf="email.errors?.['required'] && (email.touched || email.dirty)">
+        Заполните поле Email
+      </div>
+      <div class="auth-error" *ngIf="email.errors?.['email'] && (email.touched || email.dirty)">
+        Неправильный Email
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="reg-label" for="inputUsername">Имя</label>
+      <input type="text" placeholder="Введите Имя" name="name" class="form-control" formControlName="name">
+      <div class="auth-error" *ngIf="name.errors?.['required'] && (name.touched || name.dirty)">
+        Заполните поле Имя
+      </div>
+      <div class="auth-error" *ngIf="name.errors?.['minlength'] && (name.touched || name.dirty)">
+        Слишком кароткое имя
+      </div>
+      <div class="auth-error" *ngIf="name.errors?.['pattern'] && (name.touched || name.dirty)">
+        Имя буквами
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="reg-label" for="inputPassword">Пароль</label>
+      <input type="password" placeholder="Введите Пароль" id="inputPassword" class="form-control"
+        formControlName="password">
+      <div class="auth-error" *ngIf="password.errors?.['required'] && (password.touched || password.dirty)">
+        Заполните поле Пароль
+      </div>
+      <div class="auth-error"
+        *ngIf="password.errors?.['minlength'] || password.errors?.['maxlength'] && (password.touched || password.dirty)">
+        Пароль должен быть минимум 6 и максимум 15 символов
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="reg-label" for="inputConfirmPassword">Подтвердить пароль</label>
+      <input type="password" placeholder="Подтвердить пароль" class="form-control" formControlName="confirmPassword">
+      <div class="auth-error"
+        *ngIf="confirmPassword.errors?.['required'] && (confirmPassword.touched || confirmPassword.dirty)">
+        Заполните поле Подтвердить Пароль
+      </div>
+      <div class="auth-error" *ngIf="confirmPassword.errors?.MustMatch">
+        Пароль не совпадает
+      </div>
+    </div>
+    <div class="checkbox pull-right">
+    </div>
+    <button [disabled]="authForm.invalid" type="submit" class="btn btn btn-primary btn-sub">
+      Зарегистрироваться
+    </button>
+
+  </form>
+
+</div>
+
+

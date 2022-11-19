@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
+  </div>
+  <div class="modal-body">Вы точно хотите удалить чат?</div>
+  <div class="modal-footer">
+    <button mat-raised-button type="button" id="btn-stop" class="btn btn-secondary " (click)="modalRef.close()">
+      Закрыть
+    </button>
+    <button mat-raised-button id="btn-delete" (click)="deleteChat()" class="btn btn-secondary">Удалить чат</button>
+  </div>

@@ -1,0 +1,259 @@
+.container {
+    padding: 0;
+    
+}
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+}
+
+.card-title {
+    position: absolute;
+    margin: 0;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    background: linear-gradient(222deg, blue, #c500b4);
+    box-shadow: inset 0px 3px 32px 1px rgb(0 0 0 / 76%);
+    color: white;
+    padding: 10px;
+}
+
+.img-fluid {
+    position: relative; 
+    min-width: 300px !important;
+}
+
+.card {
+    border: none;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+
+.film-title {
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  padding: 5px;
+  text-decoration: none;
+  margin-top: 14px;
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+p {
+  color: black;
+}
+.card {
+  width: 90%;
+  max-width: 100%;
+  margin-bottom: 15px;
+  background-color: transparent;
+  text-align: center;
+}
+.card:hover {
+  border: 1px solid transparent;
+  background: linear-gradient(222deg, #9e9e9f, rgba(62, 34, 60, 0.6509803922));
+  box-shadow: inset 0px 3px 32px 1px rgb(0 0 0 / 76%);
+}
+
+.title-new_film {
+  box-shadow: inset 3px 3px 40px 1px rgb(0 0 0 / 81%);
+  background: linear-gradient(220deg, #e72c2c7a, #5e36ea);
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  font-size: 25px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.swiper {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  background: #0e0d0d !important;
+  margin-bottom: 50px;
+}
+
+
+
+.swiper-slide img {
+  display: block;
+  width: 400px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-wrapper .swiper-slide {
+  background-color: red;
+}
+
+.swiper-img {
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid #ffffff30;
+  border-radius: 5px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: white;
+}
+
+.block {
+  background-color: #1e0122;
+    margin: 26px 0px;
+    border-radius: 5px;
+    border: 1px solid;
+}
+
+.filters__img {
+  height: 100%;
+  max-height: 301px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1882352941);
+  border-radius: 5px;
+  max-height: 357px;
+  max-width: 400px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card:hover .card-year {
+  color: white !important;
+}
+
+.card-head {
+  height: 100%;
+  position: relative;
+}
+
+.card:hover .card-genre {
+  color: white !important;
+}
+
+.card-genre {
+  margin-top: 1px;
+  color: #a3a3a3;
+}
+
+.card-year {
+  color: #7d2227;
+  margin-top: 10px;
+}
+
+.genre-div {
+  background-color: #560f56;
+  margin-left: 5px;
+  padding: 5px;
+  text-align: center;
+  border-radius: 5%;
+}
+
+.card:hover .imdb-raiting {
+  opacity: 1;
+}
+
+.screen-title {
+    text-align: center;
+    margin: 10px 0;
+    text-transform: uppercase;
+    color: white;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.imdb-raiting {
+  font: 2em/1 Impact, "HelveticaNeue-CondensedBold", sans-serif; // change the font size to whatever
+  color: #000;
+  text-shadow: 0 0 0.15em #fff;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: bottom;
+  padding: 9px 3px 9px 3px;
+  border-radius: 0.15em;
+  background: radial-gradient(#ffffb8, #ce981d);
+  position: absolute;
+  left: 11px;
+  width: 110%;
+  max-width: 111px;
+  bottom: 26px;
+  opacity: 50%;
+  &:hover {
+    background: radial-gradient(lighten(#ffffb8, 10%), lighten(#ce981d, 10%));
+  }
+}
+
+.shiki-raiting {
+  display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    bottom: 3px;
+    left: 59px;
+    background: black;
+    padding: 5px;
+    border-radius: 5px;
+    opacity: 0.5;
+}
+
+.card:hover .shiki-raiting {
+opacity: 1;
+}
+
+.raiting {
+  margin: 0;
+  margin-top: -3px;
+  color: white;
+  margin-left: 9px;
+  font-size: 22px;
+}
+
+
+.shiki-glyh {
+  background-image: url("/assets/glyph.svg");
+  -webkit-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 26px;
+  margin-right: 5px;
+  width: 26px;
+}
+
+.shiki-logo {
+  background-image: url("/assets/shiki.svg");
+  -webkit-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 19px;
+  width: 151px;
+}
+@media screen and (max-width: 768px) {
+  .shiki-raiting {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    bottom: 3px;
+    left: 1px;
+    background: black;
+    padding: 5px;
+    border-radius: 5px;
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,7 @@
+<div class="container block">
+   <ul class="row genre-menu">
+    <li routerLink="/{{type}}/genre/{{genre.id}}" *ngFor="let genre of genres.slice(0,18)" class="col-md-8 genre-element">
+        <a class="genre-item">{{genre.title}}</a>
+    </li>
+   </ul>
+</div>  

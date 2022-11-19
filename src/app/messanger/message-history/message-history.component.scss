@@ -1,0 +1,348 @@
+.block-mess {
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    color: white;
+    border: 1px solid #c1b5b529;
+    margin: 0 5px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background: #121111;
+}
+
+button {
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+}
+
+.form-control {
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+.messages {
+    overflow-y: auto;
+    max-height: 421px;
+    min-height: 332px;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    max-width: 401px;
+    width: 100%;
+    background: #121111;
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        --webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        --webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.btn-block {
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    color: white;
+    background-color: #a93939;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.btn-unblock {
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    color: white;
+    background-color: #3d833d;
+    font-size: 14px;
+}
+
+.block-message {
+    color: white;
+    margin: 0 5px;
+    width: 100%;
+    min-width: 617px;
+    height: 100%;
+    border-top: none;
+    margin: 0 auto;
+    background: #121111;
+    min-height: 738px;
+    .avatars-comments {
+        max-width: 71px;
+        border: 1px solid transparent;
+        border-radius: 67px;
+        align-self: center;
+    }
+    .avatar {
+        display: flex;
+        flex-direction: row;
+        max-width: 100%;
+        margin: 0px 26px;
+        align-items: center;
+        height: 100px;
+        justify-content: space-between;
+    }
+}
+
+.block-message_user {
+    display: flex;
+    flex-direction: column;
+    background: #121111;
+    height: 119px;
+    border-bottom: 1px solid rgba(193, 181, 181, 0.1607843137);
+}
+.message-username {
+    margin-left: 12px;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    margin-bottom: 28px;
+    &:hover {
+        color: #5b55c1;
+    }
+}
+.message-user_status {
+    color: grey;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 0;
+    margin-left: 11px;
+}
+
+.message-history {
+    border: 1px solid rgba(193, 181, 181, 0.1607843137);
+    height: 100%;
+    min-height: 450px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    font-size: 16px;
+    border-bottom: none;
+    .message-me {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 22px;
+        margin-top: 10px;
+    }
+    .message-friend {
+        padding-left: 10px;
+        display: flex;
+    }
+}
+
+.message-text-friend {
+    padding: 10px;
+    margin-top: 16px;
+    background: #3c3a3a;
+    max-width: 377px;
+    border-radius: 5px;
+}
+
+.message-text-me {
+    padding: 10px;
+    margin-top: 3px;
+    max-width: 377px;
+    background: #38377c;
+    border-radius: 5px;
+    position: relative;
+}
+
+.message-avatar {
+    max-width: 71px;
+    border: 1px solid transparent;
+    border-radius: 67px;
+    align-self: center;
+    margin-right: 9px;
+}
+
+#message-form {
+    margin: 0 auto;
+    width: 100%;
+    padding: 12px 7px;
+    height: 100%;
+    background-color: #121111;
+    display: inline-flex;
+    max-width: 92%;
+}
+textarea {
+    overflow: hidden;
+    margin: 0;
+    padding: auto;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    font-size: 16px;
+    resize: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+.message-btn {
+    margin-left: 10px;
+    background: #573aad;
+    color: white;
+}
+
+.navigate {
+    border: 1px solid;
+    height: 100%;
+    overflow: auto;
+    max-height: 729px;
+}
+
+.delete-message {
+    background: none;
+    color: #7473d7fc;
+    font-size: 14px;
+    border: none;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    border-radius: 5px;
+    &:hover {
+        color: red;
+    }
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    background: #2700ff3d;
+}
+
+.container {
+    padding: 0;
+}
+
+li {
+    border: 1px solid rgba(193, 181, 181, 0.1607843137);
+    border-top: none;
+    border-bottom: none;
+}
+
+.nav-item {
+    padding: 9px 0;
+    font-size: 19px;
+    border-left: none;
+    cursor: pointer;
+    &:hover {
+        background-color: #573aad;
+    }
+}
+
+.fa-check {
+    color: #9594e5;
+    font-size: 8px;
+    margin-left: 6px;
+}
+
+.meassage-time {
+    font-size: 9px;
+    color: #9594e5;
+    margin-left: 6px;
+}
+
+.meassage-time_friend {
+    font-size: 9px;
+    color: #9f9494;
+    margin-left: 6px;
+}
+
+.nav-link {
+    color: white;
+    text-align: center;
+}
+
+.name-menu {
+    margin-left: 10px;
+    font-family: "Oswald", sans-serif;
+    font-weight: 100;
+}
+
+@media screen and (max-width: 1210px) {
+    .block-message {
+        color: white;
+        margin: 0 5px;
+        width: 100%;
+        min-width: 543px;
+        height: 100%;
+        margin: 0 auto;
+        background: #121111;
+        min-height: 738px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .block-mess {
+        color: white;
+        border: 1px solid rgba(193, 181, 181, 0.1607843137);
+        height: 100%;
+        background: #121111;
+        text-align: center;
+    }
+    .flex {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .flex-col {
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+        width: 100%;
+        background: #121111;
+    }
+    .nav-item {
+        padding: 9px 0;
+        font-size: 19px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .block-message {
+        color: white;
+        margin: 0 5px;
+        width: 100%;
+        min-width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        background: #121111;
+        min-height: 738px;
+        .avatar {
+            margin: 0 auto;
+        }
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    .message-me {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 22px;
+        margin-top: 29px;
+    }
+    .message-friend {
+        padding-left: 10px;
+        display: flex;
+        margin-top: 29px;
+    }
+}

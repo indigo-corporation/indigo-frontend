@@ -1,0 +1,294 @@
+
+
+.container-card {
+  background-color: #0e0d0d !important;
+  z-index: 1;
+}
+
+.main {
+  background-color: #1a1923;
+  z-index: 1;
+}
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+}
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+@import "swiper/scss";
+@import "swiper/scss/navigation";
+@import "../node_modules/alertifyjs/build/css/alertify.min.css";
+@import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
+@import "~@ng-select/ng-select/themes/material.theme.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.swiper-pagination-bullet {
+  background-color: white !important;
+}
+
+.swiper-slide .swiper-slide-prev {
+  margin-right: 0;
+}
+
+.ngx-pagination .current {
+  padding: 0.1875rem 0.625rem;
+  background: #2199e8;
+  color: #fefefe;
+  cursor: default;
+  border-radius: 5px;
+  margin-right: 6px;
+}
+
+
+a:not([href]):not([class]) {
+  color: inherit;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 6px;
+  color: white;
+}
+html,
+body {
+  height: 100%;
+  padding-top: 89px;
+  position: relative;
+  bottom: 22px;
+  line-height: 1.25;
+  font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+}
+body {
+  margin: 0;
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: none !important;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+
+.ngx-pagination a, .ngx-pagination button {
+  color: #0a0a0a;
+  display: block;
+  padding: 0.1875rem 0.625rem;
+  border-radius: 0;
+  font-size: 12px;
+}
+
+.modal-content {
+  background-color: rgba(255, 255, 255, 0);
+  background-clip: padding-box;
+}
+
+.ngx-pagination ul {
+  font-size: 12px !important;
+}
+
+@font-face {
+  font-family: "TT Norms Pro,Helvetica,sans-serif";
+  src: url("../src/fonts/tt-norms-pro-cufonfonts/TT\ Norms\ Pro\ Bold.otf");
+}
+
+@font-face {
+  font-family: "TT Norms Pro Light,Helvetica,sans-serif";
+  src: url("../src/fonts/tt-norms-pro-cufonfonts/TT\ Norms\ Pro\ Light.otf");
+}
+
+@font-face {
+  font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+  src: url("../src/fonts/tt-norms-pro-cufonfonts/TT\ Norms\ Pro\ Regular.otf");
+}
+
+.mat-dialog-container {
+  display: block;
+  padding: 24px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  max-height: inherit;
+  background: none !important;
+}
+
+.mat-tab-body-content {
+  height: 100%;
+  overflow: hidden;
+}
+
+.mat-tab-body-content {
+  height: 100%;
+  overflow: hidden !important;
+}
+
+.mat-tab-label {
+  font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+  height: 48px;
+  padding: 0 24px;
+  cursor: pointer;
+  box-sizing: border-box;
+  min-width: 160px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+  opacity: unset !important;
+  color: white;
+  font-size: 20px;
+}
+
+.mat-tab-labels {
+  display: flex;
+  justify-content: center;
+}
+
+.user-tabs .mat-tab-labels {
+  display: flex;
+  justify-content: center !important;
+}
+
+.user-photo {
+  width: 41%;
+}
+
+.mat-tab-user {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-control {
+  padding: 3px !important;
+}
+
+.alertify-notifier .ajs-message {
+  width: 500px;
+  font-size: 26px;
+  margin-top: 100px;
+}
+
+.alertify-notifier.ajs-top {
+  top: 130px;
+}
+
+body {
+  margin: 0;
+}
+
+.ngx-pagination a,
+.ngx-pagination button {
+  display: block;
+  padding: 0.1875rem 0.625rem;
+  border-radius: 0;
+  font-size: 16px;
+  margin-top: 39px;
+  color: #817abb !important;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(222deg, #2222a0, #a81c9c);
+  box-shadow: inset 0px 3px 32px 1px rgb(0 0 0 / 76%);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(./back.jpg) !important;
+  background-attachment: fixed;
+  background-position: inherit;
+  background-repeat: repeat;
+  font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  height: auto;
+  position: relative;
+}
+
+.mat-menu-panel {
+  min-width: 112px;
+  max-width: 280px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(100vh - 48px);
+  border-radius: 4px;
+  outline: 0;
+  min-height: 64px;
+  position: relative;
+  left: 8px;
+  bottom: 0px;
+}
+
+.name-menu {
+  font-family: "TT Norms Pro Regular,Helvetica,sans-serif" !important;
+}
+
+.mat-menu-content {
+  background: #121111;
+}
+
+.mat-menu-item {
+  color: white;
+  font-family: "TT Norms Pro Regular,Helvetica,sans-serif" !important;
+}
+
+button.mat-menu-item:hover {
+  background: #817abb !important;
+}
+.mat-menu-content {
+  padding: 0px !important;
+}
+
+.cdk-overlay-pane {
+  max-width: 90% !important;
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.select2-container--classic .select2-search--inline .select2-search__field {
+  width: 100% !important;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    padding-top: 100px;
+    bottom: 124px;
+    position: relative;
+  }
+}

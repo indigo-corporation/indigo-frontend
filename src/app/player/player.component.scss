@@ -1,0 +1,19 @@
+
+.player-container {
+    display: flex;
+    justify-content: center;
+}
+
+#close-icon {
+    color: white;
+    position: absolute;
+    right: -21px;
+    font-size: 24px;
+    cursor: pointer;
+    top: -18px;
+}
+
+iframe {
+    overflow: hidden;
+  }
+

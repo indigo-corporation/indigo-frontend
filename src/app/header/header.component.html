@@ -1,0 +1,78 @@
+<!-- <div class=" container marketing-blog">
+
+</div> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light header">
+  <a class="navbar-brand" routerLink="">INDIGOFILMS</a>
+  <a *ngIf="!login" mat-raised-button (click)="openDialog()" class="btn btn-danger login2">Войти
+  </a>
+  <div *ngIf="login" class="login">
+      <i routerLink="/contacts" class="fa fa-users user-nav" aria-hidden="true">
+        <span class="icon-info">1</span>
+      </i>
+      <i routerLink="/message" class="far fa-envelope user-nav" aria-hidden="true">
+        <span class="icon-info">1</span>
+      </i>
+      <i class="far fa-bell user-nav" aria-hidden="true">
+        <span class="icon-info">1</span>
+      </i>
+      <div [matMenuTriggerFor]="menu">
+        <img class="user-photo" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" [src]="user.poster_url" alt="">
+      </div>
+  </div>
+  <mat-menu #menu="matMenu">
+    <button routerLink="/user-page" mat-menu-item><i class="fa fa-user" aria-hidden="true"><span class="name-menu">Профиль</span></i></button>
+    <button routerLink="/user-settings" mat-menu-item><i class="fa fa-cog" aria-hidden="true"><span class="name-menu">Настройки</span></i></button>
+    <button (click)="signOut()" mat-menu-item><i class="fas fa-sign-out-alt"><span class="name-menu">Выход</span></i></button>
+  </mat-menu>
+  <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
+    [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse menu-header" id="collapseExample" [ngbCollapse]="isCollapsed">
+    <div class="menu-search">
+      <ul class="navbar-nav mr-auto ml-auto mt-1 mt-lg-1">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/film" routerLinkActive="active">Фильмы
+          </a>
+          <button class="btn-menu" (click)="genreArrow($event)">
+            <i id="isArrow1" class='fas fa-caret-up arrow'></i>
+          </button>
+          <app-genre-menu type="film" *ngIf="isArrow1"></app-genre-menu>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/serial">Сериалы
+          </a>
+          <button class="btn-menu" (click)="genreArrow($event)">
+            <i id="isArrow2" class='fas fa-caret-up arrow'></i>
+          </button>
+          <app-genre-menu type="serial" *ngIf="isArrow2"></app-genre-menu>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cartoon">Мультфильмы
+          </a>
+          <button class="btn-menu" (click)="genreArrow($event)">
+            <i id="isArrow3" class='fas fa-caret-up arrow'></i>
+          </button>
+          <app-genre-menu  type="cartoon" *ngIf="isArrow3"></app-genre-menu>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/anime">Аниме
+          </a>
+          <button class="btn-menu" (click)="genreArrow($event)">
+            <i id="isArrow4" class='fas fa-caret-up arrow'></i>
+          </button>
+          <app-genre-menu *ngIf="isArrow4" type="anime"></app-genre-menu>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" (click)="toggleSearch()"><i class="fas fa-search search-icon"></i></a>
+        </li>
+
+      </ul>
+    </div>
+    <app-search *ngIf="isShown" (onSearchSubmmited)="searchClose($event)"></app-search>
+  </div>
+</nav>

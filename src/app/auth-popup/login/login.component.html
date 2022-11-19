@@ -1,0 +1,40 @@
+<form [formGroup]= "loginForm">
+  <div class="form-group">
+    <label for="inputUsernameEmail">Email</label>
+    <input type="text" placeholder="Поле ввода пустое" class="form-control" formControlName="email">
+    <div class="auth-error" *ngIf="email.errors?.['required'] && (email.touched || email.dirty)">
+      Заполните поле Email
+    </div>
+    <div class="auth-error" *ngIf="email.errors?.['email'] && (email.touched || email.dirty)">
+      Неправильный Email
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword">Пароль</label>
+    <input type="password" placeholder="Поле ввода пустое" class="form-control" formControlName="password">
+    <div class="auth-error" *ngIf="password.errors?.['required'] && (password.touched || password.dirty)">
+      Заполните поле Пароль
+    </div>
+    <div class="auth-error" *ngIf="password.errors?.['minlength'] || password.errors?.['maxlength'] && (password.touched || password.dirty)">
+      Пароль должен быть минимум 6 символов
+    </div>
+  </div>
+ <!--  <div class="checkbox pull-right">
+    <label>
+      <input type="checkbox">
+      Запомнить</label>
+  </div> -->
+  <div>
+
+  </div>
+  <button mat-raised-button (click)="logIn()" type="submit" class="login">
+    Войти
+  </button>
+  <div class="reg-links">
+    <a routerLink="/reg" (click)="closeDialog()" class="btn-reg">
+      Регистрация
+    </a>
+    <a class="btn-remember" (click)="closeDialog()" routerLink="/remember-pass">Восстановление пароля</a>
+  </div>
+
+</form>

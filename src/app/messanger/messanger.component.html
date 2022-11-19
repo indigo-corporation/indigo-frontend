@@ -1,0 +1,63 @@
+<div style="min-height:100%;" class="container main block">
+    <div class="flex">
+        <div class="flex-col">
+                <ul class="menu">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/user-page">
+                            <i class="fa fa-user" aria-hidden="true"><span class="name-menu">Профиль</span></i>
+                        </a>
+                    </li>
+                    <li (click)="onNavigate($event)" class="nav-item">
+                        <a class="nav-link">
+                            <i class="fa fa-comment" aria-hidden="true"><span id="nav1" class="name-menu">Сообщения</span></i>
+                        </a>
+                    </li>
+                    <li (click)="onNavigate($event)" class="nav-item">
+                        <a class="nav-link">
+                            <i class="fa fa-users" aria-hidden="true"><span id="nav2" class="name-menu">Контакты</span></i>
+                        </a>
+                    </li>
+                </ul> 
+            <div class="navigate">
+                <div *ngIf="isContact">
+                    <app-message-contacts (onOutComesId)="getOutComesId($event)" [(contacts)]="contacts"></app-message-contacts>
+                </div>
+                <div *ngIf="isChat">
+                    <app-message-chat class="chat-list" (onUserChatCreate)="chatCreate($event)" (onChat)="chatNull($event)" (onUsers)="onUsersSub($event)" *ngIf="isChat"></app-message-chat>
+                </div>     
+            </div>
+        </div>
+        <div class="block-message">
+                <div *ngIf="isChat">
+                    <div class="no-chat" *ngIf="!chat">
+                        Добавьте контакт
+                     </div>
+                    <app-message-history *ngIf="chat" [(chat)]="chat"></app-message-history> 
+                </div>   
+                
+                
+                <div *ngIf="isContact">
+                    <ul>
+                        <li (click)="onNavigateSecMenu($event)" class="nav-item">
+                            <a class="nav-link">
+                               <span id="secnav1" class="name-menu">Входящие запросы</span>
+                            </a>
+                        </li>
+                        <li (click)="onNavigateSecMenu($event)" class="nav-item">
+                            <a class="nav-link">
+                               <span id="secnav2" class="name-menu">Исходящие запросы</span>
+                            </a>
+                        </li>
+                        <li (click)="onNavigateSecMenu($event)" class="nav-item">
+                            <a class="nav-link">
+                                <i class="fas fa-user-lock" aria-hidden="true"><span id="secnav3" class="name-menu">Заблокированые пользователи</span></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <app-income-requests *ngIf="isIncome" (onAccept)="getAcceptedUserId($event)"></app-income-requests>
+                    <app-outcome-requests [(outComes)]="outComesId" *ngIf="isOutcome" ></app-outcome-requests>
+                    <app-block-contacts *ngIf="isBlock"></app-block-contacts>
+                    </div>
+                </div>  
+        </div>
+    </div>

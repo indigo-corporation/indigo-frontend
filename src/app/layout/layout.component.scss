@@ -1,0 +1,19 @@
+body {
+    min-height: 100% !important;
+}
+
+.scroll-to-top{
+    position: fixed;
+    background: #ffffff;
+    bottom: 11px;
+    right: 56px;
+    cursor: pointer;
+    border-radius: 13px;
+    color: #8e31a5;
+    z-index: 3;
+  }
+
+  .fa-arrow-up {
+    font-size: 32px;
+    padding: 5px;
+  }

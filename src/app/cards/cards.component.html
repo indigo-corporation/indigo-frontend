@@ -1,0 +1,34 @@
+<div style="min-height:100%; position: relative;" class="container main block">
+  <div class="row card-row">
+    <div *ngFor="let card of data | paginate: { 
+        id: 'listing_pagination',
+        itemsPerPage: 20,
+        currentPage: page,
+        totalItems: totalRecords
+      }" class="card col-md-3" style="width: 18rem;">
+      <div class="card-head">
+        <a routerLink="/card-profile/{{card.id}}">
+          <img class="filters__img" src="{{card.poster_url}}">
+        </a>
+      </div>
+      <div routerLink="/card-profile/{{card.id}}" class="card-play-ic">
+        <i class="fa fa-play" aria-hidden="true"></i>
+        <p class="card-icon_text">Смотреть</p>
+      </div>
+      <div class="card_body">
+        <a routerLink="/card-profile/{{card.id}}" class="film-title">{{card.title}}</a> 
+        <p class="card-genre"><span class="genre-div" *ngFor="let genre of card.genres.slice (0, 1);">{{genre.title}},</span> <span class="card-year">  {{card.year}}</span> </p>
+        <div *ngIf="card.imdb_rating" class="imdb-raiting">IMDb {{card.imdb_rating}}</div>
+        <div *ngIf="card.shiki_rating" class="shiki-raiting"><div class="shiki-logo">SHIKIMORI</div><h1 class="raiting">{{card.shiki_rating}}</h1></div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="data" class="paginate">
+    <pagination-controls id="listing_pagination" directionalLinks="true" (pageChange)="onPageChange($event)" previousLabel="Назад"
+    nextLabel="Вперед">
+    </pagination-controls>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>

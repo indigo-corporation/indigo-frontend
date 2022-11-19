@@ -1,0 +1,61 @@
+<div class="container container-card">
+    <app-player *ngIf="film" style="height: 500px;" [film]="film"></app-player>
+    <div class="buttons-bl">
+        <div class="content-card">
+            <div class="poster">
+                <img class="card-image" src="{{film.poster_url}}">
+                
+                <div class="discriptionforfilm">
+                    <div class="discriptionforfilm2">
+                        <h1 style="margin-left: 0" class="card-title-original">{{film.original_title}}</h1>
+                        <h1 class="card-title-original" >
+                            <div style="color: #f3c45b;" *ngIf="film.imdb_rating">IMDb {{film.imdb_rating}}</div>
+                            <div style="color: #f3c45b;" *ngIf="film.shiki_rating">
+                                <div>SHIKIMORI {{film.shiki_rating}}</div>
+                            </div>
+                        </h1>
+                    </div>
+                    
+                    <h1 class="card-title-ru">{{film.title}}</h1>
+                    <div class="buttons">
+                        <button style="margin-left: 0" (click)="change(false)" mat-raised-button class="card-btn">
+                            <i class="fas fa-play-circle"></i>
+                            Смотреть вместе
+                        </button>
+                            <button (click)="postFavorite()" *ngIf="!isFavorite" class="favorite">
+                                <span mat-raised-button class="favorite-text">Добавить в избранные</span>
+                                <input style="display: none" id="favorite" type="checkbox">
+                                <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
+                            </button >
+                            
+                            <button (click)="removeFavorite()" *ngIf="isFavorite" class="favorite">
+                                <span  mat-raised-button class="favorite-text">Убрать из избранных</span>
+                                <input style="display: none" id="favorite" checked type="checkbox">
+                                <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
+                            </button >
+                    </div> 
+                </div>
+                
+            </div>
+         
+    </div>
+    <div class="block-title">
+        
+        <div class="discription-text-block">
+            <p class="discription-text">{{film.release_date | date:"y":"ru"}},</p>
+            <p class="discription-text" *ngFor="let genre of film.genres"> {{genre.title}},</p>
+            <p class="discription-text" >США </p>
+        </div>
+        <p style="margin-left: 10px;">{{film.runtime}} минуты</p>
+        <details>
+            <p class="t">{{film.overview}}</p>
+            <summary>Описание</summary>
+            
+        </details>
+        
+    </div>
+    <div style="position:relative">
+      <!--   <app-card-swiper></app-card-swiper> -->
+        
+    </div>
+</div>

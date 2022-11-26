@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-copyright',
   templateUrl: './copyright.component.html',
   styleUrls: ['./copyright.component.scss']
 })
+
 export class CopyrightComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private meta:Meta,
+    private title:Title
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.title.setTitle("Copyright")
+
+    this.meta.addTag(
+      {name:"description", content: "Copyright, Авторские права, Рекламодателям, обратная связь, Реклама"})
   }
 
 }

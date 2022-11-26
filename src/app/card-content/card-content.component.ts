@@ -8,6 +8,8 @@ import "@angular/common/locales/global/ru"
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { authService } from "../services/authService.service";
 import { AuthPopup } from "../auth-popup/auth-popup.component";
+import { Meta, Title } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-card-content',
   templateUrl: './card-content.component.html',
@@ -27,14 +29,21 @@ export class CardContentComponent implements OnInit {
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
     private auth: authService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private meta:Meta,
+    private title:Title) { 
+      
+    }
   ngOnInit() {
+    
+
     this.id = this.route.snapshot.paramMap.get('id');
     this.getfind(this.id);
     this.auth.user$.subscribe(x => {
       this.login = x != null
       
     })
+    
   }
 
   getfind(id) {
@@ -42,6 +51,22 @@ export class CardContentComponent implements OnInit {
       this.film = data.data;
       let imdbID = this.film.imdb_id;
       console.log(this.film);
+      this.title.setTitle(this.film.title)
+    console.log(this.film.title);
+    
+      debugger
+      if (this.film.is_anime === true) {
+        this.meta.addTag(
+       
+          { name: "description", content: this.film.title + this.film.original_title + "Аниме, Анимесериалы, Анимесериал, Смотреть Аниме онлайн, Аниме HD, совместный просмотр" })
+      }
+
+      if (this.film.is_serila === true) {
+        this.meta.addTag(
+       
+          { name: "description", content: this.film.title + this.film.original_title + "Сериалы, сериал, Смотреть сериалы онлайн, сериалы HD, совместный просмотр" })
+      }
+     
     });
   }
 

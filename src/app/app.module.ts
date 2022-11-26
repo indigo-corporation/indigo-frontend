@@ -82,11 +82,13 @@ import { BlockContactsComponent } from './messanger/message-contacts/block-conta
 import { IncomeRequestsComponent } from './messanger/message-contacts/income-requests/income-requests.component';
 import { OutcomeRequestsComponent } from './messanger/message-contacts/outcome-requests/outcome-requests.component';
 import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
+import { CopyrightComponent } from './copyright/copyright.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
   { path: 'search-page', component: SearchPageComponent },
   { path: 'message/:id', component: MessangerComponent, },
+  { path: 'copyright', component: CopyrightComponent, },
   { path: 'contacts', component: MessangerComponent },
   { path: 'message', component: MessangerComponent },
   { path: 'card-profile/:id/watch-together', component: CardContentComponent },
@@ -153,6 +155,7 @@ const appRoutes: Routes = [
     IncomeRequestsComponent,
     OutcomeRequestsComponent,
     InfiniteScrollComponent,
+    CopyrightComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId:"serverApp"}),

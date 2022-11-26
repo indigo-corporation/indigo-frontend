@@ -1,6 +1,6 @@
 import { Component, Input, OnInit,HostListener, ElementRef  } from '@angular/core';
-
-
+import { SeoService } from '../services/seo.service';
+import { Meta } from '@angular/platform-browser';
 import { ViewportScroller
 } from '@angular/common';
 @Component({
@@ -15,9 +15,14 @@ pageYoffset = 0;
   this.pageYoffset = window.pageYOffset;
 }
 
-constructor(private scroll: ViewportScroller) { }
+constructor(private scroll: ViewportScroller,
+  private seo:SeoService,
+  private readonly Meta:Meta) 
+  { }
 
-  ngOnInit() {
+  ngOnInit():void {
+    this.seo.initDefaultMetaInfomation()
+    
   }
 
   scrollToTop(){

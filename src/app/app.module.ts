@@ -155,7 +155,7 @@ const appRoutes: Routes = [
     InfiniteScrollComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId:"serverApp"}),
     OAuthModule.forRoot(),
     AppRoutingModule,
     MatMenuModule,

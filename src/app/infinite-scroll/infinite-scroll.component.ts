@@ -67,7 +67,6 @@ export class InfiniteScrollComponent implements AfterViewInit, OnDestroy {
         root: this.isHostScrollable() ? this.host.nativeElement : null,
         ...this.options
       });
-      debugger
       this.observer.observe(this.anchor.nativeElement);
     }
   }

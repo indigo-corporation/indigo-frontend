@@ -54,16 +54,10 @@ THE SOFTWARE.
 @angular/common
 MIT
 
-@angular/compiler
-MIT
-
 @angular/core
 MIT
 
 @angular/forms
-MIT
-
-@angular/localize
 MIT
 
 @angular/material
@@ -971,6 +965,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <http://unlicense.org>
 
 
+intersection-observer
+Apache-2.0
+
 mdb-angular-ui-kit
 MIT
 MIT License
@@ -1023,6 +1020,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+
+ngx-infinite-scroll
 
 ngx-pagination
 

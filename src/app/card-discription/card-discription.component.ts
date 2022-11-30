@@ -21,7 +21,7 @@ export class CardDiscriptionComponent implements AfterViewInit, OnInit {
   name: any
   favorite: []
   log: any
-
+  isPlayer: boolean = false
   favoriteFilmIds:any
   login: any
   film_id: number
@@ -29,6 +29,11 @@ export class CardDiscriptionComponent implements AfterViewInit, OnInit {
   @Input() film: any
   @Output() isWatchSub = new EventEmitter<boolean>();
   public id: any
+
+  isPlayerKodic:boolean=true
+  isPlayerSveta:boolean=false
+  srcKodic:any
+  srcSveta:any
   constructor(
     private api2Service: api2Service,
     private router: Router,
@@ -48,14 +53,9 @@ export class CardDiscriptionComponent implements AfterViewInit, OnInit {
     }
 }
 
-
-
   ngAfterViewInit() {
-    if (this.film.is_anime) {
-      this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl("https://kodik.cc/find-player?shikimoriID=" + this.film.shiki_id);
-    } else {
-      this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl("https://64.svetacdn.in/XW3VQUDeE6yi?imdb_id=" + this.film.imdb_id);
-    }
+     
+
      if (this.login) {
       if(this.favoriteFilmIds.includes(this.film.id)) {
         this.isFavorite = true

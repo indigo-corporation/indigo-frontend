@@ -1,5 +1,10 @@
 <div class="container container-card">
-    <app-player *ngIf="film" style="height: 500px;" [film]="film"></app-player>
+    <div *ngIf="isPlayer">
+        <app-player *ngIf="film" style="height: 500px;" [film]="film"></app-player> 
+    </div>
+    <div *ngIf="!isPlayer">
+        <app-player *ngIf="film" style="height: 500px;" [film]="film"></app-player> 
+    </div>   
     <div class="buttons-bl">
         <div class="content-card">
             <div class="poster">

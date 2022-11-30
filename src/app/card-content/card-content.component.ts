@@ -52,9 +52,6 @@ export class CardContentComponent implements OnInit {
       let imdbID = this.film.imdb_id;
       console.log(this.film);
       this.title.setTitle(this.film.title)
-    console.log(this.film.title);
-    
-      debugger
       if (this.film.is_anime === true) {
         this.meta.addTag(
        

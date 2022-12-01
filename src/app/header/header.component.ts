@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, Inject  } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from "@angular/material/dialog";
@@ -8,6 +8,7 @@ import { authService } from "../services/authService.service";
 import { MatMenuModule } from '@angular/material/menu';
 import { api2Service } from '../services/api2.service';
 import { Input } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -33,6 +34,7 @@ export class HeaderComponent implements OnInit {
   page: any
   constructor(
     private router: Router,
+    @Inject(DOCUMENT) document,
     private route: ActivatedRoute,
     private http: HttpClient,
     private snackBar: MatSnackBar,
@@ -54,7 +56,20 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
-
+  
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(e) {
+     if (window.pageYOffset > 180) {
+      console.log(window.pageYOffset);
+      
+       let element = document.getElementById('navbar');
+       $( "nav" ).addClass( "sticky" );
+     } else {
+      let element = document.getElementById('navbar');
+        $( "nav" ).removeClass( "sticky" );
+     }
+  }
+  
 
   ngOnInit() {
     this.auth.getUser()
@@ -65,6 +80,7 @@ export class HeaderComponent implements OnInit {
       this.isShown = false;
     })
   }
+
 
   toggleSearch() {
     this.isShown = !this.isShown

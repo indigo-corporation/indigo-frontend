@@ -8,7 +8,7 @@ import * as e from "express";
 })
 
 export class userService {
-    readonly url = "https://indigo-films-api.herokuapp.com/api/"
+    readonly url = "http://indigo-films-api.herokuapp.com/api/"
     constructor(private http: HttpClient) {
 
     }

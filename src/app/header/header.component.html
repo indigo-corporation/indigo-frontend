@@ -1,8 +1,5 @@
-<!-- <div class=" container marketing-blog">
 
-</div> -->
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light header">
+<nav id="navbar" (scroll)="onWindowScroll($event)" class="container navbar navbar-expand-lg navbar-light bg-light header">
   <a class="navbar-brand" routerLink="">INDIGOFILMS</a>
   <a *ngIf="!login" mat-raised-button (click)="openDialog()" class="btn btn-danger login2">Войти
   </a>

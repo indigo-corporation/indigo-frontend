@@ -27,8 +27,6 @@ h5 {
 @import "swiper/scss/navigation";
 @import "../node_modules/alertifyjs/build/css/alertify.min.css";
 @import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
-@import "~@ng-select/ng-select/themes/material.theme.css";
-@import "~@ng-select/ng-select/themes/default.theme.css";
 
 .swiper-pagination-bullet {
   background-color: white !important;
@@ -58,7 +56,7 @@ a:not([href]):not([class]) {
 html,
 body {
   height: 100%;
-  padding-top: 89px;
+  padding-top: 200px;
   position: relative;
   bottom: 22px;
   line-height: 1.25;

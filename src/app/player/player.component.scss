@@ -20,5 +20,11 @@ iframe {
   button {
     background:inherit;
     color: white;
+    border: 1px solid #ffffff30;
+    margin: 9px;
+    &:hover {
+      color: black;
+      background-color: white;
+    }
   }
 

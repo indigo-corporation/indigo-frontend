@@ -14,6 +14,7 @@ h1 {
 button {
     font-size: 16px;
     font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    
 }
 
 .card-title-original {
@@ -30,11 +31,13 @@ button {
 }
 
 .content-card {
-    padding: 20px;
+    padding: 0px 20px;
+    padding-top: 9px;
 }
 
 summary {
     margin-left: 11px;
+    padding-bottom: 9px
 }
 
 .discription {
@@ -54,7 +57,7 @@ summary {
 }
 
 p {
-    color: darkgrey;
+    color: #ababab;
     font-size: 12px;
     font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
     margin: 0;
@@ -62,7 +65,7 @@ p {
 }
 
 .t {
-    color: aliceblue;
+    color: #ababab;
     font-size: 14px;
     font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
     margin: 0;
@@ -111,7 +114,7 @@ span {
 .poster {
     text-align: center;
     margin-right: 22px;
-    padding: 24px 20px;
+    padding: 0px 21px;
     display: flex;
 }
 
@@ -329,8 +332,8 @@ iframe {
 }
 .block-title {
     color: white;
-    background-color: #1e0122;
-    padding: 19px 15px;
+    padding: 0px 33px;
+    padding-bottom: 9px;
 }
 
 .discription-text {

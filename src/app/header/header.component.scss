@@ -29,7 +29,6 @@ i {
 }
 
 .header {
-    position: fixed;
     top: 0;
     z-index: 3;
     right: 0;
@@ -237,6 +236,12 @@ i {
     text-decoration: none;
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
 .card-year {
     color: #958c8c;
 }
@@ -340,11 +345,10 @@ i {
         letter-spacing: 0.1em;
     }
     .header {
-        position: fixed;
         top: 0px;
         z-index: 3;
         right: 0;
-        left: -6px;
+        left: 0px;
     }
 }
 
@@ -359,11 +363,11 @@ i {
         box-shadow: none;
     }
     .header {
-        position: fixed;
+   
         top: 0px;
         z-index: 3;
         right: 0;
-        left: -6px;
+        left: 0px;
     }
 }
 
@@ -375,11 +379,10 @@ i {
         cursor: pointer;
     }
     .header {
-        position: fixed;
         top: 0px;
         z-index: 3;
         right: 0;
-        left: -6px;
+        left: 0px;
         height: 46px;
     }
     body {

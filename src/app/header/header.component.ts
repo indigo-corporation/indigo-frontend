@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
   user: any
   film: any
   body: any
+  isNotification:boolean = false
   arrowIdValue
   window: any
   id: any
@@ -84,6 +85,10 @@ export class HeaderComponent implements OnInit {
 
   toggleSearch() {
     this.isShown = !this.isShown
+  }
+
+  toggleBell() {
+    this.isNotification = !this.isNotification
   }
 
   genreArrow($event) {

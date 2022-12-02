@@ -1,6 +1,6 @@
 <div style="min-height: 100%" class="container main-r main block">
     <form class="reg-form" [formGroup]="emailForm" (ngSubmit)="postEmail()">
-        <h1 class="reg-title">Восстановление пороля</h1>
+        <h1 class="reg-title">Восстановление пароля</h1>
       <div class="form-group">
         <label class="reg-label" for="inputUserEmail">Email</label>
         <input type="text" placeholder="Введите Email" class="form-control" formControlName="email">
@@ -12,7 +12,7 @@
         </div>
       </div>
       <button [disabled]="emailForm.invalid" type="submit" class="btn btn btn-primary btn-sub">
-        Отправить
+        Восстановить      
       </button>
     </form>
   

@@ -83,6 +83,7 @@ import { IncomeRequestsComponent } from './messanger/message-contacts/income-req
 import { OutcomeRequestsComponent } from './messanger/message-contacts/outcome-requests/outcome-requests.component';
 import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
 import { CopyrightComponent } from './copyright/copyright.component';
+import { AllNotificationsComponent } from './all-notifications/all-notifications.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -156,6 +157,7 @@ const appRoutes: Routes = [
     OutcomeRequestsComponent,
     InfiniteScrollComponent,
     CopyrightComponent,
+    AllNotificationsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId:"serverApp"}),

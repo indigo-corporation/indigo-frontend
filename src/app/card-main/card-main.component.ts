@@ -21,13 +21,13 @@ export class CardMainComponent implements OnInit, OnChanges {
   };
   config: SwiperOptions = {
     slidesPerView: 3,
-    spaceBetween: 20,
+    spaceBetween: 10,
     navigation: true,
     pagination: { clickable: false },
     scrollbar: { draggable: true },
     breakpoints: {
       992: {
-        slidesPerView: 4,
+        slidesPerView: 6,
       },
       764: {
         slidesPerView: 2,

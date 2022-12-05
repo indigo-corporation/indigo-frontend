@@ -1,16 +1,23 @@
 .modal-body {
     display: flex;
     justify-content: center;
+    background-color: #4a3783;
+    color: white;
     font-size: 16px;
 }
 
 .modal-header {
     border:none;
+    background-color: #4a3783;
 }
+
+
+
 
 .modal-footer {
     display: flex;
     justify-content: center;
+    background-color: #4a3783;
     #btn-delete {
         color: white;
         background-color: #3d833d;

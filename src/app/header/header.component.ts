@@ -54,6 +54,7 @@ export class HeaderComponent implements OnInit {
         this.arrowsUp()
         this.searchClose() 
         this.isCollapsed = true;
+        this.isNotification = false
       }
     });
   }

@@ -17,12 +17,12 @@ p {
     list-style: none;
     border-top: 1px solid;
     overflow: auto;
-    height: 250px;
+    height: 100%;
 }
 
 
 .avatars-comments {
-    max-width: 57px;
+    max-width: 74px;
     border: 1px solid transparent;
     border-radius: 67px;
     align-self: center;
@@ -66,6 +66,7 @@ p {
     position: relative;
     color: grey;
     border-bottom: 1px solid #2e2b2b;
+    margin-top: 14px;
     cursor: pointer;
     &:hover {
         background: #3d3948;

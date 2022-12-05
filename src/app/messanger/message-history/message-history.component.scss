@@ -9,9 +9,9 @@
     background: #121111;
 }
 
-button {
-    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
-}
+
+
+
 
 .form-control {
     font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
@@ -24,7 +24,7 @@ button {
 .messages {
     overflow-y: auto;
     max-height: 421px;
-    min-height: 332px;
+    min-height: 549px;
     overflow-x: hidden;
     height: 100%;
 }
@@ -272,6 +272,13 @@ li {
     margin-left: 10px;
     font-family: "Oswald", sans-serif;
     font-weight: 100;
+}
+
+button {
+    font-size: 14px !important;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
 }
 
 @media screen and (max-width: 1210px) {

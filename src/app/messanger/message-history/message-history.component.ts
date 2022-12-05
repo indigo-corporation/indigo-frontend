@@ -59,7 +59,7 @@ export class MessageHistoryComponent implements OnInit {
 
   unBlockUser(userId) {
     debugger
-    this.messangerService.postBannedUseradd(userId).subscribe((data)=> {
+    this.messangerService.postBannedUserRemove(userId).subscribe((data)=> {
       this.isBlock = false
     })
   }

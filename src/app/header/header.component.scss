@@ -37,13 +37,17 @@ i {
     height: 45px;
 }
 
-.navbar-brand {
+.brand {
     color: white;
     font-weight: bold;
     margin-left: 16px;
+    text-decoration: none;
     font-size: 24px;
     font-family: "TT Norms Pro,Helvetica,sans-serif";
     letter-spacing: 0.1em;
+    &:hover {
+        color: white;
+    }
 }
 
 .nav-item {
@@ -175,6 +179,8 @@ i {
         color: black;
     }
 }
+
+
 
 .user-nav {
     font-size: 14px;

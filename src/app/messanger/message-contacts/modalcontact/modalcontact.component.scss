@@ -8,8 +8,13 @@
     border:none;
 }
 
+.modal-content {
+    background-color: #4a3783;
+}
+
 .modal-footer {
     display: flex;
+    background-color: #4a3783;
     justify-content: center;
     #btn-delete {
         color: white;

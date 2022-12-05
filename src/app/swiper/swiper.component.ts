@@ -30,7 +30,7 @@ export class SwiperComponent implements OnInit {
     scrollbar: { draggable: true },
     breakpoints: {
       992: {
-        slidesPerView: 5,
+        slidesPerView: 6,
       },
       764: {
         slidesPerView: 2,

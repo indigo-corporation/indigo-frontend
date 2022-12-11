@@ -40,6 +40,7 @@ p {
   margin-bottom: 15px;
   background-color: transparent;
   text-align: start;
+  border: none;
 }
 
 .card:hover {
@@ -73,6 +74,21 @@ p {
   }
 }
 
+.imdb {
+  color: #e3dfd6;
+  font-size: 12px;
+  margin-top: 1px;
+  font-weight: bold;
+}
+
+.shiki {
+  color: #e3dfd6;
+  font-size: 11px;
+  font-family: "TT Norms Pro,Helvetica,sans-serif";
+  font-weight: bold;
+  margin-top: 2px;
+}
+
 .card-title {
   background-color: #e72c2c7a;
   border-radius: 5px;
@@ -96,9 +112,6 @@ p {
   font-size: 13px;
   display: flex;
   justify-content: center;
-  position: absolute;
-  left: 39%;
-  bottom: 12px;
 }
 
 .block {
@@ -232,4 +245,14 @@ p {
   font-size: 12px;
   font-weight: bold;
   color: #ffffffc7;
+}
+
+
+.paginate {
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 39%;
+  bottom: 12px;
 }

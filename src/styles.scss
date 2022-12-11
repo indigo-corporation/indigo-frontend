@@ -283,6 +283,10 @@ body {
   width: 100% !important;
 }
 
+.swiper-button-prev, .swiper-button-next {
+  top: 38% !important;
+}
+
 @media screen and (max-width: 600px) {
   body {
     padding-top: 100px;

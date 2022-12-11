@@ -150,11 +150,27 @@ p {
     max-width: 150px;
 }
 
+.imdb {
+    color: #e3dfd6;
+    font-size: 12px;
+    margin-top: 1px;
+    font-weight: bold;
+  }
+  
+  .shiki {
+    color: #e3dfd6;
+    font-size: 11px;
+    font-family: "TT Norms Pro,Helvetica,sans-serif";
+    font-weight: bold;
+    margin-top: 2px;
+  }
+
 .card-head {
     height: 100%;
     position: relative;
     margin-left: 21px;
     max-width: 207px;
+    width: 100%;
 }
 
 .form-group {

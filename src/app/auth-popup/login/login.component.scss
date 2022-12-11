@@ -7,6 +7,9 @@ body {
 }
 
 .btn-reg {
+    margin-top: 10px;
+    width: 100%;
+    background: purple;
     color: white;
     &:hover {
         color: black;
@@ -25,7 +28,8 @@ a {
 
 .btn-remember {
     color: white;
-    font-size: 20px;
+    font-size: 12px;
+    margin-top: 5px;
     &:hover {
         color: black;
     }
@@ -44,6 +48,9 @@ a {
     width: 100%;
     background: purple;
     color: white;
+    &:hover {
+        color: black;
+    }
 }
 
 .reg-link {
@@ -114,8 +121,6 @@ a {
     }
 
     .social {
-        margin-top: 24px;
-        margin-top: 24px;
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -152,10 +157,6 @@ a {
 h3 {
     text-align: center;
     line-height: 300%;
-}
-
-.social {
-    margin-top: 24px;
 }
 
 .pull-right {

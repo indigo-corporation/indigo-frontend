@@ -15,6 +15,10 @@
     <div class="auth-error" *ngIf="password.errors?.['required'] && (password.touched || password.dirty)">
       Заполните поле Пароль
     </div>
+    <div style="display: flex; justify-content: flex-end;">
+      <a class="btn-remember" (click)="closeDialog()" routerLink="/remember-pass">Забыл пароль?</a>
+    </div>
+    
     <div class="auth-error" *ngIf="password.errors?.['minlength'] || password.errors?.['maxlength'] && (password.touched || password.dirty)">
       Пароль должен быть минимум 6 символов
     </div>
@@ -30,11 +34,7 @@
   <button mat-raised-button (click)="logIn()" type="submit" class="login">
     Войти
   </button>
-  <div class="reg-links">
-    <a routerLink="/reg" (click)="closeDialog()" class="btn-reg">
-      Регистрация
-    </a>
-    <a class="btn-remember" (click)="closeDialog()" routerLink="/remember-pass">Забыл пароль?</a>
-  </div>
-
+  <button mat-raised-button routerLink="/reg" (click)="closeDialog()" class="btn-reg">
+    Регистрация
+  </button>
 </form>

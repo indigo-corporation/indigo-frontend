@@ -29,6 +29,21 @@ p {
   color: white;
 }
 
+.imdb {
+  color: #e3dfd6;
+  font-size: 12px;
+  margin-top: 1px;
+  font-weight: bold;
+}
+
+.shiki {
+  color: #e3dfd6;
+  font-size: 11px;
+  font-family: "TT Norms Pro,Helvetica,sans-serif";
+  font-weight: bold;
+  margin-top: 2px;
+}
+
 .card-title {
   color: white;
   background: linear-gradient(222deg, #2222a0, #a81c9c);
@@ -42,6 +57,7 @@ p {
   text-decoration: none;
   font-weight: bold;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .card {
@@ -50,6 +66,7 @@ p {
   margin-bottom: 15px;
   background-color: transparent;
   text-align: start;
+  border: none;
 }
 
 .card:hover {

@@ -33,7 +33,7 @@ import {
   GoogleLoginProvider
 } from '@abacritt/angularx-social-login';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
-
+import { NgxStarRatingModule } from 'ngx-star-rating';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -84,10 +84,12 @@ import { OutcomeRequestsComponent } from './messanger/message-contacts/outcome-r
 import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
 import { CopyrightComponent } from './copyright/copyright.component';
 import { AllNotificationsComponent } from './all-notifications/all-notifications.component';
+import { SupportPageComponent } from './support-page/support-page.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
   { path: 'search-page', component: SearchPageComponent },
+  { path: 'support', component: SupportPageComponent },
   { path: 'message/:id', component: MessangerComponent, },
   { path: 'copyright', component: CopyrightComponent, },
   { path: 'contacts', component: MessangerComponent },
@@ -158,11 +160,13 @@ const appRoutes: Routes = [
     InfiniteScrollComponent,
     CopyrightComponent,
     AllNotificationsComponent,
+    SupportPageComponent 
   ],
   imports: [
-    BrowserModule.withServerTransition({appId:"serverApp"}),
+    BrowserModule,
     OAuthModule.forRoot(),
     AppRoutingModule,
+    NgxStarRatingModule,
     MatMenuModule,
     SwiperModule,
     MdbModalModule,
@@ -188,6 +192,7 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     AngularTelegramLoginWidgetModule,
     MatNativeDateModule,
+    ReactiveFormsModule,
     InfiniteScrollModule
   ],
   providers: [

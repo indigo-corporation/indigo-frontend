@@ -10,9 +10,10 @@ footer {
 }
 
 .footer-btn {
-    margin-left: 10px;
-    padding: 5px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
     &:hover {
-        background:black;
+        background: #4c3f93;
     }
 }

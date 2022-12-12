@@ -1,5 +1,5 @@
 <div style="min-height:100%; position: relative;" class="container main block">
-    <div class="row card-row">
+    <div class="row">
       <div *ngFor="let card of favoriteFilms | paginate: { 
           id: 'listing_pagination',
           itemsPerPage: 20,
@@ -18,8 +18,10 @@
         <div class="card_body">
           <a routerLink="/card-profile/{{card.id}}" class="film-title">{{card.title}}</a> 
           <p class="card-genre"><span class="genre-div" *ngFor="let genre of card.genres.slice (0, 1);">{{genre.title}},</span> <span class="card-year">  {{card.year}}</span> </p>
-          <div *ngIf="card.imdb_rating" class="imdb-raiting">IMDb {{card.imdb_rating}}</div>
-          <div *ngIf="card.shiki_rating" class="shiki-raiting"><div class="shiki-logo">SHIKIMORI</div><h1 class="raiting">{{card.shiki_rating}}</h1></div>
+          <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
+            <div *ngIf="card.shiki_rating">
+              <div class="shiki">SHIKIMORI {{card.shiki_rating}} </div>
+            </div>
         </div>
       </div>
       <div *ngIf="favoriteFilms" class="paginate">

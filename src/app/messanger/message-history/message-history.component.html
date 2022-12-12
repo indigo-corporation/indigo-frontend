@@ -5,8 +5,8 @@
                 <div *ngFor="let user of chat.users">
                     <div *ngIf="user.id != myUser.id" class="avatar">
                         <div class="user-info">
-                            <img class="message-avatar"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWA73D3QltIDvk4GCa1fzqINVgO-enubpjIg&usqp=CAU">
+                            <img class="message-avatar" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg'"
+                                src="{{user.poster_url}}">
                             <div>
                                 <a class="message-username" routerLink="/user-page/{{user.id}}">{{user.name}}</a>
                                 <p class="message-user_status">

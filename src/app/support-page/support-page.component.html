@@ -1,0 +1,43 @@
+<div style="min-height: 100%" class="container main">
+
+    <h1 class="feed-back-title">
+        Форма обратной связи
+    </h1>
+    <form [formGroup]="supportForm" class="page" (ngSubmit)="userSendmessage()">
+        <div class="form-group">
+            <label class="reg-label" for="inputUsername">Имя</label>
+            <input type="text" placeholder="Введите Имя" name="name" class="form-control" formControlName="name">
+            <div class="auth-error" *ngIf="name.errors?.['required'] && (name.touched || name.dirty)">
+                Заполните поле Имя
+            </div>
+            <div class="auth-error" *ngIf="name.errors?.['minlength'] && (name.touched || name.dirty)">
+                Слишком кароткое имя
+            </div>
+            <div class="auth-error" *ngIf="name.errors?.['pattern'] && (name.touched || name.dirty)">
+                Имя буквами
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="reg-label" for="inputUserEmail">Email</label>
+            <input type="text" placeholder="Введите Email" class="form-control" formControlName="email">
+            <div class="auth-error" *ngIf="email.errors?.['required'] && (email.touched || email.dirty)">
+                Заполните поле Email
+            </div>
+            <div class="auth-error" *ngIf="email.errors?.['email'] && (email.touched || email.dirty)">
+                Неправильный Email
+            </div>
+        </div>
+       
+        <div style="display: grid"> 
+            <label class="reg-label" for="inputAbout">Сообщение</label>
+            <textarea style="height:100% ;" id="inputAbout" class="text-input" rows="6" placeholder="Твое мнение нам очень важно"
+            formControlName="about"></textarea>
+        </div>
+       
+        <button [disabled]="supportForm.invalid" mat-stroked-button class="user-btn" type="submit">Отправить</button>
+        <h1 class="feed-back">
+            Нам очень важна обратная связь от каждого из вас.
+
+        </h1>
+    </form>
+</div>

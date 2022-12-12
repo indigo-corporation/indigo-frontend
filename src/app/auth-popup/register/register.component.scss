@@ -100,10 +100,13 @@ h3 {
 
 .btn-sub {
     margin-top: 10px;
+    background: #4c3f93;
+    border: none;
 }
 
 .form-group {
     margin-top: 16px;
+    
 }
 .span-or {
     display: block;
@@ -154,9 +157,8 @@ h3 {
     max-width: 480px;
     margin: auto;
     padding: 1rem;
-    margin-top: 26px;
     display: grid;
-    grid-gap: 64px;
+    grid-gap: 35px;
 }
 
 .reg-label {
@@ -169,4 +171,5 @@ h3 {
     color: white;
     font-size: 24px;
     font-weight: bold;
+    margin-top: 37px;
 }

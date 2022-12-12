@@ -23,9 +23,6 @@ declare var $: any;
 export class UserSettingComponent implements OnInit {
   settingForm = new FormGroup({
     name: new FormControl("", []),
-    /* city_id: new FormControl("", []),
-    country: new FormControl("", []),
-    birth_date: new FormControl("", []), */
     about: new FormControl("", []),
     user_name: new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
 

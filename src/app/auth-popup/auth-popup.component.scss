@@ -7,12 +7,15 @@ body {
     font-size: 12px;
 }
 .main {
-    margin: 0 auto;
-    padding: 34px;
-    background-color: #320091;
-    color: white;
-    width: 500px;
-    position: relative;
+      padding: 17px;
+      background-color: rgb(26, 25, 35);
+      color: white;
+      width: 100%;
+      border-radius: 5px;
+      min-width: 500px;
+      position: relative;
+      box-shadow: inset 0 0px 0px 0px rgb(0 0 0);
+      background: linear-gradient(364deg, #000000, #5e2359);
 }
 
 .reg-link {

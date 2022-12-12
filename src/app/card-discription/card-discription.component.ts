@@ -8,6 +8,7 @@ import "@angular/common/locales/global/ru"
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { authService } from "../services/authService.service";
 import { AuthPopup } from "../auth-popup/auth-popup.component";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-card-discription',
@@ -29,19 +30,25 @@ export class CardDiscriptionComponent implements AfterViewInit, OnInit {
   @Input() film: any
   @Output() isWatchSub = new EventEmitter<boolean>();
   public id: any
-
+  public form: FormGroup;
   isPlayerKodic:boolean=true
   isPlayerSveta:boolean=false
   srcKodic:any
   srcSveta:any
+  rating3: number;
   constructor(
     private api2Service: api2Service,
     private router: Router,
     private route: ActivatedRoute,
+    private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private sanitizer: DomSanitizer,
     private auth: authService,
     private dialog: MatDialog) {
+      this.rating3 = 0;
+      this.form = this.fb.group({
+        rating: ['', Validators.required],
+      })
 
   }
   ngOnInit() {
@@ -62,7 +69,7 @@ export class CardDiscriptionComponent implements AfterViewInit, OnInit {
       }
     } 
   }
-
+  
   getFavoriteArray() {
     this.api2Service.getFavoriteArray().subscribe((data) => {
       this.favoriteFilmIds = data.data

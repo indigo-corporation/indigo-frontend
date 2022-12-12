@@ -17,6 +17,39 @@ button {
     
 }
 
+.cont {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    display: flex;
+  }
+
+  ::ng-deep label.star {
+    float: right;
+    padding: 10px !important;
+    font-size: 29px !important;
+    color: #444;
+    transition: all .2s;
+  }
+
+  div.stars {
+    display: inline-block;
+  }
+
+.raiting-stars {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.fa-star {
+    font-size: 16px;
+    &:hover {
+        color: #4c3f93;
+    }
+}
+
 .card-title-original {
     font-size: 14px;
     margin-left: 11px;
@@ -27,7 +60,8 @@ button {
     color: white;
     text-align: left;
     font-weight: bold;
-    padding: 9px 0;
+    padding-top: 2px;
+    margin: 0;
 }
 
 .content-card {

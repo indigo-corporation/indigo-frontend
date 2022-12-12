@@ -9,7 +9,7 @@ body {
 .btn-reg {
     margin-top: 10px;
     width: 100%;
-    background: purple;
+    background: #4c3f93;
     color: white;
     &:hover {
         color: black;
@@ -46,7 +46,7 @@ a {
 .login {
     margin-top: 10px;
     width: 100%;
-    background: purple;
+    background: #4c3f93;
     color: white;
     &:hover {
         color: black;
@@ -168,6 +168,8 @@ h3 {
     font-size: 15px;
     font-weight: bold;
 }
+
+
 
 @media screen and (max-width: 600px) {
     .reg-links {

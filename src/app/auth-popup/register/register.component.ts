@@ -7,6 +7,7 @@ import { AuthPopup } from "../auth-popup.component"
 import { ReactiveFormsModule } from '@angular/forms';
 import  * as alertyfy from 'alertifyjs';
 import { AlertifyService } from '../../services/alertify.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-register',
@@ -26,7 +27,9 @@ import { AlertifyService } from '../../services/alertify.service';
     private FormBuilder:FormBuilder,
     private ReactiveFormsModule:ReactiveFormsModule,
     private alertify:AlertifyService,
-    public dialogRef: MatDialogRef<AuthPopup>) 
+    public dialogRef: MatDialogRef<AuthPopup>,
+    private meta: Meta,
+    private title: Title ) 
     {
         this.authForm = this.FormBuilder.group ({
             email: new FormControl("",[Validators.required,Validators.email]),
@@ -40,6 +43,7 @@ import { AlertifyService } from '../../services/alertify.service';
     }
 
     ngOnInit() {
+      this.title.setTitle("Регистрация")
       console.log(this.telegramAuth);
     }
 

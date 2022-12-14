@@ -51,7 +51,7 @@ export class CardContentComponent implements OnInit {
       this.film = data.data;
       let imdbID = this.film.imdb_id;
       console.log(this.film);
-      this.title.setTitle(this.film.title)
+      this.title.setTitle("Смотреть" + " " + this.film.title + " " + "онлайн бесплатно в хорошем качестве")
       if (this.film.is_anime === true) {
         this.meta.addTag(
        

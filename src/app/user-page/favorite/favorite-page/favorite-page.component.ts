@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { api2Service } from '../../../services/api2.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-favorite-page',
@@ -15,10 +16,13 @@ export class FavoritePageComponent implements OnInit {
   constructor(
     private api2Service: api2Service,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private meta: Meta,
+    private title: Title
   ) { }
 
   ngOnInit() {
+    this.title.setTitle("Избранные")
     this.getFavoriteFilms()
   }
 

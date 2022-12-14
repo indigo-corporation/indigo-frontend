@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { MatDialog } from "@angular/material/dialog";
 import { ModalComponent } from './modal/modal.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-message-chat',
@@ -41,12 +42,15 @@ export class MessageChatComponent implements OnInit {
     private auth: authService,
     private router: Router,
     private location: Location,
-    private readonly EverythingServiceService: EverythingServiceService
+    private readonly EverythingServiceService: EverythingServiceService,
+    private meta:Meta,
+    private title:Title
   ) {
 
   }
 
   ngOnInit() {
+    this.title.setTitle("Мессенджер")
     this.auth.getUser()
     this.auth.user$.subscribe(x => {
       this.myUser = x

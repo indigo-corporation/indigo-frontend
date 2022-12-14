@@ -15,7 +15,7 @@ export class CopyrightComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.title.setTitle("Copyright")
+    this.title.setTitle("Правообладателям и рекламодателям")
 
     this.meta.addTag(
       {name:"description", content: "Copyright, Авторские права, Рекламодателям, обратная связь, Реклама"})

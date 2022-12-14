@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup,FormControl, Validators, FormBuilder } from "@angular/forms"
 import { ReactiveFormsModule } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-support-page',
@@ -14,6 +15,8 @@ export class SupportPageComponent implements OnInit {
   constructor(
     private FormBuilder:FormBuilder,
     private ReactiveFormsModule:ReactiveFormsModule,
+    private meta: Meta,
+    private title: Title 
   ) { 
     
     this.supportForm = this.FormBuilder.group({
@@ -35,7 +38,7 @@ export class SupportPageComponent implements OnInit {
     return this.supportForm.get("about") as FormControl;
   }
   ngOnInit() {
-
+    this.title.setTitle("Поддержка")
   }
 
   userSendmessage() {

@@ -85,6 +85,7 @@ import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.compo
 import { CopyrightComponent } from './copyright/copyright.component';
 import { AllNotificationsComponent } from './all-notifications/all-notifications.component';
 import { SupportPageComponent } from './support-page/support-page.component';
+import { AutoFocusDirectiveDirective } from './auto-focus-directive.directive';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -92,7 +93,7 @@ const appRoutes: Routes = [
   { path: 'support', component: SupportPageComponent },
   { path: 'message/:id', component: MessangerComponent, },
   { path: 'copyright', component: CopyrightComponent, },
-  { path: 'contacts', component: MessangerComponent },
+  { path: 'friends', component: MessangerComponent },
   { path: 'message', component: MessangerComponent },
   { path: 'card-profile/:id/watch-together', component: CardContentComponent },
   { path: 'favorite', component: FavoritePageComponent },
@@ -160,7 +161,8 @@ const appRoutes: Routes = [
     InfiniteScrollComponent,
     CopyrightComponent,
     AllNotificationsComponent,
-    SupportPageComponent 
+    SupportPageComponent,
+    AutoFocusDirectiveDirective 
   ],
   imports: [
     BrowserModule,

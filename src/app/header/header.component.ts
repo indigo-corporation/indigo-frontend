@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Inject  } from '@angular/core';
+import { Component, OnInit, HostListener, Inject,ViewChild,ElementRef} from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from "@angular/material/dialog";
@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
   user: any
   film: any
   body: any
+  serchElm
   isNotification:boolean = false
   arrowIdValue
   window: any
@@ -38,6 +39,7 @@ export class HeaderComponent implements OnInit {
     @Inject(DOCUMENT) document,
     private route: ActivatedRoute,
     private http: HttpClient,
+    private host:ElementRef,
     private snackBar: MatSnackBar,
     private auth: authService,
     private api2Service: api2Service,
@@ -57,6 +59,7 @@ export class HeaderComponent implements OnInit {
         this.isNotification = false
       }
     });
+    
   }
   
   @HostListener('window:scroll', ['$event'])
@@ -82,10 +85,18 @@ export class HeaderComponent implements OnInit {
       this.isShown = false;
     })
   }
+ 
 
-
-  toggleSearch() {
+  toggleSearch(serchElm) {
+  
     this.isShown = !this.isShown
+
+      if (this.serchElm.hasClass("input-search")) {
+        this.serchElm = this.serchElm.find(".input-search")
+        this.serchElm.nativeElement.focus();
+        debugger
+      }
+    
   }
 
   toggleBell() {

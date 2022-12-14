@@ -36,25 +36,25 @@ export class CardsComponent implements OnInit {
 
     this.category = this.route.snapshot.url[0].path
     if (this.category === "film") {
-      this.title.setTitle("Фильмы")
+      this.title.setTitle("Смотреть Фильмы в хорошем качестве в 720p hd")
       this.meta.addTag(
         { name: "description", content: "Фильмы, Фильм, Смотреть фильмы онлайн, фильмы HD, совместный просмотр" })
     }
 
     if (this.category === "serial") {
-      this.title.setTitle("Сериалы")
+      this.title.setTitle("Смотреть Сериалы в хорошем качестве в 720p hd")
       this.meta.addTag(
         { name: "description", content: "Сериалы, сериал, Смотреть сериалы онлайн, сериалы HD, совместный просмотр" })
     }
 
     if (this.category === "cartoon") {
-      this.title.setTitle("Мультфильмы")
+      this.title.setTitle("Смотреть Мультфильмы в хорошем качестве в 720p hd")
       this.meta.addTag(
         { name: "description", content: "Мультфильмы, Мультфильмсериалы, Мультфильтсериал, Смотреть Мультфильмы онлайн, Мультфильмы HD, совместный просмотр" })
     }
 
     if (this.category === "anime") {
-      this.title.setTitle("Аниме")
+      this.title.setTitle("Смотреть Аниме в хорошем качестве в 720p hd")
       this.meta.addTag(
         { name: "description", content: "Аниме, Анимесериалы, Анимесериал, Смотреть Аниме онлайн, Аниме HD, совместный просмотр" })
     }

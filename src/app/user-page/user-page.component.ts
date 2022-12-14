@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { authService } from '../services/authService.service';
 import { HttpClient } from "@angular/common/http";
 import * as e from 'express';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-page',
@@ -39,10 +40,13 @@ export class UserPageComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private dialog: MatInputModule,
-    private http: HttpClient) {
+    private http: HttpClient,
+    private meta: Meta,
+    private title: Title ) {
 
   }
   ngOnInit() {
+    this.title.setTitle("Профиль")
     this.auth.user$.subscribe(x => {
       this.user = x
     })

@@ -5,6 +5,8 @@ import { ModalContactComponent } from './modalcontact/modalcontact.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ModalAddContactComponent } from './modal-add-contact/modal-add-contact.component';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-message-contacts',
   templateUrl: './message-contacts.component.html',
@@ -29,12 +31,15 @@ export class MessageContactsComponent implements OnInit {
     private messangerService:messangerService,
     private auth:authService,
     private modalService: MdbModalService,
-    private router:Router
+    private router:Router,
+    private meta:Meta,
+    private title:Title
   ) {
  
    }
 
   ngOnInit() {
+    this.title.setTitle("Друзья")
     this.auth.getUser()
     this.auth.user$.subscribe(x => {
       this.myUser = x

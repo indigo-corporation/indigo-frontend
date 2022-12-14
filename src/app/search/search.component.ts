@@ -1,17 +1,17 @@
-import { Component, OnInit, Output ,EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { api2Service } from '../services/api2.service';
 import { api } from '../services/api.service';
-import { Router, NavigationStart, NavigationEnd} from '@angular/router';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Input } from '@angular/core';
-import { MatDialogRef} from "@angular/material/dialog";
+import { MatDialogRef } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, AfterViewInit {
   totalRecords: string
   data: any
   term: string
@@ -20,7 +20,8 @@ export class SearchComponent implements OnInit {
   find: string
   page: any
   public id: any
-  constructor(public dialogRef: MatDialogRef<SearchComponent>,private api2Service:api2Service, private router: Router, private route: ActivatedRoute) { 
+  constructor(private input: ElementRef, public dialogRef: MatDialogRef<SearchComponent>, private api2Service: api2Service, private router: Router, private route: ActivatedRoute) {
+    /*  document.forms['searhForm'].elements['searchInput'].focus(); */
 
   }
 
@@ -28,11 +29,16 @@ export class SearchComponent implements OnInit {
 
   }
 
-  onKeyUpEvent($event:any) {
-    if($event.target.value.length === 0) {
-      this.data=[]
+  @ViewChild("search") el:ElementRef;
+  ngAfterViewInit() {
+    this.el.nativeElement.focus();
+  }
+
+  onKeyUpEvent($event: any) {
+    if ($event.target.value.length === 0) {
+      this.data = []
     }
-    
+
     if ($event.target.value.length >= 2) {
       this.search($event.target.value, 1)
     }
@@ -49,7 +55,7 @@ export class SearchComponent implements OnInit {
     });
     this.onSearchSubmmited.next(true)
   }
-  
+
   search(find, page) {
     console.log(find, page);
     this.api2Service.search(find, page).subscribe((data) => {

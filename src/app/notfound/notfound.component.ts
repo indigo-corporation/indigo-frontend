@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-notfound',
   templateUrl: './notfound.component.html',
@@ -7,9 +8,11 @@ import { Router } from '@angular/router';
 })
 export class NotfoundComponent implements OnInit {
 
-  constructor() { }
+  constructor( private meta: Meta,
+    private title: Title) { }
 
   ngOnInit() {
+    this.title.setTitle("Страница не найдена")
   }
 
 }

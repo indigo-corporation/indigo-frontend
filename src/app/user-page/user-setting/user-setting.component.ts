@@ -14,6 +14,7 @@ import { Options } from "select2";
 import { BehaviorSubject, of } from "rxjs";
 import { authService } from '../../services/authService.service';
 declare var $: any;
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-setting',
@@ -47,15 +48,13 @@ export class UserSettingComponent implements OnInit {
   public options: Options;
   public options2: Options;
   selectedFile: File
-  constructor(private ReactiveFormsModule: ReactiveFormsModule,
-    private http: HttpClient,
+  constructor(
     private userService: userService,
     private auth: authService,
-    private router: Router,
-    private route: ActivatedRoute,
     private FormBuilder: FormBuilder,
     private alertify: AlertifyService,
-    private authService: authService
+    private meta: Meta,
+    private title: Title 
   ) {
 
     this.passChangeForm = this.FormBuilder.group({
@@ -71,6 +70,7 @@ export class UserSettingComponent implements OnInit {
 
 
   ngOnInit() {
+    this.title.setTitle("Настройки профиля")
     this.auth.getUser()
     this.auth.user$.subscribe(x => {
       this.user = x

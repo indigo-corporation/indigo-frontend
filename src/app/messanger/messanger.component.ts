@@ -40,7 +40,7 @@ export class MessangerComponent implements OnInit {
     if(chatId) {
       this.getChat(chatId)
     }
-    if(this.route.snapshot['_routerState'].url === "/contacts") {
+    if(this.route.snapshot['_routerState'].url === "/friends") {
       this.isContact=true
       this.isChat=false
     } 

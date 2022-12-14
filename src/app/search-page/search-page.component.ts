@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Input } from '@angular/core'
 import { api2Service } from '../services/api2.service';
-import { api } from '../services/api.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { ThisReceiver } from '@angular/compiler';
+import { Meta, Title } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
@@ -18,7 +17,12 @@ export class SearchPageComponent implements OnInit {
   name: any
   find:any
   public id: any
-  constructor(private api2Service: api2Service, private router: Router, private route: ActivatedRoute) {
+  constructor(
+    private api2Service: api2Service, 
+    private router: Router, 
+    private route: ActivatedRoute,
+    private meta: Meta,
+    private title: Title ) {
     this.data = new Array<any>()
     /*  this.router.routeReuseStrategy.shouldReuseRoute = function () {
        return false;
@@ -30,6 +34,7 @@ export class SearchPageComponent implements OnInit {
      }); */
   }
   ngOnInit() {
+    this.title.setTitle("Поиск")
     this.page=this.route.snapshot.queryParams.page
     this.route.queryParams.subscribe((queryParams:any) => {
       this.page = queryParams.page;
@@ -61,8 +66,12 @@ export class SearchPageComponent implements OnInit {
   }
 
   search(find, page=1) {
+    if(!find) {
+      return
+    }
     console.log(find, page);
     this.api2Service.search(find, page).subscribe((data) => {
+      
       this.data = data.data.items
       this.totalRecords = data.data.pagination.total
     })

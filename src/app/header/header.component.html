@@ -4,7 +4,7 @@
   <a *ngIf="!login" mat-raised-button (click)="openDialog()" class="btn btn-danger login2">Войти
   </a>
   <div *ngIf="login" class="login">
-    <i routerLink="/contacts" class="fa fa-users user-nav" aria-hidden="true">
+    <i routerLink="/friends" class="fa fa-users user-nav" aria-hidden="true">
       <span class="icon-info">1</span>
     </i>
     <i routerLink="/message" class="far fa-envelope user-nav" aria-hidden="true">
@@ -69,12 +69,12 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" (click)="toggleSearch()"><i class="fas fa-search search-icon"></i></a>
+          <a class="nav-link" (click)="toggleSearch($event)"><i class="fas fa-search search-icon"></i></a>
         </li>
 
       </ul>
     </div>
-    <app-search *ngIf="isShown" (onSearchSubmmited)="searchClose($event)"></app-search>
+    <app-search class="input-search" *ngIf="isShown" appAutoFocusDirective  (onSearchSubmmited)="searchClose($event)"></app-search>
   </div>
   <app-all-notifications *ngIf="isNotification"></app-all-notifications>
 </nav>

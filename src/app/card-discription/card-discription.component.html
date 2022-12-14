@@ -24,15 +24,15 @@
                     <h1 class="card-title-ru">{{film.title}}</h1>
                     <div class="cont">
                         <div class="stars">
-                          <ngx-star-rating [(ngModel)]="rating3" [id]="'rating3'" ></ngx-star-rating><span>Рейтинг: {{ rating3 }}</span>
+                          <ngx-star-rating [(ngModel)]="rating3" [id]="'rating3'" ></ngx-star-rating><!-- <span>Рейтинг: {{ rating3 }}</span> -->
                         </div>
                         
                       </div>
                     <div class="buttons">
-                        <button style="margin-left: 0" (click)="change(false)" mat-raised-button class="card-btn">
+                       <!--  <button style="margin-left: 0" (click)="change(false)" mat-raised-button class="card-btn">
                             <i class="fas fa-play-circle"></i>
                             Смотреть вместе
-                        </button>
+                        </button> -->
                             <button (click)="postFavorite()" *ngIf="!isFavorite" class="favorite">
                                 <span mat-raised-button class="favorite-text">Добавить в избранные</span>
                                 <input style="display: none" id="favorite" type="checkbox">

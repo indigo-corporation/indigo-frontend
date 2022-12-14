@@ -82,7 +82,7 @@ a {
 
 .card:hover .card-play-ic {
   cursor: pointer;
-  bottom: 50%;
+  bottom: 38%;
   color: white;
   display: block;
   display: flex;
@@ -145,6 +145,7 @@ a {
 .card-head {
   height: 100%;
   max-width: 400px;
+  position: relative;
 }
 
 .card_body {

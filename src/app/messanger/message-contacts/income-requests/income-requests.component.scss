@@ -23,14 +23,16 @@ ul {
 }
 
 .btnDanger {
-    background-color: #a93939;
+    border: none;
     color: white;
+    background-color: #573aad;
     margin-right: 10px;
 }
 
 .btnSuccess {
-    background-color: #2d582d;;
+    border: none;
     color: white;
+    background-color: #573aad;
     margin-right: 10px;
 }
 
@@ -55,7 +57,6 @@ ul {
     margin-left: 10px;
 }
 
-
 .user-block {
     margin-top: 10px;
     margin-left: 12px;
@@ -66,7 +67,6 @@ ul {
     display: block;
     display: -webkit-box;
 }
-
 
 .message-username {
     color: white;
@@ -81,5 +81,3 @@ ul {
     color: #399d58;
     font-weight: bold;
 }
-
-

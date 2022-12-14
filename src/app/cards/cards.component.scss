@@ -54,6 +54,10 @@ p {
   opacity: 1;
 }
 
+.card-head {
+ position: relative;
+}
+
 .card:hover .film-title {
   color: #e75dff !important;
 }
@@ -134,7 +138,7 @@ p {
 
 .card:hover .card-play-ic {
   cursor: pointer;
-  bottom: 50%;
+  bottom: 38%;
   color: white;
   display: block;
   display: flex;

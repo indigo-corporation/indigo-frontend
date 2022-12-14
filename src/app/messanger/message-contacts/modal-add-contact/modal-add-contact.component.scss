@@ -18,22 +18,31 @@ h1 {
     padding: 18px;
 }
 
-.modal-content {
-    background-color: #4a3783;
+.modal-container {
+    box-shadow: inset 0 0px 0px 0px rgb(0 0 0);
+    background: linear-gradient(364deg, #000000, #5e2359);
+    position: absolute;
+    top: 195px;
+    width: 100%;
 }
+
+::ng-deep .modal-content {
+    border: none !important;
+  }
 
 .message-username {
     text-decoration: none;
-    color: black;
+    color: white;
     font-weight: bold;
     font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
 }
 
 .add {
-    font-family: 'TT Norms Pro Regular,Helvetica,sans-serif';
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
     font-weight: bold;
-    background-color: #3d833d;
+    border: none;
     color: white;
+    background-color: #573aad;
     font-size: 16px;
 }
 
@@ -53,7 +62,7 @@ h1 {
 }
 
 .add {
-    background-color: #3d833d;
+    background-color: #573aad;
 }
 
 .modal-footer {
@@ -64,14 +73,15 @@ h1 {
     #btn-add {
         font-family: "TT Norms Pro,Helvetica Regular,sans-serif";
         color: white;
-        background-color: #3d833d;
+        background-color: #573aad;
         font-size: 14px;
     }
 
     #btn-stop {
-        font-family: 'TT Norms Pro Regular,Helvetica,sans-serif';
+        font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
         color: white;
-        background-color: #a93939;
+        border: none;
+        background-color: #573aad;
         font-weight: bold;
         font-size: 14px;
         letter-spacing: 1px;
@@ -84,7 +94,7 @@ h1 {
     border-bottom: 1px solid #2e2b2b;
     cursor: pointer;
     &:hover {
-        background: #a99ad3bf;
+        background: black;
     }
 }
 

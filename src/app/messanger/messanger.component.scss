@@ -193,10 +193,20 @@ li {
     border-bottom: none;
 }
 
+#nav2 {
+    padding: 6px 0px;
+    padding-right: 21px;
+}
+
+#secnav3 {
+    padding: 6px 0px;
+    padding-right: 19px;
+}
+
 .nav-item {
     padding: 6px 17px;
     font-size: 18px;
-    border-right: none;
+    border: none;
     font-weight: bold;
     cursor: pointer;
     &:hover {

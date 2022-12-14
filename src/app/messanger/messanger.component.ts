@@ -146,7 +146,7 @@ export class MessangerComponent implements OnInit {
     } else 
     {
       if(this.isContact=true) {
-        this.location.replaceState("contacts");
+        this.location.replaceState("friends");
         this.isChat=false
         this.isContact=true
       }

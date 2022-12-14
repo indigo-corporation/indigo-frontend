@@ -36,6 +36,8 @@ h5 {
   margin-right: 0;
 }
 
+
+
 .ngx-pagination .current {
   padding: 0.1875rem 0.625rem;
   background: #2199e8;
@@ -285,6 +287,10 @@ body {
 
 .swiper-button-prev, .swiper-button-next {
   top: 38% !important;
+}
+
+::ng-deep .modal-content {
+  border: none !important;
 }
 
 @media screen and (max-width: 600px) {

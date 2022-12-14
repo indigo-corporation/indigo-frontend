@@ -1,35 +1,37 @@
-<div class="modal-body">
-  <h1>Поиск по пользователям</h1>
-  <form FormGroup="searhForm" class="form-search form-inline form-search">
-    <div class="form-group">
-      <input (keyup)="onKeyupEvent($event)" class="form-control mr-sm-2 input-search" placeholder="Поиск">
-    </div>
-  </form>
-</div>
-<ul>
-  <li *ngFor="let contact of users.slice (0,5)" class="nav-item">
-    <div class="avatar">
-      <div id="navitem">
-        <div style="display: flex;">
-          <img onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" class="avatars-comments"
-            src="{{contact.poster_url}}">
-          <div class="user-block">
-            <a class="message-username" routerLink="/user-page/{{contact.id}}">{{contact.name}}</a>
-            <p class="message-user_status">
-              В сети
-            </p>
+<div class="modal-container">
+  <div class="modal-body">
+    <h1>Поиск по пользователям</h1>
+    <form FormGroup="searhForm" class="form-search form-inline form-search">
+      <div class="form-group">
+        <input (keyup)="onKeyupEvent($event)" class="form-control mr-sm-2 input-search" placeholder="Поиск">
+      </div>
+    </form>
+  </div>
+  <ul>
+    <li *ngFor="let contact of users.slice (0,5)" class="nav-item">
+      <div class="avatar">
+        <div id="navitem">
+          <div style="display: flex;">
+            <img onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" class="avatars-comments"
+              src="{{contact.poster_url}}">
+            <div class="user-block">
+              <a class="message-username" routerLink="/user-page/{{contact.id}}">{{contact.name}}</a>
+              <p class="message-user_status">
+                В сети
+              </p>
+            </div>
+          </div>
+          <div>
+            <button mat-raised-button id="btn-add" (click)="addContact(contact.id)"
+              class="add">Добавить</button>
           </div>
         </div>
-        <div>
-          <button mat-raised-button id="btn-add" (click)="addContact(contact.id)"
-            class="add">Добавить</button>
-        </div>
       </div>
-    </div>
-  </li>
-</ul>
-<div class="modal-footer">
-  <button mat-raised-button type="button" id="btn-stop" (click)="modalRef.close()">
-    Закрыть
-  </button>
+    </li>
+  </ul>
+  <div class="modal-footer">
+    <button mat-raised-button type="button" id="btn-stop" (click)="modalRef.close()">
+      Закрыть
+    </button>
+  </div>
 </div>

@@ -33,10 +33,11 @@ ul {
 }
 
 .btnDanger {
-    background-color: #a93939;
+    border: none;
     color: white;
+    background-color: #573aad;
     margin-right: 10px;
-    font-family: 'TT Norms Pro Regular,Helvetica,sans-serif';
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
     font-weight: bold;
     letter-spacing: 1px;
 }
@@ -52,7 +53,6 @@ ul {
     margin-left: 10px;
 }
 
-
 .user-block {
     margin-top: 10px;
     margin-left: 12px;
@@ -63,7 +63,6 @@ ul {
     display: block;
     display: -webkit-box;
 }
-
 
 .message-username {
     color: white;

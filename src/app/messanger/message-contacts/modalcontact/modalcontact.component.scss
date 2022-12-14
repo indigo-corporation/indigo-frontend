@@ -2,27 +2,44 @@
     display: flex;
     justify-content: center;
     font-size: 16px;
+    color: white;
 }
 
 .modal-header {
     border:none;
 }
 
-.modal-content {
-    background-color: #4a3783;
+.modal-container {
+    box-shadow: inset 0 0px 0px 0px rgb(0 0 0);
+    background: linear-gradient(364deg, #000000, #5e2359);
+    position: absolute;
+    top: 225px;
+    width: 100%;
+}
+
+.btn-close {
+    position: absolute;
+    right: 16px;
+    background: none;
+    border: none;
+    color: #fff4f4;
+    padding: 0;
+    top: 9px;
 }
 
 .modal-footer {
     display: flex;
-    background-color: #4a3783;
     justify-content: center;
+    border: none;
     #btn-delete {
+        border: none;
         color: white;
-        background-color: #3d833d;
+        background-color: #573aad;
     }
     
     #btn-stop {
-        color: white;  
-        background-color: #912d2d;
+        border: none;
+        color: white;
+        background-color: #573aad;
     }
 }

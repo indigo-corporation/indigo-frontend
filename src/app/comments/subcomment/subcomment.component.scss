@@ -224,9 +224,11 @@ button {
 
 .comment-guard {
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
-    margin: 30px;
+    margin: 5px 0px;
+    padding: 10px;
+    background: rgba(76, 63, 147, 0.4196078431);
 }
 .login {
     color: red;
@@ -234,7 +236,7 @@ button {
 }
 
 .login:hover {
-    color: rgb(51, 50, 50);
+    color: rgb(134 227 128);
     cursor: pointer;
 }
 

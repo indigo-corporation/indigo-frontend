@@ -4,12 +4,13 @@ body {
 
 .scroll-to-top{
     position: fixed;
-    background: #ffffff;
+    border: none;
+    color: white;
+    background-color: #573aad;
     bottom: 11px;
     right: 10px;
     cursor: pointer;
     border-radius: 13px;
-    color: #8e31a5;
     z-index: 3;
   }
 

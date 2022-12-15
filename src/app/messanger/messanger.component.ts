@@ -54,20 +54,17 @@ export class MessangerComponent implements OnInit {
 
   getAcceptedUserId(contactId) {
     this.contacts.push(contactId)
-    debugger
   }
 
 
   getOutComesId(outComesId) {
     this.outComesId = outComesId
-    debugger
   }
 
  
   getContacts() {
     this.messangerService.getContacts().subscribe((data)=> {
       this.contacts = data.data.items
-      debugger
     })
   }
 
@@ -88,17 +85,20 @@ export class MessangerComponent implements OnInit {
   getChatByUser(user_id) {
     this.messangerService.getChatByUser(user_id).subscribe((data)=> {
       this.chat = data.data
+      debugger
     })
   }
 
   getChat(id) {
     this.messangerService.getChat(id).subscribe((data)=> {
       this.chat = data.data
+      debugger
     })
   }
 
   onUsersSub(value) {
-    this.getChat(value)
+    this.getChat(value) 
+    debugger
   }
 
   onNavigateSecMenu($event) {

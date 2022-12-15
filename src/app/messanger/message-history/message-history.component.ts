@@ -21,7 +21,7 @@ export class MessageHistoryComponent implements OnInit {
     private auth: authService,
     private messangerService:messangerService,
   ) { 
- /*    this.EverythingServiceService.onClick.subscribe((cnt) => this.chatUsers = cnt); */
+
   }
 
   ngOnInit() {
@@ -29,10 +29,6 @@ export class MessageHistoryComponent implements OnInit {
     this.auth.user$.subscribe(x => {
       this.myUser = x
     })
-    this.getChat()
-    if(!this.chat.id) {
-      console.log(this.chat);
-    }
   }
 
   deleteMessage(value) {
@@ -44,21 +40,15 @@ export class MessageHistoryComponent implements OnInit {
     })
   } 
 
-  getChat() {
-    this.messangerService.getChat(this.chat.id).subscribe((data)=> {
-      this.chat=data
-    })
-  }
+
 
   blockUser(userId) {
-    debugger
     this.messangerService.postBannedUseradd(userId).subscribe((data)=> {
       this.isBlock = true
     })
   }
 
   unBlockUser(userId) {
-    debugger
     this.messangerService.postBannedUserRemove(userId).subscribe((data)=> {
       this.isBlock = false
     })

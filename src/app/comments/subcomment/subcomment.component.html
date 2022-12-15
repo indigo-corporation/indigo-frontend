@@ -1,7 +1,7 @@
 <div class="comments-body_sub">
     <div class="avatar">
         <img class="avatars-comments" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" src="{{comment.user.poster_url}}">
-        <a routerLink="/user-page/{{comment.user.id}}" class="comments-user">{{comment.user.name}}</a>
+        <a (click)="onLogin()" class="comments-user">{{comment.user.name}}</a>
         <p class="comments-item">{{comment.created_at | date:"d MMMM y":"ru"}}</p>
     </div>
     <div class="comments-block">

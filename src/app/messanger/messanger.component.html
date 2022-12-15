@@ -29,9 +29,9 @@
         </div>
         <div class="block-message">
                 <div *ngIf="isChat">
-                    <div class="no-chat" *ngIf="!chat">
+                   <!--  <div class="no-chat" *ngIf="chat">
                         Пусто
-                     </div>
+                     </div> -->
                     <app-message-history *ngIf="chat" [(chat)]="chat"></app-message-history> 
                 </div>   
                 

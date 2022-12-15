@@ -81,6 +81,7 @@ export class MessageContactsComponent implements OnInit {
   }
 
   OnChat(contactId) {
+    debugger
     this.messangerService.getChatByUser(contactId).subscribe((data) => {
       let chat = data.data
       this.router.navigate(["message/" + chat.id])

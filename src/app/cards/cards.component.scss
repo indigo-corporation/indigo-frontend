@@ -17,9 +17,7 @@ p {
 }
 
 .card-row {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
+  margin: 0 18px;
 }
 
 .film-title {
@@ -40,7 +38,7 @@ p {
   text-align: start;
   border: none;
   padding: 0;
-  margin: 0px 10px;
+  margin: 0px 3px;
   padding: 10px 0;
 }
 
@@ -120,7 +118,7 @@ p {
 }
 
 .block {
-  padding: 43px;
+  padding: 10px 0px;
 }
 
 .card_body {

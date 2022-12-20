@@ -23,6 +23,12 @@ export class MoreFilmsComponent implements OnInit {
   public swiperConfig: SwiperOptions = {
     pagination: true,
   };
+  
+  myOptions = {
+    'placement': 'left',
+    'theme': 'dark',
+    'showDelay': 500,
+  }
 
   config: SwiperOptions = {
     slidesPerView: 3,

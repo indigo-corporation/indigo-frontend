@@ -41,6 +41,12 @@ export class SwiperComponent implements OnInit {
     }
   };
 
+  myOptions = {
+    'placement': 'left',
+    'theme': 'dark',
+    'showDelay': 500,
+  }
+
   constructor(
     private apiService: api,
     private api2Service: api2Service,  

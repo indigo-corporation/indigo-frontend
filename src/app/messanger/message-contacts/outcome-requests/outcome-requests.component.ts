@@ -10,19 +10,8 @@ import { messangerService } from 'src/app/services/messanger.service';
 export class OutcomeRequestsComponent implements OnChanges, OnInit {
   isWrapper: boolean = false
   isOutComes: boolean = true
-
-/*   _outComes:any
-  get outComes():any {
-    return this._outComes;
-  }
-
-   @Input() set outComes(value:any) {
-    this._outComes = value
-    this.getOutComes()
-   } */
    desOutCome
    @Input() outComes:any
-
   constructor(
     private messangerService: messangerService,
   ) { }
@@ -37,14 +26,25 @@ export class OutcomeRequestsComponent implements OnChanges, OnInit {
 
 
   getOutComes() {
-    this.messangerService.getOutComes().subscribe((data) => {
-      this.outComes = data.data.items
+    let outComesKey="outComes"
+    debugger
+    let outComesLs = localStorage.getItem(outComesKey)
+    if(outComesLs !== null) {
+      this.outComes = JSON.parse(outComesLs)
       if (this.outComes.length === 0) {
         this.isWrapper = true
         this.isOutComes = false
       }
-      debugger
-
+      return
+    }
+    this.messangerService.getOutComes().subscribe((data) => {
+      this.outComes = data.data.items
+      localStorage.setItem(outComesKey, JSON.stringify(this.outComes))
+      if (this.outComes.length === 0) {
+        this.isWrapper = true
+        this.isOutComes = false
+      }
+     
     })
   }
 

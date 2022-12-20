@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { api2Service } from '../../services/api2.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
-
 @Component({
   selector: 'app-favorite',
   templateUrl: './favorite.component.html',
@@ -23,6 +22,12 @@ export class FavoriteComponent implements OnInit {
 
   ngOnInit() {
     this.getFavoriteFilms()
+  }
+
+  myOptions = {
+    'placement': 'left',
+    'theme': 'dark',
+    'showDelay': 500,
   }
 
 

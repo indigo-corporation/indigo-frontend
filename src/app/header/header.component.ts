@@ -65,8 +65,6 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
      if (window.pageYOffset > 180) {
-      console.log(window.pageYOffset);
-      
        let element = document.getElementById('navbar');
        $( "nav" ).addClass( "sticky" );
      } else {
@@ -81,22 +79,13 @@ export class HeaderComponent implements OnInit {
     this.auth.user$.subscribe(x => {
       this.login = x != null
       this.user = x
-      console.log(this.login);
       this.isShown = false;
     })
   }
  
 
-  toggleSearch(serchElm) {
-  
-    this.isShown = !this.isShown
-
-      if (this.serchElm.hasClass("input-search")) {
-        this.serchElm = this.serchElm.find(".input-search")
-        this.serchElm.nativeElement.focus();
-        debugger
-      }
-    
+  toggleSearch() {
+    this.isShown = !this.isShown  
   }
 
   toggleBell() {
@@ -108,14 +97,11 @@ export class HeaderComponent implements OnInit {
     if (!elm.hasClass("arrow")) {
       elm = elm.find(".arrow")
     }
-    console.log(elm);
       let arrowId
       arrowId = elm.attr("id")
       let arrowIdValue = this[arrowId]
-      debugger
       this.arrowsUp()
       this[arrowId] = !arrowIdValue
-      console.log(arrowId,this[arrowId]);
       if (this[arrowId]) {
         elm.css('transform', 'rotate(180deg)')
         elm.css('color', 'black');
@@ -140,11 +126,9 @@ export class HeaderComponent implements OnInit {
     if ($event.target.value.length >= 1) {
       this.search($event.target.value, 1)
     }
-    console.log($event.target.value.length);
-
   }
+
   search(find, page) {
-    console.log(find, page);
     this.api2Service.search(find, page).subscribe((data) => {
       this.data = data.data.items
     })

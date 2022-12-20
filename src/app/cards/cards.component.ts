@@ -31,6 +31,12 @@ export class CardsComponent implements OnInit {
     this.data = new Array<any>()
 
   }
+  
+  myOptions = {
+    'placement': 'left',
+    'theme': 'dark',
+    'showDelay': 500,
+  }
   ngOnInit() {
   
 

@@ -32,6 +32,7 @@ getInComes() {
   acceptRequest(requestId,userId) {
     this.messangerService.acceptRequest(requestId).subscribe((data)=> {
       this.inComes.push(requestId)
+      this.inComes = this.inComes.filter(x => x.id != requestId)
       this.getInComes()
     })
   }

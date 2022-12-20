@@ -31,12 +31,15 @@ export class CommentformComponent implements OnInit {
     }
    
     postOnBtn() { 
+      if(!this.textArea) {
+       return
+      }
       this.api2Service.postComment(this.filmId, this.textArea, this.parentId).subscribe((data)=> {
-      this.comment=data.data
-      this.textArea = ""
-      this.commentPosted.emit(this.comment)
-      console.log(this.comment); 
-    })
+        this.comment=data.data
+        this.textArea = ""
+        this.commentPosted.emit(this.comment)
+        console.log(this.comment); 
+      })
   }
 
   public addEmoji(event) {

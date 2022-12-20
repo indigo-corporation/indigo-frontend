@@ -28,7 +28,8 @@ export class FooterComponent implements OnInit {
   }
 
   onSupport() {
-    if(this.user) {
+    this.router.navigate(["support/"])
+   /*  if(this.user) {
       let supportId = 36
       this.messangerService.getChatByUser(supportId).subscribe((data) => {
         let chat = data.data
@@ -36,7 +37,7 @@ export class FooterComponent implements OnInit {
       })
     } else {
       this.router.navigate(["support/"])
-    }
+    } */
   }
 
 }

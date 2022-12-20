@@ -70,7 +70,7 @@
                 <div class="line"></div>
                 <div class="form-group">
                     <label class="sett-label" for="inputUserName">Пароль</label>
-                    <input type="text" id="inputUserName" class="form-control" placeholder="Пароль" formControlName="pass">
+                    <input type="password" id="inputUserName" class="form-control" placeholder="Пароль" formControlName="pass">
                     <div class="auth-error" *ngIf="pass.errors?.['required'] && (pass.touched || pass.dirty)">
                         Заполните поле Пароль
                     </div>
@@ -82,7 +82,7 @@
 
                 <div class="form-group">
                     <label class="sett-label" for="inputUserName">Подтвердить пароль</label>
-                    <input type="text" id="inputUserName" class="form-control" placeholder="Подтвердить пароль" formControlName="confPass">
+                    <input type="password" id="inputUserName" class="form-control" placeholder="Подтвердить пароль" formControlName="confPass">
                     <div class="auth-error" *ngIf="confPass.errors?.['required'] && (confPass.touched || confPass.dirty)">
                         Заполните поле Подтвердить Пароль
                     </div>

@@ -26,6 +26,12 @@ export class FavoritePageComponent implements OnInit {
     this.getFavoriteFilms()
   }
 
+  myOptions = {
+    'placement': 'left',
+    'theme': 'dark',
+    'showDelay': 500,
+  }
+
 
   getFavoriteFilms() {
     this.api2Service.getFavoriteFilms().subscribe((data) => {

@@ -34,6 +34,8 @@ import {
 } from '@abacritt/angularx-social-login';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { NgxStarRatingModule } from 'ngx-star-rating';
+import { TooltipModule } from 'ng2-tooltip-directive';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -93,9 +95,9 @@ const appRoutes: Routes = [
   { path: 'support', component: SupportPageComponent },
   { path: 'message/:id', component: MessangerComponent, canActivate: [AuthGuard]  },
   { path: 'copyright', component: CopyrightComponent, },
-  { path: 'friends', component: MessangerComponent, canActivate: [AuthGuard]  },
-  { path: 'message', component: MessangerComponent, canActivate: [AuthGuard]  },
-  { path: 'card-profile/:id/watch-together', component: CardContentComponent },
+ /*  { path: 'friends', component: MessangerComponent, canActivate: [AuthGuard]  },
+  { path: 'message', component: MessangerComponent, canActivate: [AuthGuard]  }, */
+/*   { path: 'card-profile/:id/watch-together', component: CardContentComponent }, */
   { path: 'favorite', component: FavoritePageComponent, canActivate: [AuthGuard]  },
   { path: 'remember-pass', component: RememberPassComponent },
   { path: ':type/genre/:id', component: GenreComponent },
@@ -181,6 +183,7 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     BrowserAnimationsModule,
     MatIconModule,
+    TooltipModule,
     MatTabsModule,
     MatFormFieldModule,
     MatInputModule,

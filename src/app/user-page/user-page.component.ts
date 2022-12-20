@@ -20,7 +20,8 @@ export class UserPageComponent implements OnInit {
   totalRecords: any
   isMyUser: boolean = true
   isContact: boolean = false
-  isBlock:boolean = false
+  isBlock: boolean = false
+  isWaiting: boolean = false
   page: number = 1
   name: any
   log: any
@@ -32,7 +33,7 @@ export class UserPageComponent implements OnInit {
   favoriteFilmIds: any
   data: any
   public id: any
-
+  outComes: any
   constructor(private apiService: api,
     private api2Service: api2Service,
     private messangerService: messangerService,
@@ -42,7 +43,7 @@ export class UserPageComponent implements OnInit {
     private dialog: MatInputModule,
     private http: HttpClient,
     private meta: Meta,
-    private title: Title ) {
+    private title: Title) {
 
   }
   ngOnInit() {
@@ -54,10 +55,23 @@ export class UserPageComponent implements OnInit {
 
     let userId = Number(this.route.snapshot.paramMap.get('id'));
     if (userId) {
+      this.localStorageOutComes(userId)
       this.getIsContact(userId)
       this.userGet(userId)
     }
 
+  }
+
+  localStorageOutComes(userId) {
+    debugger
+    let outComes = localStorage.getItem("outComes")
+    if (outComes) {
+      this.outComes = JSON.parse(outComes)
+      if (this.outComes.filter(x => x.user.id == userId)) {
+        this.isWaiting = true
+
+      }
+    }
   }
 
   getIsContact(userId) {
@@ -75,7 +89,7 @@ export class UserPageComponent implements OnInit {
     } else {
       this.messangerService.getContactsArray().subscribe((data) => {
         this.contactIds = data.data
-        if(this.contactIds) {
+        if (this.contactIds) {
           localStorage.setItem("contactIds", JSON.stringify(this.contactIds))
         }
         if (userId) {
@@ -87,18 +101,52 @@ export class UserPageComponent implements OnInit {
     }
   }
 
+  notWaiting(userId) {
+    debugger
+    let outComes = localStorage.getItem("outComes")
+    if (outComes) {
+      this.outComes = JSON.parse(outComes)
+      this.outComes = this.outComes.filter(x => x.user.id == userId)
+      if (this.outComes.length) {
+        let request = this.outComes[0]
+        this.messangerService.destroyRequest(request.id).subscribe((data) => {
+          localStorage.removeItem("outComes")
+          this.isWaiting = !this.isWaiting
+        })
+
+      }
+    } else {
+      this.messangerService.getOutComes().subscribe((data) => {
+        this.outComes = data.data.items
+        localStorage.setItem("outComes", JSON.stringify(this.outComes))
+        this.outComes = this.outComes.filter(x => x.user.id == userId)
+        if (this.outComes.length) {
+          let request = this.outComes[0]
+          this.messangerService.destroyRequest(request.id).subscribe((data) => {
+            localStorage.removeItem("outComes")
+            this.isWaiting = !this.isWaiting
+          })
+        }
+      })
+    }
+  }
 
   AddContact() {
     let userId = this.route.snapshot.paramMap.get('id');
     this.messangerService.addContact(userId).subscribe((data) => {
+      /* localStorage.removeItem("outComes") */
       let contactIds: any = localStorage.getItem("contactIds")
       contactIds = JSON.parse(contactIds)
       contactIds.push(this.user.id)
+      if (this.user.id) {
+        this.isContact = true
+      }
+
       debugger
-      this.isContact = true
       localStorage.setItem("contactIds", JSON.stringify(this.contactIds))
     })
   }
+
 
   removeContact() {
     let userId = this.route.snapshot.paramMap.get('id');
@@ -113,14 +161,14 @@ export class UserPageComponent implements OnInit {
 
   blockUser(userId) {
     debugger
-    this.messangerService.postBannedUseradd(userId).subscribe((data)=> {
+    this.messangerService.postBannedUseradd(userId).subscribe((data) => {
       this.isBlock = true
     })
   }
 
   unBlockUser(userId) {
     debugger
-    this.messangerService.postBannedUseradd(userId).subscribe((data)=> {
+    this.messangerService.postBannedUseradd(userId).subscribe((data) => {
       this.isBlock = false
     })
   }

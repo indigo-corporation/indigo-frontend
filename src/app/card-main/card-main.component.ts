@@ -15,7 +15,7 @@ export class CardMainComponent implements OnInit, OnChanges {
   page: number = 1
   name: any
   log: any
-  card:any
+  card: any
   public swiperConfig: SwiperOptions = {
     pagination: true,
   };
@@ -38,21 +38,27 @@ export class CardMainComponent implements OnInit, OnChanges {
     }
   };
   nameType = {
-    film:"Фильмы",
-    serial:"Сериалы",
-    anime:"Аниме",
-    cartoon:"Мультфильмы"
+    film: "Фильмы",
+    serial: "Сериалы",
+    anime: "Аниме",
+    cartoon: "Мультфильмы"
   }
   @Input() data: any
   @Input() category: any
   public id: any
   constructor(private router: Router, private route: ActivatedRoute) {
-    
+
   }
-  ngOnInit() { 
+  ngOnInit() {
     Swiper.use([Navigation]);
     console.log(this.nameType[this.category]);
-    
+
+  }
+
+  myOptions = {
+    'placement': 'left',
+    'theme': 'dark',
+    'showDelay': 500,
   }
 
   onSwiper(swiper) {
@@ -62,6 +68,6 @@ export class CardMainComponent implements OnInit, OnChanges {
     console.log('slide change');
   }
   ngOnChanges(changes: SimpleChanges): void {
-    
+
   }
 }

@@ -33,6 +33,12 @@ export class SearchPageComponent implements OnInit {
        }
      }); */
   }
+
+  myOptions = {
+    'placement': 'left',
+    'theme': 'dark',
+    'showDelay': 500,
+  }
   ngOnInit() {
     this.title.setTitle("Поиск")
     this.page=this.route.snapshot.queryParams.page

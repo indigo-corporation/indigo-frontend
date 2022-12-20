@@ -94,6 +94,60 @@ a {
   left: 50%;
 }
 
+.tooltip-genre {
+  color: #a3a3a3;
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+::ng-deep.tooltip {
+  width:100% !important;
+  min-width: 350px !important;
+  height: 100%;
+  max-height: 320px;
+  background-color: #1a1923 !important;
+  position: absolute !important;
+  right:50% !important;
+  border: 1px solid #616164b8;
+ }
+ .tooltip_body {
+  text-align: left !important;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 5px 10px;
+ }
+
+ .tooltip-overview {
+  margin-top: 5px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  height: 195px;
+ }
+
+ 
+.tooltip-title {
+  background-color: transparent;
+  letter-spacing: 0.08em;
+  font-weight: bold;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.info-icon {
+  color: #000000e6;
+  background: #da87efe6;
+  position: absolute;
+  z-index: 2;
+  right: 0px;
+  top: 0px;
+  border-radius: 5px;
+}
+
+
 .card-icon_text {
   margin: 0;
   color: white;

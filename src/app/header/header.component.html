@@ -4,7 +4,7 @@
   <a *ngIf="!login" mat-raised-button (click)="openDialog()" class="btn btn-danger login2">Войти
   </a>
   <div *ngIf="login" class="login">
-    <i routerLink="/friends" class="fa fa-users user-nav" aria-hidden="true">
+    <!-- <i routerLink="/friends" class="fa fa-users user-nav" aria-hidden="true">
       <span class="icon-info">1</span>
     </i>
     <i routerLink="/message" class="far fa-envelope user-nav" aria-hidden="true">
@@ -12,7 +12,7 @@
     </i>
       <i (click)="toggleBell()" class="far fa-bell user-nav" aria-hidden="true">
         <span class="icon-info">1</span>
-      </i>
+      </i> -->
     <div [matMenuTriggerFor]="menu">
       <img class="user-photo" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';"
         [src]="user.poster_url" alt="">
@@ -69,7 +69,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" (click)="toggleSearch($event)"><i class="fas fa-search search-icon"></i></a>
+          <a class="nav-link" (click)="toggleSearch()"><i class="fas fa-search search-icon"></i></a>
         </li>
 
       </ul>

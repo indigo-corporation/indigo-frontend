@@ -6,11 +6,16 @@
               <button (click)="OnChat()" mat-raised-button class="user-btn">
                 Написать сообщение
               </button>
+              <div *ngIf="isWaiting">
                 <button *ngIf="!isContact" (click)="AddContact()" mat-raised-button class="user-btn">
                   Добавить в друзья
                 </button>
                 <button *ngIf="isContact" (click)="removeContact()" mat-raised-button class="user-btn btn-remove">
                   Убрать из друзья
+                </button>
+              </div>
+                <button *ngIf="!isWaiting" (click)="notWaiting(user.id)" mat-raised-button class="user-btn btn-remove">
+                  Отменить запроc в друзья
                 </button>
                 <button *ngIf="!isBlock" (click)="blockUser(user.id)" mat-raised-button class="btn-block">
                   Заблокировать

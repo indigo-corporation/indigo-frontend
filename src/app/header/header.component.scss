@@ -205,7 +205,7 @@ i {
     right: 56px;
     height: 32px;
     font-size: 18px;
-    background: #4c3f93;
+    background: none;
     border: none;
 }
 
@@ -269,6 +269,10 @@ i {
     cursor: pointer;
     margin-top: 0px;
     margin-bottom: 7px;
+    z-index: 3;
+    position: relative;
+    top: 0px;
+    right: 16px;
 }
 
 .name-menu {
@@ -345,7 +349,7 @@ i {
         position: absolute;
         top: 6px;
         right: 12px;
-        background: #4c3f93;
+        background: none;
         font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
         text-transform: uppercase;
         font-size: 14px;
@@ -418,7 +422,7 @@ i {
         top: 6px;
         right: 56px;
         font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
-        background: #4c3f93;
+        background: none;
         border: none;
     }
 }

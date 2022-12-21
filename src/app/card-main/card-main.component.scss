@@ -156,10 +156,6 @@ a {
   position: relative;
 }
 
-.tool-tip {
-  opacity: 0;
-}
-
 
 .card_body {
   padding: 5px;
@@ -208,19 +204,16 @@ a {
  }
 
  .tooltip-overview {
-  margin-top: 5px;
   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -moz-box;
+  -moz-box-orient: vertical;
   display: -webkit-box;
-  -webkit-line-clamp: 9;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
-  height: 195px;
-
- }
-
-::ng-deep .mat-tooltip {
-  /* your own custom styles here */ 
-  /* e.g. */
-  color: yellow;
+  line-clamp: 6;
+  box-orient: vertical;
+  margin-top: 5px;
 }
 
 .info-icon {

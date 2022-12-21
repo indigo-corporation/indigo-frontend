@@ -78,7 +78,6 @@ import { FavoritePageComponent } from './user-page/favorite/favorite-page/favori
 import { WatchTogetherComponent } from './watch-together/watch-together.component';
 import { WatchSettingsComponent } from './watch-together/watch-settings/watch-settings.component';
 import { MessageHistoryComponent } from './messanger/message-history/message-history.component';
-import { CardComponent } from './card/card.component';
 import { ModalAddContactComponent } from './messanger/message-contacts/modal-add-contact/modal-add-contact.component';
 import { BlockContactsComponent } from './messanger/message-contacts/block-contacts/block-contacts.component';
 import { IncomeRequestsComponent } from './messanger/message-contacts/income-requests/income-requests.component';
@@ -155,7 +154,6 @@ const appRoutes: Routes = [
     WatchTogetherComponent,
     WatchSettingsComponent,
     MessageHistoryComponent,
-    CardComponent,
     ModalAddContactComponent,
     BlockContactsComponent,
     IncomeRequestsComponent,

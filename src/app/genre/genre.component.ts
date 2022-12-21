@@ -33,6 +33,12 @@ export class GenreComponent implements OnInit {
     private meta: Meta,
     private title: Title) { }
 
+    myOptions = {
+      'placement': 'left',
+      'theme': 'dark',
+      'showDelay': 500,
+    }
+
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id')
     this.type = this.route.snapshot.paramMap.get("type")

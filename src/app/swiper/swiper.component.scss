@@ -119,13 +119,17 @@ a {
  }
 
  .tooltip-overview {
-  margin-top: 5px;
   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -moz-box;
+  -moz-box-orient: vertical;
   display: -webkit-box;
-  -webkit-line-clamp: 9;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
-  height: 195px;
- }
+  line-clamp: 6;
+  box-orient: vertical;
+  margin-top: 5px;
+}
 
  
 .tooltip-title {

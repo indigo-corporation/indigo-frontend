@@ -1,7 +1,7 @@
 <nav id="navbar" (scroll)="onWindowScroll($event)"
   class="container navbar navbar-expand-lg navbar-light bg-light header">
   <a class="brand" routerLink="">INDIGOFILMS</a>
-  <a *ngIf="!login" mat-raised-button (click)="openDialog()" class="btn btn-danger login2">Войти
+  <a *ngIf="!login" (click)="openDialog()" class="btn btn-danger login2">Войти
   </a>
   <div *ngIf="login" class="login">
     <!-- <i routerLink="/friends" class="fa fa-users user-nav" aria-hidden="true">
@@ -37,7 +37,7 @@
           <a class="nav-link" routerLink="/film" routerLinkActive="active">Фильмы
           </a>
           <button class="btn-menu" (click)="genreArrow($event)">
-            <i id="isArrow1" class='fas fa-caret-up arrow'></i>
+            <i id="isArrow1" class='fas fa-caret-down arrow'></i>
           </button>
           <app-genre-menu type="film" *ngIf="isArrow1"></app-genre-menu>
         </li>
@@ -45,7 +45,7 @@
           <a class="nav-link" routerLink="/serial">Сериалы
           </a>
           <button class="btn-menu" (click)="genreArrow($event)">
-            <i id="isArrow2" class='fas fa-caret-up arrow'></i>
+            <i id="isArrow2" class='fas fa-caret-down arrow'></i>
           </button>
           <app-genre-menu type="serial" *ngIf="isArrow2"></app-genre-menu>
         </li>
@@ -54,7 +54,7 @@
           <a class="nav-link" routerLink="/cartoon">Мультфильмы
           </a>
           <button class="btn-menu" (click)="genreArrow($event)">
-            <i id="isArrow3" class='fas fa-caret-up arrow'></i>
+            <i id="isArrow3" class='fas fa-caret-down arrow'></i>
           </button>
           <app-genre-menu type="cartoon" *ngIf="isArrow3"></app-genre-menu>
         </li>
@@ -63,7 +63,7 @@
           <a class="nav-link" routerLink="/anime">Аниме
           </a>
           <button class="btn-menu" (click)="genreArrow($event)">
-            <i id="isArrow4" class='fas fa-caret-up arrow'></i>
+            <i id="isArrow4" class='fas fa-caret-down arrow'></i>
           </button>
           <app-genre-menu *ngIf="isArrow4" type="anime"></app-genre-menu>
         </li>

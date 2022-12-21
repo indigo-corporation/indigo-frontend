@@ -17,7 +17,7 @@
             <div *ngIf="card.shiki_rating">
               <div class="shiki">SHIKIMORI {{card.shiki_rating}} </div>
             </div>
-            <p class="tooltip-overview" style="text-align: left;">{{card.overview}}<span>...</span></p>
+            <p class="tooltip-overview" style="text-align: left;">{{card.overview}}<span id="dot">...</span></p>
           </div>
         </ng-template>
         <a routerLink="/card-profile/{{card.id}}">

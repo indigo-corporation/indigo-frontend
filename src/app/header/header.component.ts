@@ -113,8 +113,8 @@ export class HeaderComponent implements OnInit {
     this.isArrow2=false
     this.isArrow3=false
     this.isArrow4=false
-    $('.fas.fa-caret-up').css('transform', 'rotate(0deg)');
-    $('.fas.fa-caret-up').css('color', 'white')
+    $('.fas.fa-caret-down').css('transform', 'rotate(0deg)');
+    $('.fas.fa-caret-down').css('color', 'white')
   }
 
 

@@ -54,7 +54,7 @@ p {
 }
 
 .card-head {
- position: relative;
+  position: relative;
 }
 
 .card:hover .film-title {
@@ -136,33 +136,39 @@ p {
 }
 
 ::ng-deep.tooltip {
-  width:100% !important;
-  min-width: 350px !important;
-  height: 100%;
-  max-height: 320px;
+  width: 100% !important;
+  max-width: 300px !important;
+  height: fit-content;
+  max-height: fit-content;
+  min-height: fit-content;
   background-color: #1a1923 !important;
-  position: absolute !important;
-  right:50% !important;
   border: 1px solid #616164b8;
- }
- .tooltip_body {
+}
+.tooltip_body {
   text-align: left !important;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   padding: 5px 10px;
- }
+}
 
- .tooltip-overview {
-  margin-top: 5px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 9;
-  -webkit-box-orient: vertical;
-  height: 195px;
- }
+.tooltip-overview {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -moz-box;
+      -moz-box-orient: vertical;
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      line-clamp: 6;
+      box-orient: vertical;
+      margin-top: 5px;
+}
 
- 
+.dot {
+  height: 100%;
+}
+
 .tooltip-title {
   background-color: transparent;
   letter-spacing: 0.08em;

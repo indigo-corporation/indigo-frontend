@@ -1,15 +1,30 @@
 <div style="min-height:100%;position:relative" class="container main block">
-  <div class="row">
+  <div class="row card-row">
     <div *ngFor="let card of data | paginate: { 
       id: 'listing_pagination',
       itemsPerPage: 20,
       currentPage: page, 
       totalItems: totalRecords
-    }" class="card col-md-3" style="width: 18rem;">
+    }" class="card col-md-3" style="width: 13rem;">
       <div class="card-head">
+        <ng-template class="tooltip" #HtmlContent>
+          <div class="tooltip_body">
+            <a routerLink="/card-profile/{{card.id}}" class="tooltip-title">{{card.title}}</a>
+            <p class="tooltip-genre"><span class="genre-div"
+                *ngFor="let genre of card.genres">{{genre.title}}, </span> <span class="card-year">
+                {{card.year}}</span> </p>
+            <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
+            <div *ngIf="card.shiki_rating">
+              <div class="shiki">SHIKIMORI {{card.shiki_rating}} </div>
+            </div>
+            <p class="tooltip-overview" style="text-align: left;">{{card.overview}}<span id="dot">...</span></p>
+          </div>
+        </ng-template>
         <a routerLink="/card-profile/{{card.id}}">
           <img class="filters__img" src="{{card.poster_url}}">
         </a>
+        <mat-icon fxLayout="row" fxFlex fxLayoutAlign="start center"  tooltip="Tooltip" [options]="myOptions" [tooltip]="HtmlContent" 
+        contentType="template" class="info-icon">info</mat-icon>
       </div>
       <div routerLink="/card-profile/{{card.id}}" class="card-play-ic">
         <i class="fa fa-play" aria-hidden="true"></i>

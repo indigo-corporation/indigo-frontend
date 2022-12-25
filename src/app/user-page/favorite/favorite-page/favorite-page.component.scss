@@ -3,10 +3,12 @@
 }
 
 .paginate {
-  font-size: 13px;
-  display: flex;
-  justify-content: center;
-  transform: translate(10px, 232px);
+  position: absolute;
+  bottom: 0px;
+  margin-top: 17px;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
 
@@ -220,12 +222,16 @@ p {
  }
 
  .tooltip-overview {
-  margin-top: 5px;
   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -moz-box;
+  -moz-box-orient: vertical;
   display: -webkit-box;
-  -webkit-line-clamp: 9;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
-  height: 195px;
+  line-clamp: 6;
+  box-orient: vertical;
+  margin-top: 5px;
  }
 
  

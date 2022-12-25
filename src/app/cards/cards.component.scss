@@ -112,9 +112,12 @@ p {
 }
 
 .paginate {
-  font-size: 13px;
-  display: flex;
-  justify-content: center;
+  position: relative;
+  bottom: 0px;
+  margin-top: 17px;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
 .block {

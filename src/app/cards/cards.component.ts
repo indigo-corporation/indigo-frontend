@@ -18,6 +18,7 @@ export class CardsComponent implements OnInit {
   page: number
   name: any
   log: any
+  totalPages:any
   film: any
   @Input() data: any
   public id: any
@@ -31,14 +32,17 @@ export class CardsComponent implements OnInit {
     this.data = new Array<any>()
 
   }
-  
+
   myOptions = {
     'placement': 'left',
     'theme': 'dark',
     'showDelay': 500,
   }
   ngOnInit() {
-  
+    this.page=this.route.snapshot.queryParams.page
+    if(!this.page) {
+      this.page = 1 
+    }
 
     this.category = this.route.snapshot.url[0].path
     if (this.category === "film") {
@@ -64,23 +68,22 @@ export class CardsComponent implements OnInit {
       this.meta.addTag(
         { name: "description", content: "Аниме, Анимесериалы, Анимесериал, Смотреть Аниме онлайн, Аниме HD, совместный просмотр" })
     }
-    this.page = this.route.snapshot.queryParams.page
-    if (!this.page) {
-      this.page = 1
-    }
     console.log(this.route.snapshot.queryParams.page);
 
-    this.getData(this.page);
+    this.getData(1);
     console.log(this.category);
   }
   getData(page) {
-    this.api2Service.getData(this.category, page).subscribe((data) => {
+    this.api2Service.getData(this.category, this.page).subscribe((data) => {
       console.log(data);
       this.data = data.data.items
       this.totalRecords = data.data.pagination.total
+      this.totalPages = data.data.pagination.total_pages
       console.log(this.totalRecords);
+      debugger
     });
   }
+
   onPageChange(page) {
     this.page = page
     this.router.navigate(["/" + this.category], {
@@ -91,4 +94,4 @@ export class CardsComponent implements OnInit {
     });
     this.getData(page)
   }
-}
+} 

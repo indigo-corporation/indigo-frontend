@@ -401,6 +401,7 @@
   --fieldBorderColor: #e0480c !important;
 }
 
+
 .btn-block {
   font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
   color: white;
@@ -429,10 +430,9 @@ body {
   width: 100%;
   max-width: 480px;
   margin: auto;
-  padding: 1rem;
-
+  padding: 0;
   display: grid;
-  grid-gap: 30px;
+  grid-gap: 9px;
 }
 
 .linktr {

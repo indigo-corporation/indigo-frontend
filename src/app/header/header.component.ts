@@ -64,7 +64,7 @@ export class HeaderComponent implements OnInit {
   
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
-     if (window.pageYOffset > 180) {
+     if (window.pageYOffset > 211) {
        let element = document.getElementById('navbar');
        $( "nav" ).addClass( "sticky" );
      } else {

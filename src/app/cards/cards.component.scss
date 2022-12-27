@@ -18,6 +18,7 @@ p {
 
 .card-row {
   margin: 0 18px;
+  margin-bottom: 30px;
 }
 
 .film-title {
@@ -112,7 +113,7 @@ p {
 }
 
 .paginate {
-  position: relative;
+  position: absolute;
   bottom: 0px;
   margin-top: 17px;
   left: 0;

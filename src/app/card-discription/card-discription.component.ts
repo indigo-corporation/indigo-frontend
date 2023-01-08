@@ -47,7 +47,7 @@ export class CardDiscriptionComponent implements AfterViewInit, OnInit {
     private dialog: MatDialog) {
       this.rating3 = 0;
       this.form = this.fb.group({
-        rating: ['', Validators.required],
+        rating: ['', Validators.required]
       })
 
   }

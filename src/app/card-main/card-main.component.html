@@ -5,7 +5,7 @@
   <swiper [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
     <ng-template *ngFor="let card of data.data.items" swiperSlide>
       <div *ngIf="data" class="row card-row">
-         <div class="card col-md-3">
+         <div class="card col-md-3" style="width: 13rem;">
           <div class="card-head">
             <ng-template class="tooltip" #HtmlContent>
               <div class="tooltip_body">

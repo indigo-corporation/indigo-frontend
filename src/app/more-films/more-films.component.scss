@@ -30,24 +30,24 @@
 }
 
 ::ng-deep.tooltip {
-  width:100% !important;
+  width: 100% !important;
   min-width: 350px !important;
   height: 100%;
   max-height: 320px;
   background-color: #1a1923 !important;
   position: absolute !important;
-  right:50% !important;
+  right: 50% !important;
   border: 1px solid #616164b8;
- }
- .tooltip_body {
+}
+.tooltip_body {
   text-align: left !important;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   padding: 5px 10px;
- }
+}
 
- .tooltip-overview {
+.tooltip-overview {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -moz-box;
@@ -57,10 +57,9 @@
   -webkit-box-orient: vertical;
   line-clamp: 6;
   box-orient: vertical;
-  padding:5px;
+  margin-top: 5px;
 }
 
- 
 .tooltip-title {
   background-color: transparent;
   letter-spacing: 0.08em;
@@ -227,10 +226,10 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.1882352941);
   border-radius: 5px;
   max-width: 250px;
-  min-height: 315px;
+  min-height: 288px;
   max-height: 50px;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .filters__img img {

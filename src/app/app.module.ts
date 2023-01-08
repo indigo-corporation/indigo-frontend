@@ -92,7 +92,7 @@ const appRoutes: Routes = [
   { path: '', component: MainComponent },
   { path: 'search-page', component: SearchPageComponent },
   { path: 'support', component: SupportPageComponent },
-  { path: 'message/:id', component: MessangerComponent, canActivate: [AuthGuard]  },
+  /* { path: 'message/:id', component: MessangerComponent, canActivate: [AuthGuard]  }, */
   { path: 'copyright', component: CopyrightComponent, },
  /*  { path: 'friends', component: MessangerComponent, canActivate: [AuthGuard]  },
   { path: 'message', component: MessangerComponent, canActivate: [AuthGuard]  }, */
@@ -165,7 +165,7 @@ const appRoutes: Routes = [
     AutoFocusDirectiveDirective 
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: "serverApp"}),
     OAuthModule.forRoot(),
     AppRoutingModule,
     NgxStarRatingModule,

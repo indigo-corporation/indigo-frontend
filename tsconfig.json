@@ -25,7 +25,8 @@
     "target": "es2020",
     "typeRoots": [
       "node_modules/@types",
-      "src/alertyfytype.d.ts"
+      "src/alertyfytype.d.ts",
+      "jquery"
     ],
     "module": "es2020",
     "lib": [

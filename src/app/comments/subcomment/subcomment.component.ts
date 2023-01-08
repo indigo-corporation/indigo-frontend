@@ -45,7 +45,7 @@ export class SubcommentComponent implements OnInit {
     this.subcommentPosted.next(comment.comment)
   }
 
-
+  
   postLike(is_like) {
     if(this.login) {
       this.api2Service.postLike(this.comment.id, is_like).subscribe((data) => {

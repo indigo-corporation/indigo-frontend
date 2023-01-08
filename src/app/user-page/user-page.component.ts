@@ -138,7 +138,7 @@ export class UserPageComponent implements OnInit {
       let contactIds: any = localStorage.getItem("contactIds")
       contactIds = JSON.parse(contactIds)
       contactIds.push(this.user.id)
-      if (this.user.id) {
+      if(this.user.id) {
         this.isContact = true
       }
 

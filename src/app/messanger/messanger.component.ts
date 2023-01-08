@@ -102,7 +102,7 @@ export class MessangerComponent implements OnInit {
   }
 
   onNavigateSecMenu($event) {
-    let elm = $($event.target)
+    /* let elm = $($event.target)
     if (!elm.hasClass("name-menu")) {
       elm = elm.find(".name-menu")
     }
@@ -126,12 +126,12 @@ export class MessangerComponent implements OnInit {
         this.isOutcome=false
         this.isIncome=false
       }
-    }
+    } */
   }
 
 
   onNavigate($event) {
-    let elm = $($event.target)
+  /*   let elm = $($event.target)
     if (!elm.hasClass("name-menu")) {
       elm = elm.find(".name-menu")
     }
@@ -151,6 +151,6 @@ export class MessangerComponent implements OnInit {
         this.isContact=true
       }
      
-    }
+    } */
   }
 }

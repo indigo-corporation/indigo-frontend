@@ -4,6 +4,7 @@
  /** IntersectionObserver polyfill for IE and Edge */
  import 'intersection-observer';
 
+ 
 /***************************************************************************************************
  * Load `$localize` onto the global scope - used if i18n tags appear in Angular templates.
  */
@@ -40,7 +41,7 @@ import 'intersection-observer';
  * The flags allowed in zone-flags.ts are listed here.
  *
  * The following flags will work for all browsers.
- *
+ * 
  * (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch requestAnimationFrame
  * (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
  * (window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
@@ -51,7 +52,6 @@ import 'intersection-observer';
  *  (window as any).__Zone_enable_cross_context_check = true;
  *
  */
-
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */

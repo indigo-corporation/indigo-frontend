@@ -9,7 +9,7 @@ import * as e from "express";
 
 export class api2Service {
     
-    readonly url = "https://indigo-films-api.herokuapp.com/api/"
+    readonly url = "http://indigo-api.loc/api/"
     constructor(private http: HttpClient) {
 
     }

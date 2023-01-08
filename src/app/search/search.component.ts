@@ -1,9 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { api2Service } from '../services/api2.service';
-import { api } from '../services/api.service';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { Input } from '@angular/core';
 import { MatDialogRef } from "@angular/material/dialog";
 
 @Component({
@@ -20,9 +18,12 @@ export class SearchComponent implements OnInit, AfterViewInit {
   find: string
   page: any
   public id: any
-  constructor(private input: ElementRef, public dialogRef: MatDialogRef<SearchComponent>, private api2Service: api2Service, private router: Router, private route: ActivatedRoute) {
-    /*  document.forms['searhForm'].elements['searchInput'].focus(); */
-
+  constructor(
+    private input: ElementRef, 
+    public dialogRef: MatDialogRef<SearchComponent>, 
+    private api2Service: api2Service, 
+    private router: Router, 
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {

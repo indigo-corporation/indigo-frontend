@@ -10,6 +10,7 @@ import { api2Service } from '../services/api2.service';
 import { Input } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -70,7 +71,7 @@ export class HeaderComponent implements OnInit {
      } else {
       let element = document.getElementById('navbar');
         $( "nav" ).removeClass( "sticky" );
-     }
+     } 
   }
   
 
@@ -93,7 +94,7 @@ export class HeaderComponent implements OnInit {
   }
 
   genreArrow($event) {
-    let elm = $($event.target)
+     let elm = $($event.target)
     if (!elm.hasClass("arrow")) {
       elm = elm.find(".arrow")
     }
@@ -105,7 +106,7 @@ export class HeaderComponent implements OnInit {
       if (this[arrowId]) {
         elm.css('transform', 'rotate(180deg)')
         elm.css('color', 'black');
-      }
+      } 
   }
 
   arrowsUp() {
@@ -114,7 +115,7 @@ export class HeaderComponent implements OnInit {
     this.isArrow3=false
     this.isArrow4=false
     $('.fas.fa-caret-down').css('transform', 'rotate(0deg)');
-    $('.fas.fa-caret-down').css('color', 'white')
+    $('.fas.fa-caret-down').css('color', 'white') 
   }
 
 

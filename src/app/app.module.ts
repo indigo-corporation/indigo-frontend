@@ -165,7 +165,7 @@ const appRoutes: Routes = [
     AutoFocusDirectiveDirective 
   ],
   imports: [
-    BrowserModule.withServerTransition({appId: "serverApp"}),
+    BrowserModule,
     OAuthModule.forRoot(),
     AppRoutingModule,
     NgxStarRatingModule,

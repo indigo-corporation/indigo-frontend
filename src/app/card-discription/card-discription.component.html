@@ -14,17 +14,24 @@
                     <div class="discriptionforfilm2">
                         <h1 style="margin-left: 0" class="card-title-original">{{film.original_title}}</h1>
                         <h1 class="card-title-original" >
-                            <div style="color: #f3c45b;" *ngIf="film.imdb_rating">IMDb {{film.imdb_rating}}</div>
-                            <div style="color: #f3c45b;" *ngIf="film.shiki_rating">
+                            <div class="raiting-box">
+                                <div style="color: #f3c45b;" *ngIf="film.imdb_rating">IMDb {{film.imdb_rating}}</div>
+                            <div style="margin-left: 10px;
+                            color: #c67aed;" *ngIf="film.shiki_rating">
                                 <div>SHIKIMORI {{film.shiki_rating}}</div>
                             </div>
+                            </div>  
                         </h1>
                     </div>
                     
                     <h1 class="card-title-ru">{{film.title}}</h1>
                     <div class="cont">
                         <div class="stars">
-                          <ngx-star-rating [(ngModel)]="rating3" [id]="'rating3'" ></ngx-star-rating><span> {{ rating3 }}</span>
+                            <ngb-rating [max]="5"([film])="film" (click)="postStars()" [formControl]="raitingControl"></ngb-rating>
+                            <span *ngIf="film.stars" style="margin-left: 16px;">{{film.stars | number:'1.2-2'}}</span>
+                            <span style="margin-left: 16px;" *ngIf="!film.stars">0</span>
+                               <!--  <ngx-star-rating (click)="post Stars()" [(ngModel)]="rating3" [id]="'rating3'"></ngx-star-rating><span> {{ rating3 }}</span>
+                                <div>Rating: {{rating3}}</div>  -->
                         </div>
                         
                       </div>
@@ -55,11 +62,13 @@
         <div class="discription-text-block">
             <p class="discription-text">{{film.release_date | date:"y":"ru"}},</p>
             <p class="discription-text" *ngFor="let genre of film.genres"> {{genre.title}},</p>
-            <p class="discription-text" >США </p>
+            <span *ngFor="let country of film.countries">
+            <p style="margin-left: 3px;" class="discription-text" >{{country.title}} </p>
+        </span>
         </div>
         <p style="margin-left: 10px;">{{film.runtime}} минуты</p>
         <details>
-            <p class="t">{{film.overview}}</p>
+                <p class="t">{{film.overview}}</p>
             <summary>Описание</summary>
             
         </details>

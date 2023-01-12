@@ -17,7 +17,20 @@ button {
     
 }
 
+.raiting-box {
+    display: flex;
+    flex-direction: row;
+}
+
+ngb-raiting {
+    color: orange;
+    font-size: 60px;
+}
+
 .cont {
+    color: orange;
+    font-size: 45px;
+    margin-left: 10px;
     width: 100%;
     text-align: center;
     margin-bottom: 10px;

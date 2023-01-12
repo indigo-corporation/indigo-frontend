@@ -8,7 +8,8 @@ import "@angular/common/locales/global/ru"
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { authService } from "../services/authService.service";
 import { AuthPopup } from "../auth-popup/auth-popup.component";
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms"
+import { DecimalPipe,formatNumber } from '@angular/common';
 
 @Component({
   selector: 'app-card-discription',
@@ -28,6 +29,7 @@ export class CardDiscriptionComponent implements AfterViewInit, OnInit {
   film_id: number
   public safeSrc: SafeResourceUrl;
   @Input() film: any
+  @Output() isRaited = new EventEmitter<boolean>();
   @Output() isWatchSub = new EventEmitter<boolean>();
   public id: any
   public form: FormGroup;
@@ -35,6 +37,9 @@ export class CardDiscriptionComponent implements AfterViewInit, OnInit {
   isPlayerSveta:boolean=false
   srcKodic:any
   srcSveta:any
+  raiting:any
+  @Input() stars: any
+  raitingControl= new FormControl(0)
   rating3: number;
   constructor(
     private api2Service: api2Service,
@@ -47,9 +52,7 @@ export class CardDiscriptionComponent implements AfterViewInit, OnInit {
     private dialog: MatDialog) {
       this.rating3 = 0;
       this.form = this.fb.group({
-        rating: ['', Validators.required]
-      })
-
+      });
   }
   ngOnInit() {
     this.auth.user$.subscribe(x => {
@@ -58,10 +61,11 @@ export class CardDiscriptionComponent implements AfterViewInit, OnInit {
     if(this.login) {
       this.getFavoriteArray()
     }
+    
+  
 }
 
   ngAfterViewInit() {
-     
 
      if (this.login) {
       if(this.favoriteFilmIds.includes(this.film.id)) {
@@ -69,6 +73,22 @@ export class CardDiscriptionComponent implements AfterViewInit, OnInit {
       }
     } 
   }
+
+  postStars() {
+    this.api2Service.postStars(this.film.id,this.raitingControl.value).subscribe((data) => {
+
+      debugger
+      this.film.stars = data.data
+     console.log(this.raitingControl.value);
+    })
+    
+  } 
+
+/*   onSubmit($event) {
+    debugger
+    console.log(this.formStars.value.rating);  // {first: 'Nancy', last: 'Drew'}
+  } */
+
   
   getFavoriteArray() {
     this.api2Service.getFavoriteArray().subscribe((data) => {

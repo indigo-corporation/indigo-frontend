@@ -9,7 +9,7 @@ import * as e from "express";
 
 export class api2Service {
     
-    readonly url = "https://indigo-films-api.herokuapp.com/api/"
+    readonly url = "http://indigo-api.loc/api/"
     constructor(private http: HttpClient) {
 
     }
@@ -34,6 +34,11 @@ export class api2Service {
     getComments(id,page = 1): Observable<any> {
         return this.get("films/"+id+"/get_comments", {page:page} )
     }
+    
+    postStars(film_id,count): Observable<any> {
+        return this.post("film-stars/add", {film_id:film_id, count:count} )
+    }
+    
 
     postComment(filmId:number,body,parentId=null): Observable<any> {
         return this.post("comments/store", {

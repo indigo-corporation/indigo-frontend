@@ -8,7 +8,7 @@ import * as e from "express";
 })
 
 export class userService {
-    readonly url = "https://api.indigofilms.online/"
+    readonly url = "https://api.indigofilms.online/api/"
     constructor(private http: HttpClient) {
 
     }

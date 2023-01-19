@@ -13,7 +13,7 @@ export class authService {
     user$ = new BehaviorSubject<any>(null);
 
 
-    readonly url = "http://indigo-api.loc/api/"
+    readonly url = "https://api.indigofilms.online/api/"
     readonly apiKey = "1|jrWKPCXBPlgGmBp1YMqtnwW4pwesoCzuxNLqPk62"
     constructor(private http: HttpClient,private router: Router,
         private route: ActivatedRoute,) {

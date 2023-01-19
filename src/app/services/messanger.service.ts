@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
 
 export class messangerService {
 
-    readonly url = "http://indigo-api.loc/api/"
+    readonly url = "https://api.indigofilms.online/api/"
     constructor(private http: HttpClient) {
 
     }

@@ -45,14 +45,12 @@ import { SwiperComponent } from './swiper/swiper.component';
 import { CardMainComponent } from './card-main/card-main.component';
 import { MainComponent } from './main/main.component';
 import { CardContentComponent } from './card-content/card-content.component';
-import { CardSwiperComponent } from './card-swiper/card-swiper.component';
 import { CardDiscriptionComponent } from './card-discription/card-discription.component';
 import { CommentsComponent } from './comments/comments.component';
-import { LoginComponent } from './auth-popup/login/login.component';
+import { LoginComponent } from './login and registration components/login/login.component';
 import { PlayerComponent } from './player/player.component';
 import { UserPageComponent } from './user-page/user-page.component';
-import { AuthPopup } from "./auth-popup/auth-popup.component";
-import { RegisterComponent } from "./auth-popup/register/register.component"
+import { RegisterComponent } from "./login and registration components/register/register.component"
 import { AlertifyService } from './services/alertify.service';
 import { HttpErrorInterceptorService } from './httperror.interceptor.service';
 import { AuthInterceptorService } from './authInterceptor.service'
@@ -75,8 +73,6 @@ import { MoreFilmsComponent } from './more-films/more-films.component';
 import { RememberPassComponent } from './remember-pass/remember-pass.component';
 import { FavoriteComponent } from './user-page/favorite/favorite.component';
 import { FavoritePageComponent } from './user-page/favorite/favorite-page/favorite-page.component';
-import { WatchTogetherComponent } from './watch-together/watch-together.component';
-import { WatchSettingsComponent } from './watch-together/watch-settings/watch-settings.component';
 import { MessageHistoryComponent } from './messanger/message-history/message-history.component';
 import { ModalAddContactComponent } from './messanger/message-contacts/modal-add-contact/modal-add-contact.component';
 import { BlockContactsComponent } from './messanger/message-contacts/block-contacts/block-contacts.component';
@@ -87,6 +83,8 @@ import { CopyrightComponent } from './copyright/copyright.component';
 import { AllNotificationsComponent } from './all-notifications/all-notifications.component';
 import { SupportPageComponent } from './support-page/support-page.component';
 import { AutoFocusDirectiveDirective } from './auto-focus-directive.directive';
+import { ModalLoginComponent } from './modal-login/modal-login.component';
+
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -104,8 +102,8 @@ const appRoutes: Routes = [
   { path: 'anime', component: CardsComponent },
   { path: 'serial', component: CardsComponent },
   { path: 'cartoon', component: CardsComponent },
+ /*  { path: ':category/:id/:title', component: CardContentComponent }, */
   { path: 'card-profile/:id', component: CardContentComponent },
-  { path: 'dialog', component: AuthPopup },
   { path: 'reg', component: RegisterComponent },
   { path: 'user-page/:id', component: UserPageComponent, canActivate: [AuthGuard] },
   { path: 'user-page', component: UserPageComponent, canActivate: [AuthGuard] },
@@ -124,13 +122,11 @@ const appRoutes: Routes = [
     CardsComponent,
     MainComponent,
     CardContentComponent,
-    CardSwiperComponent,
     CardDiscriptionComponent,
     CommentsComponent,
     LoginComponent,
     PlayerComponent,
     UserPageComponent,
-    AuthPopup,
     RegisterComponent,
     UserSettingComponent,
     SearchComponent,
@@ -151,8 +147,6 @@ const appRoutes: Routes = [
     RememberPassComponent,
     FavoriteComponent,
     FavoritePageComponent,
-    WatchTogetherComponent,
-    WatchSettingsComponent,
     MessageHistoryComponent,
     ModalAddContactComponent,
     BlockContactsComponent,
@@ -162,7 +156,8 @@ const appRoutes: Routes = [
     CopyrightComponent,
     AllNotificationsComponent,
     SupportPageComponent,
-    AutoFocusDirectiveDirective 
+    AutoFocusDirectiveDirective,
+    ModalLoginComponent 
   ],
   imports: [
     BrowserModule,

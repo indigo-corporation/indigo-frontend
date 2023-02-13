@@ -43,8 +43,6 @@ export class GenreComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id')
     this.type = this.route.snapshot.paramMap.get("type")
     this.getGenreFilms(this.id,1,this.type)
-    debugger
-
     if(this.nameType[this.type] === "Аниме") {
       this.getGenreAnime() 
     } else {
@@ -52,7 +50,6 @@ export class GenreComponent implements OnInit {
     }
     let typeName = this.nameType[this.type]
     this.title.setTitle("Смотреть " + typeName + " " + this.genre.title + " в хорошем качестве в 720p hd")
-
   }
 
   getGenre() {
@@ -60,15 +57,12 @@ export class GenreComponent implements OnInit {
     if (ls) {
       this.genres = JSON.parse(ls)
       this.genre = this.genres.filter(x => x.id == this.id)[0]
-      debugger
     }
     else {
         this.api2Service.getGenre().subscribe((data) => {
-            console.log(data);
             localStorage.setItem("genres", JSON.stringify(data.data)) 
             this.genres = data.data.items
             this.genre = this.genres.filter(x => x.id == this.id)[0]
-            
         });
     }
 }
@@ -80,7 +74,6 @@ getGenreAnime() {
     }
     else {
         this.api2Service.getGenre(1).subscribe((data) => {
-            console.log(data);
             localStorage.setItem("genresAnime", JSON.stringify(data.data)) 
             this.genres = data.data
             this.genre = this.genres.filter(x => x.id == this.id)[0]
@@ -91,8 +84,6 @@ getGenreAnime() {
   getGenreFilms(id,page,type) {
     this.api2Service.getGenreFilms(id,page,type).subscribe((data) => {
       this.data = data.data.items
-     debugger
-      console.log(this.data);
     });
   }
 

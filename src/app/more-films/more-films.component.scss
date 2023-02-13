@@ -70,13 +70,21 @@
 }
 
 .info-icon {
-  color: #000000e6;
-  background: #da87efe6;
+  color: rgb(0, 0, 0);
+  background: rgba(185, 164, 247, 0.68);
   position: absolute;
   z-index: 2;
   right: 0px;
   top: 0px;
-  border-radius: 5px;
+  border-radius: 3px;
+  padding: 10px;
+  width: 37px;
+  height: 25px;
+  text-align: center;
+  display: flex;
+  font-size: 21px;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -115,9 +123,11 @@ a {
   text-align: start;
   border: none;
   padding: 0;
+  transition: 0.6s;
 }
 
 .card:hover {
+  margin-top: -15px;
   box-shadow: 0 8px 16px #000;
 }
 
@@ -240,7 +250,7 @@ a {
   min-height: 288px;
   max-height: 50px;
   width: 100%;
-  object-fit: contain;
+  object-fit: unset;
 }
 
 .filters__img img {

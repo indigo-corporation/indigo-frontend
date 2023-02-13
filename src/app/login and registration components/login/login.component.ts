@@ -4,10 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup,FormControl, Validators } from "@angular/forms";
 import { authService } from "../../services/authService.service";
 import { MatDialogRef} from "@angular/material/dialog";
-import { AuthPopup } from "../auth-popup.component"
 import { ReactiveFormsModule } from '@angular/forms';
 import  * as alertyfy from 'alertifyjs';
 import { AlertifyService } from '../../services/alertify.service';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { ModalLoginComponent } from 'src/app/modal-login/modal-login.component';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,7 @@ constructor(
   private auth: authService,
   private ReactiveFormsModule:ReactiveFormsModule,
   private alertify:AlertifyService,
-  public dialogRef: MatDialogRef<AuthPopup>) 
+  public modalRef: MdbModalRef<ModalLoginComponent>,) 
 
   {
 
@@ -35,9 +36,9 @@ constructor(
   ngOnInit() {
     
   }
-  closeDialog() {
-    this.dialogRef.close();
-}
+  close(): void {
+    this.modalRef.close()
+  }
 
   get password(): FormControl {
     return this.loginForm.get("password") as FormControl;
@@ -52,11 +53,11 @@ constructor(
        if (token) {
         localStorage.setItem("token",token);
         this.alertify.success('Вход успешный');
-        this.dialogRef.close()
+        this.close()
         this.auth.getUser()  
        } 
       },() => {
-      this.alertify.error("Неправильный пороль или email");
+      this.alertify.error("Неправильный пароль или email");
     },)
   }
 }

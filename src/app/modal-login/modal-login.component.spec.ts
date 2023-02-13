@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WatchTogetherComponent } from './watch-together.component';
+import { ModalLoginComponent } from './modal-login.component';
 
-describe('WatchTogetherComponent', () => {
-  let component: WatchTogetherComponent;
-  let fixture: ComponentFixture<WatchTogetherComponent>;
+describe('ModalLoginComponent', () => {
+  let component: ModalLoginComponent;
+  let fixture: ComponentFixture<ModalLoginComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WatchTogetherComponent ]
+      declarations: [ ModalLoginComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WatchTogetherComponent);
+    fixture = TestBed.createComponent(ModalLoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

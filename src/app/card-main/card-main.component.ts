@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Input } from '@angular/core'
 import Swiper, { SwiperOptions, Pagination, Scrollbar, Navigation } from 'swiper';
+import SwiperCore, { EffectFade } from "swiper";
+SwiperCore.use([EffectFade]);
 
 @Component({
   selector: 'app-card-main',
@@ -37,6 +39,7 @@ export class CardMainComponent implements OnInit, OnChanges {
       },
     }
   };
+
   nameType = {
     film: "Фильмы",
     serial: "Сериалы",
@@ -51,8 +54,6 @@ export class CardMainComponent implements OnInit, OnChanges {
   }
   ngOnInit() {
     Swiper.use([Navigation]);
-    console.log(this.nameType[this.category]);
-
   }
 
   myOptions = {
@@ -62,10 +63,10 @@ export class CardMainComponent implements OnInit, OnChanges {
   }
 
   onSwiper(swiper) {
-    console.log(swiper)
+  
   }
   onSlideChange() {
-    console.log('slide change');
+ 
   }
   ngOnChanges(changes: SimpleChanges): void {
 

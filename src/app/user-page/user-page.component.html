@@ -1,7 +1,7 @@
 <div style="height: 100%;min-height: 840px;" class="container main">
       <div class="mat-tab-user">
         <div class="user-tabs_user-photo">
-          <img class="user-photo" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" [src]="user.poster_url" alt="">
+          <img *ngIf="user.poster_url" class="user-photo" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" src="{{user.poster_url}}" alt="">
             <div *ngIf="!isMyUser" class="buttons-group">
               <button (click)="OnChat()" mat-raised-button class="user-btn">
                 Написать сообщение
@@ -25,6 +25,7 @@
               </button>
             </div>
         </div>
+        <app-user-setting (userInfoUpdate)="updatingUserInfo(user)" style="display: none;"></app-user-setting>
         <div class="user-discription">
           <!--           <h1 class="user-profile-text">Статус: <span class="user-status">Online</span></h1>
           <h1 class="user-profile-text">Группа: <span class="user-group">Администратор</span></h1> -->

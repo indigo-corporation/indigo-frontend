@@ -15,19 +15,16 @@ export class api2Service {
     }
 
 
-    get(method, params={}) {
+    get (method, params={}) {
         let url = this.url + method + "?"
             for (var key in params) {
                 url+="&"+key+"="+params[key]    
-            }
-            console.log(this.http.get<any>(url));
-            
+            }       
         return this.http.get<any>(url)
     }
 
-    post(method, body) {
+    post (method, body) {
         let url = this.url + method
-        console.log(url,body);
        return this.http.post<any>(url, body)
     }
 

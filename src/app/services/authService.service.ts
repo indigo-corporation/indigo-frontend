@@ -30,7 +30,6 @@ export class authService {
                     let user = data['data']
                     localStorage.setItem("user", JSON.stringify(user))
                     this.user$.next(user)
-                    console.log(user);
                 }
             });
         }
@@ -45,7 +44,6 @@ export class authService {
     }
 
     registerUser(data) {
-        console.log(this.url)
         return this.http.post(this.url + "auth/register", data)
     }
 

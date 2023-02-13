@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -28,7 +28,7 @@ export class UserSettingComponent implements OnInit {
     user_name: new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
 
   })
-
+  @Output() userInfoUpdate = new EventEmitter<any>();
   imageForm = new FormGroup({
     picture: new FormControl("", []),
   })
@@ -44,6 +44,7 @@ export class UserSettingComponent implements OnInit {
   country_id: any
   citymain: any
   user: any
+  url: string
   user$ = new BehaviorSubject<any>(null);
   public options: Options;
   public options2: Options;
@@ -122,7 +123,6 @@ export class UserSettingComponent implements OnInit {
 
 
   userChangeInfo(user){
-    debugger
     if(!this.settingForm.value["about"]) {
       this.settingForm.value["about"] = user.about
     }
@@ -140,7 +140,7 @@ export class UserSettingComponent implements OnInit {
     
     
     this.userService.userChangeInfo(this.settingForm.value).subscribe((result) => {
-      result
+      this.userInfoUpdate.next(result)
       this.alertify.success('Успешно изменено');
     })
   }
@@ -151,7 +151,7 @@ export class UserSettingComponent implements OnInit {
       this.alertify.success('Успешно изменено');
     })
   }
-  url: string
+  
 
   onFileSelected(event) {
     this.selectedFile = event.target.files[0]
@@ -161,14 +161,12 @@ export class UserSettingComponent implements OnInit {
       this.url = event.target.result
     }
     /* reader.readAsDataURL(this.selectedFile) */
-    console.log(this.selectedFile);
   }
 
 
   postPicture() {
     this.userService.getPicture(this.selectedFile).subscribe((result) => {
       this.alertify.success('Картинка загружена');
-      console.log(this.selectedFile);
     })
   }
 }

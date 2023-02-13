@@ -51,8 +51,6 @@ export class UserPageComponent implements OnInit {
     this.auth.user$.subscribe(x => {
       this.user = x
     })
-    console.log(this.user);
-
     let userId = Number(this.route.snapshot.paramMap.get('id'));
     if (userId) {
       this.localStorageOutComes(userId)
@@ -63,27 +61,26 @@ export class UserPageComponent implements OnInit {
   }
 
   localStorageOutComes(userId) {
-    debugger
     let outComes = localStorage.getItem("outComes")
     if (outComes) {
       this.outComes = JSON.parse(outComes)
       if (this.outComes.filter(x => x.user.id == userId)) {
         this.isWaiting = true
-
       }
     }
+  }
+
+  updatingUserInfo(userInfo) {
+    this.user = userInfo
   }
 
   getIsContact(userId) {
     let contactIds: any = localStorage.getItem("contactIds")
     if (contactIds) {
       this.contactIds = JSON.parse(contactIds)
-      console.log(this.contactIds = JSON.parse(contactIds));
-      debugger
       if (userId) {
         if (this.contactIds.includes(userId)) {
           this.isContact = true
-          debugger
         }
       }
     } else {
@@ -102,7 +99,6 @@ export class UserPageComponent implements OnInit {
   }
 
   notWaiting(userId) {
-    debugger
     let outComes = localStorage.getItem("outComes")
     if (outComes) {
       this.outComes = JSON.parse(outComes)

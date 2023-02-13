@@ -1,0 +1,42 @@
+::ng-deep .fade {
+    background: #040404ba !important;
+    transition: 0.6s;
+}
+
+::ng-deep .modal-dialog {
+    position: relative;
+    top: 19%;
+}
+
+.modal-body {
+    padding: 17px;
+    background-color: #1a1923;
+    color: #fff;
+    width: 100%;
+    border-radius: 5px;
+    min-width: 500px;
+    position: relative;
+    box-shadow: inset 0 0 #000;
+    background: linear-gradient(364deg, #000000, #5e2359);
+}
+
+.social {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+#close-icon {
+    position: absolute;
+    right: 0px;
+    bottom: 30px;
+    font-size: 21px;
+    top: 3px;
+    cursor: pointer;
+
+    &:hover {
+        color: black !important;
+    }
+}

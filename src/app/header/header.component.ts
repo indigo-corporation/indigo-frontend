@@ -1,18 +1,55 @@
-import { Component, OnInit, HostListener, Inject,ViewChild,ElementRef} from '@angular/core';
+import { Component, OnInit, HostListener, Inject, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthPopup } from "../auth-popup/auth-popup.component";
+import { ModalLoginComponent } from '../modal-login/modal-login.component';
 import { authService } from "../services/authService.service";
 import { MatMenuModule } from '@angular/material/menu';
 import { api2Service } from '../services/api2.service';
 import { Input } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { trigger, style, animate, transition } from '@angular/animations';
 
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 @Component({
   selector: 'app-header',
+  animations: [
+    trigger(
+      'enterAnimation', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('600ms', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('600ms', style({ opacity: 0 }))
+      ])
+    ]
+    ),
+    trigger(
+      'enterAnimationLogin', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('700ms', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('700ms', style({ opacity: 0 }))
+      ])
+    ]
+    ),
+    trigger(
+      'subMenuAnimation', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('400ms', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('400ms', style({ opacity: 0 }))
+      ])
+    ]
+    )
+  ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
@@ -30,8 +67,9 @@ export class HeaderComponent implements OnInit {
   film: any
   body: any
   serchElm
-  isNotification:boolean = false
+  isNotification: boolean = false
   arrowIdValue
+  modalRef: MdbModalRef<ModalLoginComponent> | null = null;
   window: any
   id: any
   page: any
@@ -40,10 +78,11 @@ export class HeaderComponent implements OnInit {
     @Inject(DOCUMENT) document,
     private route: ActivatedRoute,
     private http: HttpClient,
-    private host:ElementRef,
+    private host: ElementRef,
     private snackBar: MatSnackBar,
     private auth: authService,
     private api2Service: api2Service,
+    private modalService: MdbModalService,
     private MatMenuModule: MatMenuModule,
     private dialog: MatDialog) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
@@ -55,25 +94,25 @@ export class HeaderComponent implements OnInit {
       }
       if (evt instanceof NavigationEnd) {
         this.arrowsUp()
-        this.searchClose() 
+        this.searchClose()
         this.isCollapsed = true;
         this.isNotification = false
       }
     });
-    
+
   }
-  
+
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
-     if (window.pageYOffset > 211) {
-       let element = document.getElementById('navbar');
-       $( "nav" ).addClass( "sticky" );
-     } else {
+    if (window.pageYOffset > 211) {
       let element = document.getElementById('navbar');
-        $( "nav" ).removeClass( "sticky" );
-     } 
+      $("nav").addClass("sticky");
+    } else {
+      let element = document.getElementById('navbar');
+      $("nav").removeClass("sticky");
+    }
   }
-  
+
 
   ngOnInit() {
     this.auth.getUser()
@@ -83,10 +122,10 @@ export class HeaderComponent implements OnInit {
       this.isShown = false;
     })
   }
- 
+
 
   toggleSearch() {
-    this.isShown = !this.isShown  
+    this.isShown = !this.isShown
   }
 
   toggleBell() {
@@ -94,28 +133,28 @@ export class HeaderComponent implements OnInit {
   }
 
   genreArrow($event) {
-     let elm = $($event.target)
+    let elm = $($event.target)
     if (!elm.hasClass("arrow")) {
       elm = elm.find(".arrow")
     }
-      let arrowId
-      arrowId = elm.attr("id")
-      let arrowIdValue = this[arrowId]
-      this.arrowsUp()
-      this[arrowId] = !arrowIdValue
-      if (this[arrowId]) {
-        elm.css('transform', 'rotate(180deg)')
-        elm.css('color', 'black');
-      } 
+    let arrowId
+    arrowId = elm.attr("id")
+    let arrowIdValue = this[arrowId]
+    this.arrowsUp()
+    this[arrowId] = !arrowIdValue
+    if (this[arrowId]) {
+      elm.css('transform', 'rotate(180deg)')
+      elm.css('color', 'black');
+    }
   }
 
   arrowsUp() {
-    this.isArrow1=false
-    this.isArrow2=false
-    this.isArrow3=false
-    this.isArrow4=false
+    this.isArrow1 = false
+    this.isArrow2 = false
+    this.isArrow3 = false
+    this.isArrow4 = false
     $('.fas.fa-caret-down').css('transform', 'rotate(0deg)');
-    $('.fas.fa-caret-down').css('color', 'white') 
+    $('.fas.fa-caret-down').css('color', 'white')
   }
 
 
@@ -140,14 +179,12 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  openDialog() {
-    const dialogRef = this.dialog.open(AuthPopup, {
-      autoFocus: false,
-      maxHeight: '90vh'
-    }) 
-
-    dialogRef.afterClosed().subscribe(result => {
+  openModal() {
+    this.modalRef = this.modalService.open(ModalLoginComponent, {
+    });
+    this.modalRef.onClose.subscribe((data: any) => {
+ 
     });
   }
-}
 
+}

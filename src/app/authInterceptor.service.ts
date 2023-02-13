@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { AlertifyService } from "./services/alertify.service"
-import { RegisterComponent } from './auth-popup/register/register.component';
+import { RegisterComponent } from './login and registration components/register/register.component';
 import {
     HttpRequest,
     HttpErrorResponse,

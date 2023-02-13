@@ -40,7 +40,6 @@ export class GenreMenuComponent implements OnInit {
       this.getGenres()
     }
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.genres);
   } 
 
   getGenres() {
@@ -50,7 +49,6 @@ export class GenreMenuComponent implements OnInit {
     }
     else {
         this.api2Service.getGenre().subscribe((data) => {
-            console.log(data);
             localStorage.setItem("genres", JSON.stringify(data.data)) 
             this.genres = data.data
         });
@@ -63,7 +61,6 @@ getGenresAnime() {
     }
     else {
         this.api2Service.getGenre(1).subscribe((data) => {
-            console.log(data);
             localStorage.setItem("genresAnime", JSON.stringify(data.data)) 
             this.genres = data.data
         });
@@ -73,7 +70,6 @@ getGenresAnime() {
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
       this.genres = data;
-      console.log(this.genres);
     });
   }
 }

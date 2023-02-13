@@ -1,7 +1,7 @@
 <form [formGroup]= "loginForm">
   <div class="form-group">
     <label for="inputUsernameEmail">Email</label>
-    <input type="text" placeholder="Поле ввода пустое" class="form-control" formControlName="email">
+    <input type="text" autofocus="0" placeholder="Поле ввода пустое" class="form-control" formControlName="email">
     <div class="auth-error" *ngIf="email.errors?.['required'] && (email.touched || email.dirty)">
       Заполните поле Email
     </div>
@@ -16,7 +16,7 @@
       Заполните поле Пароль
     </div>
     <div style="display: flex; justify-content: flex-end;">
-      <a class="btn-remember" (click)="closeDialog()" routerLink="/remember-pass">Забыл пароль?</a>
+      <a class="btn-remember" (click)="close()" routerLink="/remember-pass">Забыл пароль?</a>
     </div>
     
     <div class="auth-error" *ngIf="password.errors?.['minlength'] || password.errors?.['maxlength'] && (password.touched || password.dirty)">
@@ -34,7 +34,7 @@
   <button mat-raised-button (click)="logIn()" type="submit" class="login">
     Войти
   </button>
-  <button mat-raised-button routerLink="/reg" (click)="closeDialog()" class="btn-reg">
+  <button mat-raised-button routerLink="/reg" (click)="close()" class="btn-reg">
     Регистрация
   </button>
 </form>

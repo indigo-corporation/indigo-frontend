@@ -34,9 +34,9 @@
 
 <div style="min-height: 100%" class="container main block">
   <h1 class="card-titile">Новинки</h1>
-  <swiper [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
+  <swiper (swiper)="setSwiperInstance($event)" [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
     <ng-template *ngFor="let card of data" swiperSlide>
-      <div *ngIf="data" class="row card-row">
+      <div *ngIf="card" class="row card-row">
        <!-- <app-card [(data)]="card"></app-card> -->
        
          <div class="card col-md-3">

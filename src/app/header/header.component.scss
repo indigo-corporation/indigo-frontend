@@ -29,6 +29,9 @@ i {
 }
 
 .header {
+    border-radius: 6px;
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
     top: 0;
     z-index: 3;
     right: 0;
@@ -119,6 +122,7 @@ i {
     max-width: 546px;
     width: 100%;
     margin-left: 13px;
+    transition:5s;
 }
 
 .form-search {
@@ -168,9 +172,10 @@ i {
 .user-photo {
     width: 100%;
     border-radius: 17px;
-    object-fit: cover;
+    object-fit: contain;
     width: 35px;
     margin-bottom: 5px;
+    height: 39px;
 }
 
 .search-icon {
@@ -180,7 +185,9 @@ i {
     }
 }
 
-
+.search-icon:cliked {
+    transition:1s;
+}
 
 .user-nav {
     font-size: 14px;
@@ -262,6 +269,7 @@ i {
 }
 
 .arrow {
+    transition: 0.5s;
     font-size: 14px;
     margin-left: 6px;
     padding: 6px;

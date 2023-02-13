@@ -23,7 +23,6 @@ export class FooterComponent implements OnInit {
     this.auth.user$.subscribe(x => {
       this.login = x != null
       this.user = x
-      console.log(this.login);
     })
   }
 

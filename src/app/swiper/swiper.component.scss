@@ -30,6 +30,7 @@
   color: white;
   font-size: 14px;
   text-decoration: none;
+
   &:hover {
     text-decoration: none;
     color: white;
@@ -48,10 +49,13 @@ a {
   text-align: start;
   border: none;
   padding: 0;
+  transition: 0.6s;
 }
 
 .card:hover {
   box-shadow: 0 8px 16px #000;
+  margin: -29px 0px 15px 0px;
+  z-index: 1;
 }
 
 .card:hover .film-title {
@@ -66,6 +70,7 @@ a {
 .card:hover .imdb-raiting {
   opacity: 1;
 }
+
 .card:hover .shiki-raiting {
   opacity: 1;
 }
@@ -110,6 +115,7 @@ a {
   right: 50% !important;
   border: 1px solid #616164b8;
 }
+
 .tooltip_body {
   text-align: left !important;
   display: flex;
@@ -141,13 +147,21 @@ a {
 }
 
 .info-icon {
-  color: #000000e6;
-  background: #da87efe6;
+  color: rgb(0, 0, 0);
+  background: rgba(185, 164, 247, 0.68);
   position: absolute;
   z-index: 2;
   right: 0px;
   top: 0px;
-  border-radius: 5px;
+  border-radius: 3px;
+  padding: 10px;
+  width: 37px;
+  height: 25px;
+  text-align: center;
+  display: flex;
+  font-size: 21px;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-icon_text {
@@ -213,6 +227,7 @@ a {
   font-size: 36px;
   margin-bottom: 10px;
 }
+
 .img-fluid {
   max-width: 100%;
   height: auto;
@@ -229,7 +244,7 @@ a {
   min-height: 288px;
   max-height: 50px;
   width: 100%;
-  object-fit: contain;
+  object-fit: unset;
 }
 
 .filters__img img {
@@ -270,6 +285,7 @@ a {
   max-width: 79px;
   opacity: 50%;
   margin-top: 4px;
+
   &:hover {
     background: radial-gradient(lighten(#ffffb8, 10%), lighten(#ce981d, 10%));
   }

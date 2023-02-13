@@ -26,7 +26,6 @@ export class CommentformComponent implements OnInit {
       this.auth.user$.subscribe(x=> {
           this.user=x
         })
-        console.log(this.comment);  
         this.textArea = this.comment.user.name + ", "
     }
    
@@ -38,7 +37,6 @@ export class CommentformComponent implements OnInit {
         this.comment=data.data
         this.textArea = ""
         this.commentPosted.emit(this.comment)
-        console.log(this.comment); 
       })
   }
 

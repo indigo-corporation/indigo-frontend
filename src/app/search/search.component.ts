@@ -58,7 +58,6 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   search(find, page) {
-    console.log(find, page);
     this.api2Service.search(find, page).subscribe((data) => {
       this.data = data.data.items
     })

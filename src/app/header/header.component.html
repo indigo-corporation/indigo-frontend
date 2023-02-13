@@ -1,9 +1,9 @@
 <nav id="navbar" (scroll)="onWindowScroll($event)" class="container navbar navbar-expand-lg navbar-light bg-light header">
   <a class="brand" routerLink="">INDIGOFILMS</a>
-  <a *ngIf="!login" (click)="openDialog()" class="btn btn-danger login2">Войти
+  <a *ngIf="!login" (click)="openModal()" class="btn btn-danger login2">Войти
   </a>
   <div *ngIf="login" class="login">
-    <!-- <i routerLink="/friends" class="fa fa-users user-nav" aria-hidden="true">
+    <!--  <i routerLink="/friends" class="fa fa-users user-nav" aria-hidden="true">
       <span class="icon-info">1</span>
     </i>
     <i routerLink="/message" class="far fa-envelope user-nav" aria-hidden="true">
@@ -11,7 +11,7 @@
     </i>
       <i (click)="toggleBell()" class="far fa-bell user-nav" aria-hidden="true">
         <span class="icon-info">1</span>
-      </i> -->
+      </i>  -->
     <div [matMenuTriggerFor]="menu">
       <img class="user-photo" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';"
         [src]="user.poster_url" alt="">
@@ -38,7 +38,7 @@
           <button class="btn-menu" (click)="genreArrow($event)">
             <i id="isArrow1" class='fas fa-caret-down arrow'></i>
           </button>
-          <app-genre-menu type="film" *ngIf="isArrow1"></app-genre-menu>
+          <app-genre-menu [@subMenuAnimation] type="film" *ngIf="isArrow1"></app-genre-menu>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/serial">Сериалы
@@ -46,7 +46,7 @@
           <button class="btn-menu" (click)="genreArrow($event)">
             <i id="isArrow2" class='fas fa-caret-down arrow'></i>
           </button>
-          <app-genre-menu type="serial" *ngIf="isArrow2"></app-genre-menu>
+          <app-genre-menu [@subMenuAnimation] type="serial" *ngIf="isArrow2"></app-genre-menu>
         </li>
 
         <li class="nav-item">
@@ -55,7 +55,7 @@
           <button class="btn-menu" (click)="genreArrow($event)">
             <i id="isArrow3" class='fas fa-caret-down arrow'></i>
           </button>
-          <app-genre-menu type="cartoon" *ngIf="isArrow3"></app-genre-menu>
+          <app-genre-menu [@subMenuAnimation] type="cartoon" *ngIf="isArrow3"></app-genre-menu>
         </li>
 
         <li class="nav-item">
@@ -64,7 +64,7 @@
           <button class="btn-menu" (click)="genreArrow($event)">
             <i id="isArrow4" class='fas fa-caret-down arrow'></i>
           </button>
-          <app-genre-menu *ngIf="isArrow4" type="anime"></app-genre-menu>
+          <app-genre-menu [@subMenuAnimation] *ngIf="isArrow4" type="anime"></app-genre-menu>
         </li>
 
         <li class="nav-item">
@@ -73,7 +73,7 @@
 
       </ul>
     </div>
-    <app-search class="input-search" *ngIf="isShown" appAutoFocusDirective  (onSearchSubmmited)="searchClose($event)"></app-search>
+    <app-search autofocus [@enterAnimation] class="input-search" *ngIf="isShown" appAutoFocusDirective  (onSearchSubmmited)="searchClose($event)"></app-search>
   </div>
   <app-all-notifications *ngIf="isNotification"></app-all-notifications>
 </nav>

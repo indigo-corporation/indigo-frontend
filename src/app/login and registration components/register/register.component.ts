@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup,FormControl, Validators, FormBuilder } from "@angular/forms"
 import { authService } from "../../services/authService.service"
 import { MatDialog, MatDialogRef} from "@angular/material/dialog";
-import { AuthPopup } from "../auth-popup.component"
 import { ReactiveFormsModule } from '@angular/forms';
 import  * as alertyfy from 'alertifyjs';
 import { AlertifyService } from '../../services/alertify.service';
@@ -27,7 +26,6 @@ import { Meta, Title } from '@angular/platform-browser';
     private FormBuilder:FormBuilder,
     private ReactiveFormsModule:ReactiveFormsModule,
     private alertify:AlertifyService,
-    public dialogRef: MatDialogRef<AuthPopup>,
     private meta: Meta,
     private title: Title ) 
     {
@@ -44,7 +42,6 @@ import { Meta, Title } from '@angular/platform-browser';
 
     ngOnInit() {
       this.title.setTitle("Регистрация")
-      console.log(this.telegramAuth);
     }
 
  

@@ -3,9 +3,10 @@ import { api2Service } from '../../services/api2.service';
 import { Input } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { authService } from "../../services/authService.service";
-import { AuthPopup } from "../../auth-popup/auth-popup.component";
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { ModalLoginComponent } from 'src/app/modal-login/modal-login.component';
 
 @Component({
   selector: 'app-comment',
@@ -19,6 +20,7 @@ export class CommentComponent implements OnInit {
   public textArea: string
   login: boolean = false
   user: any
+  modalRef: MdbModalRef<ModalLoginComponent> | null = null;
   comments: any;
   @Output() likeSubmitted = new EventEmitter<any>();
   @Input() filmId: any
@@ -27,16 +29,15 @@ export class CommentComponent implements OnInit {
     private api2Service: api2Service,
     private auth: authService,
     private route:ActivatedRoute,
+    private modalService: MdbModalService,
     private router:Router ,
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.isShown = false;
     this.isCollapsed = false;
-    console.log(this.comment);
     this.auth.user$.subscribe(x => {
       this.login = x != null
-
     })
   }
   postLike(is_like) {
@@ -78,7 +79,6 @@ export class CommentComponent implements OnInit {
 
   changeLike(type) {
     let prevType = this.comment.like ? this.comment.like.is_like: null
-    
     if (prevType !== null && prevType == type) {
       this.postUnLike()
     } else {
@@ -88,28 +88,26 @@ export class CommentComponent implements OnInit {
   }
 
   onCommentPosted(comment) {
-    console.log('onCommentPosted', comment);
     this.comment.answers.push(comment.comment)
-    console.log(this.comment);
     this.isShown = false;
   }
 
   onSubCommentPosted(comment) {
-    console.log(this.comment);
     this.textArea = this.comment.user.name
     this.comment.answers.push(comment)
   }
 
   getComment() {
     this.api2Service.getComments(this.filmId, 1).subscribe((data) => {
-      console.log(data);
       this.comments = data.data.items
     });
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(AuthPopup);
-    dialogRef.afterClosed().subscribe(result => {
+    this.modalRef = this.modalService.open(ModalLoginComponent, {
+    });
+    this.modalRef.onClose.subscribe((data: any) => {
+ 
     });
   }
 

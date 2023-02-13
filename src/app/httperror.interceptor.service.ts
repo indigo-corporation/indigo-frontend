@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AlertifyService } from "./services/alertify.service"
-import { RegisterComponent } from './auth-popup/register/register.component';
 import {
   HttpRequest,
   HttpErrorResponse,
@@ -19,7 +18,6 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
 
   
   intercept(request: HttpRequest<any>, next: HttpHandler) {
-    console.log("HTTP Request started");
     
     return next.handle(request)
       .pipe (
@@ -28,10 +26,14 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
           if (errorCode == 120) {
             return throwError(error);
           }
+          if (error.status == 422) {
+            return throwError(error);
+          }
           if (error.status == 404) {
             return throwError(error);
           }
           const errorMessage = error.error.data.message
+         
           this.alertify.error(errorMessage);
           return throwError(error);
         })

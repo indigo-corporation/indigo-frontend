@@ -1,0 +1,26 @@
+ <div class="modal-container">
+    <div class="modal-body">
+        <mat-icon id="close-icon" (click)="modalRef.close()">close</mat-icon>
+        <app-login autofocus="0"></app-login>
+        <div class="social">
+           
+            <div style="margin-top: 10px;">
+                <div style="margin:10px 10px">
+                    <asl-google-signin-button (click)="loginWithGoogle()" type="standard"
+                        size="large"></asl-google-signin-button>
+                </div>
+                <angular-telegram-login-widget (load)="onLoad()" (loadError)="onLoadError()" (login)="onLogin($event)"
+                    [botName]="botName"></angular-telegram-login-widget>
+                <script async src="https://telegram.org/js/telegram-widget.js?21" data-telegram-login="IndigoFilmsBot"
+                    data-size="large" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
+                <script type="text/javascript">
+                    function onTelegramAuth(user) {
+                        alert('Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')');
+                        console.log(user);
+                    }
+                </script>
+            </div>
+            <!-- <app-register [(telegramAuth)]="userOutput" style="display:none"></app-register> -->
+        </div>
+    </div>
+</div> 

@@ -1,20 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatFormFieldModule } from "@angular/material/form-field";
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { authService } from '../services/authService.service';
 import { AlertifyService } from '../services/alertify.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SocialAuthService } from "@abacritt/angularx-social-login";
 import { GoogleLoginProvider } from "@abacritt/angularx-social-login";
-
 @Component({
-  selector: 'auth-popup',
-  templateUrl: './auth-popup.component.html',
-  styleUrls: ['./auth-popup.component.scss']
+  selector: 'app-modal-login',
+  templateUrl: './modal-login.component.html',
+  styleUrls: ['./modal-login.component.scss']
 })
-
-export class AuthPopup implements OnInit {
+export class ModalLoginComponent implements OnInit {
   hidediv: boolean = true
   login: boolean = true
 
@@ -25,27 +21,21 @@ export class AuthPopup implements OnInit {
   user: any
   loggedIn: any
   constructor(
-    private formBuilder: FormBuilder,
-    private matFormFieldModule: MatFormFieldModule,
-    private snackBar: MatSnackBar,
+    private modalService: MdbModalService,
     private authService: SocialAuthService,
     private auth: authService,
     private alertify: AlertifyService,
-    private dialog: MatDialog,
-    public dialogRef: MatDialogRef<AuthPopup>) {
-
-    /*  GoogleService.userProfileSubject.subscribe(info => {
-       this.userInfo = info
-       console.log(this.userInfo);
- 
-     }) */
-  }
+    public modalRef: MdbModalRef<ModalLoginComponent>,
+  ) { }
 
   ngOnInit() {
-   this.loginWithGoogle()
+    this.loginWithGoogle()
   }
 
- 
+  close(): void {
+    this.modalRef.close()
+  }
+
   loginWithGoogle() {
     this.authService.authState.subscribe((user) => {
       this.user = user
@@ -53,15 +43,12 @@ export class AuthPopup implements OnInit {
       let data = {
         data: user
       }
-      console.log(data);
-      
-      debugger
       this.auth.authGoogle(data).subscribe((data) => {
         let token = data["data"]["access_token"]
         if (token) {
           localStorage.setItem("token", token);
           this.alertify.success('Вход успешный');
-          this.dialogRef.close()
+          this.close()
           this.auth.getUser()
         }
       })
@@ -72,12 +59,13 @@ export class AuthPopup implements OnInit {
     this.isLoad = true;
   }
 
+
+
   onLoadError() {
     this.isLoadError = true;
   }
 
   onLogin(user: any) {
-    console.log(user)
     let data = {
       data: user
     }
@@ -86,14 +74,10 @@ export class AuthPopup implements OnInit {
       if (token) {
         localStorage.setItem("token", token);
         this.alertify.success('Вход успешный');
-        this.dialogRef.close()
+        this.close()
         this.auth.getUser()
       }
     })
-    debugger
   }
 
-  closeDialog() {
-    this.dialogRef.close();
-  }
 }

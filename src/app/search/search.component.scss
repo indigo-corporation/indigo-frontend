@@ -1,17 +1,7 @@
 .form-search {
     padding: 6px 40px 6px 38px;
-    background-color: rgba(0, 0, 0, 0.831372549);
-}
-
-::ng-deep.cdk-overlay-pane {
-    max-width: 90% !important;
-}
-
-::ng-deep.block-gg {
-    .mat-dialog-container {
-        width: 1200px !important;
-        overflow: hidden;
-    }
+    background: linear-gradient(222deg, #07073c, rgb(78 3 72));
+    box-shadow: inset 0px 3px 47px 1px rgb(0 0 0 / 76%)
 }
 
 .block {
@@ -26,9 +16,10 @@ button {
 }
 
 .btn-search {
-    color: black;
+    background: #4c3f93;
+    color: white;
+    font-family: 'TT Norms Pro Regular,Helvetica,sans-serif';
     border: none;
-    background-color: white;
     margin: 0px 0px 0 15px;
     position: relative;
     top: 0px;
@@ -128,7 +119,6 @@ p {
 
 .block {
     padding: 0px;
-    background-color: rgba(26, 25, 35, 0.89);
     position: absolute;
     top: 45px;
     right: 0px;
@@ -192,7 +182,7 @@ p {
   .film-title {
     background-color: transparent;
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     text-decoration: none;
     font-weight: bold;
   }
@@ -247,6 +237,7 @@ p {
   .card:hover .film-title {
     color: #e75dff !important;
   }
+
   
   .card-year {
     color: #c93941;

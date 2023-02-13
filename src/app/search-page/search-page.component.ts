@@ -3,6 +3,7 @@ import { api2Service } from '../services/api2.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
+import { AlertifyService } from '../services/alertify.service';
 
 @Component({
   selector: 'app-search-page',
@@ -15,14 +16,15 @@ export class SearchPageComponent implements OnInit {
   page: number = 1
   data: Array<any>
   name: any
-  find:any
+  find: any
   public id: any
   constructor(
-    private api2Service: api2Service, 
-    private router: Router, 
+    private api2Service: api2Service,
+    private router: Router,
     private route: ActivatedRoute,
     private meta: Meta,
-    private title: Title ) {
+    private title: Title,
+    private alertify:AlertifyService) {
     this.data = new Array<any>()
     /*  this.router.routeReuseStrategy.shouldReuseRoute = function () {
        return false;
@@ -41,22 +43,21 @@ export class SearchPageComponent implements OnInit {
   }
   ngOnInit() {
     this.title.setTitle("Поиск")
-    this.page=this.route.snapshot.queryParams.page
-    this.route.queryParams.subscribe((queryParams:any) => {
+    this.page = this.route.snapshot.queryParams.page
+    this.route.queryParams.subscribe((queryParams: any) => {
       this.page = queryParams.page;
       this.term = queryParams.term;
       this.search(this.term)
 
-     });
-    this.term=this.route.snapshot.queryParams.find
-    if(this.term) {
+    });
+    this.term = this.route.snapshot.queryParams.find
+    if (this.term) {
       this.search(this.term)
     }
   }
-  
+
   getData(page) {
     this.api2Service.getData(page).subscribe((data) => {
-      console.log(data);
       this.data = data.data.items
       this.totalRecords = data.data.pagination.total
     });
@@ -67,17 +68,14 @@ export class SearchPageComponent implements OnInit {
     if ($event.target.value.length >= 1) {
       this.search($event.target.value, 1)
     }
-    console.log($event.target.value.length);
-
+    this.alertify.error('Должно быть хотя бы 2 буквы');
   }
 
-  search(find, page=1) {
-    if(!find) {
+  search(find, page = 1) {
+    if (!find) {
       return
     }
-    console.log(find, page);
-    this.api2Service.search(find, page).subscribe((data) => {
-      
+      this.api2Service.search(find, page).subscribe((data) => {
       this.data = data.data.items
       this.totalRecords = data.data.pagination.total
     })

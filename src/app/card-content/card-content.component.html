@@ -1,12 +1,8 @@
 <div class="container main">
     <div *ngIf="isTogther">
-        <app-card-discription (isWatchSub)="togetherOn($event)" class="container-card" [film]="film">
+        <app-card-discription class="container-card" [film]="film">
         </app-card-discription> 
         <app-more-films></app-more-films>
         <app-comments [filmId]="id"></app-comments>
     </div>
-        <app-watch-together (backWatch)="watchOn($event)" *ngIf="!isTogther" [film]="film">
-        </app-watch-together>
-
-    
 </div>

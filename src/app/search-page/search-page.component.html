@@ -1,4 +1,4 @@
-<div style="min-height:100%;position:relative" class="container main block">
+<div style="min-height: 100%;position:relative" class="container main block">
   <h1 class="card-title">Поиск</h1>
   <form FormGroup="searhForm" class="form-search form-inline form-search">
     <div class="form-group">
@@ -6,13 +6,14 @@
       <button mat-raised-button class="btn-search" (click)="onPageChange(1)" type="button">Поиск</button>
     </div>
   </form>
-  <div class="row">
+  <div class="row card-row">
     <div *ngFor="let card of data | paginate: { 
       id: 'listing_pagination',
-      itemsPerPage: 24,
+      itemsPerPage: 48,
       currentPage: page,
       totalItems: totalRecords
     }" class="card col-md-3" style="width: 13rem;">
+   
       <div class="card-head">
         <ng-template class="tooltip" #HtmlContent>
           <div class="tooltip_body">
@@ -49,7 +50,12 @@
       </div>
     </div>
   </div>
+  <div class="error-window" *ngIf="data.length === 0">
+    По запросу ничего не найдено
+  </div>
   <div *ngIf="data.length" class="paginate">
+    
+  
     <pagination-controls id="listing_pagination" directionalLinks="true" (pageChange)="onPageChange($event)"
       previousLabel="Назад" nextLabel="Вперед">
     </pagination-controls>

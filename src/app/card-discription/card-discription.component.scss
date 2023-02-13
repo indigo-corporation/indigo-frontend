@@ -30,7 +30,6 @@ ngb-raiting {
 .cont {
     color: orange;
     font-size: 45px;
-    margin-left: 10px;
     width: 100%;
     text-align: center;
     margin-bottom: 10px;
@@ -47,6 +46,10 @@ ngb-raiting {
 
   div.stars {
     display: inline-block;
+  }
+
+  .stars {
+    font-size: 33px;
   }
 
 .raiting-stars {
@@ -74,6 +77,7 @@ ngb-raiting {
     text-align: left;
     font-weight: bold;
     padding-top: 2px;
+    font-size: 26px;
     margin: 0;
 }
 
@@ -94,11 +98,12 @@ summary {
 }
 .card-image {
     width: 200px;
+    border-radius: 14px;
 }
 
 .discription-text-block {
     display: flex;
-    margin-left: 11px;
+    margin-left: 4px;
     margin-top: 11px;
     flex-wrap: wrap;
 }
@@ -116,9 +121,40 @@ p {
     font-size: 14px;
     font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
     margin: 0;
-    line-height: 30px;
-    margin-left: 10px;
-    margin-top: 7px;
+    line-height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    display: -moz-box;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.moreTextBtn {
+    position: absolute;
+    right: 1px;
+    font-size: 15px;
+    text-decoration: none;
+    color: #efbd30;
+    border-radius: 9px;
+    padding: 7px;
+    letter-spacing: 0;
+    cursor: pointer;
+}
+
+
+.textOverview {
+    color: #ababab;
+    font-size: 14px;
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    margin: 0;
+    line-height: 22px;
+}
+
+.overviewFilm {
+    font-size: 18px;
+    letter-spacing: 0px;
+    margin-top: 23px;
 }
 
 hr {
@@ -220,12 +256,12 @@ span {
     padding: 10px;
 }
 .favorite {
-    border: 1px solid rgba(255, 255, 255, 0.2784313725);
+    border: none;
     padding: 6px 31px;
     border-radius: 5px;
     color: white;
-    background-color: #000;
-    margin-left: 9px;
+    background-color: #573aad;
+    margin-left: 4px;
 }
 
 .favorite-text {
@@ -234,15 +270,15 @@ span {
 }
 
 .favorite:hover .favorite-ic {
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 .favorite:hover {
-    background-color: white;
+    background-color: rgb(0, 0, 0);
 }
 
 .favorite:hover .favorite-text {
-    color: black;
+    color: rgb(255, 254, 254);
 }
 
 input[type="checkbox"]:checked + .favorite-ic {
@@ -379,12 +415,12 @@ iframe {
 }
 .block-title {
     color: white;
-    padding: 0px 33px;
-    padding-bottom: 9px;
+    padding: 0px 29px;
+    padding-bottom: 42px;
 }
 
 .discription-text {
-    font-size: 16px;
+    font-size: 12px;
     margin-left: 0px;
     color: white;
     text-transform: capitalize;

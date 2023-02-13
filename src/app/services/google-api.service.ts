@@ -38,7 +38,6 @@ export class GoogleApiService {
         } else {
           oAuthService.loadUserProfile().then((userProfile) => {
            console.log(JSON.stringify(userProfile));
-           
             /*  this.userProfileSubject.next(userProfile as UserInfo) */
           })
         }

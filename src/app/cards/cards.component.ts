@@ -68,19 +68,13 @@ export class CardsComponent implements OnInit {
       this.meta.addTag(
         { name: "description", content: "Аниме, Анимесериалы, Анимесериал, Смотреть Аниме онлайн, Аниме HD, совместный просмотр" })
     }
-    console.log(this.route.snapshot.queryParams.page);
-
     this.getData(1);
-    console.log(this.category);
   }
   getData(page) {
     this.api2Service.getData(this.category, this.page).subscribe((data) => {
-      console.log(data);
       this.data = data.data.items
       this.totalRecords = data.data.pagination.total
       this.totalPages = data.data.pagination.total_pages
-      console.log(this.totalRecords);
-      debugger
     });
   }
 

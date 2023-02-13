@@ -67,15 +67,14 @@ export class MoreFilmsComponent implements OnInit {
 
   getTopRated(page) {
     this.api2Service.getData(page).subscribe((data) => {
-      console.log(data);
       this.data = data.data.items
       this.totalRecords = data.data.pagination.per_page
     });
   }
   onSwiper(swiper) {
-    console.log(swiper)
+
   }
   onSlideChange() {
-    console.log('slide change');
+    
   }
 }

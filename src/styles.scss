@@ -1,5 +1,3 @@
-
-
 .container-card {
   background-color: #0e0d0d !important;
   z-index: 1;
@@ -33,9 +31,14 @@ h5 {
 }
 
 .swiper-slide .swiper-slide-prev {
+  font-size: 20px;
   margin-right: 0;
 }
 
+
+.swiper {
+  padding-top: 17px !important;
+}
 
 
 .ngx-pagination .current {
@@ -55,6 +58,7 @@ a:not([href]):not([class]) {
   margin-right: 6px;
   color: white;
 }
+
 html,
 body {
   height: 100%;
@@ -64,6 +68,7 @@ body {
   line-height: 1.25;
   font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
 }
+
 body {
   margin: 0;
 }
@@ -81,7 +86,8 @@ body {
   outline: 0;
 }
 
-.ngx-pagination a, .ngx-pagination button {
+.ngx-pagination a,
+.ngx-pagination button {
   color: #0a0a0a;
   display: block;
   padding: 0.1875rem 0.625rem;
@@ -279,16 +285,9 @@ body {
 button.mat-menu-item:hover {
   background: #817abb !important;
 }
+
 .mat-menu-content {
   padding: 0px !important;
-}
-
-.cdk-overlay-pane {
-  max-width: 90% !important;
-}
-
-.cdk-overlay-dark-backdrop {
-  background: rgba(0, 0, 0, 0.8) !important;
 }
 
 html,
@@ -301,7 +300,18 @@ body {
   width: 100% !important;
 }
 
-.swiper-button-prev, .swiper-button-next {
+.swiper-button-prev:after, .swiper-button-next:after {
+  font-size: 20px;
+}
+
+
+.swiper-button-prev,
+.swiper-button-next {
+  padding: 10px !important;
+  border-radius: 16px !important;
+  font-size: 28px !important;
+  color: #ffffff;
+  background: #573aadb0;
   top: 38% !important;
 }
 
@@ -318,4 +328,3 @@ body {
 }
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';

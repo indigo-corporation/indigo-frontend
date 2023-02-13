@@ -1,12 +1,14 @@
 .block {
-    background-color: #000000d4;
     padding: 10px;
     position: absolute;
     width: 100%;
     top: 45px;
+    background: linear-gradient(222deg, #1a1a6a, rgb(116 19 108));
     left: 0;
+    box-shadow: inset 0px 3px 155px 1px rgb(0 0 0 / 76%);
     right: 0px;
 }
+
 .genre-menu {
     list-style: none;
     text-align: center;
@@ -21,7 +23,7 @@ a {
 }
 
 .container {
-  font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
 }
 
 .genre-item {
@@ -31,6 +33,7 @@ a {
     padding: 6px;
     letter-spacing: 0.1em;
     font-weight: bold;
+
     &:hover {
         transition: color .2s;
         color: black;
@@ -46,6 +49,7 @@ a {
     margin-left: 15px;
     border-radius: 5px;
     padding: 5px;
+
     &:hover {
         transition: color .2s;
         background-color: #ffffff80;
@@ -62,12 +66,14 @@ a {
         padding: 0;
         background: none;
     }
+
     .genre-menu {
         list-style: none;
         text-align: center;
         display: flex;
         flex-direction: column;
     }
+
     .genre-element {
         margin-top: 17px;
         width: 100%;

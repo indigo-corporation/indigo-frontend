@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Observable } from 'rxjs';
 import { api } from '../services/api.service';
 import { api2Service } from '../services/api2.service';
@@ -25,16 +25,13 @@ export class MainComponent implements OnInit {
   ngOnInit() {
   this.title.setTitle("Смотреть фильмы и сериалы онлайн в хорошем качестве 720p hd и без регистрации")
   this.film=this.getData("film")
-   this.serial=this.getData("serial")
-   this.anime=this.getData("anime")
-   this.cartoon=this.getData("cartoon") 
-   
+  this.serial=this.getData("serial")
+  this.anime=this.getData("anime")
+  this.cartoon=this.getData("cartoon")
   }
-
 
   getData(type) {
-    console.log(type);
-    
-  return this.api2Service.getData(type)
+      return this.api2Service.getData(type)
   }
+
 }

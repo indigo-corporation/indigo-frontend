@@ -22,8 +22,8 @@
                     <input type="text" id="inputUserName" value="{{user.user_name}}" class="form-control" placeholder="karatel22" formControlName="user_name">
                 </div>
                 <div class="form-group">
-                    <label class="sett-label" for="inputUserName">Имя</label>
-                    <input type="text" id="inputUserName" value="{{user.name}}" class="form-control" placeholder="Ваше Имя" formControlName="name">
+                    <label class="sett-label" for="inputName">Имя</label>
+                    <input type="text" id="inputName" value="{{user.name}}" class="form-control" placeholder="Ваше Имя" formControlName="name">
                 </div>
                 
                 <!-- <h1 class="label-input date">Ваш день рождения</h1>
@@ -68,8 +68,8 @@
             <form [formGroup]="passChangeForm" (ngSubmit)="passChage()" class="page">
                 <h1 class="passname">Изменить пароль</h1>
                 <div class="form-group">
-                    <label class="sett-label" for="inputUserName">Пароль</label>
-                    <input type="password" id="inputUserName" class="form-control" placeholder="Пароль" formControlName="pass">
+                    <label class="sett-label" for="inputPassword">Пароль</label>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" formControlName="pass">
                     <div class="auth-error" *ngIf="pass.errors?.['required'] && (pass.touched || pass.dirty)">
                         Заполните поле Пароль
                     </div>
@@ -80,8 +80,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="sett-label" for="inputUserName">Подтвердить пароль</label>
-                    <input type="password" id="inputUserName" class="form-control" placeholder="Подтвердить пароль" formControlName="confPass">
+                    <label class="sett-label" for="inputConfirmPassword">Подтвердить пароль</label>
+                    <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Подтвердить пароль" formControlName="confPass">
                     <div class="auth-error" *ngIf="confPass.errors?.['required'] && (confPass.touched || confPass.dirty)">
                         Заполните поле Подтвердить Пароль
                     </div>

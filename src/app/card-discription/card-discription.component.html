@@ -1,81 +1,89 @@
-<div  class="container container-card">
+<div class="container container-card">
     <div *ngIf="isPlayer">
-        <app-player *ngIf="film" style="height: 500px;" [film]="film"></app-player> 
+        <app-player *ngIf="film" style="height: 500px;" [film]="film"></app-player>
     </div>
     <div *ngIf="!isPlayer">
-        <app-player *ngIf="film" style="height: 500px;" [film]="film"></app-player> 
-    </div>   
+        <app-player *ngIf="film" style="height: 500px;" [film]="film"></app-player>
+    </div>
     <div class="buttons-bl">
         <div class="content-card">
-            <div class="poster">
-                <img class="card-image" src="{{film.poster_url}}">
-                
+            <div *ngIf="film" class="poster">
+                <img class="card-image" [src]="film.poster_url">
+
                 <div class="discriptionforfilm">
                     <div class="discriptionforfilm2">
                         <h1 style="margin-left: 0" class="card-title-original">{{film.original_title}}</h1>
-                        <h1 class="card-title-original" >
+                        <h1 class="card-title-original">
                             <div class="raiting-box">
                                 <div style="color: #f3c45b;" *ngIf="film.imdb_rating">IMDb {{film.imdb_rating}}</div>
-                            <div style="margin-left: 10px;
+                                <div style="margin-left: 10px;
                             color: #c67aed;" *ngIf="film.shiki_rating">
-                                <div>SHIKIMORI {{film.shiki_rating}}</div>
+                                    <div>SHIKIMORI {{film.shiki_rating}}</div>
+                                </div>
                             </div>
-                            </div>  
                         </h1>
                     </div>
-                    
+
                     <h1 class="card-title-ru">{{film.title}}</h1>
                     <div class="cont">
                         <div class="stars">
-                            <ngb-rating [max]="5"([film])="film" (click)="postStars()" [formControl]="raitingControl"></ngb-rating>
-                            <span *ngIf="film.stars" style="margin-left: 16px;">{{film.stars | number:'1.2-2'}}</span>
+                            <ngb-rating [max]="5" ([film])="film" (click)="postStars()"
+                                [formControl]="raitingControl"></ngb-rating>
+                            <span *ngIf="film.stars" style="margin-left: 16px;">{{film.stars | number:'1.1-1'}}</span>
                             <span style="margin-left: 16px;" *ngIf="!film.stars">0</span>
-                               <!--  <ngx-star-rating (click)="post Stars()" [(ngModel)]="rating3" [id]="'rating3'"></ngx-star-rating><span> {{ rating3 }}</span>
+                            <!--  <ngx-star-rating (click)="post Stars()" [(ngModel)]="rating3" [id]="'rating3'"></ngx-star-rating><span> {{ rating3 }}</span>
                                 <div>Rating: {{rating3}}</div>  -->
                         </div>
-                        
-                      </div>
+
+                    </div>
                     <div class="buttons">
-                       <!--  <button style="margin-left: 0" (click)="change(false)" mat-raised-button class="card-btn">
+                        <!--  <button style="margin-left: 0" (click)="change(false)" mat-raised-button class="card-btn">
                             <i class="fas fa-play-circle"></i>
                             Смотреть вместе
                         </button> -->
-                            <button (click)="postFavorite()" *ngIf="!isFavorite" class="favorite">
-                                <span mat-raised-button class="favorite-text">Добавить в избранные</span>
-                                <input style="display: none" id="favorite" type="checkbox">
-                                <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
-                            </button >
-                            
-                            <button (click)="removeFavorite()" *ngIf="isFavorite" class="favorite">
-                                <span  mat-raised-button class="favorite-text">Убрать из избранных</span>
-                                <input style="display: none" id="favorite" checked type="checkbox">
-                                <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
-                            </button >
-                    </div> 
+                        <button (click)="postFavorite()" *ngIf="!isFavorite" class="favorite">
+                            <span mat-raised-button class="favorite-text">Добавить в избранные</span>
+                            <input style="display: none" id="favorite" type="checkbox">
+                            <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
+                        </button>
+
+                        <button (click)="removeFavorite()" *ngIf="isFavorite" class="favorite">
+                            <span mat-raised-button class="favorite-text">Убрать из избранных</span>
+                            <input style="display: none" id="favorite" checked type="checkbox">
+                            <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="discription-text-block">
+                        <p class="discription-text">{{film.release_date | date:"y":"ru"}},</p>
+                        <p class="discription-text" *ngFor="let genre of film.genres"> {{genre.title}},</p>
+                        <span *ngFor="let country of film.countries">
+                            <p style="margin-left: 3px;" class="discription-text"> {{country.title}}</p>
+                        </span>
+                      <!--   <p *ngIf="film.runtime" class="discription-text">{{film.runtime}} минуты</p> -->
+                    </div>
                 </div>
-                
+
             </div>
-         
-    </div>
-    <div class="block-title">
-        
-        <div class="discription-text-block">
-            <p class="discription-text">{{film.release_date | date:"y":"ru"}},</p>
-            <p class="discription-text" *ngFor="let genre of film.genres"> {{genre.title}},</p>
-            <span *ngFor="let country of film.countries">
-            <p style="margin-left: 3px;" class="discription-text" >{{country.title}} </p>
-        </span>
         </div>
-        <p style="margin-left: 10px;">{{film.runtime}} минуты</p>
-        <details>
-                <p class="t">{{film.overview}}</p>
-            <summary>Описание</summary>
-            
-        </details>
-        
+        <div *ngIf="film" class="block-title">
+            <div style="position: relative;">
+                <h1 class="overviewFilm">Про что {{nameType[category]}} «{{film.title}}» :</h1>
+                <div *ngIf="!textView">
+                    <p class="t">{{film.overview}}
+                    </p>
+                </div>
+                <div [@enterAnimationText] *ngIf="textView">
+                    <p class="textOverview">{{film.overview}}
+                    </p>
+                </div>
+                <a *ngIf="!textView" class="moreTextBtn" (click)="moreText()">Подробнеe</a>
+                <a *ngIf="textView"class="moreTextBtn" (click)="backText()">Свернуть</a>
+            </div>
+
+
+        </div>
+        <div style="position:relative">
+            <!--   <app-card-swiper></app-card-swiper> -->
+
+        </div>
     </div>
-    <div style="position:relative">
-      <!--   <app-card-swiper></app-card-swiper> -->
-        
-    </div>
-</div>

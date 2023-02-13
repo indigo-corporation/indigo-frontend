@@ -1,5 +1,5 @@
 <div class="comments-body">
-    <div class="avatar">
+    <div *ngIf="comment" class="avatar">
         <img class="avatars-comments img-responsive"
             onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" src="{{comment.user.poster_url}}">
         <a (click)="onLogin()" class="comments-user">{{comment.user.name}}</a>

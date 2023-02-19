@@ -20,6 +20,7 @@ export class CardContentComponent implements OnInit {
   totalRecords: string
   film: any
   login:any
+  slug
   isTogther: boolean = true
   isFilm:boolean = true
   constructor(
@@ -34,9 +35,11 @@ export class CardContentComponent implements OnInit {
       
     }
   ngOnInit() {
-    let slug = this.route.snapshot.params.slug;
-    slug = slug.split("-")
-    this.id = slug.pop()
+    var slug:string = this.route.snapshot.params.id;
+    debugger
+    this.slug =slug.split("-")
+    this.id = this.slug.pop()
+  
    this.getfind(this.id);
     this.auth.user$.subscribe(x => {
       this.login = x != null 

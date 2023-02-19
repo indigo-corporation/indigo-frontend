@@ -18,6 +18,7 @@ export class MoreFilmsComponent implements OnInit {
   page: number = 1
   name: any
   log: any
+  category
   card: any
   public id: any
   public swiperConfig: SwiperOptions = {
@@ -61,6 +62,7 @@ export class MoreFilmsComponent implements OnInit {
 
   }
   ngOnInit() {
+    this.category = this.route.snapshot.url[0].path
     Swiper.use([Navigation]);
     this.getTopRated(1);
   }

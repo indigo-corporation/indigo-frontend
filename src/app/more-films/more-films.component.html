@@ -1,81 +1,47 @@
-<!-- <div class="container block">
-    <h1 class="title-new_film">Рекомендации</h1>
-    <swiper
-      [config]="config"
-      (swiper)="onSwiper($event)"
-      (slideChange)="onSlideChange()"
-    >
+<div style="min-height: 100%" class="container main block">
+  <h1 class="card-titile">Рекомендации</h1>
+  <swiper [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
     <ng-template *ngFor="let card of data" swiperSlide>
-      <div class="card">
-        <div class="card-head">
-          <a routerLink="/card-profile/{{card.id}}">
-            <img class="filters__img" src="{{card.poster_url}}">
-          </a>
-        </div>
-        <div routerLink="/card-profile/{{card.id}}" class="card-play-ic">
-          <i class="fa fa-play" aria-hidden="true"></i>
-          <p class="card-icon_text">Смотреть</p>
-        </div>
-        <div class="card_body">
-          <a routerLink="/card-profile/{{card.id}}" class="film-title">{{card.title}}</a>
-          <p class="card-genre"><span class="genre-div"
-              *ngFor="let genre of card.genres.slice (0, 1);">{{genre.title}},</span> <span class="card-year">
-              {{card.year}}</span> </p>
-          <div *ngIf="card.imdb_rating" class="imdb-raiting">IMDb {{card.imdb_rating}}</div>
-          <div *ngIf="card.shiki_rating" class="shiki-raiting">
-            <div class="shiki-logo">SHIKIMORI</div>
-            <h1 class="raiting">{{card.shiki_rating}}</h1>
+      <div *ngIf="data" class="row card-row">
+        <!-- <app-card [(data)]="card"></app-card> -->
+
+        <div class="card col-md-3">
+          <div class="card-head">
+            <ng-template class="tooltip" #HtmlContent>
+              <div class="tooltip_body">
+                <a routerLink="/{{card.category}}/{{card.slug}}" class="tooltip-title">{{card.title}}</a>
+                <p class="tooltip-genre"><span class="genre-div" *ngFor="let genre of card.genres">{{genre.title}},
+                  </span> <span class="card-year">
+                    {{card.year}}</span> </p>
+                <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
+                <div *ngIf="card.shiki_rating">
+                  <div class="shiki">SHIKIMORI {{card.shiki_rating}} </div>
+                </div>
+                <p class="tooltip-overview" style="text-align: left;">{{card.overview}}<span>...</span></p>
+              </div>
+            </ng-template>
+            <a routerLink="/{{card.category}}/{{card.slug}}">
+              <img class="filters__img" src="{{card.poster_url}}">
+            </a>
+            <mat-icon fxLayout="row" fxFlex fxLayoutAlign="start center" tooltip="Tooltip" [options]="myOptions"
+              [tooltip]="HtmlContent" contentType="template" class="info-icon">info</mat-icon>
+            <div routerLink="/{{card.category}}/{{card.slug}}" class="card-play-ic">
+              <i class="fa fa-play" aria-hidden="true"></i>
+              <p class="card-icon_text">Смотреть</p>
+            </div>
+          </div>
+          <div class="card_body">
+            <a routerLink="/{{card.category}}/{{card.slug}}" class="film-title">{{card.title}}</a>
+            <p class="card-genre"><span class="genre-div"
+                *ngFor="let genre of card.genres.slice (0, 1);">{{genre.title}},</span> <span class="card-year">
+                {{card.year}}</span> </p>
+            <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
+            <div *ngIf="card.shiki_rating">
+              <div class="shiki">SHIKIMORI {{card.shiki_rating}} </div>
+            </div>
           </div>
         </div>
-      </div>       
+      </div>
     </ng-template>
-    </swiper>
-  </div> -->
-
-  <div style="min-height: 100%" class="container main block">
-    <h1 class="card-titile">Рекомендации</h1>
-    <swiper [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
-      <ng-template *ngFor="let card of data" swiperSlide>
-        <div *ngIf="data" class="row card-row">
-         <!-- <app-card [(data)]="card"></app-card> -->
-         
-           <div class="card col-md-3">
-            <div class="card-head">
-              <ng-template class="tooltip" #HtmlContent>
-                <div class="tooltip_body">
-                  <a routerLink="/card-profile/{{card.id}}" class="tooltip-title">{{card.title}}</a>
-                  <p class="tooltip-genre"><span class="genre-div"
-                      *ngFor="let genre of card.genres">{{genre.title}}, </span> <span class="card-year">
-                      {{card.year}}</span> </p>
-                  <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
-                  <div *ngIf="card.shiki_rating">
-                    <div class="shiki">SHIKIMORI {{card.shiki_rating}} </div>
-                  </div>
-                  <p class="tooltip-overview" style="text-align: left;">{{card.overview}}<span>...</span></p>
-                </div>
-              </ng-template>
-              <a routerLink="/card-profile/{{card.id}}">
-                <img class="filters__img" src="{{card.poster_url}}">
-              </a>
-              <mat-icon fxLayout="row" fxFlex fxLayoutAlign="start center"  tooltip="Tooltip" [options]="myOptions" [tooltip]="HtmlContent" 
-            contentType="template" class="info-icon">info</mat-icon>
-              <div routerLink="/card-profile/{{card.id}}" class="card-play-ic">
-                <i class="fa fa-play" aria-hidden="true"></i>
-                <p class="card-icon_text">Смотреть</p>
-              </div>
-            </div>
-            <div class="card_body">
-              <a routerLink="/card-profile/{{card.id}}" class="film-title">{{card.title}}</a>
-              <p class="card-genre"><span class="genre-div"
-                  *ngFor="let genre of card.genres.slice (0, 1);">{{genre.title}},</span> <span class="card-year">
-                  {{card.year}}</span> </p>
-              <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
-              <div *ngIf="card.shiki_rating">
-                <div class="shiki">SHIKIMORI {{card.shiki_rating}} </div>
-              </div>
-            </div>
-          </div> 
-        </div>
-      </ng-template>
-    </swiper>
-  </div>
+  </swiper>
+</div>

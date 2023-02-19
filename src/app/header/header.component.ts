@@ -73,6 +73,7 @@ export class HeaderComponent implements OnInit {
   window: any
   id: any
   page: any
+  category
   constructor(
     private router: Router,
     @Inject(DOCUMENT) document,

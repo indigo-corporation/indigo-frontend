@@ -1,7 +1,7 @@
 <form [formGroup]= "loginForm">
   <div class="form-group">
     <label for="inputUsernameEmail">Email</label>
-    <input type="text" autofocus="0" placeholder="Поле ввода пустое" class="form-control" formControlName="email">
+    <input type="text" tabindex="-1" autofocus="0" placeholder="Введите Email" class="form-control" formControlName="email">
     <div class="auth-error" *ngIf="email.errors?.['required'] && (email.touched || email.dirty)">
       Заполните поле Email
     </div>
@@ -11,12 +11,12 @@
   </div>
   <div class="form-group">
     <label for="inputPassword">Пароль</label>
-    <input type="password" placeholder="Поле ввода пустое" class="form-control" formControlName="password">
+    <input type="password" tabindex="-1" placeholder="Введите Пароль" class="form-control" formControlName="password">
     <div class="auth-error" *ngIf="password.errors?.['required'] && (password.touched || password.dirty)">
       Заполните поле Пароль
     </div>
     <div style="display: flex; justify-content: flex-end;">
-      <a class="btn-remember" (click)="close()" routerLink="/remember-pass">Забыл пароль?</a>
+      <a tabindex="-1" class="btn-remember" (click)="close()" routerLink="/remember-pass">Забыл пароль?</a>
     </div>
     
     <div class="auth-error" *ngIf="password.errors?.['minlength'] || password.errors?.['maxlength'] && (password.touched || password.dirty)">
@@ -31,10 +31,10 @@
   <div>
 
   </div>
-  <button mat-raised-button (click)="logIn()" type="submit" class="login">
+  <button tabindex="-1" mat-raised-button (click)="logIn()" type="submit" class="login">
     Войти
   </button>
-  <button mat-raised-button routerLink="/reg" (click)="close()" class="btn-reg">
+  <button tabindex="-1" mat-raised-button routerLink="/reg" (click)="close()" class="btn-reg">
     Регистрация
   </button>
 </form>

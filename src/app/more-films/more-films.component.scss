@@ -138,6 +138,7 @@ a {
 .card:hover .filters__img {
   background-color: black;
   opacity: 0.3;
+  transition: 0.6s;
 }
 
 .card:hover .imdb-raiting {

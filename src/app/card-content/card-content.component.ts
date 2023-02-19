@@ -34,8 +34,10 @@ export class CardContentComponent implements OnInit {
       
     }
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.getfind(this.id);
+    let slug = this.route.snapshot.params.slug;
+    slug = slug.split("-")
+    this.id = slug.pop()
+   this.getfind(this.id);
     this.auth.user$.subscribe(x => {
       this.login = x != null 
     })

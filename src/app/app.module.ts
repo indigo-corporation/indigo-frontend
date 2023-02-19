@@ -102,8 +102,7 @@ const appRoutes: Routes = [
   { path: 'anime', component: CardsComponent },
   { path: 'serial', component: CardsComponent },
   { path: 'cartoon', component: CardsComponent },
- /*  { path: ':category/:id/:title', component: CardContentComponent }, */
-  { path: 'card-profile/:id', component: CardContentComponent },
+  { path: ':category/:id', component: CardContentComponent },
   { path: 'reg', component: RegisterComponent },
   { path: 'user-page/:id', component: UserPageComponent, canActivate: [AuthGuard] },
   { path: 'user-page', component: UserPageComponent, canActivate: [AuthGuard] },

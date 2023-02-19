@@ -39,6 +39,7 @@ export class CardsComponent implements OnInit {
     'showDelay': 500,
   }
   ngOnInit() {
+    
     this.page=this.route.snapshot.queryParams.page
     if(!this.page) {
       this.page = 1 
@@ -71,6 +72,7 @@ export class CardsComponent implements OnInit {
     this.getData(1);
   }
   getData(page) {
+    debugger
     this.api2Service.getData(this.category, this.page).subscribe((data) => {
       this.data = data.data.items
       this.totalRecords = data.data.pagination.total

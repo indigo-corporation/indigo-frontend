@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   query: string
   find: string
   page: any
+  category 
   public id: any
   constructor(
     private input: ElementRef, 
@@ -27,7 +28,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-
+    /* this.category = this.route.snapshot.url[0].path */
   }
 
   @ViewChild("search") el:ElementRef;
@@ -39,7 +40,6 @@ export class SearchComponent implements OnInit, AfterViewInit {
     if ($event.target.value.length === 0) {
       this.data = []
     }
-
     if ($event.target.value.length >= 2) {
       this.search($event.target.value, 1)
     }

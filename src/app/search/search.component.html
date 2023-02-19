@@ -7,12 +7,12 @@
             </button>
         </div>
         <div *ngIf="data">
-            <div [routerLink]="['/card-profile/',card.id]" *ngFor="let card of data.slice(0, 4)" class="card card-block">
+            <div routerLink="/{{card.category}}/{{card.slug}}" *ngFor="let card of data.slice(0, 4)" class="card card-block">
                 <div class="img-block">
-                    <a routerLink="card-profile/{{card.id}}"> <img class="cards-img" src="{{card.poster_url}}"></a>
+                    <a routerLink="/{{card.category}}/{{card.slug}}"> <img class="cards-img" src="{{card.poster_url}}"></a>
                 </div>
                 <div class="card-head">
-                        <a routerLink="/card-profile/{{card.id}}" class="film-title">{{card.title}}</a> 
+                        <a routerLink="/{{card.category}}/{{card.slug}}" class="film-title">{{card.title}}</a> 
                         <p class="card-genre"><span class="genre-div" *ngFor="let genre of card.genres.slice (0, 1);">{{genre.title}},</span> <span class="card-year">  {{card.year}}</span> </p>
                         <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
                 <div *ngIf="card.shiki_rating">

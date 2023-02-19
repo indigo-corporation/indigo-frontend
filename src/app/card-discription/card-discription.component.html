@@ -29,8 +29,8 @@
                         <div class="stars">
                             <ngb-rating [max]="5" ([film])="film" (click)="postStars()"
                                 [formControl]="raitingControl"></ngb-rating>
-                            <span *ngIf="film.stars" style="margin-left: 16px;">{{film.stars | number:'1.1-1'}}</span>
-                            <span style="margin-left: 16px;" *ngIf="!film.stars">0</span>
+                            <span *ngIf="film.stars" class="stars-number">{{film.stars | number:'1.1-1'}}</span>
+                            <span class="stars-number" *ngIf="!film.stars">0</span>
                             <!--  <ngx-star-rating (click)="post Stars()" [(ngModel)]="rating3" [id]="'rating3'"></ngx-star-rating><span> {{ rating3 }}</span>
                                 <div>Rating: {{rating3}}</div>  -->
                         </div>

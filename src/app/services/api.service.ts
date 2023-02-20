@@ -1,24 +1,38 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { HttpHeaders } from '@angular/common/http';
 @Injectable({
     providedIn: 'root'
 })
 
 export class api {
-    readonly apiKey = "api_key=2f260335bbb14d853ded353267749758"
-    readonly apiUrl = "https://api.themoviedb.org/3/"
-    readonly lang = "language=ru"
+    readonly apiUrl = "https://base.ashdi.vip/api/"
+    readonly apiKey = "api_key=99a660-8378e4-4adb0a-eeeb92-86b677"
     constructor(private http: HttpClient) { }
 
-    get(method, params) {
-        let url = this.apiUrl + method + "?" + this.apiKey + "&" + this.lang
+    get(method: string, params: any = {}) {
+       let headers = this.createAuthorizationHeader() 
+       console.log(headers);
+       
+        let url = this.apiUrl + method
             for (var key in params) {
-                url+="&"+key+"="+params[key]
+                url+="?"+key +"="+params[key] +"&" +this.apiKey
             }
             console.log(this.http.get<any>(url));
             
-        return this.http.get<any>(url)
+        return this.http.get<any>(url,{headers:headers})
+    }
+
+   createAuthorizationHeader() {
+        let headers = new HttpHeaders()
+          .set("api_key", "99a660-8378e4-4adb0a-eeeb92-86b677")
+        return headers
+      }
+   
+
+    getAshvid(imdb): Observable<any> {
+        return this.get("product/read_one.php", {imdb:imdb})
     }
 
     getTopRated(page): Observable<any> {

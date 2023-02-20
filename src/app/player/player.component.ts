@@ -7,6 +7,8 @@ import { Inject } from '@angular/core';
 import { Renderer2 } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { api } from '../services/api.service';
 
 @Component({
   selector: 'app-player',
@@ -19,16 +21,30 @@ export class PlayerComponent implements OnInit {
   isPlayerKodic:boolean=true
   isPlayerSveta:boolean=false
   srcPlayer:any
+  asvPlayer
   public safeSrc: SafeResourceUrl;  
-  constructor(private sanitizer: DomSanitizer,private router: Router
+  constructor(
+    private sanitizer: DomSanitizer,
+    private router: Router,
+    private api:api
   ) { }
 
   ngOnInit() {
+    this.ashvid()
       if(this.film.shiki_id) {
         this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://kodik.cc/find-player?shikimoriID="+this.film.shiki_id);
       } else {
         this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id="+this.film.imdb_id);
       }
+  }
+
+  ashvid() {
+    this.api.getAshvid(this.film.imdb_id).subscribe((data=> {
+      this.asvPlayer = data.url
+      console.log(this.asvPlayer);
+      
+      debugger
+    }))
   }
 
   onPlayer(player) {
@@ -38,11 +54,15 @@ export class PlayerComponent implements OnInit {
       this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://kodik.cc/find-player?shikimoriID="+shId);
       return
     }
-    if(player==='cdn' && this.film.imdb_id) {
+    if(player ==='cdn' && this.film.imdb_id) {
       this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id="+this.film.imdb_id);
     }
+     if(player ==='ASHDI' && this.film.imdb_id) {
+       this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl(this.asvPlayer)
+    } 
+
+    //ashdi.vip/serial/32
   
   }
-
 
 }

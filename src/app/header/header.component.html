@@ -1,5 +1,5 @@
 <nav id="navbar" (scroll)="onWindowScroll($event)" class="container navbar navbar-expand-lg navbar-light bg-light header">
-  <a class="brand" routerLink="">INDIGOFILMS</a>
+  <a class="brand" routerLink="" href="">INDIGOFILMS</a>
   <a *ngIf="!login" (click)="openModal()" class="btn btn-danger login2">Войти
   </a>
   <div *ngIf="login" class="login">
@@ -18,7 +18,7 @@
     </div>
   </div>
   <mat-menu #menu="matMenu">
-    <button routerLink="/user-page" mat-menu-item><i class="fa fa-user" aria-hidden="true"><span
+    <button routerLink="/user-page" href="/user-page" mat-menu-item><i class="fa fa-user" aria-hidden="true"><span
           class="name-menu">Профиль</span></i></button>
     <button routerLink="/user-settings" href="/user-settings" mat-menu-item><i class="fa fa-cog" aria-hidden="true"><span
           class="name-menu">Настройки</span></i></button>
@@ -41,7 +41,7 @@
           <app-genre-menu [@subMenuAnimation] type="film" *ngIf="isArrow1"></app-genre-menu>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/serial">Сериалы
+          <a class="nav-link" routerLink="/serial" href="/serial">Сериалы
           </a>
           <button class="btn-menu" (click)="genreArrow($event)">
             <i id="isArrow2" class='fas fa-caret-down arrow'></i>
@@ -50,7 +50,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/cartoon">Мультфильмы
+          <a class="nav-link" routerLink="/cartoon" href="/cartoon">Мультфильмы
           </a>
           <button class="btn-menu" (click)="genreArrow($event)">
             <i id="isArrow3" class='fas fa-caret-down arrow'></i>
@@ -59,7 +59,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/anime">Аниме
+          <a class="nav-link" routerLink="/anime" href="/anime">Аниме
           </a>
           <button class="btn-menu" (click)="genreArrow($event)">
             <i id="isArrow4" class='fas fa-caret-down arrow'></i>

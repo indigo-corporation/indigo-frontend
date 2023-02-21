@@ -1,5 +1,5 @@
 <div style="min-height: 100%" class="container main block">
-  <a routerLink="{{category}}" class="card-title">
+  <a routerLink="{{category}}" href="{{category}}" class="card-title">
     {{nameType[category]}}
   </a>
   <swiper *ngIf="data" [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">

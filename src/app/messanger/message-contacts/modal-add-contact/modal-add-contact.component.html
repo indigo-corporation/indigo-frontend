@@ -15,7 +15,7 @@
             <img onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" class="avatars-comments"
               src="{{contact.poster_url}}">
             <div class="user-block">
-              <a class="message-username" routerLink="/user-page/{{contact.id}}">{{contact.name}}</a>
+              <a class="message-username" routerLink="/user-page/{{contact.id}}" href="/user-page/{{contact.id}}">{{contact.name}}</a>
               <p class="message-user_status">
                 В сети
               </p>

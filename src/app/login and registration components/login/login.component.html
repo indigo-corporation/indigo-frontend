@@ -16,7 +16,7 @@
       Заполните поле Пароль
     </div>
     <div style="display: flex; justify-content: flex-end;">
-      <a tabindex="-1" class="btn-remember" (click)="close()" routerLink="/remember-pass">Забыл пароль?</a>
+      <a tabindex="-1" class="btn-remember" (click)="close()" routerLink="/remember-pass" href="/remember-pass">Забыл пароль?</a>
     </div>
     
     <div class="auth-error" *ngIf="password.errors?.['minlength'] || password.errors?.['maxlength'] && (password.touched || password.dirty)">
@@ -34,7 +34,7 @@
   <button tabindex="-1" mat-raised-button (click)="logIn()" type="submit" class="login">
     Войти
   </button>
-  <button tabindex="-1" mat-raised-button routerLink="/reg" (click)="close()" class="btn-reg">
+  <button tabindex="-1" mat-raised-button routerLink="/reg" href="/reg" (click)="close()" class="btn-reg">
     Регистрация
   </button>
 </form>

@@ -17,193 +17,200 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "optimization": true,
+            "outputHashing": "all",
+            "sourceMap": {
+              "hidden": false,
+              "styles": true,
+              "scripts": true
+            },
             "outputPath": "dist/front-end/browser",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss",
-              "./node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/@ctrl/ngx-emoji-mart/picker.css",
-              "./node_modules/select2/dist/css/select2.min.css"
-            ],
-            "scripts": [
-              "./node_modules/jquery/dist/jquery.min.js",
-              "node_modules/select2/dist/js/select2.min.js",
-              "src/custom.js"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "3mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "3mb",
-                  "maximumError": "4mb"
-                }
+              "index": "src/index.html",
+              "main": "src/main.ts",
+              "polyfills": "src/polyfills.ts",
+              "tsConfig": "tsconfig.app.json",
+              "inlineStyleLanguage": "scss",
+              "assets": [
+                "src/favicon.ico",
+                "src/assets"
               ],
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
+              "styles": [
+                "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+                "src/styles.scss",
+                "./node_modules/bootstrap/scss/bootstrap.scss",
+                "node_modules/@ctrl/ngx-emoji-mart/picker.css",
+                "./node_modules/select2/dist/css/select2.min.css"
               ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "front-end:build:production"
-            },
-            "development": {
-              "browserTarget": "front-end:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "front-end:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.min.js"
-            ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
-          }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/front-end/server",
-            "main": "server.ts",
-            "tsConfig": "tsconfig.server.json",
-            "sourceMap": true,
-            "optimization": false,
-            "inlineStyleLanguage": "scss"
-          },
-          "configurations": {
-            "production": {
-              "outputHashing": "media",
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
+              "scripts": [
+                "./node_modules/jquery/dist/jquery.min.js",
+                "node_modules/select2/dist/js/select2.min.js",
+                "src/custom.js"
               ]
             },
-            "development": {
-              "optimization": false,
+            "configurations": {
+              "production": {
+                "budgets": [
+                  {
+                    "type": "initial",
+                    "maximumWarning": "3mb",
+                    "maximumError": "3mb"
+                  },
+                  {
+                    "type": "anyComponentStyle",
+                    "maximumWarning": "3mb",
+                    "maximumError": "4mb"
+                  }
+                ],
+                "fileReplacements": [
+                  {
+                    "replace": "src/environments/environment.ts",
+                    "with": "src/environments/environment.prod.ts"
+                  }
+                ],
+                "outputHashing": "all"
+              },
+              "development": {
+                "buildOptimizer": false,
+                "optimization": false,
+                "vendorChunk": true,
+                "extractLicenses": false,
+                "sourceMap": true,
+                "namedChunks": true
+              }
+            },
+            "defaultConfiguration": "production"
+          },
+          "serve": {
+            "builder": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+              "production": {
+                "browserTarget": "front-end:build:production"
+              },
+              "development": {
+                "browserTarget": "front-end:build:development"
+              }
+            },
+            "defaultConfiguration": "development"
+          },
+          "extract-i18n": {
+            "builder": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+              "browserTarget": "front-end:build"
+            }
+          },
+          "test": {
+            "builder": "@angular-devkit/build-angular:karma",
+            "options": {
+              "main": "src/test.ts",
+              "polyfills": "src/polyfills.ts",
+              "tsConfig": "tsconfig.spec.json",
+              "karmaConfig": "karma.conf.js",
+              "inlineStyleLanguage": "scss",
+              "assets": [
+                "src/favicon.ico",
+                "src/assets"
+              ],
+              "scripts": [
+                "node_modules/jquery/dist/jquery.min.js"
+              ],
+              "styles": [
+                "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+                "src/styles.scss"
+              ]
+            }
+          },
+          "lint": {
+            "builder": "@angular-eslint/builder:lint",
+            "options": {
+              "lintFilePatterns": [
+                "src/**/*.ts",
+                "src/**/*.html"
+              ]
+            }
+          },
+          "server": {
+            "builder": "@angular-devkit/build-angular:server",
+            "options": {
+              "outputPath": "dist/front-end/server",
+              "main": "server.ts",
+              "tsConfig": "tsconfig.server.json",
               "sourceMap": true,
-              "extractLicenses": false
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve-ssr": {
-          "builder": "@nguniversal/builders:ssr-dev-server",
-          "configurations": {
-            "development": {
-              "browserTarget": "front-end:build:development",
-              "serverTarget": "front-end:server:development"
+              "optimization": false,
+              "inlineStyleLanguage": "scss"
             },
-            "production": {
-              "browserTarget": "front-end:build:production",
-              "serverTarget": "front-end:server:production"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "prerender": {
-          "builder": "@nguniversal/builders:prerender",
-          "options": {
-            "routes": [
-              "/",
-              "/search-page",
-              "/support",
-              "/copyright",
-              "/remember-pass",
-              "/film",
-              "/anime",
-              "/serial",
-              "/cartoon",
-              "/card-profile/:id",
-              "/dialog",
-              "/reg",
-              "/user-page/:id",
-              "/user-page",
-              "/404",
-              "**"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "front-end:build:production",
-              "serverTarget": "front-end:server:production"
+            "configurations": {
+              "production": {
+                "outputHashing": "media",
+                "fileReplacements": [
+                  {
+                    "replace": "src/environments/environment.ts",
+                    "with": "src/environments/environment.prod.ts"
+                  }
+                ]
+              },
+              "development": {
+                "optimization": false,
+                "sourceMap": true,
+                "extractLicenses": false
+              }
             },
-            "development": {
-              "browserTarget": "front-end:build:development",
-              "serverTarget": "front-end:server:development"
-            }
+            "defaultConfiguration": "production"
           },
-          "defaultConfiguration": "production"
+          "serve-ssr": {
+            "builder": "@nguniversal/builders:ssr-dev-server",
+            "configurations": {
+              "development": {
+                "browserTarget": "front-end:build:development",
+                "serverTarget": "front-end:server:development"
+              },
+              "production": {
+                "browserTarget": "front-end:build:production",
+                "serverTarget": "front-end:server:production"
+              }
+            },
+            "defaultConfiguration": "development"
+          },
+          "prerender": {
+            "builder": "@nguniversal/builders:prerender",
+            "options": {
+              "routes": [
+                "/",
+                "/search-page",
+                "/support",
+                "/copyright",
+                "/remember-pass",
+                "/film",
+                "/anime",
+                "/serial",
+                "/cartoon",
+                "/card-profile/:id",
+                "/dialog",
+                "/reg",
+                "/user-page/:id",
+                "/user-page",
+                "/404",
+                "**"
+              ]
+            },
+            "configurations": {
+              "production": {
+                "browserTarget": "front-end:build:production",
+                "serverTarget": "front-end:server:production"
+              },
+              "development": {
+                "browserTarget": "front-end:build:development",
+                "serverTarget": "front-end:server:development"
+              }
+            },
+            "defaultConfiguration": "production"
+          }
         }
       }
+    },
+    "cli": {
+      "analytics": "dd229f2c-1bbf-41c8-a206-871caea0f8cf",
+      "schematicCollections": [
+        "@angular-eslint/schematics"
+      ]
     }
-  },
-  "cli": {
-    "analytics": "dd229f2c-1bbf-41c8-a206-871caea0f8cf",
-    "schematicCollections": [
-      "@angular-eslint/schematics"
-    ]
   }
-}

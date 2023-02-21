@@ -3,7 +3,7 @@
         <app-commentform (commentPosted)="onCommentPosted({comment:$event, parentId:null})" *ngIf="login" [comment]="comment" [filmId]="filmId"></app-commentform>
         <div class="comment-guard" *ngIf="!login">
             Для того чтобы оставить свой отзыв, вам нужно <span (click)="openDialog()" class="login">войти</span> или
-            <span routerLink="/reg" class="login">зарегистрироваться</span>.
+            <span routerLink="/reg" href="/reg" class="login">зарегистрироваться</span>.
         </div>
         <ms-infinite-scroll (scrolled)="genContent()">
         <app-comment (likeSubmitted)="onlikePosted($event)" *ngFor="let comment of comments" [filmId]="filmId" [comment]="comment">

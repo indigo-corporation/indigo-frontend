@@ -79,7 +79,7 @@ export class HeaderComponent implements OnInit {
     @Inject(DOCUMENT) document,
     private route: ActivatedRoute,
     private http: HttpClient,
-    private host: ElementRef,
+    private elementRef: ElementRef,
     private snackBar: MatSnackBar,
     private auth: authService,
     private api2Service: api2Service,
@@ -105,15 +105,13 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
+    const navbar = this.elementRef.nativeElement.querySelector('#navbar');
     if (window.pageYOffset > 211) {
-      let element = document.getElementById('navbar');
-      $("nav").addClass("sticky");
+      navbar.classList.add('sticky');
     } else {
-      let element = document.getElementById('navbar');
-      $("nav").removeClass("sticky");
+      navbar.classList.remove('sticky');
     }
   }
-
 
   ngOnInit() {
     this.auth.getUser()

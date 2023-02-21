@@ -12,7 +12,7 @@ import { AlertifyService } from '../services/alertify.service';
 })
 export class SearchPageComponent implements OnInit {
   term: any
-  totalRecords: string
+  totalRecords: number
   page: number = 1
   data: Array<any>
   name: any

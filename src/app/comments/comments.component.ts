@@ -22,7 +22,7 @@ export class CommentsComponent implements OnInit {
   like: any
   body
   totalPages
-  totalRecords: string
+  totalRecords: number
   page: number
   login: boolean = false
   public isEmojiPickerVisible: boolean;

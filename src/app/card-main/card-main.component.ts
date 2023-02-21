@@ -12,12 +12,7 @@ SwiperCore.use([EffectFade]);
   styleUrls: ['./card-main.component.scss']
 })
 export class CardMainComponent implements OnInit, OnChanges {
-  term: any;
-  totalRecords: any
-  page: number = 1
-  name: any
-  log: any
-  card: any
+  
   public swiperConfig: SwiperOptions = {
     pagination: true,
   };
@@ -54,12 +49,6 @@ export class CardMainComponent implements OnInit, OnChanges {
   }
   ngOnInit() {
     Swiper.use([Navigation]);
-  }
-
-  myOptions = {
-    'placement': 'left',
-    'theme': 'dark',
-    'showDelay': 500,
   }
 
   onSwiper(swiper) {

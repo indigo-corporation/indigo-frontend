@@ -2,6 +2,14 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import * as e from "express";
+import { Result } from '../models/resultFilmsType';
+import { CommentResult } from '../models/getComments';
+import { postComment } from '../models/postComment';
+import { postStars } from '../models/postStars';
+import { postLike } from '../models/postLike';
+import { postUnLike } from '../models/postUnLike';
+import { postFavorite } from '../models/postFavorite';
+
 
 @Injectable({
     providedIn: 'root'
@@ -28,31 +36,31 @@ export class api2Service {
        return this.http.post<any>(url, body)
     }
 
-    getComments(id,page = 1): Observable<any> {
+    getComments(id,page = 1): Observable<CommentResult> {
         return this.get("films/"+id+"/get_comments", {page:page} )
     }
     
-    postStars(film_id,count): Observable<any> {
+    postStars(film_id,count): Observable<postStars> {
         return this.post("film-stars/add", {film_id:film_id, count:count} )
     }
     
 
-    postComment(filmId:number,body,parentId=null): Observable<any> {
+    postComment(filmId:number,body,parentId=null): Observable<postComment> {
         return this.post("comments/store", {
             filmId:filmId, body:body, parentId:parentId} )
     }
 
-    postLike(comment_id:number,is_like): Observable<any> {
+    postLike(comment_id:number,is_like): Observable<postLike> {
         return this.post("comments/like", {
             comment_id:comment_id, is_like:is_like} )
     }
     
-    postUnLike(comment_id:number): Observable<any> {
+    postUnLike(comment_id:number): Observable<postUnLike> {
         return this.post("comments/unlike", {
             comment_id:comment_id} )
     }
 
-    postFavorite(film_id): Observable<any> {
+    postFavorite(film_id): Observable<postFavorite> {
         return this.post("favorite-films/add", {
             film_id:film_id
         })
@@ -80,7 +88,7 @@ export class api2Service {
         return this.get("films/search", {page:page, find:find } )
     }
 
-    getData(type = "", page = 1): Observable<any> {
+    getData(type = "", page = 1): Observable<Result> {
         let params = {page:page}
         if(type) {
              params["type"] = type

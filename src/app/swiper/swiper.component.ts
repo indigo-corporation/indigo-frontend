@@ -60,18 +60,6 @@ export class SwiperComponent implements OnInit {
     this.getTopRated(1);
   }
 
-  setSwiperInstance(swiper: Swiper) {
-   let nextSlide = setInterval(() => {
-      swiper.slideNext();
-    }, 3000);
-  /*   setTimeout(()=> {
-      clearInterval(nextSlide)
-    },54000) */
-  /* 
-      setInterval(() => {
-        swiper.slidePrev();
-      }, 3000); */
-  }
 
   getTopRated(page) {
     this.api2Service.getData(page).subscribe((data) => {

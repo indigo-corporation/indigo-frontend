@@ -84,6 +84,8 @@ import { AllNotificationsComponent } from './all-notifications/all-notifications
 import { SupportPageComponent } from './support-page/support-page.component';
 import { AutoFocusDirectiveDirective } from './auto-focus-directive.directive';
 import { ModalLoginComponent } from './modal-login/modal-login.component';
+import { CardComponent } from './card/card.component';
+import { CardForSwipersComponent } from './card-for-swipers/card-for-swipers.component';
 
 
 const appRoutes: Routes = [
@@ -157,7 +159,9 @@ const appRoutes: Routes = [
     AllNotificationsComponent,
     SupportPageComponent,
     AutoFocusDirectiveDirective,
-    ModalLoginComponent 
+    ModalLoginComponent,
+    CardComponent,
+    CardForSwipersComponent 
   ],
   imports: [
     BrowserModule,

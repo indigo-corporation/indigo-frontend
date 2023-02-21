@@ -133,29 +133,39 @@ export class HeaderComponent implements OnInit {
     this.isNotification = !this.isNotification
   }
 
-  genreArrow($event) {
-    let elm = $($event.target)
-    if (!elm.hasClass("arrow")) {
-      elm = elm.find(".arrow")
+  genreArrow(event: Event): void {
+    const elm = event.target as HTMLElement;
+    let arrowElm: HTMLElement | null = null;
+    if (elm.classList.contains("arrow")) {
+      arrowElm = elm;
+    } else {
+      arrowElm = elm.querySelector(".arrow");
     }
-    let arrowId
-    arrowId = elm.attr("id")
-    let arrowIdValue = this[arrowId]
-    this.arrowsUp()
-    this[arrowId] = !arrowIdValue
-    if (this[arrowId]) {
-      elm.css('transform', 'rotate(180deg)')
-      elm.css('color', 'black');
+    if (arrowElm) {
+      const arrowId = arrowElm.id;
+      const arrowIdValue = this[arrowId];
+      this.arrowsUp();
+      this[arrowId] = !arrowIdValue;
+      if (this[arrowId]) {
+        (arrowElm as HTMLElement).style.transform = "rotate(180deg)";
+        (arrowElm as HTMLElement).style.color = "black";
+      } else {
+        (arrowElm as HTMLElement).style.transform = "";
+        (arrowElm as HTMLElement).style.color = "";
+      }
     }
   }
-
-  arrowsUp() {
-    this.isArrow1 = false
-    this.isArrow2 = false
-    this.isArrow3 = false
-    this.isArrow4 = false
-    $('.fas.fa-caret-down').css('transform', 'rotate(0deg)');
-    $('.fas.fa-caret-down').css('color', 'white')
+  
+  arrowsUp(): void {
+    this.isArrow1 = false;
+    this.isArrow2 = false;
+    this.isArrow3 = false;
+    this.isArrow4 = false;
+    const arrowElms = document.querySelectorAll(".arrow");
+    arrowElms.forEach((arrowElm) => {
+      (arrowElm as HTMLElement).style.transform = "";
+      (arrowElm as HTMLElement).style.color = "";
+    });
   }
 
 
@@ -184,7 +194,7 @@ export class HeaderComponent implements OnInit {
     this.modalRef = this.modalService.open(ModalLoginComponent, {
     });
     this.modalRef.onClose.subscribe((data: any) => {
- 
+
     });
   }
 

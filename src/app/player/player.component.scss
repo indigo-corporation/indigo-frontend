@@ -1,30 +1,33 @@
-
 .player-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 #close-icon {
-    color: white;
-    position: absolute;
-    right: -21px;
-    font-size: 24px;
-    cursor: pointer;
-    top: -18px;
+  color: white;
+  position: absolute;
+  right: -21px;
+  font-size: 24px;
+  cursor: pointer;
+  top: -18px;
 }
 
 iframe {
-    overflow: hidden;
-  }
+  overflow: hidden;
+}
 
-  button {
-    background:inherit;
+button {
+  background: #4e3892;
+  color: white;
+  margin: 9px;
+
+  &:hover {
     color: white;
-    border: 1px solid #ffffff30;
-    margin: 9px;
-    &:hover {
-      color: black;
-      background-color: white;
-    }
+    background-color: #6653a1;
   }
+}
 
+
+button.active {
+  background-color: #6847cd; // Здесь указываются стили для активной кнопки
+}

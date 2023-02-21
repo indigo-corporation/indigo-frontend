@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { api } from '../services/api.service';
 
+
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',
@@ -22,6 +23,11 @@ export class PlayerComponent implements OnInit {
   isPlayerSveta:boolean=false
   srcPlayer:any
   asvPlayer
+  data
+  active1 :boolean=true
+  active2 :boolean=true
+  active3 :boolean=true
+  currentPlayer: string = '';
   public safeSrc: SafeResourceUrl;  
   constructor(
     private sanitizer: DomSanitizer,
@@ -30,39 +36,36 @@ export class PlayerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.ashvid()
-      if(this.film.shiki_id) {
-        this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://kodik.cc/find-player?shikimoriID="+this.film.shiki_id);
-      } else {
-        this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id="+this.film.imdb_id);
-      }
+    fetch('https://base.ashdi.vip/api/product/read_one.php?imdb=tt6341832&api_key=99a660-8378e4-4adb0a-eeeb92-86b677')
+      .then(response => response.json())
+      .then(data => {
+        this.data = data;
+      })
+      .catch(error => console.error(error));
   }
 
   ashvid() {
-    this.api.getAshvid(this.film.imdb_id).subscribe((data=> {
+    this.api.getAshvid(this.film.imdb_id).subscribe((data) => {
       this.asvPlayer = data.url
       console.log(this.asvPlayer);
       
       debugger
-    }))
+    })
   }
 
-  onPlayer(player) {
+  onPlayer(player: string) {
     let shId = this.film.shiki_id
-  
+    this.currentPlayer = player;
+ 
     if(player ==='kodic' && shId) {
-      this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://kodik.cc/find-player?shikimoriID="+shId);
+        this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://kodik.cc/find-player?shikimoriID="+shId);
       return
     }
     if(player ==='cdn' && this.film.imdb_id) {
-      this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id="+this.film.imdb_id);
+        this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id="+this.film.imdb_id);
     }
      if(player ==='ASHDI' && this.film.imdb_id) {
-       this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl(this.asvPlayer)
+      this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl(this.asvPlayer)
     } 
-
-    //ashdi.vip/serial/32
-  
   }
-
 }

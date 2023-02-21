@@ -89,6 +89,7 @@ import { ModalLoginComponent } from './modal-login/modal-login.component';
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
   { path: 'search-page', component: SearchPageComponent },
+  { path: 'sitemap.xml', redirectTo: 'assets/sitemap.xml' },
   { path: 'support', component: SupportPageComponent },
   /* { path: 'message/:id', component: MessangerComponent, canActivate: [AuthGuard]  }, */
   { path: 'copyright', component: CopyrightComponent, },

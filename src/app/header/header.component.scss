@@ -283,6 +283,10 @@ i {
     right: 16px;
 }
 
+.arrow {
+    transition: transform 0.3s ease-in-out;
+  }
+
 .name-menu {
     margin-left: 6px;
 }

@@ -1,11 +1,9 @@
-        
-  <!--   <button mat-raised-button (click)="onPlayer('kodic')">Плеер Kodic</button>
-    <button mat-raised-button (click)="onPlayer('cdn')">Плеер VideoCND</button>
-    <button mat-raised-button (click)="onPlayer('ASHDI')">Плеер ASHDI</button>  -->
-
-    <button mat-raised-button (click)="onPlayer('kodic')" [ngClass]="{'active': currentPlayer === 'kodic'}">Плеер Kodic</button>
-<button mat-raised-button (click)="onPlayer('cdn')" [ngClass]="{'active': currentPlayer === 'cdn'}">Плеер VideoCND</button>
-<button mat-raised-button (click)="onPlayer('ASHDI')" [ngClass]="{'active': currentPlayer === 'ASHDI'}">Плеер ASHDI</button>
+<button mat-raised-button (click)="onPlayer('kodic')" [ngClass]="{'active': currentPlayer === 'kodic'}">Плеер
+  Kodic</button>
+<button mat-raised-button (click)="onPlayer('cdn')" [ngClass]="{'active': currentPlayer === 'cdn'}">Плеер
+  VideoCND</button>
+<!-- <button mat-raised-button (click)="onPlayer('ASHDI')" [ngClass]="{'active': currentPlayer === 'ASHDI'}">Плеер
+  ASHDI</button> -->
 <div class="player-container">
-    <iframe [src]="this.srcPlayer" width="100%" height="480" scrolling="no" frameborder="0" allowfullscreen></iframe>
+  <iframe [src]="this.srcPlayer" width="100%" height="480" scrolling="no" frameborder="0" allowfullscreen></iframe>
 </div>

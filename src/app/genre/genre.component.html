@@ -8,7 +8,7 @@
     }" class="card col-md-3" style="width: 13rem;">
     </app-card>
   </div>
-  <div *ngIf="data.length >= 1" class="paginate">
+  <div *ngIf="data === null" class="paginate">
     <pagination-controls id="listing_pagination" directionalLinks="true" (pageChange)="onPageChange( term, $event)"
       previousLabel="Назад" nextLabel="Вперед">
     </pagination-controls>

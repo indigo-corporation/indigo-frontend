@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, Observable } from "rxjs";
-import * as e from "express";
+import { Observable } from "rxjs";
+
+
 import { Result } from '../models/resultFilmsType';
 import { CommentResult } from '../models/getComments';
 import { postComment } from '../models/postComment';
@@ -9,7 +10,11 @@ import { postStars } from '../models/postStars';
 import { postLike } from '../models/postLike';
 import { postUnLike } from '../models/postUnLike';
 import { postFavorite } from '../models/postFavorite';
+import { getFavorite } from '../models/getFavorite';
+import { search } from '../models/search';
 
+import { getLocalFavorite } from '../models/getLocalFavorite';
+import { getFindItem } from '../models/getFindItem';
 
 @Injectable({
     providedIn: 'root'
@@ -65,26 +70,25 @@ export class api2Service {
             film_id:film_id
         })
     }
-    removeFavorite(film_id): Observable<any> {
+    removeFavorite(film_id): Observable<any> {        /// пустая дата приходит
         return this.post("favorite-films/remove", {
             film_id:film_id
         })
     }
 
-    userGet(user_id): Observable<any> {
+    userGet(user_id): Observable<any> {      /// еще в разработке
         return this.get("users/"+ user_id)
     }
 
     getFavoriteArray(): Observable<any> {
         return this.get("favorite-films/all-ids")
     }
-    getFavoriteFilms(): Observable<any> {
+
+    getFavoriteFilms(): Observable<getFavorite> {
         return this.get("favorite-films/all")
     }
 
-    
-
-    search(find, page): Observable<any> {
+    search(find, page): Observable<search> {
         return this.get("films/search", {page:page, find:find } )
     }
 
@@ -96,15 +100,15 @@ export class api2Service {
         return this.get("films", params )
     }
 
-    getfind(id): Observable<any> {
+    getfind(id): Observable<getFindItem> {
         return this.get("films/"+ id)
     }
 
-    getGenreFilms(id,page, type): Observable<any> {
+    getGenreFilms(id,page, type): Observable<any> {                           /// дата без итемов, жду
         return this.get("films/genre/" + id, {page:page, type:type} )
     }
-
-    getGenre(is_anime:number=0): Observable<any> {
+ 
+    getGenre(is_anime:number=0): Observable<any> {                         /// дата без итемов, жду
         return this.get("genres", {is_anime:is_anime} )
     }
 }

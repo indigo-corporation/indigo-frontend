@@ -19,10 +19,10 @@ export class CardContentComponent implements OnInit {
   term: any;
   totalRecords: string
   film: any
-  login:any
+  login: any
   slug
   isTogther: boolean = true
-  isFilm:boolean = true
+  isFilm: boolean = true
   constructor(
     private api2Service: api2Service,
     private router: Router,
@@ -30,19 +30,17 @@ export class CardContentComponent implements OnInit {
     private snackBar: MatSnackBar,
     private auth: authService,
     private dialog: MatDialog,
-    private meta:Meta,
-    private title:Title) { 
-      
-    }
+    private meta: Meta,
+    private title: Title) {
+
+  }
   ngOnInit() {
-    var slug:string = this.route.snapshot.params.id;
-    debugger
-    this.slug =slug.split("-")
+    var slug: string = this.route.snapshot.params.id;
+    this.slug = slug.split("-")
     this.id = this.slug.pop()
-  
-   this.getfind(this.id);
+    this.getfind(this.id);
     this.auth.user$.subscribe(x => {
-      this.login = x != null 
+      this.login = x != null
     })
   }
 
@@ -62,22 +60,22 @@ export class CardContentComponent implements OnInit {
     });
   }
 
-/*   togetherOn(isTogther) {
-    if(!this.login) {
-      this.openLogin()
-      return
+  /*   togetherOn(isTogther) {
+      if(!this.login) {
+        this.openLogin()
+        return
+      }
+      this.isTogther = isTogther
     }
-    this.isTogther = isTogther
-  }
-
-  watchOn(change) {
-    this.isTogther = change
-  } */
-/* 
-  openLogin() {
-    const dialogRef = this.dialog.open(AuthPopup);
-
-    dialogRef.afterClosed().subscribe(result => {
-    });
-  } */
+  
+    watchOn(change) {
+      this.isTogther = change
+    } */
+  /* 
+    openLogin() {
+      const dialogRef = this.dialog.open(AuthPopup);
+  
+      dialogRef.afterClosed().subscribe(result => {
+      });
+    } */
 }

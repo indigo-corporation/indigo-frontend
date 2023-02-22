@@ -11,7 +11,7 @@ import { Meta, Title } from '@angular/platform-browser';
 export class FavoritePageComponent implements OnInit {
   favoriteFilms: any
   term: any;
-  totalRecords: string
+  totalRecords: number
   page: number
   constructor(
     private api2Service: api2Service,

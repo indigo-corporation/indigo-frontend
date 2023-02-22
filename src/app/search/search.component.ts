@@ -43,8 +43,6 @@ export class SearchComponent implements OnInit, AfterViewInit {
     if ($event.target.value.length >= 2) {
       this.search($event.target.value, 1)
     }
-    console.log($event.target.value.length);
-    console.log($event.target.value);
   }
 
   onSearch(search) {

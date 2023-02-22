@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class FavoriteComponent implements OnInit {
   favoriteFilms: any
   term: any;
-  totalRecords: string
+  totalRecords: number
   page: number
   @Input() data: any
   @Input() film: any

@@ -2,7 +2,7 @@
             <form class="page" [formGroup]="settingForm">
                 <div class="form-group">
                     <label class="sett-label">Email</label>
-                    <input type="text" value="{{user.email}}" class="form-control" disabled>
+                    <input type="text" value="{{user?.email}}" class="form-control" disabled>
                 </div>
                 
                 <div>
@@ -19,11 +19,11 @@
 
                 <div class="form-group">
                     <label class="sett-label" for="inputUserName">Ваше имя пользователя</label>
-                    <input type="text" id="inputUserName" value="{{user.user_name}}" class="form-control" placeholder="karatel22" formControlName="user_name">
+                    <input type="text" id="inputUserName" value="{{user?.user_name}}" class="form-control" placeholder="karatel22" formControlName="user_name">
                 </div>
                 <div class="form-group">
                     <label class="sett-label" for="inputName">Имя</label>
-                    <input type="text" id="inputName" value="{{user.name}}" class="form-control" placeholder="Ваше Имя" formControlName="name">
+                    <input type="text" id="inputName" value="{{user?.name}}" class="form-control" placeholder="Ваше Имя" formControlName="name">
                 </div>
                 
                 <!-- <h1 class="label-input date">Ваш день рождения</h1>
@@ -57,7 +57,7 @@
 
                 <div style="display: grid"> 
                     <label class="sett-label" for="inputAbout">Немного о себе</label>
-                    <textarea style="height:100% ;" value="{{user.about}}" id="inputAbout" class="text-input" rows="6" placeholder="О себе"
+                    <textarea style="height:100% ;" value="{{user?.about}}" id="inputAbout" class="text-input" rows="6" placeholder="О себе"
                     formControlName="about"></textarea>
                 </div>
                 <button mat-stroked-button class="user-btn" (click)="userChangeInfo(user)" type="submit">Изменить</button>

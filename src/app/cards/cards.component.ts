@@ -34,7 +34,6 @@ export class CardsComponent implements OnInit {
   }
 
   ngOnInit() {
-    
     this.page=this.route.snapshot.queryParams.page
     if(!this.page) {
       this.page = 1 

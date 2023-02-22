@@ -44,8 +44,7 @@ export class PlayerComponent implements OnInit {
     this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id="+this.film.imdb_id);
   }
 
-  private readonly corsProxyUrl = 'https://cors-anywhere.herokuapp.com/'; // адрес CORS Proxy
-
+  
 
   onPlayer(player: string) {
     let shId = this.film.shiki_id
@@ -58,8 +57,13 @@ export class PlayerComponent implements OnInit {
     if (player === 'cdn' && this.film.imdb_id) {
       this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id=" + this.film.imdb_id);
     }
-  /*   if (player === 'ASHDI' && this.film.imdb_id) {
-      this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl(this.asvPlayer)
-    } */
+  if (player === 'ASHDI' && this.film.imdb_id) {
+  /*   this.api.getProduct(this.film.imdb_id)
+    .subscribe((data) => {
+      this.asvPlayer=data.url
+      
+    }); */
+    this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl(this.asvPlayer)
+    } 
   }
 }

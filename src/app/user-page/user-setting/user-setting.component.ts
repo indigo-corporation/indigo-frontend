@@ -72,7 +72,7 @@ export class UserSettingComponent implements OnInit {
 
   ngOnInit() {
     this.title.setTitle("Настройки профиля")
-    this.auth.getUser()
+   
     this.auth.user$.subscribe(x => {
       this.user = x
     })
@@ -146,7 +146,6 @@ export class UserSettingComponent implements OnInit {
   }
 
   passChage() {
-    console.warn(this.passChangeForm.value.pass)
     this.userService.changePassUs(this.passChangeForm.value.pass).subscribe((result) => {
       this.alertify.success('Успешно изменено');
     })

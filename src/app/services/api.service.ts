@@ -7,13 +7,9 @@ import { HttpHeaders } from '@angular/common/http';
 })
 
 export class api {
-    readonly apiUrl = "https://base.ashdi.vip/api/"
-    readonly apiKey = "api_key=99a660-8378e4-4adb0a-eeeb92-86b677"
     constructor(private http: HttpClient) { }
 
-    get(method, params) {
-       let headers = this.createAuthorizationHeader() 
-       console.log(headers);
+ /*    get(method, params) {
        
         let url = this.apiUrl + method
             for (var key in params) {
@@ -22,16 +18,14 @@ export class api {
             console.log(this.http.get<any>(url));
             
         return this.http.get<any>(url,{headers:headers})
-    }
+    } */
 
-   createAuthorizationHeader() {
-        let headers = new HttpHeaders()
-          .set("api_key", "99a660-8378e4-4adb0a-eeeb92-86b677")
-        return headers
-      }
-   
-
-    getAshvid(imdb): Observable<any> {
-        return this.get("product/read_one.php", {imdb:imdb})
+    apiUrl = 'https://base.ashdi.vip/api/product/read_one.php';
+    apiKey = '99a660-8378e4-4adb0a-eeeb92-86b677';
+  
+  
+    getProduct(imdb: string): Observable<any> {
+      const url = `${this.apiUrl}?imdb=${imdb}&api_key=${this.apiKey}`;
+      return this.http.get<any>(url);
     }
 }

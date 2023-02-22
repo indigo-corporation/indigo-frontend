@@ -56,7 +56,7 @@ export class InfiniteScrollComponent implements AfterViewInit, OnDestroy {
   ) {}
 
   ngOnDestroy(): void {
-    if (isPlatformBrowser(this.platformId)) {
+    if (this.observer && isPlatformBrowser(this.platformId)) {
       this.observer.disconnect();
     }
   }

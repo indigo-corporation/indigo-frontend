@@ -1,4 +1,4 @@
-import { Component, ErrorHandler, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, ErrorHandler, OnChanges, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { api } from '../services/api.service';
 import { api2Service } from '../services/api2.service';
@@ -35,6 +35,7 @@ export class UserPageComponent implements OnInit {
   public id: any
   outComes: any
   constructor(private apiService: api,
+    private cdr: ChangeDetectorRef,
     private api2Service: api2Service,
     private messangerService: messangerService,
     private auth: authService,
@@ -50,14 +51,21 @@ export class UserPageComponent implements OnInit {
     this.title.setTitle("Профиль")
     this.auth.user$.subscribe(x => {
       this.user = x
+      this.cdr.detectChanges();
     })
+  }
+
+/*   ngAfterViewInit() {
     let userId = Number(this.route.snapshot.paramMap.get('id'));
     if (userId) {
       this.localStorageOutComes(userId)
       this.getIsContact(userId)
       this.userGet(userId)
     }
+  } */
 
+  updatingUserInfo(userInfo) {
+    this.user = userInfo
   }
 
   localStorageOutComes(userId) {
@@ -70,9 +78,7 @@ export class UserPageComponent implements OnInit {
     }
   }
 
-  updatingUserInfo(userInfo) {
-    this.user = userInfo
-  }
+
 
   getIsContact(userId) {
     let contactIds: any = localStorage.getItem("contactIds")
@@ -134,7 +140,7 @@ export class UserPageComponent implements OnInit {
       let contactIds: any = localStorage.getItem("contactIds")
       contactIds = JSON.parse(contactIds)
       contactIds.push(this.user.id)
-      if(this.user.id) {
+      if (this.user.id) {
         this.isContact = true
       }
 

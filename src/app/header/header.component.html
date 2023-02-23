@@ -1,6 +1,6 @@
 <nav id="navbar" (scroll)="onWindowScroll($event)" class="container navbar navbar-expand-lg navbar-light bg-light header">
   <a class="brand" routerLink="" href="">INDIGOFILMS</a>
-  <a *ngIf="!login" (click)="openModal()" class="btn btn-danger login2">Войти
+  <a *ngIf="!login" mat-button (click)="openModal()" class="login2">Войти
   </a>
   <div *ngIf="login" class="login">
     <!--  <i routerLink="/friends" class="fa fa-users user-nav" aria-hidden="true">

@@ -6,7 +6,7 @@
           class="tooltip-title">{{card.title}}</a>
         <p class="tooltip-genre"><span class="genre-div" *ngFor="let genre of card.genres">{{genre.title}},
           </span> <span class="card-year">
-            {{card.year}}</span> </p>
+             {{card.year}}</span> </p>
         <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
         <div *ngIf="card.shiki_rating">
           <div class="shiki">SHIKIMORI {{card.shiki_rating}} </div>

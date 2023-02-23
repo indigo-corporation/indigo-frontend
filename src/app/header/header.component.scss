@@ -173,13 +173,13 @@
  }
 
  .user-photo {
-     width: 100%;
-     border-radius: 7px;
-     width: 34px;
-     margin-bottom: 5px;
-     height: 40px;
-     transform: scale(1, 1);
- }
+    width: 100%;
+    border-radius: 7px;
+    width: 100%;
+    margin-bottom: 5px;
+    height: 40px;
+    transform: scale(1, 1);
+}
 
  .search-icon {
      padding: 0 8px;
@@ -210,9 +210,10 @@
  }
 
  .login2 {
+    color: white;
      display: block;
      position: absolute;
-     top: 6px;
+     top: 7px;
      font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
      right: 56px;
      height: 32px;
@@ -285,7 +286,7 @@
      z-index: 3;
      position: relative;
      top: 0px;
-     right: 16px;
+     right: 10px;
  }
 
  .arrow {
@@ -306,7 +307,10 @@
 
  @media (hover: hover) {
      .navbar-light .navbar-nav .nav-link:hover {
-         color: black;
+        color: black;
+        transition: color 0.2s;
+        background-color: rgba(255, 255, 255, 0.5019607843);
+        border-radius: 5px;
      }
 
      .navbar-light .navbar-nav .nav-item:hover .genre-menu {
@@ -383,7 +387,8 @@
      .login2 {
          display: block;
          position: absolute;
-         top: 6px;
+         color: white;
+         top: 7px;
          right: 12px;
          background: none;
          font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
@@ -486,12 +491,13 @@
      }
 
      .login2 {
-         display: block;
-         position: absolute;
-         top: 6px;
-         right: 56px;
-         font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
-         background: none;
-         border: none;
-     }
+        display: block;
+        color: white;
+        position: absolute;
+        top: 7px;
+        right: 56px;
+        font-weight: bold;
+        font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+        border: none;
+    }
  }

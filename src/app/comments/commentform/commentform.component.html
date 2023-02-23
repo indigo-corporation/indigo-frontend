@@ -1,13 +1,13 @@
 <div class="comments-head">
     <hr>
-    <div class="row">
-        <div *ngIf="user" class="col-2">
+    <div class="wrapper">
+        <div *ngIf="user">
             <img class="avatars-comments" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';"
                 src="{{user.poster_url}}">
                 <a routerLink="/user-page" href="/user-page" class="comments-user">{{user.name}}</a>
               <!--   <a class="comments-user admin">Администратор</a> -->
         </div>
-        <div class="col-9 mt-lg-1">
+        <div>
             <div class="form-group">
                 <textarea [(ngModel)]="textArea" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="1"
                     placeholder="Напишите ваш отзыв"></textarea>

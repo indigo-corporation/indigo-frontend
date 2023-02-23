@@ -41,6 +41,26 @@
 }
 
 
+
+@media screen and (min-width: 360px) and (max-width: 720px) {
+  .card-row {
+    margin: 0 5px 0 0px;
+    padding-bottom: 89px;
+  }
+}
+
+
+
+@media screen and (min-width: 390px) and (max-width: 844px) {
+  .card-row {
+    padding-bottom: 89px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .card {
     width: 100%;
@@ -60,10 +80,6 @@
 
 
 @media screen and (min-width: 360px) and (max-width: 720px) {
-  .card-row {
-    margin: 0 4px;
-    padding-bottom: 89px;
-  }
 
   .card {
     max-width: 114px;

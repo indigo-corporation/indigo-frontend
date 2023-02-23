@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { api } from '../services/api.service';
 import { api2Service } from '../services/api2.service';
 import { ActivatedRoute } from '@angular/router';
+
+
+
 @Component({
   selector: 'app-swiper',
   templateUrl: './swiper.component.html',
@@ -23,6 +26,11 @@ export class SwiperComponent implements OnInit {
   };
 
   config: SwiperOptions = {
+    loop: true,
+    autoplay: {
+      delay: 2000, // задержка в 20 секунд
+      disableOnInteraction: false
+    },
     slidesPerView: 3,
     spaceBetween: 10,
     navigation: true,
@@ -61,15 +69,30 @@ export class SwiperComponent implements OnInit {
   }
 
 
+  onSwiper(swiper: Swiper) {
+    setInterval(() => {
+      const totalSlides = swiper?.slides?.length ?? 0;
+      const currentSlide = swiper?.activeIndex ?? 0;
+      const lastSlideIndex = totalSlides - 3;
+      if (currentSlide >= lastSlideIndex) {
+        swiper.slideTo(0);
+      } else {
+        const targetSlide = currentSlide + 3;
+        swiper?.slideTo(targetSlide);
+      }
+    }, 10000);
+  }
+  
+  
+
+
   getTopRated(page) {
     this.api2Service.getData(page).subscribe((data) => {
       this.data = data.data.items
       this.totalRecords = data.data.pagination.per_page
     });
   }
-  onSwiper(swiper) {
-
-  }
+ 
   onSlideChange() {
 
   }

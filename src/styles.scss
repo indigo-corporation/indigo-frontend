@@ -246,6 +246,7 @@ body {
   padding: 0;
   background-image: url(./back.jpg) !important;
   background-attachment: fixed;
+  background-size:100%;
   background-position: inherit;
   background-repeat: repeat;
   font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
@@ -254,6 +255,7 @@ body {
   height: auto;
   position: relative;
 }
+
 
 .mat-menu-panel {
   min-width: 112px;
@@ -328,3 +330,22 @@ body {
 }
 
 /* Importing Bootstrap SCSS file. */
+
+
+@media screen and (min-width: 360px) {
+  body {
+    margin: 0;
+    padding: 0;
+    background-image: url(./back.jpg) !important;
+    background-attachment: fixed;
+    background-position: inherit;
+    background-size:cover;
+    background-repeat: no-repeat;
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    height: auto;
+    position: relative;
+  }
+
+}

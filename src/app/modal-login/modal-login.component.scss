@@ -40,3 +40,51 @@
         color: black !important;
     }
 }
+
+
+
+@media screen and (min-width: 412px) and (max-width: 915px) {
+
+    .modal-body{
+        padding: 17px;
+        background-color: #1a1923;
+        color: #fff;
+        width: 100%;
+        border-radius: 5px;
+        min-width: 300px;
+        position: relative;
+        box-shadow: inset 0 0 #000;
+        background: linear-gradient(364deg, #000000, #5e2359);
+    }
+    
+}
+
+@media screen and (min-width: 390px) and (max-width: 844px) {
+    .modal-body{
+        padding: 17px;
+        background-color: #1a1923;
+        color: #fff;
+        width: 100%;
+        border-radius: 5px;
+        min-width: 300px;
+        position: relative;
+        box-shadow: inset 0 0 #000;
+        background: linear-gradient(364deg, #000000, #5e2359);
+    }
+}
+
+
+
+@media screen and (min-width: 360px) and (max-width: 720px) {
+    .modal-body{
+        padding: 17px;
+        background-color: #1a1923;
+        color: #fff;
+        width: 100%;
+        border-radius: 5px;
+        min-width: 300px;
+        position: relative;
+        box-shadow: inset 0 0 #000;
+        background: linear-gradient(364deg, #000000, #5e2359);
+    }
+}

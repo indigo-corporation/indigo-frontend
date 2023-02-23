@@ -33,9 +33,21 @@ button.active {
 }
 
 
+
+
+
+
 @media (max-width: 480px) {
   iframe {
     height: 340px;
     width:340px;
+  }
+}
+
+
+@media screen and (min-width: 360px) and (max-width: 720px) {
+  .player-buttons {
+    display: flex;
+    flex-direction: column;
   }
 }

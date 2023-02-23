@@ -31,3 +31,11 @@ button {
 button.active {
   background-color: #6847cd; // Здесь указываются стили для активной кнопки
 }
+
+
+@media (max-width: 480px) {
+  iframe {
+    height: 340px;
+    width:340px;
+  }
+}

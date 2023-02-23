@@ -15,9 +15,8 @@
                         <h1 style="margin-left: 0" class="card-title-original">{{film.original_title}}</h1>
                         <h1 class="card-title-original">
                             <div class="raiting-box">
-                                <div style="color: #f3c45b;" *ngIf="film.imdb_rating">IMDb {{film.imdb_rating}}</div>
-                                <div style="margin-left: 10px;
-                            color: #c67aed;" *ngIf="film.shiki_rating">
+                                <div id="imdb" *ngIf="film.imdb_rating">IMDb {{film.imdb_rating}}</div>
+                                <div id="shiki" *ngIf="film.shiki_rating">
                                     <div>SHIKIMORI {{film.shiki_rating}}</div>
                                 </div>
                             </div>

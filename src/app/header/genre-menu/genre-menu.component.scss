@@ -59,12 +59,11 @@ a {
 @media screen and (max-width: 992px) {
     .block {
         position: absolute;
-        top: 70px;
+        top: -1px;
         overflow-y: auto;
-        max-height: 204px;
+        max-height: 256px;
         overflow-x: hidden;
         padding: 0;
-        background: none;
     }
 
     .genre-menu {
@@ -83,6 +82,8 @@ a {
         margin: 0 auto;
         padding: 5px;
         margin-top: 11px;
+        position: relative;
+        left: 33px;
     }
 }
 
@@ -92,7 +93,9 @@ a {
         text-align: center;
         display: flex;
         flex-direction: column;
-        align-content: flex-end;
+        position: relative;
+        left: 71px;
+        background: none;
     }
 
     .genre-item {

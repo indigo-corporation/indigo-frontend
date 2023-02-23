@@ -33,14 +33,6 @@ export class userService {
         return this.post("users/change-pass", { password: password })
     }
 
-    country(name = ""): Observable<string> {
-        return this.get("world/countries-for-select", { name: name })
-    }
-
-    city(country_id, name = ""): Observable<string> {
-        return this.get("world/cities-for-select", { country_id: country_id, name: name })
-    }
-
     userChangeInfo(info): Observable<string> {
         return this.post("users/change-info", info)
     }

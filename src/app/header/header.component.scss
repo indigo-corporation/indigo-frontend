@@ -1,440 +1,497 @@
  a {
-    transition: color .2s;
-} 
+     transition: color .2s;
+ }
 
-i {
-    transition: color .2s;
-}
+ i {
+     transition: color .2s;
+ }
 
-.bg-light {
-    background: linear-gradient(222deg, #2222a0, #a81c9c);
-    box-shadow: inset 0px 3px 32px 1px rgb(0 0 0 / 76%);
-}
+ .bg-light {
+     background: linear-gradient(222deg, #2222a0, #a81c9c);
+     box-shadow: inset 0px 3px 32px 1px rgb(0 0 0 / 76%);
+ }
 
-.login {
-    color: white;
-    margin-left: 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    border: 1px solid transparent;
-    position: absolute;
-    top: -2px;
-    right: 37px;
-    text-align: center;
-    margin-top: 3px;
-    padding: 0px 21px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
+ .login {
+     color: white;
+     margin-left: 12px;
+     border-radius: 5px;
+     cursor: pointer;
+     border: 1px solid transparent;
+     position: absolute;
+     top: -2px;
+     right: 37px;
+     text-align: center;
+     margin-top: 3px;
+     padding: 0px 21px;
+     height: 100%;
+     display: flex;
+     align-items: center;
+ }
 
-.header {
-    border-radius: 6px;
-    border-bottom-right-radius: inherit;
-    border-bottom-left-radius: inherit;
-    top: 0;
-    z-index: 3;
-    right: 0;
-    left: 0;
-    padding: 0;
-    height: 45px;
-}
+ .header {
+     border-radius: 6px;
+     border-bottom-right-radius: inherit;
+     border-bottom-left-radius: inherit;
+     top: 0;
+     z-index: 3;
+     right: 0;
+     left: 0;
+     padding: 0;
+     height: 45px;
+ }
 
-.brand {
-    color: white;
-    font-weight: bold;
-    margin-left: 16px;
-    text-decoration: none;
-    font-size: 24px;
-    font-family: "TT Norms Pro,Helvetica,sans-serif";
-    letter-spacing: 0.1em;
-    &:hover {
-        color: white;
-    }
-}
+ .brand {
+     color: white;
+     font-weight: bold;
+     margin-left: 16px;
+     text-decoration: none;
+     font-size: 24px;
+     font-family: "TT Norms Pro,Helvetica,sans-serif";
+     letter-spacing: 0.1em;
 
-.nav-item {
-    height: 100%;
-    margin-bottom: 6px;
-    display: inherit;
-    align-items: center;
-}
+     &:hover {
+         color: white;
+     }
+ }
 
-.nav-link {
-    margin-left: 43px;
-    line-height: 1.25;
-    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
-    font-weight: bold;
-    font-size: 24px;
-    cursor: pointer;
-    text-transform: uppercase;
-    &:hover {
-        color: red;
-    }
-}
+ .nav-item {
+     height: 100%;
+     margin-bottom: 6px;
+     display: inherit;
+     align-items: center;
+ }
 
-.navbar-light .navbar-nav .nav-link {
-    margin: 0;
-    color: white;
-    font-size: 14px;
-    letter-spacing: 0.1em;
-}
+ .nav-link {
+     margin-left: 43px;
+     line-height: 1.25;
+     font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+     font-weight: bold;
+     font-size: 24px;
+     cursor: pointer;
+     text-transform: uppercase;
 
-.btn-outline-success {
-    color: white;
-    border-color: white;
-    margin-left: 10px;
-}
+     &:hover {
+         color: red;
+     }
+ }
 
-.btn-outline-primary:hover {
-    color: #fff;
-    background-color: #fff;
-    border-color: #fff;
-}
+ .navbar-light .navbar-nav .nav-link {
+     margin: 0;
+     color: white;
+     font-size: 14px;
+     letter-spacing: 0.1em;
+ }
 
-.btn-menu {
-    color: white;
-    font-size: 20px;
-    padding: 0;
-    background: none;
-    border: none;
-    text-align: center;
-    z-index: 1;
-}
+ .btn-outline-success {
+     color: white;
+     border-color: white;
+     margin-left: 10px;
+ }
 
-.menu-search {
-    display: flex;
-    flex-direction: row;
-    background: #1a1a1ad9;
-    box-shadow: inset 0px 3px 32px 1px rgb(0 0 0 / 76%);
-}
+ .btn-outline-primary:hover {
+     color: #fff;
+     background-color: #fff;
+     border-color: #fff;
+ }
 
-.btn-outline-primary {
-    color: #6461b0;
-    border-color: transparent;
-}
+ .btn-menu {
+     color: white;
+     font-size: 20px;
+     padding: 0;
+     background: none;
+     border: none;
+     text-align: center;
+     z-index: 1;
+ }
 
-.swiper-img {
-    width: 50%;
-}
+ .menu-search {
+     display: flex;
+     flex-direction: row;
+     background: #1a1a1ad9;
+     box-shadow: inset 0px 3px 32px 1px rgb(0 0 0 / 76%);
+ }
 
-.input-search {
-    max-width: 546px;
-    width: 100%;
-    margin-left: 13px;
-    transition:5s;
-}
+ .btn-outline-primary {
+     color: #6461b0;
+     border-color: transparent;
+ }
 
-.form-search {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    position: absolute;
-    top: 81px;
-    left: 0%;
-    right: 0%;
-    background: #00000045;
-    height: 100%;
-    max-height: 53px;
-    max-width: 100%;
-    width: 100%;
-    padding: -1px;
-    padding: 11px 0px 11px 0px;
-    display: inherit;
-}
+ .swiper-img {
+     width: 50%;
+ }
 
-.search {
-    font-size: 21px;
-    text-decoration: none;
-    color: white;
-}
+ .input-search {
+     max-width: 546px;
+     width: 100%;
+     margin-left: 13px;
+     transition: 5s;
+ }
 
-.user-name {
-    font-size: 12px;
-    font-family: "TT Norms Pro Regular,Helvetica,sans-serif" !important;
-    &:hover {
-        color: black;
-    }
-}
+ .form-search {
+     width: 100%;
+     max-width: 100%;
+     margin: 0 auto;
+     position: absolute;
+     top: 81px;
+     left: 0%;
+     right: 0%;
+     background: #00000045;
+     height: 100%;
+     max-height: 53px;
+     max-width: 100%;
+     width: 100%;
+     padding: -1px;
+     padding: 11px 0px 11px 0px;
+     display: inherit;
+ }
 
-.icon-info {
-    text-align: center;
-    background: orange;
-    color: black;
-    padding: 4px;
-    border-radius: 9px;
-    margin: 5px;
-    font-size: 8px;
-    font-weight: bold;
-    margin-bottom: 19px;
-}
+ .search {
+     font-size: 21px;
+     text-decoration: none;
+     color: white;
+ }
 
-.user-photo {
-    width: 100%;
-    border-radius: 17px;
-    object-fit: contain;
-    width: 35px;
-    margin-bottom: 5px;
-    height: 39px;
-}
+ .user-name {
+     font-size: 12px;
+     font-family: "TT Norms Pro Regular,Helvetica,sans-serif" !important;
 
-.search-icon {
-    padding: 0 8px;
-    &:hover {
-        color: black;
-    }
-}
+     &:hover {
+         color: black;
+     }
+ }
 
-.search-icon:cliked {
-    transition:1s;
-}
+ .icon-info {
+     text-align: center;
+     background: orange;
+     color: black;
+     padding: 4px;
+     border-radius: 9px;
+     margin: 5px;
+     font-size: 8px;
+     font-weight: bold;
+     margin-bottom: 19px;
+ }
 
-.user-nav {
-    font-size: 14px;
-    margin-right: 3px;
-    padding: 5px;
-    color: white;
-    text-decoration: none;
-    &:hover {
-        color: black;
-    }
-}
+ .user-photo {
+     width: 100%;
+     border-radius: 7px;
+     width: 34px;
+     margin-bottom: 5px;
+     height: 40px;
+     transform: scale(1, 1);
+ }
 
-.user-nav:hover .icon-info {
-    background-color: #ffa50094;
-}
+ .search-icon {
+     padding: 0 8px;
 
-.login2 {
-    display: block;
-    position: absolute;
-    top: 6px;
-    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
-    right: 56px;
-    height: 32px;
-    font-size: 18px;
-    background: none;
-    border: none;
-}
+     &:hover {
+         color: black;
+     }
+ }
 
-.form-group {
-    width: 100%;
-    position: relative;
-    left: 19%;
-    right: 0%;
-    left: 0%;
-    width: 100%;
-    max-width: 605px;
-    width: 100%;
-    margin: 0 auto;
-}
+ .search-icon:cliked {
+     transition: 1s;
+ }
 
-.btn-search {
-    margin-left: 12px;
-    width: 100%;
-    max-width: 163px;
-}
+ .user-nav {
+     font-size: 14px;
+     margin-right: 3px;
+     padding: 5px;
+     color: white;
+     text-decoration: none;
 
-.form-answer {
-    position: absolute;
-    top: 43px;
-    background: rgb(54 16 16 / 88%);
-    padding: 10px;
-    right: 172px;
-    left: 0px;
-    width: 100%;
-    max-width: 432px;
-    margin: 0 auto;
-}
+     &:hover {
+         color: black;
+     }
+ }
 
-.card-film-title {
-    color: white;
-    text-decoration: none;
-}
+ .user-nav:hover .icon-info {
+     background-color: #ffa50094;
+ }
 
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
+ .login2 {
+     display: block;
+     position: absolute;
+     top: 6px;
+     font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+     right: 56px;
+     height: 32px;
+     font-size: 18px;
+     background: none;
+     border: none;
+ }
 
-.card-year {
-    color: #958c8c;
-}
+ .form-group {
+     width: 100%;
+     position: relative;
+     left: 19%;
+     right: 0%;
+     left: 0%;
+     width: 100%;
+     max-width: 605px;
+     width: 100%;
+     margin: 0 auto;
+ }
 
-.genre-div {
-    color: #cfb1cf;
-    background: #645364;
-    padding: 1px;
-    margin-left: 3px;
-}
+ .btn-search {
+     margin-left: 12px;
+     width: 100%;
+     max-width: 163px;
+ }
 
-.arrow {
-    transition: 0.5s;
-    font-size: 14px;
-    margin-left: 6px;
-    padding: 6px;
-    color: white;
-    cursor: pointer;
-    margin-top: 0px;
-    margin-bottom: 7px;
-    z-index: 3;
-    position: relative;
-    top: 0px;
-    right: 16px;
-}
+ .form-answer {
+     position: absolute;
+     top: 43px;
+     background: rgb(54 16 16 / 88%);
+     padding: 10px;
+     right: 172px;
+     left: 0px;
+     width: 100%;
+     max-width: 432px;
+     margin: 0 auto;
+ }
 
-.arrow {
-    transition: transform 0.3s ease-in-out;
-  }
+ .card-film-title {
+     color: white;
+     text-decoration: none;
+ }
 
-.name-menu {
-    margin-left: 6px;
-}
+ .sticky {
+     position: fixed;
+     top: 0;
+     width: 100%;
+ }
 
-.marketing-blog {
-    height: 400px;
-}
+ .card-year {
+     color: #958c8c;
+ }
 
-.nav-link:hover .fa-caret-up {
-    color: black;
-}
+ .genre-div {
+     color: #cfb1cf;
+     background: #645364;
+     padding: 1px;
+     margin-left: 3px;
+ }
 
-@media (hover: hover) {
-    .navbar-light .navbar-nav .nav-link:hover {
-        color: black;
-    }
+ .arrow {
+     transition: 0.5s;
+     font-size: 14px;
+     margin-left: 6px;
+     padding: 6px;
+     color: white;
+     cursor: pointer;
+     margin-top: 0px;
+     margin-bottom: 7px;
+     z-index: 3;
+     position: relative;
+     top: 0px;
+     right: 16px;
+ }
 
-    .navbar-light .navbar-nav .nav-item:hover .genre-menu {
-        display: block !important;
-        background-color: #000000a6;
-    }
-}
+ .arrow {
+     transition: transform 0.3s ease-in-out;
+ }
 
-@media screen and (max-width: 992px) {
-    .menu-search {
-        display: flex;
-        flex-direction: row;
-        background: #1a1a1ad9;
-        box-shadow: inset 0px 3px 32px 1px rgb(0 0 0 / 76%);
-    }
-    .navbar-light .navbar-nav .nav-link {
-        border-bottom: rgba(255, 0, 0, 0) !important;
-        margin: 0 auto;
-        color: white;
-        padding: 9px 11px !important;
-        font-size: 20px;
-        border: 1px solid rgba(16, 15, 15, 0.168627451);
-        border-top: rgba(255, 0, 0, 0) !important;
-        border-right: none;
-        text-align: center;
-        z-index: 1;
-    }
-    .nav-item {
-        margin-top: 16px;
-        height: 30px;
-        width: 100%;
-        z-index: auto;
-    }
-}
+ .name-menu {
+     margin-left: 6px;
+ }
 
-@media screen and (min-width: 992px) {
-    .btn-outline-primary {
-        display: none;
-    }
-    .menu-search {
-        background: none;
-        box-shadow: none;
-    }
-    .login {
-        display: block;
-        position: absolute;
-        top: -2px;
-        right: 0px;
-        font-size: 21px;
-        text-align: center;
-        margin-top: 4px;
-        display: flex;
-        align-items: center;
-    }
-    .login2 {
-        display: block;
-        position: absolute;
-        top: 6px;
-        right: 12px;
-        background: none;
-        font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
-        text-transform: uppercase;
-        font-size: 14px;
-        font-weight: bold;
-        letter-spacing: 0.1em;
-    }
-    .header {
-        top: 0px;
-        z-index: 3;
-        right: 0;
-        left: 0px;
-    }
-}
+ .marketing-blog {
+     height: 400px;
+ }
 
-@media screen and (min-width: 1300px) {
-    .navbar-expand-lg .navbar-collapse {
-        display: flex !important;
-        flex-basis: auto;
-        margin-left: 61px;
-    }
-    .menu-search {
-        background: none;
-        box-shadow: none;
-    }
-    .header {
-   
-        top: 0px;
-        z-index: 3;
-        right: 0;
-        left: 0px;
-    }
-}
+ .nav-link:hover .fa-caret-up {
+     color: black;
+ }
 
-@media screen and (max-width: 600px) {
-    .nav-link {
-        font-size: 32px;
-        margin-top: 16px;
-        text-align: center;
-        cursor: pointer;
-    }
-    .header {
-        top: 0px;
-        z-index: 3;
-        right: 0;
-        left: 0px;
-        height: 46px;
-    }
-    body {
-        padding-top: 31px !important;
-    }
-    .user-name {
-        display: none;
-    }
-    .navbar-brand {
-        color: white;
-        font-weight: bold;
-        margin-left: 16px;
-        font-size: 12px;
-    }
-    .btn-outline-primary {
-        color: #6461b0;
-        border-color: transparent;
-        position: relative;
-        bottom: 0px;
-        left: -3px;
-    }
-    .login2 {
-        display: block;
-        position: absolute;
-        top: 6px;
-        right: 56px;
-        font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
-        background: none;
-        border: none;
-    }
-}
+ @media (hover: hover) {
+     .navbar-light .navbar-nav .nav-link:hover {
+         color: black;
+     }
+
+     .navbar-light .navbar-nav .nav-item:hover .genre-menu {
+         display: block !important;
+         background-color: #000000a6;
+     }
+ }
+
+ @media screen and (max-width: 992px) {
+     .menu-search {
+         display: flex;
+         flex-direction: row;
+         background: linear-gradient(222deg, #1a1a6a, rgb(116, 19, 108));
+         box-shadow: inset 0 3px 155px 1px #000000c2;
+         position: relative;
+         top: 6px;
+     }
+
+     .arrow {
+         transition: 0.5s;
+         font-size: 20px;
+         margin-left: 6px;
+         padding: 6px;
+         color: white;
+         cursor: pointer;
+         margin-top: 0px;
+         margin-bottom: 7px;
+         z-index: 3;
+         position: relative;
+         top: 0px;
+         right: 16px;
+     }
+
+     .navbar-light .navbar-nav .nav-link {
+         color: white;
+         padding: 9px 11px !important;
+         font-size: 14px;
+         border-top: rgba(255, 0, 0, 0) !important;
+         border-right: none;
+         z-index: 1;
+         margin-left: 31px;
+     }
+
+     .nav-item {
+         margin-top: 16px;
+         height: 30px;
+         width: 100%;
+         z-index: auto;
+     }
+ }
+
+ @media screen and (min-width: 992px) {
+     .btn-outline-primary {
+         display: none;
+     }
+
+     .menu-search {
+         background: none;
+         box-shadow: none;
+     }
+
+     .login {
+         display: block;
+         position: absolute;
+         top: -2px;
+         right: 0px;
+         font-size: 21px;
+         text-align: center;
+         margin-top: 4px;
+         display: flex;
+         align-items: center;
+     }
+
+     .login2 {
+         display: block;
+         position: absolute;
+         top: 6px;
+         right: 12px;
+         background: none;
+         font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+         text-transform: uppercase;
+         font-size: 14px;
+         font-weight: bold;
+         letter-spacing: 0.1em;
+     }
+
+     .header {
+         top: 0px;
+         z-index: 3;
+         right: 0;
+         left: 0px;
+     }
+ }
+
+ @media screen and (min-width: 1300px) {
+     .navbar-expand-lg .navbar-collapse {
+         display: flex !important;
+         flex-basis: auto;
+         margin-left: 61px;
+     }
+
+     .menu-search {
+         background: none;
+         box-shadow: none;
+     }
+
+     .header {
+
+         top: 0px;
+         z-index: 3;
+         right: 0;
+         left: 0px;
+     }
+ }
+
+ @media screen and (max-width: 600px) {
+     .navbar-light .navbar-nav .nav-link {
+         color: white;
+         padding: 9px 11px !important;
+         font-size: 16px;
+         border-top: rgba(255, 0, 0, 0) !important;
+         border-right: none;
+         z-index: 1;
+         margin-left: 3px;
+     }
+
+     .search-icon {
+         margin-left: 18px;
+     }
+
+     .nav-link {
+         font-size: 32px;
+         margin-top: 16px;
+         text-align: center;
+         cursor: pointer;
+     }
+
+     .brand {
+         font-size: 16px;
+         margin-top: 3px;
+     }
+
+     .header {
+         top: 0px;
+         z-index: 3;
+         right: 0;
+         left: 0px;
+         height: 46px;
+     }
+
+     body {
+         padding-top: 31px !important;
+     }
+
+     .user-name {
+         display: none;
+     }
+
+     .navbar-brand {
+         color: white;
+         font-weight: bold;
+         margin-left: 16px;
+         font-size: 12px;
+     }
+
+     .btn-outline-primary {
+         color: #6461b0;
+         border-color: transparent;
+         position: relative;
+         bottom: 0px;
+         left: -3px;
+     }
+
+     .menu-search {
+         position: relative;
+         top: 6px;
+     }
+
+     .login2 {
+         display: block;
+         position: absolute;
+         top: 6px;
+         right: 56px;
+         font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+         background: none;
+         border: none;
+     }
+ }

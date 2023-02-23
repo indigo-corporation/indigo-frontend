@@ -38,17 +38,14 @@ export class MoreFilmsComponent implements OnInit {
     pagination: { clickable: false },
     scrollbar: { draggable: true },
     breakpoints: {
-      1300: {
+      992: {
         slidesPerView: 6,
       },
-      992: {
-        slidesPerView: 4,
-      },
       764: {
-        slidesPerView: 3,
+        slidesPerView: 5,
       },
       300: {
-        slidesPerView: 1,
+        slidesPerView: 3,
       },
     }
   };

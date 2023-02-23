@@ -33,10 +33,10 @@ export class SwiperComponent implements OnInit {
         slidesPerView: 6,
       },
       764: {
-        slidesPerView: 2,
+        slidesPerView: 5,
       },
       300: {
-        slidesPerView: 1,
+        slidesPerView: 3,
       },
     }
   };

@@ -27,7 +27,7 @@ export class CardMainComponent implements OnInit, OnChanges {
         slidesPerView: 6,
       },
       764: {
-        slidesPerView: 4,
+        slidesPerView: 5,
       },
       300: {
         slidesPerView: 3,

@@ -1,7 +1,7 @@
 .form-search {
     padding: 6px 40px 6px 38px;
-    background: linear-gradient(222deg, #07073c, rgb(78 3 72));
-    box-shadow: inset 0px 3px 47px 1px rgb(0 0 0 / 76%)
+    box-shadow: inset 0px 3px 47px 1px rgb(0 0 0 / 76%);
+    background: linear-gradient(222deg,#1a1a6a,rgb(116,19,108));
 }
 
 .block {
@@ -146,13 +146,12 @@ p {
     text-transform: capitalize;
   }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 992px) {
     .block {
         padding: 0px;
-        background-color: rgb(26 25 35 / 89%);
         border-radius: 0;
         position: absolute;
-        top: 310px;
+        top: 301px;
         right: 23px;
         left: 0px;
         width: 100%;
@@ -160,6 +159,12 @@ p {
 }
 
 @media screen and (max-width: 600px) {
+    .form-search {
+        padding: 6px 13px 6px 13px;
+        box-shadow: inset 0px 3px 47px 1px rgb(0 0 0 / 76%);
+        background: linear-gradient(222deg, #1a1a6a, rgb(116, 19, 108));
+    }
+
     .block {
         padding: 0px;
         background-color: rgba(26, 25, 35, 0.89);

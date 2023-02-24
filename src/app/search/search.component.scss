@@ -25,6 +25,7 @@ button {
     top: 0px;
     width: 100%;
     max-width: 69px;
+
     &:hover {
         color: white;
         background-color: black;
@@ -81,20 +82,25 @@ p {
     max-width: 150px;
 }
 
+.content-scroll {
+    max-height: 256px;
+    overflow-x: hidden;
+}
+
 .imdb {
     color: #e3dfd6;
     font-size: 12px;
     margin-top: 1px;
     font-weight: bold;
-  }
-  
-  .shiki {
+}
+
+.shiki {
     color: #e3dfd6;
     font-size: 11px;
     font-family: "TT Norms Pro,Helvetica,sans-serif";
     font-weight: bold;
     margin-top: 2px;
-  }
+}
 
 .card-head {
     height: 100%;
@@ -118,33 +124,33 @@ p {
 .card-genre {
     color: #a3a3a3;
     margin: 0;
-  }
+}
 
-  .film-title {
+.film-title {
     background-color: transparent;
     color: white;
     font-size: 14px;
     text-decoration: none;
     font-weight: bold;
-  }
+}
 
-  .card:hover .film-title {
+.card:hover .film-title {
     color: #e75dff !important;
-  }
+}
 
-  .card-year {
+.card-year {
     color: #c93941;
     font-size: 12px;
     font-weight: bold;
-  }
-  
-  .genre-div {
+}
+
+.genre-div {
     text-align: center;
     border-radius: 5%;
     font-size: 12px;
     font-weight: bold;
     text-transform: capitalize;
-  }
+}
 
 @media screen and (max-width: 992px) {
     .block {

@@ -378,6 +378,17 @@ p {
   }
 }
 
+@media all and (max-width: 900px)  {
+  .card-row {
+    padding-bottom: 89px;
+    display: grid;
+    grid-template-columns: 36% 43% 35%;
+    justify-content: center;
+  }
+}
+
+
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .card-row {
     padding-bottom: 141px;

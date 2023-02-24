@@ -173,12 +173,11 @@
  }
 
  .user-photo {
-    width: 100%;
-    border-radius: 7px;
-    width: 100%;
+    width: 39px;
     margin-bottom: 5px;
-    height: 40px;
-    transform: scale(1, 1);
+    height: 42px;
+    object-fit: contain;
+    border-radius: 7px;
 }
 
  .search-icon {

@@ -635,6 +635,9 @@ iframe {
 }
 
 
+
+
+
 @media screen and (min-width: 915px) and (max-width: 412px) {
     .discriptionforfilm {
         display: flex;
@@ -671,6 +674,41 @@ iframe {
     }
 
 }
+
+
+@media all and (max-width: 900px) {
+    #shiki {
+        color: #c67aed;
+        margin-left: 10px;
+        font-size: 14px;
+      }
+
+      .poster {
+        text-align: center;
+        margin-right: 22px;
+        padding: 0px 3px;
+        display: flex;
+        flex-direction: column;
+    }
+    .discriptionforfilm2 {
+        display: flex;
+        color: white;
+        align-items: center;
+        text-align: start;
+        flex-wrap: wrap;
+    }
+
+    #imdb {
+        color: #f3c45b;
+        margin-left: -10px;
+    }
+
+      .content-card {
+        padding: 0px 0px;
+        padding-top: 9px;
+    }
+  }
+  
 
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {

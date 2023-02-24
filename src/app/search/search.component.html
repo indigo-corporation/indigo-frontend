@@ -6,7 +6,7 @@
                 <i style="margin-bottom: 2px;" class="fas fa-search search-icon"></i><br/>
             </button>
         </div>
-        <div *ngIf="data">
+        <div class="content-scroll" *ngIf="data">
             <div routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}" *ngFor="let card of data.slice(0, 4)" class="card card-block">
                 <div class="img-block">
                     <a routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}"> <img class="cards-img" src="{{card.poster_url}}"></a>

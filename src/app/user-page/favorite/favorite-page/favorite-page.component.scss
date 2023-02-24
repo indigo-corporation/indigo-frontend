@@ -419,11 +419,27 @@ p {
   }
 }
 
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .card-row {
-    padding-bottom: 30px;
+    padding-bottom: 89px;
     display: grid;
-    grid-template-columns: 20% 20% 20% 20% 24%;
-    margin: 0 5px 0 7px;
+    grid-template-columns: 15% 14% 15% 14% 15% 14%;
+    margin: 0 6px 0 7px;
+    justify-content: center;
+    justify-items: center;
+  }
+  
+}
+
+
+@media screen and (min-width: 1024px) and (max-width: 1280px) {
+  .card-row {
+    padding-bottom: 89px;
+    display: grid;
+    grid-template-columns: 5% 33% 5% 33% 5%;
+    margin: 0 6px 0 7px;
+    justify-content: center;
+    justify-items: center;
   }
 }

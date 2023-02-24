@@ -15,7 +15,9 @@ form {
   font-weight: bold;
   background: #4c3f93;
   color: white;
+  margin: 0;
   font-family: 'TT Norms Pro Regular,Helvetica,sans-serif';
+
   &:hover {
     color: black;
   }
@@ -29,11 +31,16 @@ form {
 
 .error-window {
   color: white;
-  background-color: #4c3f93;;
+  background-color: #4c3f93;
+  border-radius: 5px;
   padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.search-null {
+  min-height: 500px
 }
 
 .card-title {
@@ -86,7 +93,130 @@ button {
 .input-serach {
   max-width: 500px;
 }
+
 .form-group {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 90% 9%;
+  gap: 14px;
+}
+
+
+
+@media screen and (min-width: 360px) and (max-width: 720px) {
+  .card-row {
+    margin: 0 -5px;
+    padding-bottom: 89px;
+  }
+
+  .form-group {
+    display: grid;
+    grid-template-columns: 77% 20%;
+    gap: 12px;
+  }
+
+  .search-null {
+    min-height: 316px;
+  }
+}
+
+
+
+@media screen and (min-width: 390px) and (max-width: 844px) {
+  .card-row {
+    padding-bottom: 89px;
+    display: flex;
+    justify-content: center;
+  }
+  .search-null {
+    min-height: 500px;
+  }
+  .form-group {
+    display: grid;
+    grid-template-columns: 77% 20%;
+    gap: 12px;
+  }
+}
+
+
+
+
+
+
+@media screen and (min-width: 360px) and (max-width: 720px) {
+  .btn-search {
+    font-weight: bold;
+    background: #4c3f93;
+    color: white;
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    margin: 0;
+  }
+  .search-null {
+    min-height: 489px;
+  }
+  .card {
+    max-width: 114px;
+    background-color: transparent;
+    text-align: start;
+    border: none;
+    padding: 0;
+    margin: 0px 3px;
+    padding: 10px 0;
+    transition: 0.6s;
+  }
+}
+
+@media screen and (min-width: 412px) and (max-width: 915px) {
+  .form-group {
+    display: grid;
+    grid-template-columns: 77% 22%;
+    gap: 6px;
+  }
+  .search-null {
+    min-height: 563px;
+  }
+  .btn-search {
+    font-weight: bold;
+    background: #4c3f93;
+    color: white;
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    margin: 0;
+  }
+}
+
+
+
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .card {
+    width: 100%;
+    max-width: 130px;
+    background-color: transparent;
+    text-align: start;
+    border: none;
+    padding: 0;
+    transition: 0.6s;
+    margin-top: 10px;
+  } 
+  .search-null {
+    min-height: 500px
+  }
+
+  .btn-search[_ngcontent-phn-c265] {
+    font-weight: bold;
+    background: #4c3f93;
+    color: white;
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    margin: 0;
+  }
+
+  .form-group {
+    display: grid;
+    grid-template-columns: 87% 11%;
+    gap: 14px;
+  }
+
+  .card-row {
+    padding-bottom: 14px;
+  }
 }

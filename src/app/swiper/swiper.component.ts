@@ -31,6 +31,7 @@ export class SwiperComponent implements OnInit {
       delay: 2000, // задержка в 20 секунд
       disableOnInteraction: false
     },
+    speed: 500,
     slidesPerView: 3,
     spaceBetween: 10,
     navigation: true,
@@ -48,6 +49,7 @@ export class SwiperComponent implements OnInit {
       },
     }
   };
+
 
   myOptions = {
     'placement': 'left',
@@ -69,19 +71,20 @@ export class SwiperComponent implements OnInit {
   }
 
 
-  onSwiper(swiper: Swiper) {
+  onSwiper(swiper: Swiper, delay: number = 10000, speed: number = 10000) {
     setInterval(() => {
       const totalSlides = swiper?.slides?.length ?? 0;
       const currentSlide = swiper?.activeIndex ?? 0;
       const lastSlideIndex = totalSlides - 3;
       if (currentSlide >= lastSlideIndex) {
-        swiper.slideTo(0);
+        swiper.slideTo(0, speed);
       } else {
         const targetSlide = currentSlide + 3;
-        swiper?.slideTo(targetSlide);
+        swiper?.slideTo(targetSlide, speed);
       }
-    }, 10000);
+    }, delay);
   }
+
   
   
 

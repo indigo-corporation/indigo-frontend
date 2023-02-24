@@ -14,8 +14,8 @@ import { ModalLoginComponent } from 'src/app/modal-login/modal-login.component';
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent implements OnInit {
-  isShown: boolean;
-  isCollapsed: boolean;
+  isShown: boolean = false
+  isCollapsed: boolean = true
   isNullCom: boolean;
   public textArea: string
   login: boolean = false
@@ -113,6 +113,7 @@ export class CommentComponent implements OnInit {
 
   toggleShow() {
     this.isShown = !this.isShown;
+    this.isCollapsed = false;
   }
 
   OpenComments() {

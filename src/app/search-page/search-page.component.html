@@ -7,6 +7,11 @@
     </div>
   </form>
   <div class="row card-row">
+    <div class="search-null" *ngIf="data.length === 0">
+      <div class="error-window" *ngIf="data.length === 0">
+        По запросу ничего не найдено
+      </div>
+    </div>
     <app-card [card]="card" *ngFor="let card of data | paginate: { 
       id: 'listing_pagination',
       itemsPerPage: 48,
@@ -14,9 +19,6 @@
       totalItems: totalRecords
     }" class="card col-md-3" style="width: 13rem;">
     </app-card>
-  </div>
-  <div class="error-window" *ngIf="data.length === 0">
-    По запросу ничего не найдено
   </div>
   <div *ngIf="data.length" class="paginate">
     

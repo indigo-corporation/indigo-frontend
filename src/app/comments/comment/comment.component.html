@@ -11,9 +11,8 @@
         </p>
         <div class="icons-comments">
             <div class="comment-nav">
-                <a mat-raised-button *ngIf="comment.answers.length" class="more" (click)="OpenComments()"
-                    type="checkbox">Еще
-                    {{comment.answers.length}}</a>
+                <a mat-raised-button *ngIf="comment.answers && comment.answers.length" class="more"
+                    (click)="OpenComments()" type="checkbox">Еще {{comment.answers.length}}</a>
             </div>
             <div class="comment-nav">
                 <label (click)="changeLike(true)">
@@ -23,14 +22,15 @@
                 </label>
                 <label (click)="changeLike(false)">
                     {{comment.dislikes_count}}
-                    <i [class.active]="comment.like && comment.like.is_like === false" class="fas fa-thumbs-down dislike">
+                    <i [class.active]="comment.like && comment.like.is_like === false"
+                        class="fas fa-thumbs-down dislike">
                     </i>
                 </label>
             </div>
             <div class="comment-nav">
-                <a mat-raised-button class="comments-item_write-com" (click)="toggleShow()" type="checkbox">Ответить</a>    
+                <a mat-raised-button class="comments-item_write-com" (click)="toggleShow()" type="checkbox">Ответить</a>
             </div>
-            
+
         </div>
     </div>
 </div>

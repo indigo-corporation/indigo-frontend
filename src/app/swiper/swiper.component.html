@@ -1,6 +1,6 @@
 <div style="min-height: 100%" class="container main block">
   <h1 class="card-titile">Новинки</h1>
-  <swiper [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
+  <swiper [config]="config" (swiper)="onSwiper($event, 10000, 3000)" (slideChange)="onSlideChange()">
     <ng-template *ngFor="let card of data" swiperSlide>
       <app-card-for-swipers [card]="card"></app-card-for-swipers>
     </ng-template>

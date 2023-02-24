@@ -1,11 +1,11 @@
 <div style="min-height:100%;position:relative" class="container main block">
-  <div class="row card-row">
+  <div class="card-row">
     <app-card [card]="card" *ngFor="let card of data | paginate: { 
       id: 'listing_pagination',
       itemsPerPage: 48,
       currentPage: page,
       totalItems: totalRecords
-    }" class="card col-md-3" style="width: 13rem;">
+    }">
     </app-card>
   </div>
   <div *ngIf="data === null" class="paginate">

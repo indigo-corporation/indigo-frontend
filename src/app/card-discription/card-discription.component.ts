@@ -82,7 +82,6 @@ export class CardDiscriptionComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.route.snapshot.queryParams);
     this.auth.user$.subscribe(x => {
       this.login = x != null
     })

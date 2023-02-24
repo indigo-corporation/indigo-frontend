@@ -46,7 +46,7 @@
             [parentId]="comment.id" [filmId]="filmId"></app-commentform>
     </div>
 </div>
-<div *ngIf="isCollapsed">
+<div *ngIf="!isCollapsed">
     <app-subcomment *ngFor="let comment of comment.answers" (subcommentPosted)="onSubCommentPosted($event)"
         [filmId]="filmId" [comment]="comment"></app-subcomment>
 </div>

@@ -173,12 +173,12 @@
  }
 
  .user-photo {
-    width: 39px;
-    margin-bottom: 5px;
-    height: 42px;
-    object-fit: contain;
-    border-radius: 7px;
-}
+     width: 39px;
+     margin-bottom: 5px;
+     height: 42px;
+     object-fit: contain;
+     border-radius: 7px;
+ }
 
  .search-icon {
      padding: 0 8px;
@@ -209,7 +209,7 @@
  }
 
  .login2 {
-    color: white;
+     color: white;
      display: block;
      position: absolute;
      top: 7px;
@@ -260,7 +260,34 @@
      position: fixed;
      top: 0;
      width: 100%;
+     z-index: 999;
+     /*   transition: opacity 0.5s ; */
  }
+
+ .navbar {
+     /* добавьте стили для нормального состояния */
+     opacity: 1;
+     /* сначала элемент невидимый */
+     transition: opacity 1s ease-out;
+ }
+
+ .navbar.sticky {
+     /* добавьте стили для состояния sticky */
+     opacity: 1;
+     /* элемент появляется с анимацией при добавлении класса */
+     animation: fadeIn 1s ease-out;
+ }
+
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+     }
+
+     to {
+         opacity: 1;
+     }
+ }
+
 
  .card-year {
      color: #958c8c;
@@ -304,12 +331,13 @@
      color: black;
  }
 
+
  @media (hover: hover) {
      .navbar-light .navbar-nav .nav-link:hover {
-        color: black;
-        transition: color 0.2s;
-        background-color: rgba(255, 255, 255, 0.5019607843);
-        border-radius: 5px;
+         color: black;
+         transition: color 0.2s;
+         background-color: rgba(255, 255, 255, 0.5019607843);
+         border-radius: 5px;
      }
 
      .navbar-light .navbar-nav .nav-item:hover .genre-menu {
@@ -490,13 +518,13 @@
      }
 
      .login2 {
-        display: block;
-        color: white;
-        position: absolute;
-        top: 7px;
-        right: 56px;
-        font-weight: bold;
-        font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
-        border: none;
-    }
+         display: block;
+         color: white;
+         position: absolute;
+         top: 7px;
+         right: 56px;
+         font-weight: bold;
+         font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+         border: none;
+     }
  }

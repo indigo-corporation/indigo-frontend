@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { api2Service } from '../services/api2.service';
 import { ActivatedRoute } from '@angular/router';
@@ -24,6 +24,7 @@ export class CardsComponent implements OnInit {
   public id: any
   constructor(
     private api2Service: api2Service,
+    private el:ElementRef,
     private router: Router,
     private route: ActivatedRoute,
     private meta: Meta,
@@ -33,7 +34,10 @@ export class CardsComponent implements OnInit {
 
   }
 
+
+
   ngOnInit() {
+
     this.page=this.route.snapshot.queryParams.page
     if(!this.page) {
       this.page = 1 

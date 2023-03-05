@@ -71,8 +71,8 @@ export class SwiperComponent implements OnInit {
   }
 
 
-  onSwiper(swiper: Swiper, delay: number = 10000, speed: number = 3000) {
-    let timeoutId: ReturnType<typeof setTimeout>;
+  onSwiper(swiper: Swiper) {
+  /*   let timeoutId: ReturnType<typeof setTimeout>;
   
     const slideToNext = () => {
       const totalSlides = swiper?.slides?.length ?? 0;
@@ -97,7 +97,7 @@ export class SwiperComponent implements OnInit {
   
     swiper.on('touchEnd', () => {
       timeoutId = setTimeout(slideToNext, delay);
-    });
+    }); */
   }
 
   

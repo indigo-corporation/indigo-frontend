@@ -187,6 +187,7 @@ p {
   line-clamp: 6;
   box-orient: vertical;
   margin-top: 5px;
+  font-size: 12px;
 }
 
 .dot {
@@ -206,7 +207,7 @@ p {
   color: rgb(0, 0, 0);
   background: rgba(185, 164, 247, 0.68);
   position: absolute;
-  z-index: 2;
+  z-index: 0;
   right: 0px;
   top: 0px;
   border-radius: 3px;
@@ -219,6 +220,39 @@ p {
   align-items: center;
   justify-content: center;
 }
+
+.tooltip-div {
+  position: absolute;
+  top: 0;
+  padding: 10px;
+  left: 100%;
+  width: 300px;
+  border: 1px solid #403b3bb5;
+  background-color: #15121e;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px;
+  z-index: 1;
+  display: none;
+}
+
+.tooltip-div:hover {
+  display: block;
+  cursor: pointer;
+}
+
+.tooltip-text {
+  width: 300px;
+  background-color: #333;
+
+}
+
+
+.info-icon:hover+.tooltip-div {
+  display: block;
+}
+
 
 .play-icon {
   margin-bottom: 10px;
@@ -348,85 +382,15 @@ p {
   color: #ffffffc7;
 }
 
-/* @media screen and (min-width: 768px) and (max-width: 1024px) {
-  .filters__img {
-    height: 100%;
-    cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.1882352941);
-    border-radius: 5px;
-    max-width: 130px;
-    min-height: 183px;
-    max-height: 50px;
-    width: 100%;
-    object-fit: unset;
-  }
-
-  .info-icon {
-    color: rgb(0, 0, 0);
-    background: rgba(185, 164, 247, 0.68);
-    position: absolute;
-    z-index: 2;
-    right: 0px;
-    top: 0px;
-    border-radius: 5px;
-    padding: 10px;
-    width: 37px;
-    height: 25px;
-    text-align: center;
-    display: flex;
-    font-size: 21px;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .card {
-    width: 100%;
-    max-width: 130px;
-    background-color: transparent;
-    text-align: start;
-    border: none;
-    padding: 0;
-    transition: 0.6s;
-  }
-
-  .film-title {
-    background-color: transparent;
-    letter-spacing: 0.08em;
-    font-weight: bold;
-    color: white;
-    font-size: 12px;
-    text-decoration: none;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -moz-box;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    line-clamp: 2;
-    box-orient: vertical;
-    margin-top: 5px;
-  }
-}
-
- */
-
-
-
-
-
 
 
 @media screen and (min-width: 375px) and (max-width: 667px) {
 
-  ::ng-deep.tooltip {
-    width: 100% !important;
-    max-width: 200px !important;
-    height: fit-content;
-    max-height: fit-content;
-    min-height: fit-content;
-    background-color: #1a1923 !important;
-    border: 1px solid #616164b8;
+
+  .tooltip-div {
+   display: none;
   }
+
 
   .filters__img {
     height: 100%;
@@ -464,22 +428,7 @@ p {
   }
 
   .info-icon {
-    color: rgb(0, 0, 0);
-    background: rgba(185, 164, 247, 0.68);
-    position: absolute;
-    z-index: 2;
-    right: 0px;
-    left: 77px;
-    top: 1px;
-    border-radius: 5px;
-    padding: 10px;
-    width: 37px;
-    height: 25px;
-    text-align: center;
-    display: flex;
-    font-size: 21px;
-    align-items: center;
-    justify-content: center;
+    display: none;
   }
 
   .card-year {
@@ -536,7 +485,7 @@ p {
 }
 
 
-@media screen and (min-width: 412px) and (max-width: 915px) {
+@media screen and (max-width: 412px) {
 
   .filters__img {
     height: 100%;
@@ -551,22 +500,7 @@ p {
   }
 
   .info-icon {
-    color: rgb(0, 0, 0);
-    background: rgba(185, 164, 247, 0.68);
-    position: absolute;
-    z-index: 2;
-    right: 0px;
-    left: 82px;
-    top: 1px;
-    border-radius: 8px;
-    padding: 10px;
-    width: 37px;
-    height: 25px;
-    text-align: center;
-    display: flex;
-    font-size: 21px;
-    align-items: center;
-    justify-content: center;
+    display: none;
   }
 
   .card-year {
@@ -642,17 +576,12 @@ p {
 
 }
 
-
 @media all and (max-width: 900px) {
-  ::ng-deep.tooltip {
-    width: 100% !important;
-    max-width: 200px !important;
-    height: fit-content;
-    max-height: fit-content;
-    min-height: fit-content;
-    background-color: #1a1923 !important;
-    border: 1px solid #616164b8;
+  .info-icon {
+    display: none;
   }
+}
+@media all and (max-width: 900px) {
 
   .filters__img {
     height: 100%;
@@ -689,24 +618,6 @@ p {
     font-size: 10px;
   }
 
-  .info-icon {
-    color: rgb(0, 0, 0);
-    background: rgba(185, 164, 247, 0.68);
-    position: absolute;
-    z-index: 2;
-    right: 0px;
-    left: 77px;
-    top: 1px;
-    border-radius: 5px;
-    padding: 10px;
-    width: 37px;
-    height: 25px;
-    text-align: center;
-    display: flex;
-    font-size: 21px;
-    align-items: center;
-    justify-content: center;
-  }
 
   .card-year {
     color: #ff4d57;
@@ -759,10 +670,12 @@ p {
     box-orient: vertical;
     margin-top: 5px;
   }
- }
+}
+
+
+
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-
   .card-icon_text {
     margin: 0;
     color: white;
@@ -780,22 +693,25 @@ p {
     height: 100%;
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.1882352941);
-    border-radius: 9px;
-    width: 130px;
-    min-height: 179px;
+    border-radius: 5px;
+    /* max-width: 70px; */
+    min-width: 114px;
+    min-height: 188px;
     max-height: 50px;
+    width: 100%;
     object-fit: unset;
+    transition: 0.5s;
   }
 
   .info-icon {
     color: rgb(0, 0, 0);
     background: rgba(185, 164, 247, 0.68);
     position: absolute;
-    z-index: 2;
+    z-index: 0;
     right: 0px;
     top: 0px;
-    left: 92px;
-    border-radius: 9px;
+    left: 76px;
+    border-radius: 5px;
     padding: 10px;
     width: 37px;
     height: 25px;
@@ -815,7 +731,7 @@ p {
   }
 
   .card {
-    max-width: 110px;
+    max-width: 114px;
     background-color: transparent;
     text-align: start;
     border: none;
@@ -824,7 +740,6 @@ p {
     padding: 10px 0;
     transition: 0.6s;
   }
-
 
   .film-title {
     background-color: transparent;
@@ -843,4 +758,93 @@ p {
     box-orient: vertical;
     margin-top: 5px;
   }
+  .tooltip-div {
+    width: 200px;
+  }
+
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1400px) {
+  .card-icon_text {
+    margin: 0;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+  }
+
+  .fa-play {
+    color: white;
+    font-size: 26px;
+    margin-bottom: 4px;
+  }
+
+  .filters__img {
+    height: 100%;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1882352941);
+    border-radius: 5px;
+    max-width: 150px;
+    min-height: 223px;
+    max-height: 50px;
+    width: 100%;
+    object-fit: unset;
+    transition: 0.5s;
+  }
+
+  .info-icon {
+    color: rgb(0, 0, 0);
+    background: rgba(185, 164, 247, 0.68);
+    position: absolute;
+    z-index: 0;
+    right: 0px;
+    top: 0px;
+    left: 112px;
+    border-radius: 5px;
+    padding: 10px;
+    width: 37px;
+    height: 25px;
+    text-align: center;
+    display: flex;
+    font-size: 21px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .shiki {
+    color: #e3dfd6;
+    font-size: 10px;
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    font-weight: bold;
+    margin-top: 2px;
+  }
+
+  .card {
+    max-width: 150px;
+    background-color: transparent;
+    text-align: start;
+    border: none;
+    padding: 0;
+    margin: 0px 3px;
+    padding: 10px 0;
+    transition: 0.6s;
+  }
+
+  .film-title {
+    background-color: transparent;
+    letter-spacing: 0.08em;
+    font-weight: bold;
+    color: white;
+    font-size: 12px;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    box-orient: vertical;
+    margin-top: 5px;
+  }
+
 }

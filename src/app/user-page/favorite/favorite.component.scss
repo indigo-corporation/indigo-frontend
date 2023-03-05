@@ -353,10 +353,32 @@ p {
 
 @media screen and (min-width: 360px) and (max-width: 720px) {
   .card-row {
+    margin: 0 5px 0 0px;
+    padding-bottom: 89px;
+  }
+}
+
+
+
+@media screen and (min-width: 390px) and (max-width: 844px) {
+  .card-row {
+    padding-bottom: 89px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+
+
+
+
+@media screen and (min-width: 360px) and (max-width: 720px) {
+  .card-row {
     padding-bottom: 89px;
     display: grid;
-    grid-template-columns: 36% 36% 36%;
-    justify-content: center;
+    grid-template-columns: 34% 34% 32%;
+    margin: 0 8px 0 6px;
   }
 }
 
@@ -364,8 +386,8 @@ p {
   .card-row {
     padding-bottom: 89px;
     display: grid;
-    grid-template-columns: 35% 35% 35%;
-    justify-content: center;
+    grid-template-columns: 34% 34% 35%;
+    margin: 0 5px 0 16px;
   }
 }
 
@@ -373,42 +395,40 @@ p {
   .card-row {
     padding-bottom: 89px;
     display: grid;
-    grid-template-columns: 34% 34% 33%;
-    justify-content: center;
+    grid-template-columns: 34% 33% 35%;
+    margin: 0 5px 0 16px;
   }
 }
 
-@media all and (max-width: 900px)  {
+
+@media all and (max-width: 900px) {
   .card-row {
     padding-bottom: 89px;
     display: grid;
-    grid-template-columns: 36% 43% 35%;
-    justify-content: center;
+    grid-template-columns: 36% 37% 36%;
+    margin: 0 17px 0 21px;
   }
 }
-
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .card-row {
     padding-bottom: 89px;
     display: grid;
-    grid-template-columns: 15% 14% 15% 14% 15% 14%;
-    margin: 0 6px 0 7px;
+    grid-template-columns: 15% 16% 15% 16% 15% 16%;
+    grid-gap: 18px;
     justify-content: center;
     justify-items: center;
-  }
-  
+}
 }
 
 
-@media screen and (min-width: 1024px) and (max-width: 1280px) {
-  .card-row {
+@media screen and (min-width: 1024px) and (max-width: 1400px) {
+  .card-row{
     padding-bottom: 89px;
     display: grid;
-    grid-template-columns: 16% 24% 15% 24% 15%;
-    margin: 0 6px 0 7px;
+    grid-template-columns: 15% 16% 15% 16% 15% 16%;
+    grid-gap: 17px;
     justify-content: center;
     justify-items: center;
-  }
 }
-
+}

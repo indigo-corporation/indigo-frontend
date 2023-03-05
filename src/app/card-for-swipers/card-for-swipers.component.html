@@ -1,24 +1,20 @@
 <div class="card col-md-3" style="width: 13rem;">
   <div class="card-head">
-    <ng-template class="tooltip" #HtmlContent>
-      <div class="tooltip_body">
-        <a routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}"
-          class="tooltip-title">{{card.title}}</a>
-        <p class="tooltip-genre"><span class="genre-div" *ngFor="let genre of card.genres">{{genre.title}},
-          </span> <span class="card-year">
-             {{card.year}}</span> </p>
-        <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
-        <div *ngIf="card.shiki_rating">
-          <div class="shiki">SHIKIMORI {{card.shiki_rating}} </div>
-        </div>
-        <p class="tooltip-overview" style="text-align: left;">{{card.overview}}<span>...</span></p>
-      </div>
-    </ng-template>
     <a routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}">
-      <img class="filters__img" alt="{{card.title}}" src="{{card.poster_url}}">
+      <img class="filters__img" alt="{{card.title}}" src="{{card.poster_medium}}">
     </a>
-    <mat-icon fxLayout="row" fxFlex fxLayoutAlign="start center" tooltip="Tooltip" [options]="myOptions"
-      [tooltip]="HtmlContent" contentType="template" class="info-icon">info</mat-icon>
+    <mat-icon (mouseover)="mOver($event)" (click)="toolTipClick($event)" class="info-icon">info</mat-icon>
+    <div class="tooltip-div">
+      <a routerLink="/{{card.category}}/{{card.slug}}" class="tooltip-title">{{card.title}}</a>
+      <p class="tooltip-genre"><span class="genre-div" *ngFor="let genre of card.genres">{{genre.title}}, </span>
+        <span class="card-year">
+          {{card.year}}</span> </p>
+      <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
+      <div *ngIf="card.shiki_rating">
+        <div class="shiki">SHIKIMORI {{card.shiki_rating}} </div>
+      </div>
+      <p class="tooltip-overview" style="text-align: left;">{{card.overview}}<span id="dot">...</span></p>
+    </div>
     <a class="card-play-ic" routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}">
       <i class="fa fa-play" aria-hidden="true"></i>
       <p class="card-icon_text">Смотреть</p>

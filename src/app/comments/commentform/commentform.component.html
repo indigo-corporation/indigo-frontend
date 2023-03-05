@@ -1,7 +1,7 @@
 <div class="comments-head">
     <hr>
     <div class="wrapper">
-        <div *ngIf="user">
+        <div class="flex" *ngIf="user">
             <img class="avatars-comments" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';"
                 src="{{user.poster_url}}">
                 <a routerLink="/user-page" href="/user-page" class="comments-user">{{user.name}}</a>

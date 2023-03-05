@@ -259,6 +259,11 @@ textarea {
     align-items: start;
 }
 
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
 
 @media screen and (min-width: 360px) and (max-width: 720px) {
     .wrapper {

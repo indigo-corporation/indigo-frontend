@@ -1,4 +1,4 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -15,6 +15,8 @@ import { BehaviorSubject, of } from "rxjs";
 import { authService } from '../../services/authService.service';
 declare var $: any;
 import { Meta, Title } from '@angular/platform-browser';
+import { ImageCroppedEvent, LoadedImage,base64ToFile } from 'ngx-image-cropper';
+
 
 @Component({
   selector: 'app-user-setting',
@@ -28,11 +30,16 @@ export class UserSettingComponent implements OnInit {
     user_name: new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
 
   })
+
+  imageChangedEvent: any = '';
+  public croppedImage: any;
+  
   @Output() userInfoUpdate = new EventEmitter<any>();
   imageForm = new FormGroup({
     picture: new FormControl("", []),
   })
-  savedFilters:any
+  
+  savedFilters: any
   passChangeForm: FormGroup
   postUserName: FormGroup
   alert: boolean = false
@@ -45,9 +52,12 @@ export class UserSettingComponent implements OnInit {
   citymain: any
   user: any
   url: string
+
   user$ = new BehaviorSubject<any>(null);
+
   public options: Options;
   public options2: Options;
+
   selectedFile: File
   constructor(
     private userService: userService,
@@ -55,7 +65,7 @@ export class UserSettingComponent implements OnInit {
     private FormBuilder: FormBuilder,
     private alertify: AlertifyService,
     private meta: Meta,
-    private title: Title 
+    private title: Title
   ) {
 
     this.passChangeForm = this.FormBuilder.group({
@@ -67,17 +77,36 @@ export class UserSettingComponent implements OnInit {
       })
   }
 
- 
-
 
   ngOnInit() {
     this.title.setTitle("Настройки профиля")
-   
+
     this.auth.user$.subscribe(x => {
       this.user = x
     })
   }
 
+
+    fileChangeEvent(event: any): void {
+        this.imageChangedEvent = event;
+        var reader = new FileReader()
+        reader.readAsDataURL(event.target.files[0])
+        reader.onload = (event: any) => {
+          this.url = event.target.result
+        }
+    }
+    imageCropped(event: ImageCroppedEvent) {
+        this.croppedImage = event.base64;
+    }
+    imageLoaded(image: LoadedImage) {
+      this.croppedImage = image
+    }
+    cropperReady() {
+      this.croppedImage
+    }
+    loadImageFailed() {
+        // show message
+    }
 
 
   get name(): FormControl {
@@ -122,23 +151,23 @@ export class UserSettingComponent implements OnInit {
   }
 
 
-  userChangeInfo(user){
-    if(!this.settingForm.value["about"]) {
+  userChangeInfo(user) {
+    if (!this.settingForm.value["about"]) {
       this.settingForm.value["about"] = user.about
     }
 
-  if(!this.settingForm.value["name"]) {
-    this.settingForm.value["name"] = user.name
+    if (!this.settingForm.value["name"]) {
+      this.settingForm.value["name"] = user.name
     }
-   
-    if(!this.settingForm.value["user_name"]) {
-    this.settingForm.value["user_name"] = user.user_name
-    } 
-    if(this.settingForm.value["user_name"] === user.user_name) {
+
+    if (!this.settingForm.value["user_name"]) {
+      this.settingForm.value["user_name"] = user.user_name
+    }
+    if (this.settingForm.value["user_name"] === user.user_name) {
       delete this.settingForm.value["user_name"]
     }
-    
-    
+
+
     this.userService.userChangeInfo(this.settingForm.value).subscribe((result) => {
       this.userInfoUpdate.next(result)
       this.alertify.success('Успешно изменено');
@@ -150,21 +179,12 @@ export class UserSettingComponent implements OnInit {
       this.alertify.success('Успешно изменено');
     })
   }
-  
-
-  onFileSelected(event) {
-    this.selectedFile = event.target.files[0]
-    var reader = new FileReader()
-    reader.readAsDataURL(event.target.files[0])
-    reader.onload = (event: any) => {
-      this.url = event.target.result
-    }
-    /* reader.readAsDataURL(this.selectedFile) */
-  }
 
 
   postPicture() {
-    this.userService.getPicture(this.selectedFile).subscribe((result) => {
+    let file = base64ToFile(this.croppedImage);
+    const myFile = new File([file], "1.jpg", { lastModified: Date.now() });
+    this.userService.getPicture(myFile).subscribe((result) => {
       this.alertify.success('Картинка загружена');
     })
   }

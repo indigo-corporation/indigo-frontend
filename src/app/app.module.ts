@@ -36,7 +36,6 @@ import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { TooltipModule } from 'ng2-tooltip-directive';
 
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -86,7 +85,7 @@ import { AutoFocusDirectiveDirective } from './auto-focus-directive.directive';
 import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { CardComponent } from './card/card.component';
 import { CardForSwipersComponent } from './card-for-swipers/card-for-swipers.component';
-
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -165,6 +164,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    ImageCropperModule,
     OAuthModule.forRoot(),
     AppRoutingModule,
     NgxStarRatingModule,

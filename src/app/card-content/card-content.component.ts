@@ -1,6 +1,7 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges,Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { api2Service } from '../services/api2.service';
+import { api } from '../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,16 +16,19 @@ import { Meta, Title } from '@angular/platform-browser';
   styleUrls: ['./card-content.component.scss']
 })
 export class CardContentComponent implements OnInit {
+
+
   public id: any
   term: any;
+  @Input() film: any
   totalRecords: string
-  film: any
   login: any
   slug
   isTogther: boolean = true
   isFilm: boolean = true
   constructor(
     private api2Service: api2Service,
+    private api: api,
     private router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
@@ -43,7 +47,9 @@ export class CardContentComponent implements OnInit {
       this.login = x != null
     })
   }
+  
 
+ 
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
       this.film = data.data;
@@ -59,23 +65,4 @@ export class CardContentComponent implements OnInit {
       }
     });
   }
-
-  /*   togetherOn(isTogther) {
-      if(!this.login) {
-        this.openLogin()
-        return
-      }
-      this.isTogther = isTogther
-    }
-  
-    watchOn(change) {
-      this.isTogther = change
-    } */
-  /* 
-    openLogin() {
-      const dialogRef = this.dialog.open(AuthPopup);
-  
-      dialogRef.afterClosed().subscribe(result => {
-      });
-    } */
 }

@@ -305,7 +305,9 @@ body {
 .swiper-button-prev:after, .swiper-button-next:after {
   font-size: 20px;
 }
-
+::ng-deep .mat-tooltip.mat-tooltip-showing {
+  transition-delay: 0s !important;
+}
 
 .swiper-button-prev,
 .swiper-button-next {

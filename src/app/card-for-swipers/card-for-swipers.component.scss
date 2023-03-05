@@ -29,16 +29,6 @@
   font-size: 14px;
 }
 
-::ng-deep.tooltip {
-  width: 100% !important;
-  min-width: 350px !important;
-  height: 100%;
-  max-height: 320px;
-  background-color: #1a1923 !important;
-  position: absolute !important;
-  right: 50% !important;
-  border: 1px solid #616164b8;
-}
 
 .tooltip_body {
   text-align: left !important;
@@ -59,6 +49,7 @@
   line-clamp: 6;
   box-orient: vertical;
   margin-top: 5px;
+  font-size: 14px;
 }
 
 .tooltip-title {
@@ -74,7 +65,7 @@
   color: rgb(0, 0, 0);
   background: rgba(185, 164, 247, 0.68);
   position: absolute;
-  z-index: 2;
+  z-index: 0;
   right: 0px;
   top: 0px;
   border-radius: 3px;
@@ -88,6 +79,30 @@
   justify-content: center;
 }
 
+.tooltip-div {
+  position: absolute;
+  top: 0;
+  padding: 10px;
+  left: 100%;
+  width: 300px;
+  border: 1px solid #403b3bb5;
+  background-color: #15121e;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px;
+  z-index: 1;
+  display: none;
+}
+
+.tooltip-div:hover {
+  display: block;
+  cursor: pointer;
+}
+
+.info-icon:hover+.tooltip-div {
+  display: block;
+}
 
 .film-title {
   background-color: transparent;

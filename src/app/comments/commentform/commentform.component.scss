@@ -6,7 +6,7 @@
     border-radius: 5px;
     align-self: center;
     width: 99px;
-    height: 88px;
+    height: 81px;
 }
 
 p {
@@ -15,6 +15,7 @@ p {
 }
 
 .comments-head {
+    border-top: 1px solid #6a4493;
     padding: 1px;
     margin-bottom: 23px;
 }
@@ -253,7 +254,7 @@ textarea {
 .wrapper {
     display: grid;
     grid-gap: 0;
-    grid-template-columns: 9% 83%;
+    grid-template-columns: 9% 38%;
     justify-items: stretch;
     justify-content: center;
     align-items: start;

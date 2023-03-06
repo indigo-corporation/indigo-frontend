@@ -22,6 +22,9 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
     return next.handle(request)
       .pipe (
         catchError((error: HttpErrorResponse) => {
+          if (!error?.error?.data?.code) {
+            return throwError(error);
+          }
           const errorCode = error.error.data.code
           if (errorCode == 120) {
             return throwError(error);

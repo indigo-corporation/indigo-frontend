@@ -54,9 +54,9 @@
                     </div>
                     <div class="discription-text-block">
                         <p class="discription-text">{{film.release_date | date:"y":"ru"}},</p>
-                        <p class="discription-text" *ngFor="let genre of film.genres"> {{genre.title}},</p>
-                        <span *ngFor="let country of film.countries">
-                            <p  class="discription-text"> {{country.title}}</p>
+                    <p class="discription-text" *ngFor="let genre of film.genres"> {{genre.title}}, </p>
+                        <span *ngFor="let country of film.countries; let first = first">
+                            <p class="discription-text">{{first ? '' : ', '}}{{country.title}}</p>
                         </span>
                       <!--   <p *ngIf="film.runtime" class="discription-text">{{film.runtime}} минуты</p> -->
                     </div>

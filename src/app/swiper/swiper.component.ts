@@ -67,7 +67,7 @@ export class SwiperComponent implements OnInit {
   }
   ngOnInit() {
     Swiper.use([Navigation]);
-    this.getTopRated(1);
+    this.getTopRated();
   }
 
 
@@ -104,10 +104,10 @@ export class SwiperComponent implements OnInit {
   
 
 
-  getTopRated(page) {
-    this.api2Service.getData(page).subscribe((data) => {
-      this.data = data.data.items
-      this.totalRecords = data.data.pagination.per_page
+  getTopRated() {
+    this.api2Service.getFilmsMain().subscribe((data) => {
+      this.data = data.data.new
+      debugger
     });
   }
  

@@ -92,12 +92,16 @@ export class api2Service {
         return this.get("films/search", {page:page, find:find } )
     }
 
-    getData(type = "", page = 1): Observable<Result> {
+    getData(category = "", page = 1): Observable<Result> {
         let params = {page:page}
-        if(type) {
-             params["type"] = type
+        if(category) {
+             params["category"] = category
         }
         return this.get("films", params )
+    }
+
+    getFilmsMain(): Observable<any> {
+        return this.get("films/main")
     }
 
     getfind(id): Observable<getFindItem> {

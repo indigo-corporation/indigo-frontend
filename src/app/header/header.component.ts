@@ -105,22 +105,22 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  
+
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
-  const navbar = this.elementRef.nativeElement.querySelector('#navbar');
-  if (window.matchMedia('(max-width: 600px)').matches) {
-    this.threshold = 100;
-  } else if (window.matchMedia('(max-width: 1024px)').matches) {
     this.threshold = 202;
-  };
-  if (window.pageYOffset > this.threshold) {
-    navbar.classList.add('sticky');
-  } else {
-    navbar.classList.remove('sticky');
+    const navbar = this.elementRef.nativeElement.querySelector('#navbar');
+    if (window.matchMedia('(max-width: 600px)').matches) {
+      this.threshold = 100;
+    }
+
+    if (window.pageYOffset > this.threshold) {
+      navbar.classList.add('sticky');
+    } else {
+      navbar.classList.remove('sticky');
+    }
   }
-}
 
 
 
@@ -163,7 +163,7 @@ export class HeaderComponent implements OnInit {
       }
     }
   }
-  
+
   arrowsUp(): void {
     this.isArrow1 = false;
     this.isArrow2 = false;

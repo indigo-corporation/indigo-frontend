@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit,Input} from '@angular/core';
 import { Observable } from 'rxjs';
 import { api } from '../services/api.service';
 import { api2Service } from '../services/api2.service';
@@ -11,27 +11,34 @@ import { Meta, Title } from '@angular/platform-browser';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
- 
-  film:Observable<any>
-  serial: Observable<any>
-  anime: Observable<any>
-  cartoon: Observable<any>
+
+  @Input() films: any
+  @Input() serials: any
+  @Input() anime: any
+  @Input() cartoons: any
+
   constructor(
     private apiService: api,
     private api2Service: api2Service,
     private meta: Meta,
-    private title: Title ) { }
+    private title: Title) { }
 
   ngOnInit() {
-  this.title.setTitle("Смотреть фильмы и сериалы онлайн в хорошем качестве 720p hd и без регистрации")
-  this.film=this.getData("film")
-  this.serial=this.getData("serial")
-  this.anime=this.getData("anime")
-  this.cartoon=this.getData("cartoon")
+    this.title.setTitle("Смотреть фильмы и сериалы онлайн в хорошем качестве 720p hd и без регистрации")
+    this.films = this.getData("film")
+    this.serials = this.getData("serial")
+    this.anime = this.getData("anime")
+    this.cartoons = this.getData("cartoons")
   }
 
-  getData(type) {
-      return this.api2Service.getData(type)
-  }
+  getData(category: string) {
+    this.api2Service.getFilmsMain().subscribe((data) => {
+      this.films = data.data.films
+      debugger
+      this.serials = data.data.serials
+      this.anime = data.data.anime
+      this.cartoons = data.data.cartoons
+    });
 
+  }
 }

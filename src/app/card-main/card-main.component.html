@@ -3,7 +3,7 @@
     {{nameType[category]}}
   </a>
   <swiper *ngIf="data" [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
-    <ng-template *ngFor="let card of data.data.items" swiperSlide>
+    <ng-template *ngFor="let card of data" swiperSlide>
       <app-card-for-swipers [card]="card"></app-card-for-swipers>
     </ng-template>
   </swiper>

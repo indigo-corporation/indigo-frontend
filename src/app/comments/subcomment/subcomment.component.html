@@ -1,26 +1,37 @@
-<div class="comments-body_sub">
-    <div class="avatar">
-        <img class="avatars-comments" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" src="{{comment.user.poster_url}}">
+<div class="comments-body">
+    <div *ngIf="comment" class="avatar">
+        <img class="avatars-comments img-responsive"
+            onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" src="{{comment.user.poster_url}}">
         <a (click)="onLogin()" class="comments-user">{{comment.user.name}}</a>
         <p class="comments-item">{{comment.created_at | date:"d MMMM y":"ru"}}</p>
     </div>
     <div class="comments-block">
-        <p class="comment-text">{{comment.body}}</p>
+        <p class="comment-text">
+            {{comment.body}}
+        </p>
         <div class="icons-comments">
-            <label (click)="changeLike(true)">
-                {{comment.likes_count}}
-                <i [class.active] ="comment.like && comment.like.is_like === true" class="fas fa-thumbs-up like">
-                </i>
-            </label>
-            <label (click)="changeLike(false)">
-                {{comment.dislikes_count}}
-                <i [class.active] ="comment.like && comment.like.is_like === false" class="fas fa-thumbs-down dislike">
-                </i>
-            </label>
-            <a mat-raised-button class="comments-item_write-com" (click)="toggleShow()" type="checkbox">Ответить</a>
+            <div class="comment-nav">
+                <label (click)="changeLike(true)">
+                    {{comment.likes_count}}
+                    <i [class.active]="comment.like && comment.like.is_like === true" class="fas fa-thumbs-up like">
+                    </i>
+                </label>
+                <label (click)="changeLike(false)">
+                    {{comment.dislikes_count}}
+                    <i [class.active]="comment.like && comment.like.is_like === false"
+                        class="fas fa-thumbs-down dislike">
+                    </i>
+                </label>
+            </div>
+            <div class="comment-nav">
+                <a mat-raised-button class="comments-item_write-com" (click)="toggleShow()" type="checkbox">Ответить</a>
+            </div>
+
         </div>
     </div>
 </div>
+
+
 <div *ngIf="isShown">
     <div class="comment-guard" *ngIf="!login">
         Для того чтобы оставить свой отзыв, вам нужно <span (click)="openDialog()" class="login">войти</span> или

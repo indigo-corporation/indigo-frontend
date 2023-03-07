@@ -23,6 +23,10 @@ export class AuthInterceptorService implements HttpInterceptor {
         private route: ActivatedRoute,) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+      let url = "https://api.indigofilms.online"
+        if(!request.url.includes(url)) {
+            return next.handle(request)
+        }
         const token = this.auth.getAuthToken();
 
         if (token) {
@@ -35,7 +39,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         return next.handle(request).pipe(
             catchError((err) => {
                 if (err instanceof HttpErrorResponse) {
-                    if (err.status === 401 && err.url !== "https://indigo-films.herokuapp.com/api/auth/logout") {
+                    if (err.status === 401 && err.url !== "https://api.indigofilms.online/api/auth/logout") {
                         this.auth.logOut()
                         this.router.navigate([""])
                         console.log(err);

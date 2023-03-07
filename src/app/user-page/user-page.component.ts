@@ -9,10 +9,24 @@ import { authService } from '../services/authService.service';
 import { HttpClient } from "@angular/common/http";
 import * as e from 'express';
 import { Meta, Title } from '@angular/platform-browser';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
+  animations: [
+    trigger('enterAnimationPage', [
+      transition(':enter', [
+        style({ height: '0', opacity: '0', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '*', opacity: '1', overflow: 'hidden' }))
+      ]),
+      transition(':leave', [
+        style({ height: '*', opacity: '1', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
+      ])
+    ]
+    )
+  ],
   styleUrls: ['./user-page.component.scss']
 })
 export class UserPageComponent implements OnInit {

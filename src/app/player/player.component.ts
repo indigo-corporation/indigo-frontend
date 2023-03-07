@@ -37,7 +37,11 @@ export class PlayerComponent implements OnInit {
   isPlayerSveta: boolean = false
   srcPlayer: any
   asvPlayer
+  isHiddenKodic:boolean = false
+  isHiddenUa:boolean = false
   data
+
+  ashdiUrl :string
   active1: boolean = true
   active2: boolean = true
   active3: boolean = true
@@ -51,11 +55,24 @@ export class PlayerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  
+     let ashdiUrl = 'https://base.ashdi.vip/api/product/read_one.php?imdb='+this.film.imdb_id +'&api_key=99a660-8378e4-4adb0a-eeeb92-86b677';
+    this.http.get<any>(ashdiUrl).subscribe(
+      data => this.ashdiUrl = data.url,
+      err => this.isHiddenUa = true,
+    ); 
+
+    
+   
     if(this.film.shiki_id) {
-      let shId = this.film.shiki_id
+    
       this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://kodik.cc/find-player?shikimoriID="+this.film.shiki_id);
     } else {
+      let kodiciUrl = "https://kodikapi.com/search?token=c93d194dd1a2f6cc95b3095a9940dfb2&imdb_id="+this.film.imdb_id;
+      this.http.get<any>(kodiciUrl).subscribe((data) => {
+        if(!data.total) {
+          this.isHiddenKodic = true
+        }
+      });
       this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id="+this.film.imdb_id);
     }
   }
@@ -74,12 +91,7 @@ export class PlayerComponent implements OnInit {
     }
     
     if (player === 'ASHDI' && this.film.imdb_id) {
-      let ashdiUrl = 'https://base.ashdi.vip/api/product/read_one.php?imdb=' + this.film.imdb_id + '&api_key=99a660-8378e4-4adb0a-eeeb92-86b677';
-      this.http.get<any>(ashdiUrl).subscribe((data) => {
-        if (data.url) {
-          this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl(data.url)
-        }
-      });
+      this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl(this.ashdiUrl)
     }
   }
 }

@@ -1,9 +1,9 @@
 <div [@enterAnimationPage]  class="player-buttons">
-  <button mat-raised-button (click)="onPlayer('kodic')" [ngClass]="{'active': currentPlayer === 'kodic'}">Плеер
+  <button *ngIf="!isHiddenKodic" mat-raised-button (click)="onPlayer('kodic')" [ngClass]="{'active': currentPlayer === 'kodic'}">Плеер
     Kodic</button>
   <button mat-raised-button (click)="onPlayer('cdn')" [ngClass]="{'active': currentPlayer === 'cdn'}">Плеер
     VideoCND</button>
-   <button mat-raised-button (click)="onPlayer('ASHDI')" [ngClass]="{'active': currentPlayer === 'ASHDI'}">Плеер
+   <button *ngIf="!isHiddenUa" mat-raised-button (click)="onPlayer('ASHDI')" [ngClass]="{'active': currentPlayer === 'ASHDI'}">Плеер
     UA</button>  
 </div>
 

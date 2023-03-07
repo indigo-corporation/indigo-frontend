@@ -32,9 +32,7 @@ export class GenreMenuComponent implements OnInit {
     }); */ 
   }
 
- 
-  
-  ngOnInit() {
+    ngOnInit() {
     if (this.type=="anime") {
       this.getGenresAnime()
     } else {
@@ -42,8 +40,6 @@ export class GenreMenuComponent implements OnInit {
     }
     this.id = this.route.snapshot.paramMap.get('id');
     this.category = this.route.snapshot.params.category
-      console.log(this.route.snapshot);
-
   } 
 
   getGenres() {

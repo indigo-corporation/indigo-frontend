@@ -190,9 +190,16 @@ span {
     color: #a5a1b2;
 }
 
+.genre-block {
+    display: flex;
+    margin-top:10px;
+}
+
 .discriptionforfilm2 {
     display: flex;
     color: white;
+    text-align: start;
+    flex-wrap: wrap;
 }
 
 .discriptionforfilm {

@@ -1,4 +1,4 @@
-<div class="comments-head">
+<div  class="comments-head">
     <hr>
     <div class="wrapper">
         <div class="flex" *ngIf="user">
@@ -8,8 +8,8 @@
               <!--   <a class="comments-user admin">Администратор</a> -->
         </div>
         <div>
-            <div class="form-group">
-                <textarea [(ngModel)]="textArea" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="1"
+            <div  class="form-group">
+                <textarea maxlength="400" [(ngModel)]="textArea" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="1"
                     placeholder="Напишите ваш отзыв"></textarea>
                     <button class="smile-btn" (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">😀</button>
                     <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible" (emojiSelect)="addEmoji($event)" title="Choose your emoji"></emoji-mart>

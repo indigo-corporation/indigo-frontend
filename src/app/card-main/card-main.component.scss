@@ -1,10 +1,32 @@
 .container {
   font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
   padding-bottom: 10px;
+  padding-top: 12px;
 }
 
 a {
   text-decoration: none;
+}
+
+
+.card-title-new {
+  font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+  font-weight: bold;
+  background: linear-gradient(222deg, #2222a0, #a81c9c);
+  box-shadow: inset 0px 3px 32px 1px rgb(0 0 0 / 76%);
+  border-radius: 5px;
+  max-width: 100%;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px 10px;
+  color: white;
+  font-size: 18px;
+  display: block;
+  text-decoration: none;
+  margin: 0;
+}
+.main {
+  height: auto;
 }
 
 .card-title {
@@ -26,5 +48,25 @@ a {
 .card-title:hover {
   color: black;
 }
+@media screen and (max-width: 600px) {
+  .main {
+    height: 300px;
+  }
+}
+
+
+@media screen and (max-width: 1024px) {
+  .main {
+    height: 377px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .main {
+    height: 500px;
+  }
+}
+
+
 
 

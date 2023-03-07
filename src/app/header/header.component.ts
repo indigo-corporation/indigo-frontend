@@ -10,7 +10,6 @@ import { api2Service } from '../services/api2.service';
 import { Input } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { trigger, style, animate, transition } from '@angular/animations';
-
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 @Component({

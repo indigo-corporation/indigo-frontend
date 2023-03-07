@@ -15,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 export class SwiperComponent implements OnInit {
   term: any;
   data: Array<any>
+  new
   totalRecords: any
   page: number = 1
   name: any
@@ -67,7 +68,6 @@ export class SwiperComponent implements OnInit {
   }
   ngOnInit() {
     Swiper.use([Navigation]);
-    this.getTopRated();
   }
 
 

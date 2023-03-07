@@ -40,23 +40,27 @@
                             <i class="fas fa-play-circle"></i>
                             Смотреть вместе
                         </button> -->
-                        <button (click)="postFavorite()" *ngIf="!isFavorite" class="favorite">
+                        <button [@enterAnimationText] (click)="postFavorite()" *ngIf="!isFavorite" class="favorite">
                             <span mat-raised-button class="favorite-text">Добавить в избранные</span>
                             <input style="display: none" id="favorite" type="checkbox">
                             <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
                         </button>
 
-                        <button (click)="removeFavorite()" *ngIf="isFavorite" class="favorite">
+                        <button [@enterAnimationText] (click)="removeFavorite()" *ngIf="isFavorite" class="favorite">
                             <span mat-raised-button class="favorite-text">Убрать из избранных</span>
                             <input style="display: none" id="favorite" checked type="checkbox">
                             <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
                         </button>
                     </div>
                     <div class="discription-text-block">
-                        <p class="discription-text">{{film.release_date | date:"y":"ru"}},</p>
-                    <p class="discription-text" routerLink="/{{category}}/genre/{{genre.id}}" href="/{{category}}/genre/{{genre.id}}" *ngFor="let genre of film.genres"> {{genre.title}}, </p>
-                        <span *ngFor="let country of film.countries; let first = first">
-                            <p class="discription-text">{{first ? '' : ', '}}{{country.title}}</p>
+                        <p class="discription-text genre-btn">{{film.release_date | date:"y":"ru"}}</p>
+                        <span *ngFor="let genre of film.genres">
+                            <p class="discription-text genre-btn" routerLink="/{{category}}/genre/{{genre.id}}"
+                            href="/{{category}}/genre/{{genre.id}}"> {{genre.title}}  </p>
+                        </span>
+                    
+                        <span *ngFor="let country of film.countries">
+                            <p class="discription-text genre-btn">{{country.title}}</p>
                         </span>
                       <!--   <p *ngIf="film.runtime" class="discription-text">{{film.runtime}} минуты</p> -->
                     </div>
@@ -71,7 +75,7 @@
                     <p class="t">{{film.overview}}
                     </p>
                 </div>
-                <div [@enterAnimationText] *ngIf="textView">
+                <div [@enterAnimationPage] *ngIf="textView">
                     <p class="textOverview">{{film.overview}}
                     </p>
                 </div>

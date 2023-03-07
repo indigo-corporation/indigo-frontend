@@ -1,5 +1,5 @@
 <div class="container main">
-    <form class="page" [formGroup]="settingForm">
+    <form [@enterAnimationPage] class="page" [formGroup]="settingForm">
         <div *ngIf="user.email" class="form-group">
             <label class="sett-label">Email</label>
             <input type="text" value="{{user?.email}}" class="form-control" disabled>
@@ -68,7 +68,7 @@
 
         <div style="display: grid">
             <label class="sett-label" for="inputAbout">Немного о себе</label>
-            <textarea style="height:100% ;" value="{{user?.about}}" id="inputAbout" class="text-input" rows="6"
+            <textarea maxlength="400" style="height:100% ;" value="{{user?.about}}" id="inputAbout" class="text-input" rows="6"
                 placeholder="О себе" formControlName="about"></textarea>
         </div>
         <button mat-stroked-button class="user-btn" (click)="userChangeInfo(user)" type="submit">Изменить</button>

@@ -21,11 +21,8 @@ import { trigger, style, animate, transition } from '@angular/animations';
       'enterAnimationText', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('300ms', style({ opacity: 1 }))
+        animate('700ms', style({ opacity: 1 }))
       ]),
-      transition(':leave', [
-        animate('300ms', style({ opacity: 0 }))
-      ])
     ]
     ),
     trigger('enterAnimationPage', [
@@ -100,6 +97,8 @@ export class CardDiscriptionComponent implements OnInit {
     if (this.login) {
       this.getFavoriteArray();
     }
+
+    
     this.category = this.route.snapshot.params.category
   }
 
@@ -144,6 +143,8 @@ export class CardDiscriptionComponent implements OnInit {
     }
     this.api2Service.postStars(this.film.id, this.raitingControl.value).subscribe((data) => {
       this.film.stars = data.data
+      this.film.stars = parseFloat(data.data);
+      debugger
     })
 
   }

@@ -420,7 +420,8 @@ input {
 }
 
 textarea {
-  overflow: hidden !important;
+  overflow: auto;
+  resize: none;
 }
 
 .field__input[_ngcontent-hba-c195] {

@@ -4,11 +4,25 @@ import { ActivatedRoute } from '@angular/router';
 import { Input } from '@angular/core'
 import Swiper, { SwiperOptions, Pagination, Scrollbar, Navigation } from 'swiper';
 import SwiperCore, { EffectFade } from "swiper";
+import { trigger, style, animate, transition } from '@angular/animations';
 SwiperCore.use([EffectFade]);
 
 @Component({
   selector: 'app-card-main',
   templateUrl: './card-main.component.html',
+  animations: [
+    trigger('enterAnimationPage', [
+      transition(':enter', [
+        style({ height: '0', opacity: '0', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '*', opacity: '1', overflow: 'hidden' }))
+      ]),
+      transition(':leave', [
+        style({ height: '*', opacity: '1', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
+      ])
+    ]
+    )
+  ],
   styleUrls: ['./card-main.component.scss']
 })
 export class CardMainComponent implements OnInit, OnChanges {

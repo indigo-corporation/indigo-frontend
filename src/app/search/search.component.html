@@ -1,12 +1,12 @@
-<div class="block">
-    <form FormGroup="searhForm" class="form-search form-inline form-search">
+<div [@enterAnimationPage] class="block">
+    <form [@enterAnimationPage] FormGroup="searhForm" class="form-search form-inline form-search">
         <div class="form-group">
             <input class="form-control mr-sm-2 input-search" autofocus appAutoFocusDirective #search (keyup)="onKeyUpEvent($event)" placeholder="Поиск">
             <button (click)="onSearch(search.value)" mat-raised-button class="btn-search" type="button">
                 <i style="margin-bottom: 2px;" class="fas fa-search search-icon"></i><br/>
             </button>
         </div>
-        <div class="content-scroll" *ngIf="data">
+        <div [@enterAnimationPage] class="content-scroll" *ngIf="data">
             <div routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}" *ngFor="let card of data.slice(0, 10)" class="card card-block">
                 <div class="img-block">
                     <a routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}"> <img class="cards-img" src="{{card.poster_medium}}"></a>

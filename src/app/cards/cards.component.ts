@@ -4,11 +4,24 @@ import { api2Service } from '../services/api2.service';
 import { ActivatedRoute } from '@angular/router';
 import { Input } from '@angular/core'
 import { Meta, Title } from '@angular/platform-browser';
-
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
+  animations: [
+    trigger('enterAnimationPage', [
+      transition(':enter', [
+        style({ height: '0', opacity: '0', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '*', opacity: '1', overflow: 'hidden' }))
+      ]),
+      transition(':leave', [
+        style({ height: '*', opacity: '1', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
+      ])
+    ]
+    )
+  ],
   styleUrls: ['./cards.component.scss']
 })
 export class CardsComponent implements OnInit {

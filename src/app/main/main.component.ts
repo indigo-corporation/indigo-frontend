@@ -1,4 +1,4 @@
-import { Component, OnInit,Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { api } from '../services/api.service';
 import { api2Service } from '../services/api2.service';
@@ -16,6 +16,8 @@ export class MainComponent implements OnInit {
   @Input() serials: any
   @Input() anime: any
   @Input() cartoons: any
+  @Input() new: any
+
 
   constructor(
     private apiService: api,
@@ -25,18 +27,16 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.title.setTitle("Смотреть фильмы и сериалы онлайн в хорошем качестве 720p hd и без регистрации")
-    this.films = this.getData("film")
-    this.serials = this.getData("serial")
-    this.anime = this.getData("anime")
-    this.cartoons = this.getData("cartoons")
+    this.getData()
   }
 
-  getData(category: string) {
+  getData() {
     this.api2Service.getFilmsMain().subscribe((data) => {
-      this.films = data.data.films
-      this.serials = data.data.serials
+      this.films = data.data.film
+      this.serials = data.data.serial
       this.anime = data.data.anime
-      this.cartoons = data.data.cartoons
+      this.cartoons = data.data.cartoon
+      this.new = data.data.new
     });
 
   }

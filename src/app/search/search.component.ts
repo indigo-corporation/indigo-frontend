@@ -3,10 +3,24 @@ import { api2Service } from '../services/api2.service';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialogRef } from "@angular/material/dialog";
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
+  animations: [
+    trigger('enterAnimationPage', [
+      transition(':enter', [
+        style({ height: '0', opacity: '0', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '*', opacity: '1', overflow: 'hidden' }))
+      ]),
+      transition(':leave', [
+        style({ height: '*', opacity: '1', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
+      ])
+    ]
+    )
+  ],
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit, AfterViewInit {

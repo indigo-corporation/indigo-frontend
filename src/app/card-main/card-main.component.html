@@ -1,8 +1,13 @@
-<div style="min-height: 100%" class="container main block">
+<div [@enterAnimationPage] class="container main block">
+  <div *ngIf="!nameType[category]">
+    <h1 class="card-title-new">Новинки</h1>
+  </div>
+  <div *ngIf="nameType[category]">
   <a routerLink="{{category}}" href="{{category}}" class="card-title">
     {{nameType[category]}}
   </a>
-  <swiper *ngIf="data" [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
+</div>
+  <swiper [@enterAnimationPage] *ngIf="data" [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
     <ng-template *ngFor="let card of data" swiperSlide>
       <app-card-for-swipers [card]="card"></app-card-for-swipers>
     </ng-template>

@@ -16,16 +16,29 @@ import { authService } from '../../services/authService.service';
 declare var $: any;
 import { Meta, Title } from '@angular/platform-browser';
 import { ImageCroppedEvent, LoadedImage,base64ToFile } from 'ngx-image-cropper';
-
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-user-setting',
   templateUrl: './user-setting.component.html',
+  animations: [
+    trigger('enterAnimationPage', [
+      transition(':enter', [
+        style({ height: '0', opacity: '0', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '*', opacity: '1', overflow: 'hidden' }))
+      ]),
+      transition(':leave', [
+        style({ height: '*', opacity: '1', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
+      ])
+    ]
+    )
+  ],
   styleUrls: ['./user-setting.component.scss']
 })
 export class UserSettingComponent implements OnInit {
   settingForm = new FormGroup({
-    name: new FormControl("", []),
+    name: new FormControl("", [Validators.minLength(6), Validators.maxLength(15)]),
     about: new FormControl("", []),
     user_name: new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
 

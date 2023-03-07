@@ -35,6 +35,7 @@ import {
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { TooltipModule } from 'ng2-tooltip-directive';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -86,6 +87,7 @@ import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { CardComponent } from './card/card.component';
 import { CardForSwipersComponent } from './card-for-swipers/card-for-swipers.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { SpinnerLoaderComponent } from './spinner-loader/spinner-loader.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -160,7 +162,9 @@ const appRoutes: Routes = [
     AutoFocusDirectiveDirective,
     ModalLoginComponent,
     CardComponent,
-    CardForSwipersComponent 
+    CardForSwipersComponent,
+    SpinnerLoaderComponent ,
+
   ],
   imports: [
     BrowserModule,
@@ -172,6 +176,7 @@ const appRoutes: Routes = [
     SwiperModule,
     MdbModalModule,
     SocialLoginModule,
+    MatProgressSpinnerModule,
     NgxPaginationModule,
     NgbModule,
     RouterModule.forRoot(appRoutes),
@@ -225,6 +230,10 @@ const appRoutes: Routes = [
     {
       provide: LOCALE_ID,
       useValue: 'ru'
+    },
+    { 
+      provide: LOCALE_ID, 
+      useValue: 'en-GB' 
     },
     {
       provide: HTTP_INTERCEPTORS,

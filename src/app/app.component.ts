@@ -8,7 +8,10 @@ import { SeoService } from './services/seo.service';
 })
 export class AppComponent implements OnInit{
   title = 'film-app';
+  showSpinner = false;
+
   constructor(private seo:SeoService) {
+   
   }
 
   ngOnInit() {

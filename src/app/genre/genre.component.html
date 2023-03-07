@@ -2,14 +2,14 @@
   <div class="card-row">
     <app-card [card]="card" *ngFor="let card of data | paginate: { 
       id: 'listing_pagination',
-      itemsPerPage: 48,
+      itemsPerPage: 24,
       currentPage: page,
       totalItems: totalRecords
     }">
     </app-card>
   </div>
-  <div *ngIf="data === null" class="paginate">
-    <pagination-controls id="listing_pagination" directionalLinks="true" (pageChange)="onPageChange( term, $event)"
+  <div *ngIf="data.length" class="paginate">
+    <pagination-controls id="listing_pagination" directionalLinks="true" (pageChange)="onPageChange($event)"
       previousLabel="Назад" nextLabel="Вперед">
     </pagination-controls>
   </div>

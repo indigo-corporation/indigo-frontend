@@ -7,10 +7,24 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ModalLoginComponent } from 'src/app/modal-login/modal-login.component';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-subcomment',
   templateUrl: './subcomment.component.html',
+  animations: [
+    trigger('enterAnimation', [
+      transition(':enter', [
+        style({ height: '0', opacity: '0'}),
+        animate('400ms ease-in-out', style({ height: '*', opacity: '1'}))
+      ]),
+      transition(':leave', [
+        style({ height: '*', opacity: '1', overflow: 'hidden' }),
+        animate('400ms ease-in-out', style({ height: '0', opacity: '0'}))
+      ])
+    ]
+    )
+  ],
   styleUrls: ['./subcomment.component.scss']
 })
 export class SubcommentComponent implements OnInit {

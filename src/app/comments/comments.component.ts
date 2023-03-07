@@ -7,9 +7,24 @@ import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from "@angular/material/dialog";
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ModalLoginComponent } from 'src/app/modal-login/modal-login.component';
+import { trigger, style, animate, transition } from '@angular/animations';
+
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
+  animations: [
+    trigger('enterAnimation', [
+      transition(':enter', [
+        style({ height: '0', opacity: '0', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '*', opacity: '1', overflow: 'hidden' }))
+      ]),
+      transition(':leave', [
+        style({ height: '*', opacity: '1', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
+      ])
+    ]
+    )
+  ],
   styleUrls: ['./comments.component.scss']
 })
 export class CommentsComponent implements OnInit {

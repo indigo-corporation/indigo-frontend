@@ -9,10 +9,24 @@ import "@angular/common/locales/global/ru"
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { authService } from "../services/authService.service";
 import { Meta, Title } from '@angular/platform-browser';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-card-content',
   templateUrl: './card-content.component.html',
+  animations: [
+    trigger('enterAnimation', [
+      transition(':enter', [
+        style({ height: '0', opacity: '0', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '*', opacity: '1', overflow: 'hidden' }))
+      ]),
+      transition(':leave', [
+        style({ height: '*', opacity: '1', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
+      ])
+    ]
+    )
+  ],
   styleUrls: ['./card-content.component.scss']
 })
 export class CardContentComponent implements OnInit {

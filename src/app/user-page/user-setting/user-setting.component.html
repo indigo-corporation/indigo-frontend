@@ -1,6 +1,6 @@
 <div class="container main">
     <form class="page" [formGroup]="settingForm">
-        <div class="form-group">
+        <div *ngIf="user.email" class="form-group">
             <label class="sett-label">Email</label>
             <input type="text" value="{{user?.email}}" class="form-control" disabled>
         </div>
@@ -29,7 +29,7 @@
         <div class="form-group">
             <label class="sett-label" for="inputUserName">Ваше имя пользователя</label>
             <input type="text" id="inputUserName" value="{{user?.user_name}}" class="form-control"
-                placeholder="karatel22" formControlName="user_name">
+                placeholder="Например:karatel22" formControlName="user_name">
         </div>
         <div class="form-group">
             <label class="sett-label" for="inputName">Имя</label>
@@ -76,7 +76,7 @@
 
 
 
-    <form [formGroup]="passChangeForm" (ngSubmit)="passChage()" class="page">
+    <form *ngIf="user.email" [formGroup]="passChangeForm" (ngSubmit)="passChage()" class="page">
         <h1 class="passname">Изменить пароль</h1>
         <div class="form-group">
             <label class="sett-label" for="inputPassword">Пароль</label>

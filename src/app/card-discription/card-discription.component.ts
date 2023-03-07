@@ -27,6 +27,17 @@ import { trigger, style, animate, transition } from '@angular/animations';
         animate('300ms', style({ opacity: 0 }))
       ])
     ]
+    ),
+    trigger('enterAnimationPage', [
+      transition(':enter', [
+        style({ height: '0', opacity: '0', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '*', opacity: '1', overflow: 'hidden' }))
+      ]),
+      transition(':leave', [
+        style({ height: '*', opacity: '1', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
+      ])
+    ]
     )
   ],
   templateUrl: './card-discription.component.html',
@@ -55,6 +66,7 @@ export class CardDiscriptionComponent implements OnInit {
   srcKodic: any
   srcSveta: any
   raiting: any
+  genres
   modalRef: MdbModalRef<ModalLoginComponent> | null = null;
   @Input() category: any
   @Input() stars: any
@@ -89,6 +101,13 @@ export class CardDiscriptionComponent implements OnInit {
       this.getFavoriteArray();
     }
     this.category = this.route.snapshot.params.category
+  }
+
+  getfind(id) {
+    this.api2Service.getfind(id).subscribe((data) => {
+      debugger
+      this.genres = data;
+    });
   }
 
   checkIfFavoriteFilm() {

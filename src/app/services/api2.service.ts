@@ -108,8 +108,8 @@ export class api2Service {
         return this.get("films/"+ id)
     }
 
-    getGenreFilms(id,page, type): Observable<any> {                           /// дата без итемов, жду
-        return this.get("films/genre/" + id, {page:page, type:type} )
+    getGenreFilms(id,page, category): Observable<any> {                           /// дата без итемов, жду
+        return this.get("films/genre/" + id, {page:page, category:category} )
     }
  
     getGenre(is_anime:number=0): Observable<any> {                         /// дата без итемов, жду

@@ -40,9 +40,13 @@ export class GenreComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.page=this.route.snapshot.queryParams.page
+    if(!this.page) {
+      this.page = 1 
+    }
     this.id = this.route.snapshot.paramMap.get('id')
     this.type = this.route.snapshot.paramMap.get("type")
-    this.getGenreFilms(this.id,1,this.type)
+    this.getGenreFilms(this.id,this.page,this.type)
     if(this.nameType[this.type] === "Аниме") {
       this.getGenreAnime() 
     } else {
@@ -81,20 +85,21 @@ getGenreAnime() {
     }
 }
 
-  getGenreFilms(id,page,type) {
-    this.api2Service.getGenreFilms(id,page,type).subscribe((data) => {
+  getGenreFilms(id,page,category) {
+    this.api2Service.getGenreFilms(id,page,category).subscribe((data) => {
       this.data = data.data.items
+      this.totalRecords = data.data.pagination.total
     });
   }
 
-  onPageChange(query, page) {
+  onPageChange(page) {
     this.page = page
-    this.router.navigate(["/genre/" + this.id], {
+    this.router.navigate(["/" +this.type+"/genre/" + this.id], {
       relativeTo: this.route,
       queryParams: {
         page: this.page
       }
     });
-    this.getGenreFilms(this.id,page,this.type)
+    this.getGenreFilms(this.id,this.page,this.type)
   }
 }

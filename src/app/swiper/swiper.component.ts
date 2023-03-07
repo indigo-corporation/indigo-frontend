@@ -107,7 +107,6 @@ export class SwiperComponent implements OnInit {
   getTopRated() {
     this.api2Service.getFilmsMain().subscribe((data) => {
       this.data = data.data.new
-      debugger
     });
   }
  

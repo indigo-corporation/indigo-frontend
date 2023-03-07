@@ -61,13 +61,12 @@ export class MoreFilmsComponent implements OnInit {
   ngOnInit() {
     this.category = this.route.snapshot.url[0].path
     Swiper.use([Navigation]);
-    this.getTopRated(1);
+    this.getTopRated();
   }
 
-  getTopRated(page) {
-    this.api2Service.getData(page).subscribe((data) => {
-      this.data = data.data.items
-      this.totalRecords = data.data.pagination.per_page
+  getTopRated() {
+    this.api2Service.getFilmsMain().subscribe((data) => {
+      this.data = data.data.new
     });
   }
   onSwiper(swiper) {

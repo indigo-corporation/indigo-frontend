@@ -1,4 +1,4 @@
-<div class="player-buttons">
+<div [@enterAnimationPage]  class="player-buttons">
   <button mat-raised-button (click)="onPlayer('kodic')" [ngClass]="{'active': currentPlayer === 'kodic'}">Плеер
     Kodic</button>
   <button mat-raised-button (click)="onPlayer('cdn')" [ngClass]="{'active': currentPlayer === 'cdn'}">Плеер
@@ -7,6 +7,6 @@
     UA</button>  
 </div>
 
-<div class="player-container">
+<div [@enterAnimationPage]  class="player-container">
   <iframe [src]="this.srcPlayer" width="100%" height="480" scrolling="no" frameborder="0" allowfullscreen></iframe>
 </div> 

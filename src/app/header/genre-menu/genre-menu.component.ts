@@ -14,6 +14,7 @@ export class GenreMenuComponent implements OnInit {
   genres:any
   genre:any
   newArray:[]
+  category
   public id :any
   @Input() type: any= ""
   constructor(
@@ -40,6 +41,9 @@ export class GenreMenuComponent implements OnInit {
       this.getGenres()
     }
     this.id = this.route.snapshot.paramMap.get('id');
+    this.category = this.route.snapshot.params.category
+      console.log(this.route.snapshot);
+
   } 
 
   getGenres() {
@@ -70,6 +74,7 @@ getGenresAnime() {
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
       this.genres = data;
+      debugger
     });
   }
 }

@@ -34,7 +34,6 @@ export class MainComponent implements OnInit {
   getData(category: string) {
     this.api2Service.getFilmsMain().subscribe((data) => {
       this.films = data.data.films
-      debugger
       this.serials = data.data.serials
       this.anime = data.data.anime
       this.cartoons = data.data.cartoons

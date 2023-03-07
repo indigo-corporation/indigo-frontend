@@ -10,10 +10,23 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { api } from '../services/api.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { trigger, style, animate, transition } from '@angular/animations';
 @Component({
   selector: 'app-player',
   templateUrl: './player.component.html',
+  animations: [
+    trigger('enterAnimationPage', [
+      transition(':enter', [
+        style({ height: '0', opacity: '0', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '*', opacity: '1', overflow: 'hidden' }))
+      ]),
+      transition(':leave', [
+        style({ height: '*', opacity: '1', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
+      ])
+    ]
+    )
+  ],
   styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent implements OnInit {

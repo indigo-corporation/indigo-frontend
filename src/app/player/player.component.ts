@@ -73,7 +73,7 @@ export class PlayerComponent implements OnInit {
           this.isHiddenKodic = true
         }
       });
-      this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id="+this.film.imdb_id);
+      this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id="+this.film.imdb_id+"&domain=indigofilms.online");
     }
   }
   onPlayer(player: string) {

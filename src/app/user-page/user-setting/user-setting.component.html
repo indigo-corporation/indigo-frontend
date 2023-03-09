@@ -26,52 +26,33 @@
             </form>
         </div>
 
-        <div class="form-group">
-            <label class="sett-label" for="inputUserName">Ваше имя пользователя</label>
-            <input type="text" id="inputUserName" value="{{user?.user_name}}" class="form-control"
-                placeholder="Например:karatel22" formControlName="user_name">
-        </div>
-        <div class="form-group">
-            <label class="sett-label" for="inputName">Имя</label>
-            <input type="text" id="inputName" value="{{user?.name}}" class="form-control" placeholder="Ваше Имя"
-                formControlName="name">
-        </div>
-
-        <!-- <h1 class="label-input date">Ваш день рождения</h1>
-                <mat-form-field appearance="fill">
-                    <mat-label>Ваш день рождения</mat-label>
-                    <input formControlName="birth_date" value="{{user.birth_date}}" matInput [matDatepicker]="picker">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <h1 class="label-input">Страна</h1>
-                        <ng-select [items]="data" bindLabel="name" bindValue="id" (change)="onChange($event)"
-                            (keypress)="onKeyPressEvent($event)" labelForId="state" placeholder="Выберите страну"
-                            clearAllText="Clear" formControlName="country"></ng-select>
-                            <ng-template ng-multi-label-tmp let-items="items" >
-                                <div class="ng-value" >
-                                    <span class="ng-value-label">Select your choice... </span>
-                                </div>
-                               </ng-template>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <h1 class="label-input">Город</h1>
-                        <ng-select [items]="citymain" bindLabel="name" bindValue="id"
-                            (keypress)="onKeyPressEventCity($event)" labelForId="state" placeholder="Выберите город"
-                            clearAllText="Clear" formControlName="city_id"></ng-select>
-                    </div>
-                </div> -->
-
-        <div style="display: grid">
-            <label class="sett-label" for="inputAbout">Немного о себе</label>
-            <textarea maxlength="400" style="height:100% ;" value="{{user?.about}}" id="inputAbout" class="text-input" rows="6"
-                placeholder="О себе" formControlName="about"></textarea>
-        </div>
-        <button mat-stroked-button class="user-btn" (click)="userChangeInfo(user)" type="submit">Изменить</button>
+        <form [formGroup]="settingForm">
+            <div class="form-group">
+                <label class="sett-label" for="inputUserName">Ваше имя пользователя</label>
+                <input type="text" id="inputUserName" class="form-control"
+                    placeholder="Например:karatel22" formControlName="user_name">
+                <div class="auth-error" *ngIf="user_name.errors?.['required'] && (user_name.touched || user_name.dirty)">
+                    Заполните Имя пользователя
+                  </div>
+                  <div class="auth-error" *ngIf="user_name.errors?.['minlength'] && (user_name.touched || user_name.dirty)">
+                    Слишком кароткое Имя пользователя
+                  </div>
+                  <div class="auth-error" *ngIf="user_name.errors?.['maxlength'] && (user_name.touched || user_name.dirty)">
+                    Слишком длинное Имя пользователя
+                  </div>
+            </div>
+            <div class="form-group">
+                <label class="sett-label" for="inputName">Имя</label>
+                <input type="text" id="inputName" class="form-control" placeholder="Ваше Имя"
+                    formControlName="name">
+            </div>
+            <div style="display: grid">
+                <label class="sett-label" for="inputAbout">Немного о себе</label>
+                <textarea maxlength="400"  style="height:100% ;" id="inputAbout" class="text-input" rows="6"
+                    placeholder="О себе" formControlName="about"></textarea>
+            </div>
+            <button [disabled]="settingForm.invalid" mat-stroked-button class="user-btn" (click)="userChangeInfo()" type="submit">Изменить</button>
+        </form>
     </form>
 
 

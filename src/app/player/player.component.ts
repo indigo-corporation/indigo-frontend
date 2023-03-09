@@ -77,7 +77,6 @@ export class PlayerComponent implements OnInit {
     }
   }
   onPlayer(player: string) {
-    
     let shId = this.film.shiki_id
     this.currentPlayer = player;
     if (player === 'kodic' && this.film.shiki_id) {

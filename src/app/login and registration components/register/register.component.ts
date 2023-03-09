@@ -31,7 +31,7 @@ import { Meta, Title } from '@angular/platform-browser';
     {
         this.authForm = this.FormBuilder.group ({
             email: new FormControl("",[Validators.required,Validators.email]),
-            name: new FormControl ("",[Validators.required,Validators.minLength(2),Validators.pattern("[a-zA-Z ]*")]),
+            name: new FormControl ("",[Validators.required,Validators.minLength(2),Validators.maxLength(14),Validators.pattern("^[a-zA-Z0-9]+$")]),
             password: new FormControl ("",[Validators.required,Validators.minLength(6),Validators.maxLength(15)]),
             confirmPassword: new FormControl ("",[Validators.required,Validators.minLength(6)]),
       },

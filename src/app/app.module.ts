@@ -20,9 +20,7 @@ import { FilterPipe } from './filter.pipe';
 import { SafePipe } from './safe.pipe';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { api2Service } from './services/api2.service';
-import { NgSelect2Module } from 'ng-select2';
 import { MatButtonModule } from '@angular/material/button';
-import { NgSelectModule } from '@ng-select/ng-select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -34,7 +32,6 @@ import {
 } from '@abacritt/angularx-social-login';
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { NgxStarRatingModule } from 'ngx-star-rating';
-import { TooltipModule } from 'ng2-tooltip-directive';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
@@ -185,7 +182,6 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     BrowserAnimationsModule,
     MatIconModule,
-    TooltipModule,
     MatTabsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -193,9 +189,7 @@ const appRoutes: Routes = [
     FormsModule,
     Ng2SearchPipeModule,
     PickerModule,
-    NgSelect2Module,
     MatButtonModule,
-    NgSelectModule,
     MatDatepickerModule,
     AngularTelegramLoginWidgetModule,
     MatNativeDateModule,

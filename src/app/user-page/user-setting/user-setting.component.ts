@@ -9,7 +9,6 @@ import * as alertyfy from 'alertifyjs';
 import { AlertifyService } from '../../services/alertify.service';
 import { Observable, ObservableInput } from 'rxjs';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Select2OptionData } from "ng-select2";
 import { Options } from "select2";
 import { BehaviorSubject, of } from "rxjs";
 import { authService } from '../../services/authService.service';
@@ -37,12 +36,8 @@ import { trigger, style, animate, transition } from '@angular/animations';
   styleUrls: ['./user-setting.component.scss']
 })
 export class UserSettingComponent implements OnInit {
-  settingForm = new FormGroup({
-    name: new FormControl("", [Validators.minLength(6), Validators.maxLength(15)]),
-    about: new FormControl("", []),
-    user_name: new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
-
-  })
+  
+  
 
   imageChangedEvent: any = '';
   public croppedImage: any;
@@ -54,6 +49,7 @@ export class UserSettingComponent implements OnInit {
   
   savedFilters: any
   passChangeForm: FormGroup
+  settingForm: FormGroup
   postUserName: FormGroup
   alert: boolean = false
   submitted: boolean = false
@@ -65,9 +61,10 @@ export class UserSettingComponent implements OnInit {
   citymain: any
   user: any
   url: string
-
   user$ = new BehaviorSubject<any>(null);
-
+  termAbout:string
+  termName:string
+  termUserName:string
   public options: Options;
   public options2: Options;
 
@@ -80,6 +77,12 @@ export class UserSettingComponent implements OnInit {
     private meta: Meta,
     private title: Title
   ) {
+    this.settingForm = new FormGroup({
+      name: new FormControl("", [Validators.minLength(4), Validators.maxLength(15),Validators.pattern("^[a-zA-Z0-9]+$")]),
+      about: new FormControl("", []),
+      user_name: new FormControl("", [Validators.required,Validators.minLength(4), Validators.maxLength(15),Validators.pattern("^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$")]),
+  
+    })
 
     this.passChangeForm = this.FormBuilder.group({
       pass: new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(15)]),
@@ -96,6 +99,11 @@ export class UserSettingComponent implements OnInit {
 
     this.auth.user$.subscribe(x => {
       this.user = x
+      this.settingForm.patchValue({
+        name: this.user.name,
+        about: this.user.about,
+        user_name: this.user.user_name,
+      });
     })
   }
 
@@ -130,14 +138,13 @@ export class UserSettingComponent implements OnInit {
     return this.settingForm.get("about") as FormControl;
   }
 
-  get picture(): FormControl {
-    return this.imageForm.get("picture") as FormControl;
-  }
-
   get user_name(): FormControl {
     return this.settingForm.get("user_name") as FormControl;
   }
 
+  get picture(): FormControl {
+    return this.imageForm.get("picture") as FormControl;
+  }
 
   get pass(): FormControl {
     return this.passChangeForm.get("pass") as FormControl;
@@ -164,28 +171,19 @@ export class UserSettingComponent implements OnInit {
   }
 
 
-  userChangeInfo(user) {
-    if (!this.settingForm.value["about"]) {
-      this.settingForm.value["about"] = user.about
+  userChangeInfo() {
+    if(this.settingForm.value.about === null) {
+      this.settingForm.value.about = " "
     }
-
-    if (!this.settingForm.value["name"]) {
-      this.settingForm.value["name"] = user.name
-    }
-
-    if (!this.settingForm.value["user_name"]) {
-      this.settingForm.value["user_name"] = user.user_name
-    }
-    if (this.settingForm.value["user_name"] === user.user_name) {
-      delete this.settingForm.value["user_name"]
-    }
-
-
-    this.userService.userChangeInfo(this.settingForm.value).subscribe((result) => {
+    const formData = this.settingForm.value;
+    debugger
+    this.userService.userChangeInfo(formData).subscribe((result) => {
       this.userInfoUpdate.next(result)
       this.alertify.success('Успешно изменено');
     })
   }
+
+
 
   passChage() {
     this.userService.changePassUs(this.passChangeForm.value.pass).subscribe((result) => {

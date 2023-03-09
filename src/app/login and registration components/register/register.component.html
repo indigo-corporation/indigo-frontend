@@ -20,8 +20,8 @@
       <div class="auth-error" *ngIf="name.errors?.['minlength'] && (name.touched || name.dirty)">
         Слишком кароткое имя
       </div>
-      <div class="auth-error" *ngIf="name.errors?.['pattern'] && (name.touched || name.dirty)">
-        Имя буквами
+      <div class="auth-error" *ngIf="name.errors?.['maxlength'] && (name.touched || name.dirty)">
+        Слишком длинное имя
       </div>
     </div>
     <div class="form-group">

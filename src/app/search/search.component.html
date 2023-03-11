@@ -1,8 +1,8 @@
 <div [@enterAnimationPage] class="block">
-    <form [@enterAnimationPage] FormGroup="searhForm" class="form-search form-inline form-search">
+    <form [@enterAnimationPage] FormGroup="searhForm" (ngSubmit)="onSearch(search.value)" class="form-search form-inline form-search">
         <div class="form-group">
             <input class="form-control mr-sm-2 input-search" autofocus appAutoFocusDirective #search (keyup)="onKeyUpEvent($event)" placeholder="Поиск">
-            <button (click)="onSearch(search.value)" mat-raised-button class="btn-search" type="button">
+            <button mat-raised-button class="btn-search" type="submit">
                 <i style="margin-bottom: 2px;" class="fas fa-search search-icon"></i><br/>
             </button>
         </div>

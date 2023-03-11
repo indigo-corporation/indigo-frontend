@@ -1,7 +1,7 @@
 <nav id="navbar" (scroll)="onWindowScroll($event)" class="container navbar navbar-expand-lg navbar-light bg-light header">
   <a class="brand" routerLink="" href="">INDIGOFILMS</a>
-  <a *ngIf="!login" mat-button (click)="openModal()" class="login2">Войти
-  </a>
+  <button *ngIf="!login" mat-button (click)="openModal()" class="login2">Войти
+  </button>
   <div *ngIf="login" class="login">
     <!--  <i routerLink="/friends" class="fa fa-users user-nav" aria-hidden="true">
       <span class="icon-info">1</span>
@@ -36,7 +36,7 @@
           <a class="nav-link" routerLink="/film" href="/film" routerLinkActive="active">Фильмы
           </a>
           <button class="btn-menu" (click)="genreArrow($event)">
-            <i id="isArrow1" class='fas fa-caret-down arrow'></i>
+            <i id="isArrow1" class='fas fa-caret-down arrow btn-menu'></i>
           </button>
           <app-genre-menu [@subMenuAnimation] type="film" *ngIf="isArrow1"></app-genre-menu>
         </li>
@@ -68,7 +68,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" (click)="toggleSearch()"><i class="fas fa-search search-icon"></i></a>
+          <button class="nav-link" (click)="toggleSearch()"><i class="fas fa-search search-icon"></i></button>
         </li>
 
       </ul>

@@ -8,7 +8,7 @@
     <div class="buttons-bl">
         <div class="content-card">
             <div *ngIf="film" class="poster">
-                <img class="card-image" alt="{{film.title}}"  [src]="film.poster_medium">
+                <img onerror="if(this.src != 'error.jpg') this.src = 'assets/error-404.avif';" class="card-image" alt="{{film.title}}"  [src]="film.poster_medium">
 
                 <div class="discriptionforfilm">
                     <div class="discriptionforfilm2">

@@ -18,6 +18,7 @@ import { Meta, Title } from '@angular/platform-browser';
     alert:boolean=false
     submitted:boolean=false
     repeatPass:string = 'none';
+    user
     @Input() telegramAuth:any
   constructor(
     private auth:authService,
@@ -31,9 +32,9 @@ import { Meta, Title } from '@angular/platform-browser';
     {
         this.authForm = this.FormBuilder.group ({
             email: new FormControl("",[Validators.required,Validators.email]),
-            name: new FormControl ("",[Validators.required,Validators.minLength(2),Validators.maxLength(14),Validators.pattern("^[a-zA-Z0-9]+$")]),
+            name: new FormControl ("",[Validators.required,Validators.minLength(2),Validators.maxLength(14),Validators.pattern("^[а-яА-ЯёЁ]+$")]),
             password: new FormControl ("",[Validators.required,Validators.minLength(6),Validators.maxLength(15)]),
-            confirmPassword: new FormControl ("",[Validators.required,Validators.minLength(6)]),
+            confirmPassword: new FormControl ("",[Validators.required,Validators.minLength(6),Validators.maxLength(15)]),
       },
       {
         validators: this.MustMatch("password", "confirmPassword")
@@ -41,6 +42,12 @@ import { Meta, Title } from '@angular/platform-browser';
     }
 
     ngOnInit() {
+      this.auth.user$.subscribe(x => {
+        this.user = x
+        if(this.user) {
+          this.router.navigate[("404")]
+        }
+      })
       this.title.setTitle("Регистрация")
     }
 

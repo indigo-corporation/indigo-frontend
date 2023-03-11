@@ -78,7 +78,7 @@ export class UserSettingComponent implements OnInit {
     private title: Title
   ) {
     this.settingForm = new FormGroup({
-      name: new FormControl("", [Validators.minLength(4), Validators.maxLength(15),Validators.pattern("^[a-zA-Z0-9]+$")]),
+      name: new FormControl("", [Validators.minLength(4), Validators.maxLength(15),Validators.pattern("/^([а-яё\s]+|[a-z\s]+)$/iu")]),
       about: new FormControl("", []),
       user_name: new FormControl("", [Validators.required,Validators.minLength(4), Validators.maxLength(15),Validators.pattern("^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$")]),
   

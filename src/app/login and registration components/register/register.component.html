@@ -17,6 +17,10 @@
       <div class="auth-error" *ngIf="name.errors?.['required'] && (name.touched || name.dirty)">
         Заполните поле Имя
       </div>
+      <div class="auth-error" *ngIf="name.errors?.['pattern'] && (name.touched || name.dirty)">
+        Имя должно содержать только кириллические символы
+      </div>
+      
       <div class="auth-error" *ngIf="name.errors?.['minlength'] && (name.touched || name.dirty)">
         Слишком кароткое имя
       </div>
@@ -43,6 +47,9 @@
         *ngIf="confirmPassword.errors?.['required'] && (confirmPassword.touched || confirmPassword.dirty)">
         Заполните поле Подтвердить Пароль
       </div>
+      
+
+      
       <div class="auth-error" *ngIf="confirmPassword.errors?.MustMatch">
         Пароль не совпадает
       </div>

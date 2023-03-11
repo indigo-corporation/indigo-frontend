@@ -104,7 +104,7 @@ const appRoutes: Routes = [
   { path: 'serial', component: CardsComponent },
   { path: 'cartoon', component: CardsComponent },
   { path: ':category/:id', component: CardContentComponent },
-  { path: 'reg', component: RegisterComponent },
+  { path: 'reg', component: RegisterComponent, canActivate: [AuthGuard]},
   { path: 'user-page/:id', component: UserPageComponent, canActivate: [AuthGuard] },
   { path: 'user-page', component: UserPageComponent, canActivate: [AuthGuard] },
   { path: 'user-settings', component: UserSettingComponent, canActivate: [AuthGuard] },

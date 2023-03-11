@@ -53,8 +53,12 @@ constructor(
        if (token) {
         localStorage.setItem("token",token);
         this.alertify.success('Вход успешный');
+        this.auth.getUser() 
         this.close()
-        this.auth.getUser()  
+        const currentRoute = this.router.url;
+        if (currentRoute === '/reg') {
+            this.router.navigate(['/']);
+        } 
        } 
       },() => {
       this.alertify.error("Неправильный пароль или email");

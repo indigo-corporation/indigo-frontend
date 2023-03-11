@@ -9,7 +9,7 @@
         <div [@enterAnimationPage] class="content-scroll" *ngIf="data">
             <div routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}" *ngFor="let card of data.slice(0, 10)" class="card card-block">
                 <div class="img-block">
-                    <a routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}"> <img class="cards-img" src="{{card.poster_medium}}"></a>
+                    <a routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}"> <img class="cards-img" src="{{card.poster}}"></a>
                 </div>
                 <div class="card-head">
                         <a routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}" class="film-title">{{card.title}}</a> 

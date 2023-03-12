@@ -110,6 +110,38 @@ summary {
     border-radius: 14px;
 }
 
+.share {
+    display: flex;
+    background: #1c1c1c;
+    padding: 10px;
+    align-items: center;
+}
+
+.share-txt {
+    color: white;
+    font-size: 14px;
+}
+
+
+.share-icon {
+    transition: transform 0.3s ease-out;
+    &:hover {
+        transition: transform 0.3s ease-out;
+        transform: scale(1.1)
+    }
+  
+    
+}
+
+.btn-share {
+    transition: transform 0.3s ease-out;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 4px;
+}
+
 .discription-text-block {
     display: flex;
     margin-left: 4px;

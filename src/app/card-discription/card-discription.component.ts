@@ -13,6 +13,8 @@ import { hasClassName } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ModalLoginComponent } from '../modal-login/modal-login.component';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-card-discription',
@@ -72,6 +74,7 @@ export class CardDiscriptionComponent implements OnInit {
   constructor(
     private api2Service: api2Service,
     private router: Router,
+    private meta: Meta,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private sanitizer: DomSanitizer,
@@ -79,6 +82,7 @@ export class CardDiscriptionComponent implements OnInit {
     private modalService: MdbModalService,
     private el: ElementRef) {
     this.rating3 = 0;
+  
     this.form = this.fb.group({
     });
   }
@@ -90,17 +94,30 @@ export class CardDiscriptionComponent implements OnInit {
     cartoon: "Мультфильм"
   }
 
+  url: string = window.location.href;
+
   ngOnInit() {
+    window.location.href
+    debugger
     this.auth.user$.subscribe(x => {
       this.login = x != null
     })
     if (this.login) {
       this.getFavoriteArray();
     }
+    this.meta.addTags([
+      { property: 'og:title', content: this.film.title },
+      { property: 'og:description', content: this.film.overview },
+      { property: 'og:image', content: this.film.poster },
+      { property: 'og:url', content: this.url }
+    ]);
 
     
     this.category = this.route.snapshot.params.category
   }
+
+
+  
 
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
@@ -118,6 +135,23 @@ export class CardDiscriptionComponent implements OnInit {
       }
     }
 
+  }
+
+
+  telegramUrl: string = "https://t.me/share/url?url=";
+  facebookUrl: string = "https://www.facebook.com/sharer/sharer.php?u=";
+
+  shareOnTelegram() {
+    let currentUrl = window.location.href;
+    let url = this.telegramUrl + encodeURIComponent(currentUrl);
+    window.open(url, "_blank");
+  }
+  currentUrl
+  shareOnFacebook() {
+    debugger
+    this.currentUrl = window.location.href;
+    let url = this.facebookUrl + encodeURIComponent(this.currentUrl);
+    window.open(url, "_blank");
   }
 
 

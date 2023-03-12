@@ -34,6 +34,8 @@ import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';

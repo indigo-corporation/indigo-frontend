@@ -5,12 +5,26 @@
     <div *ngIf="!isPlayer">
         <app-player *ngIf="film" style="height: 500px;" [film]="film"></app-player>
     </div>
+    <div class="share">
+        <p class="share-txt">Расскажи друзьям о своих впечатлениях:</p>
+        <button class="btn-share" (click)="shareOnTelegram()">
+            <img class="share-icon" src="assets/icons-telegram.png">
+
+        </button>
+        <button class="btn-share" (click)="shareOnFacebook()">
+            <img class="share-icon" style="width: 32px;" src="assets/icons-facebook.png">
+        </button>
+       
+    </div>
     <div class="buttons-bl">
         <div class="content-card">
             <div *ngIf="film" class="poster">
-                <img onerror="if(this.src != 'error.jpg') this.src = 'assets/error-404.avif';" class="card-image" alt="{{film.title}}"  [src]="film.poster">
+                <img onerror="if(this.src != 'error.jpg') this.src = 'assets/error-404.avif';" class="card-image"
+                    alt="{{film.title}}" [src]="film.poster">
 
                 <div class="discriptionforfilm">
+                   
+                    
                     <div class="discriptionforfilm2">
                         <h1 style="margin-left: 0" class="card-title-original">{{film.original_title}}</h1>
                         <h1 class="card-title-original">
@@ -54,19 +68,19 @@
                     </div>
                     <div class="discription-text-block">
                         <p class="discription-text genre-btn">{{film.release_date | date:"y":"ru"}}</p>
-                    
+
                         <span *ngFor="let country of film.countries">
                             <p class="discription-text genre-btn">{{country.title}}</p>
                         </span>
-                      <!--   <p *ngIf="film.runtime" class="discription-text">{{film.runtime}} минуты</p> -->
+                        <!--   <p *ngIf="film.runtime" class="discription-text">{{film.runtime}} минуты</p> -->
                     </div>
                     <div class="genre-block">
                         <span *ngFor="let genre of film.genres">
                             <p class="discription-text genre-btn" routerLink="/{{category}}/genre/{{genre.id}}"
-                            href="/{{category}}/genre/{{genre.id}}"> {{genre.title}}  </p>
+                                href="/{{category}}/genre/{{genre.id}}"> {{genre.title}} </p>
                         </span>
                     </div>
-                   
+
                 </div>
 
             </div>
@@ -83,7 +97,7 @@
                     </p>
                 </div>
                 <a *ngIf="!textView" class="moreTextBtn" (click)="moreText()">Подробнеe</a>
-                <a *ngIf="textView"class="moreTextBtn" (click)="backText()">Свернуть</a>
+                <a *ngIf="textView" class="moreTextBtn" (click)="backText()">Свернуть</a>
             </div>
 
 

@@ -70,10 +70,10 @@ export class CardContentComponent implements OnInit {
       let imdbID = this.film.imdb_id;
       this.title.setTitle("Смотреть" + " " + this.film.title + " " + "онлайн бесплатно в хорошем качестве")
       this.meta.addTags([
-        { property: 'og:title', content: this.film.title },
-        { property: 'og:description', content: this.film.overview },
-        { property: 'og:image', content: this.film.poster },
-        { property: 'og:url', content: this.url}
+        { name: 'og:title', content: this.film.title },
+        { name: 'og:description', content: this.film.overview },
+        { name: 'og:image', content: this.film.poster },
+        { name: 'og:url', content: this.url}
       ]);
       if (this.film.is_anime === true) {
         this.meta.addTag(

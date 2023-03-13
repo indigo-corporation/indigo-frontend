@@ -31,7 +31,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 })
 export class CardContentComponent implements OnInit {
 
-
+  url: string = window.location.href;
   public id: any
   term: any;
   @Input() film: any
@@ -69,6 +69,12 @@ export class CardContentComponent implements OnInit {
       this.film = data.data;
       let imdbID = this.film.imdb_id;
       this.title.setTitle("Смотреть" + " " + this.film.title + " " + "онлайн бесплатно в хорошем качестве")
+      this.meta.addTags([
+        { property: 'og:title', content: this.film.title },
+        { property: 'og:description', content: this.film.overview },
+        { property: 'og:image', content: this.film.poster },
+        { property: 'og:url', content: this.url}
+      ]);
       if (this.film.is_anime === true) {
         this.meta.addTag(
           { name: "description", content: this.film.title + this.film.original_title + "Аниме, Анимесериалы, Анимесериал, Смотреть Аниме онлайн, Аниме HD, совместный просмотр" })

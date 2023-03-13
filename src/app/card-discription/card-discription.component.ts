@@ -82,7 +82,7 @@ export class CardDiscriptionComponent implements OnInit {
     private modalService: MdbModalService,
     private el: ElementRef) {
     this.rating3 = 0;
-  
+
     this.form = this.fb.group({
     });
   }
@@ -105,19 +105,11 @@ export class CardDiscriptionComponent implements OnInit {
     if (this.login) {
       this.getFavoriteArray();
     }
-    this.meta.addTags([
-      { property: 'og:title', content: this.film.title },
-      { property: 'og:description', content: this.film.overview },
-      { property: 'og:image', content: this.film.poster },
-      { property: 'og:url', content: this.url }
-    ]);
-
-    
     this.category = this.route.snapshot.params.category
   }
 
 
-  
+
 
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {

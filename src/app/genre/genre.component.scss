@@ -57,6 +57,31 @@
   justify-items: center;
 }
 
+.sort-anime {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 20% 20% 20%;
+  grid-gap: 13px;
+  margin: 19px 0;
+}
+
+.sort {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 20% 20%;
+  grid-gap: 13px;
+  margin: 19px 0;
+}
+
+
+.btn-sort {
+  padding: 7px;
+  border-radius: 9px;
+  border: none;
+  background: #4c3f93;
+  color: white;
+}
+
 @media screen and (min-width: 360px) and (max-width: 720px) {
   .card-row {
     margin: 0 5px 0 0px;

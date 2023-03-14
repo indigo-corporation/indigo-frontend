@@ -2,10 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { api2Service } from '../services/api2.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-genre',
   templateUrl: './genre.component.html',
+  animations: [
+    trigger('enterAnimationArrow', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('600ms', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('0ms', style({ opacity: 0 }))
+      ])
+    ]
+    )
+  ],
   styleUrls: ['./genre.component.scss']
 })
 export class GenreComponent implements OnInit {
@@ -19,7 +32,10 @@ export class GenreComponent implements OnInit {
   genre:any
   type:any
   category:any
-
+  isSortAnime:boolean =false
+  isSort:boolean = false
+  sortField:string = "release_date"
+  sortDirection:string ="desc"
   nameType = {
     film:"Фильмы",
     serial:"Сериалы",
@@ -44,8 +60,18 @@ export class GenreComponent implements OnInit {
     if(!this.page) {
       this.page = 1 
     }
+    this.category = this.route.snapshot.url[0].path
+
+    if (this.category === "anime") {
+      this.isSortAnime = true
+      this.isSort = false
+    } else {
+      this.isSort = true
+    }
+
     this.id = this.route.snapshot.paramMap.get('id')
     this.type = this.route.snapshot.paramMap.get("type")
+
     this.getGenreFilms(this.id,this.page,this.type)
     if(this.nameType[this.type] === "Аниме") {
       this.getGenreAnime() 
@@ -70,6 +96,25 @@ export class GenreComponent implements OnInit {
         });
     }
 }
+
+genreArrow(sortField) {
+  let sortDirection = "desc"
+  if(this.sortField === sortField) {
+    sortDirection = this.sortDirection === "desc" ? "asc" : "desc"
+  } 
+  this.sortField = sortField
+  this.sortDirection = sortDirection
+  this.getGenreFilms(this.id,this.page,this.type)
+}
+
+arrowsUp(): void {
+  const arrowElms = document.querySelectorAll(".arrow");
+  arrowElms.forEach((arrowElm) => {
+    (arrowElm as HTMLElement).style.transform = "";
+    (arrowElm as HTMLElement).style.color = "";
+  });
+}
+
 getGenreAnime() {
     let ls = localStorage.getItem("genresAnime")
     if (ls) {
@@ -86,7 +131,7 @@ getGenreAnime() {
 }
 
   getGenreFilms(id,page,category) {
-    this.api2Service.getGenreFilms(id,page,category).subscribe((data) => {
+    this.api2Service.getGenreFilms(id,page,category,this.sortField,this.sortDirection).subscribe((data) => {
       this.data = data.data.items
       this.totalRecords = data.data.pagination.total
     });

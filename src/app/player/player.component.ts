@@ -35,8 +35,10 @@ export class PlayerComponent implements OnInit {
   imdb_id
   isPlayerKodic: boolean = true
   isPlayerSveta: boolean = false
+ 
   srcPlayer: any
   asvPlayer
+  isHiddenCdn:boolean = false
   isHiddenKodic:boolean = false
   isHiddenUa:boolean = false
   data
@@ -61,10 +63,8 @@ export class PlayerComponent implements OnInit {
       err => this.isHiddenUa = true,
     ); 
 
-    
-   
     if(this.film.shiki_id) {
-    
+      debugger
       this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://kodik.cc/find-player?shikimoriID="+this.film.shiki_id);
     } else {
       let kodiciUrl = "https://kodikapi.com/search?token=c93d194dd1a2f6cc95b3095a9940dfb2&imdb_id="+this.film.imdb_id;
@@ -73,8 +73,16 @@ export class PlayerComponent implements OnInit {
           this.isHiddenKodic = true
         }
       });
-      this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id="+this.film.imdb_id+"&domain=indigofilms.online");
     }
+    if(!this.film.shiki_id) {    
+      this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id="+this.film.imdb_id+"&domain=indigofilms.online");
+    } 
+    
+    if(!this.film.imdb_id) {    
+      this.isHiddenCdn = true
+    }
+    
+    
   }
   onPlayer(player: string) {
     let shId = this.film.shiki_id

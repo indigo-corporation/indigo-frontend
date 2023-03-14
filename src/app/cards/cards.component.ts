@@ -20,11 +20,25 @@ import { trigger, style, animate, transition } from '@angular/animations';
         animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
       ])
     ]
+    ),
+    trigger('enterAnimationArrow', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('600ms', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('0ms', style({ opacity: 0 }))
+      ])
+    ]
     )
   ],
   styleUrls: ['./cards.component.scss']
 })
 export class CardsComponent implements OnInit {
+
+  isArrow1: boolean = false;
+  isArrow2: boolean = false;
+  isArrow3: boolean = false;
   category: any
   term: any;
   totalRecords: number
@@ -33,6 +47,12 @@ export class CardsComponent implements OnInit {
   log: any
   totalPages:any
   film: any
+
+  isSortAnime:boolean =false
+  isSort:boolean = false
+
+  sortField:string = "release_date"
+  sortDirection:string ="desc"
   @Input() data: any
   public id: any
   constructor(
@@ -55,8 +75,15 @@ export class CardsComponent implements OnInit {
     if(!this.page) {
       this.page = 1 
     }
-
     this.category = this.route.snapshot.url[0].path
+      if (this.category === "anime") {
+        this.isSortAnime = true
+        this.isSort = false
+      } else {
+        this.isSort = true
+      }
+   
+    debugger
     if (this.category === "film") {
       this.title.setTitle("Смотреть Фильмы в хорошем качестве в 720p hd")
       this.meta.addTag(
@@ -83,7 +110,7 @@ export class CardsComponent implements OnInit {
     this.getData(1);
   }
   getData(page) {
-    this.api2Service.getData(this.category, this.page).subscribe((data) => {
+    this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection).subscribe((data) => {
       this.data = data.data.items
       this.totalRecords = data.data.pagination.total
       this.totalPages = data.data.pagination.total_pages
@@ -99,5 +126,23 @@ export class CardsComponent implements OnInit {
       }
     });
     this.getData(page)
+  }
+
+  genreArrow(sortField) {
+    let sortDirection = "desc"
+    if(this.sortField === sortField) {
+      sortDirection = this.sortDirection === "desc" ? "asc" : "desc"
+    } 
+    this.sortField = sortField
+    this.sortDirection = sortDirection
+    this.getData(1)
+  }
+
+  arrowsUp(): void {
+    const arrowElms = document.querySelectorAll(".arrow");
+    arrowElms.forEach((arrowElm) => {
+      (arrowElm as HTMLElement).style.transform = "";
+      (arrowElm as HTMLElement).style.color = "";
+    });
   }
 } 

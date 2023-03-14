@@ -11,6 +11,50 @@
   margin-bottom: 49px;
 }
 
+.sort-anime {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 20% 20% 20%;
+  grid-gap: 13px;
+  margin: 19px 0;
+}
+
+.sort {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 20% 20%;
+  grid-gap: 13px;
+  margin: 19px 0;
+}
+
+
+
+.arrow {
+  transition: 0.5s;
+  font-size: 14px;
+  margin-left: 6px;
+  padding: 6px;
+  color: white;
+  cursor: pointer;
+  margin-top: 0px;
+  z-index: 3;
+  position: relative;
+  top: -2px;
+  right: 10px;
+}
+
+.arrow {
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn-sort {
+  padding: 7px;
+  border-radius: 9px;
+  border: none;
+  background: #4c3f93;
+  color: white;
+}
+
 .card {
   max-width: 100%;
   background-color: transparent;

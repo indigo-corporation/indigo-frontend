@@ -92,8 +92,8 @@ export class api2Service {
         return this.get("films/search", {page:page, find:find } )
     }
 
-    getData(category = "", page = 1): Observable<Result> {
-        let params = {page:page}
+    getData(category = "", page = 1, sortField ="date", sortDirection="desc"): Observable<Result> {
+        let params = {page:page, sort_field:sortField, sort_direction:sortDirection}
         if(category) {
              params["category"] = category
         }

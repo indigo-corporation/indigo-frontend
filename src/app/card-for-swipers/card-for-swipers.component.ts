@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { api2Service } from '../services/api2.service';
 import { authService } from "../services/authService.service";
+import { ModalLoginComponent } from '../modal-login/modal-login.component';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 @Component({
   selector: 'app-card-for-swipers',
@@ -23,13 +25,17 @@ export class CardForSwipersComponent implements OnInit,AfterViewInit{
   login
   private subscription = new Subscription();
   sliderWidth:number
+  modalRef: MdbModalRef<ModalLoginComponent> | null = null;
   constructor(
     private api2Service: api2Service,
     private auth: authService,
+    private modalService: MdbModalService,
   ) { }
 
   ngOnInit() {
-   
+    this.auth.user$.subscribe(x => {
+      this.login = x != null
+    })
   }
 
   ngAfterViewInit() {
@@ -37,6 +43,10 @@ export class CardForSwipersComponent implements OnInit,AfterViewInit{
   }
 
   postFavorite() {
+    if (!this.login) {
+      this.openLogin()
+      return
+    }
     let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
     
     this.api2Service.postFavorite(this.card.id).subscribe((data) => {
@@ -48,6 +58,13 @@ export class CardForSwipersComponent implements OnInit,AfterViewInit{
       debugger
       this.card.isFavorite = true
     })
+  }
+
+  openLogin() {
+    this.modalRef = this.modalService.open(ModalLoginComponent, {
+    });
+    this.modalRef.onClose.subscribe((data: any) => {
+    });
   }
 
   removeFavorite() {

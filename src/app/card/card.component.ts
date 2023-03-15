@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, AfterViewInit,  } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { api2Service } from '../services/api2.service';
 
 @Component({
   selector: 'app-card',
@@ -15,12 +16,20 @@ import { trigger, style, animate, transition } from '@angular/animations';
         animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
       ])
     ]
-    )
+    ),
+    trigger(
+      'enterAnimationText', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('700ms', style({ opacity: 1 }))
+      ])
+    ])
   ],
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
   @Input() card: any;
+  isFavorite: boolean = false
   /*   @Input() container: HTMLElement; */
   myOptions = {
     'placement': 'left',
@@ -28,11 +37,38 @@ export class CardComponent implements OnInit {
     'showDelay': 500,
   }
 
-  constructor() { }
+  constructor( private api2Service: api2Service,) { }
 
   ngOnInit() {
 
 
+  }
+
+  postFavorite() {
+    let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
+    
+    this.api2Service.postFavorite(this.card.id).subscribe((data) => {
+      if(favoriteFilmIds) {
+        favoriteFilmIds = JSON.parse(favoriteFilmIds)
+      favoriteFilmIds.push(this.card.id)
+      localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
+      }
+      debugger
+      this.card.isFavorite = true
+    })
+  }
+
+  removeFavorite() {
+    let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
+    debugger
+    this.api2Service.removeFavorite(this.card.id).subscribe((data) => {
+      if(favoriteFilmIds){
+        favoriteFilmIds = JSON.parse(favoriteFilmIds)
+        favoriteFilmIds = favoriteFilmIds.filter(x => x != this.card.id)
+        localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds)) 
+      }
+      this.card.isFavorite = false   
+    })
   }
 
   mOver(event) {

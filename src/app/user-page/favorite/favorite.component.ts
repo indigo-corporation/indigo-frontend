@@ -34,6 +34,14 @@ export class FavoriteComponent implements OnInit {
   getFavoriteFilms() {
     this.api2Service.getFavoriteFilms().subscribe((data) => {
       this.favoriteFilms = data.data.items
+      let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds");
+      if (favoriteFilmIds) {
+        favoriteFilmIds = JSON.parse(favoriteFilmIds);
+        this.favoriteFilms.forEach(item => {
+          item.isFavorite = favoriteFilmIds.includes(item.id);
+        });
+        localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
+      }
       this.totalRecords = data.data.pagination.total
     })
   }

@@ -17,6 +17,7 @@ export class SearchPageComponent implements OnInit {
   data: Array<any>
   name: any
   find: any
+  favoriteFilmIds
   public id: any
   constructor(
     private api2Service: api2Service,
@@ -77,6 +78,14 @@ export class SearchPageComponent implements OnInit {
     }
       this.api2Service.search(find, page).subscribe((data) => {
       this.data = data.data.items
+      let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds");
+      if (favoriteFilmIds) {
+        favoriteFilmIds = JSON.parse(favoriteFilmIds);
+        this.data.forEach(item => {
+          item.isFavorite = favoriteFilmIds.includes(item.id);
+        });
+        localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
+      }
       this.totalRecords = data.data.pagination.total
     })
   }

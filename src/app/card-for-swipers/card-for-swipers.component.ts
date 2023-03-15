@@ -1,9 +1,20 @@
 import { Component, OnInit, Input,AfterViewInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { trigger, style, animate, transition } from '@angular/animations';
+import { api2Service } from '../services/api2.service';
 
 @Component({
   selector: 'app-card-for-swipers',
   templateUrl: './card-for-swipers.component.html',
+  animations: [
+    trigger(
+      'enterAnimationText', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('700ms', style({ opacity: 1 }))
+      ])
+    ])
+  ],
   styleUrls: ['./card-for-swipers.component.scss']
 })
 export class CardForSwipersComponent implements OnInit,AfterViewInit{
@@ -12,6 +23,7 @@ export class CardForSwipersComponent implements OnInit,AfterViewInit{
   private subscription = new Subscription();
   sliderWidth:number
   constructor(
+    private api2Service: api2Service,
   ) { }
 
   ngOnInit() {
@@ -20,6 +32,33 @@ export class CardForSwipersComponent implements OnInit,AfterViewInit{
 
   ngAfterViewInit() {
     
+  }
+
+  postFavorite() {
+    let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
+    
+    this.api2Service.postFavorite(this.card.id).subscribe((data) => {
+      if(favoriteFilmIds) {
+        favoriteFilmIds = JSON.parse(favoriteFilmIds)
+      favoriteFilmIds.push(this.card.id)
+      localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
+      }
+      debugger
+      this.card.isFavorite = true
+    })
+  }
+
+  removeFavorite() {
+    let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
+    debugger
+    this.api2Service.removeFavorite(this.card.id).subscribe((data) => {
+      if(favoriteFilmIds){
+        favoriteFilmIds = JSON.parse(favoriteFilmIds)
+        favoriteFilmIds = favoriteFilmIds.filter(x => x != this.card.id)
+        localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds)) 
+      }
+      this.card.isFavorite = false   
+    })
   }
 
   mOver(event) {

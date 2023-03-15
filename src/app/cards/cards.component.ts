@@ -47,7 +47,7 @@ export class CardsComponent implements OnInit {
   log: any
   totalPages:any
   film: any
-
+  favoriteFilmIds
   isSortAnime:boolean =false
   isSort:boolean = false
 
@@ -70,7 +70,6 @@ export class CardsComponent implements OnInit {
 
 
   ngOnInit() {
-
     this.page=this.route.snapshot.queryParams.page
     if(!this.page) {
       this.page = 1 
@@ -82,8 +81,6 @@ export class CardsComponent implements OnInit {
       } else {
         this.isSort = true
       }
-   
-    debugger
     if (this.category === "film") {
       this.title.setTitle("Смотреть Фильмы в хорошем качестве в 720p hd")
       this.meta.addTag(
@@ -112,10 +109,20 @@ export class CardsComponent implements OnInit {
   getData(page) {
     this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection).subscribe((data) => {
       this.data = data.data.items
+      let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds");
+    if (favoriteFilmIds) {
+      favoriteFilmIds = JSON.parse(favoriteFilmIds);
+      this.data.forEach(item => {
+        item.isFavorite = favoriteFilmIds.includes(item.id);
+      });
+      localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
+    }
+
       this.totalRecords = data.data.pagination.total
       this.totalPages = data.data.pagination.total_pages
     });
   }
+
 
   onPageChange(page) {
     this.page = page

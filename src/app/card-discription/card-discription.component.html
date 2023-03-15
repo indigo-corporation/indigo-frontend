@@ -54,13 +54,13 @@
                             <i class="fas fa-play-circle"></i>
                             Смотреть вместе
                         </button> -->
-                        <button [@enterAnimationText] (click)="postFavorite()" *ngIf="!isFavorite" class="favorite">
+                        <button [@enterAnimationText] (click)="postFavorite()" *ngIf="!film.isFavorite" class="favorite">
                             <span mat-raised-button class="favorite-text">Добавить в избранные</span>
                             <input style="display: none" id="favorite" type="checkbox">
                             <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
                         </button>
 
-                        <button [@enterAnimationText] (click)="removeFavorite()" *ngIf="isFavorite" class="favorite">
+                        <button [@enterAnimationText] (click)="removeFavorite()" *ngIf="film.isFavorite" class="favorite">
                             <span mat-raised-button class="favorite-text">Убрать из избранных</span>
                             <input style="display: none" id="favorite" checked type="checkbox">
                             <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>

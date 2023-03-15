@@ -67,6 +67,14 @@ export class MoreFilmsComponent implements OnInit {
   getTopRated() {
     this.api2Service.getFilmsMain().subscribe((data) => {
       this.data = data.data.new
+      let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds");
+      if (favoriteFilmIds) {
+        favoriteFilmIds = JSON.parse(favoriteFilmIds);
+        this.data.forEach(item => {
+          item.isFavorite = favoriteFilmIds.includes(item.id);
+        });
+        localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
+      }
     });
   }
   onSwiper(swiper) {

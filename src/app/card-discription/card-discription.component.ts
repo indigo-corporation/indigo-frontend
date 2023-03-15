@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, AfterViewChecked, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { api2Service } from '../services/api2.service';
 import { ActivatedRoute } from '@angular/router';
@@ -98,18 +98,12 @@ export class CardDiscriptionComponent implements OnInit {
 
   ngOnInit() {
     window.location.href
-    debugger
     this.auth.user$.subscribe(x => {
       this.login = x != null
     })
-    if (this.login) {
-      this.getFavoriteArray();
-    }
+   
     this.category = this.route.snapshot.params.category
   }
-
-
-
 
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
@@ -118,16 +112,9 @@ export class CardDiscriptionComponent implements OnInit {
     });
   }
 
-  checkIfFavoriteFilm() {
-    if (this.film) {
-      if (this.favoriteFilmIds && this.favoriteFilmIds.includes(this.film.id)) {
-        this.isFavorite = true;
-      } else {
-        this.isFavorite = false;
-      }
-    }
 
-  }
+
+
 
 
   telegramUrl: string = "https://t.me/share/url?url=";
@@ -147,11 +134,6 @@ export class CardDiscriptionComponent implements OnInit {
   }
 
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.film && changes.film.currentValue) {
-      this.checkIfFavoriteFilm();
-    }
-  }
 
   moreText() {
     this.textView = true
@@ -170,40 +152,29 @@ export class CardDiscriptionComponent implements OnInit {
     this.api2Service.postStars(this.film.id, this.raitingControl.value).subscribe((data) => {
       this.film.stars = data.data
       this.film.stars = parseFloat(data.data);
-      debugger
     })
 
   }
 
-  getFavoriteArray() {
-    this.api2Service.getFavoriteArray().subscribe((data) => {
-      this.favoriteFilmIds = data.data
-      this.checkIfFavoriteFilm()
-    })
-  }
-  /* 
-      let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
-       if (favoriteFilmIds) {
-         favoriteFilmIds = JSON.parse(favoriteFilmIds)
-         return favoriteFilmIds
-       } else { 
-       this.api2Service.getFavoriteArray().subscribe((data) => {
-        this.favoriteFilmIds = data.data
-        debugger
-         localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
-        return favoriteFilmIds 
-        }) 
-      }) */
+ 
+  
+    
 
   postFavorite() {
     if (!this.login) {
       this.openLogin()
       return
     }
+    let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
+    
     this.api2Service.postFavorite(this.film.id).subscribe((data) => {
-      this.favoriteFilmIds.push(this.film.id)
-      this.isFavorite = true
-      /* localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds)) */
+      if(favoriteFilmIds) {
+        favoriteFilmIds = JSON.parse(favoriteFilmIds)
+      favoriteFilmIds.push(this.film.id)
+      localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
+      }
+      debugger
+      this.film.isFavorite = true
     })
   }
 
@@ -219,11 +190,15 @@ export class CardDiscriptionComponent implements OnInit {
   }
 
   removeFavorite() {
+    let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
+    debugger
     this.api2Service.removeFavorite(this.film.id).subscribe((data) => {
-      if (this.favoriteFilmIds = this.favoriteFilmIds.filter(x => x.id != this.film.id)) {
-        this.isFavorite = false
+      if(favoriteFilmIds){
+        favoriteFilmIds = JSON.parse(favoriteFilmIds)
+        favoriteFilmIds = favoriteFilmIds.filter(x => x != this.film.id)
+        localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds)) 
       }
-      /*  localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds)) */
+      this.film.isFavorite = false   
     })
   }
 }

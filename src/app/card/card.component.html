@@ -3,6 +3,15 @@
       <a routerLink="/{{card.category}}/{{card.slug}}">
         <img onerror="if(this.src != 'error.jpg') this.src = 'assets/error-404.avif';" class="filters__img" alt="{{card.title}}" src="{{card.poster}}">
       </a>
+      <button [@enterAnimationText]  (click)="postFavorite()" *ngIf="!card.isFavorite" class="favorite">
+        <input style="display: none" id="favorite" type="checkbox">
+        <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
+    </button>
+    
+    <button [@enterAnimationText] (click)="removeFavorite()" *ngIf="card.isFavorite" class="favorite">
+      <input style="display: none" id="favorite" checked type="checkbox">
+      <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
+  </button>
       <mat-icon (mouseover)="mOver($event)" (click)="toolTipClick($event)" (mouseout)="mOut($event)" class="info-icon">info</mat-icon>
         <div class="tooltip-div">
           <a routerLink="/{{card.category}}/{{card.slug}}" class="tooltip-title">{{card.title}}</a>

@@ -29,6 +29,7 @@ export class GenreComponent implements OnInit {
   term: any
   name: any
   genres: any
+  favoriteFilmIds
   genre:any
   type:any
   category:any
@@ -56,6 +57,7 @@ export class GenreComponent implements OnInit {
     }
 
   ngOnInit() {
+
     this.page=this.route.snapshot.queryParams.page
     if(!this.page) {
       this.page = 1 
@@ -81,6 +83,8 @@ export class GenreComponent implements OnInit {
     let typeName = this.nameType[this.type]
     this.title.setTitle("Смотреть " + typeName + " " + this.genre.title + " в хорошем качестве в 720p hd")
   }
+
+  
 
   getGenre() {
     let ls = localStorage.getItem("genres")
@@ -133,6 +137,14 @@ getGenreAnime() {
   getGenreFilms(id,page,category) {
     this.api2Service.getGenreFilms(id,page,category,this.sortField,this.sortDirection).subscribe((data) => {
       this.data = data.data.items
+      let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds");
+      if (favoriteFilmIds) {
+        favoriteFilmIds = JSON.parse(favoriteFilmIds);
+        this.data.forEach(item => {
+          item.isFavorite = favoriteFilmIds.includes(item.id);
+        });
+        localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
+      }
       this.totalRecords = data.data.pagination.total
     });
   }

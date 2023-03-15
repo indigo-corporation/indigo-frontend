@@ -38,6 +38,7 @@ export class CardContentComponent implements OnInit {
   totalRecords: string
   login: any
   slug
+  favoriteFilmIds
   isTogther: boolean = true
   isFilm: boolean = true
   constructor(
@@ -56,10 +57,42 @@ export class CardContentComponent implements OnInit {
     var slug: string = this.route.snapshot.params.id;
     this.slug = slug.split("-")
     this.id = this.slug.pop()
+    localStorage.getItem("")
     this.getfind(this.id);
     this.auth.user$.subscribe(x => {
       this.login = x != null
+     
     })
+  }
+
+  checkIfFavoriteFilm() {
+    if (this.favoriteFilmIds) {
+      if (this.favoriteFilmIds.includes(this.film.id)) {
+        this.film.isFavorite = true
+      } else {
+        this.film.isFavorite = false
+      }
+    }
+  }
+
+  getFavoriteArray() {
+    let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
+    
+    if (favoriteFilmIds) {
+
+    favoriteFilmIds = JSON.parse(favoriteFilmIds)
+     this.favoriteFilmIds = favoriteFilmIds
+     this.checkIfFavoriteFilm()
+    } else { 
+    this.api2Service.getFavoriteArray().subscribe((data) => {
+     favoriteFilmIds = data.data
+
+    localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
+     this.favoriteFilmIds = favoriteFilmIds 
+     this.checkIfFavoriteFilm()
+     }) 
+   }
+    
   }
   
 
@@ -67,6 +100,9 @@ export class CardContentComponent implements OnInit {
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
       this.film = data.data;
+      if (this.login) {
+        this.getFavoriteArray()
+      }
       let imdbID = this.film.imdb_id;
       this.title.setTitle("Смотреть" + " " + this.film.title + " " + "онлайн бесплатно в хорошем качестве")
       this.meta.addTags([

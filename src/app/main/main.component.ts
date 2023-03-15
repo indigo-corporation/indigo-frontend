@@ -37,6 +37,27 @@ export class MainComponent implements OnInit {
       this.anime = data.data.anime
       this.cartoons = data.data.cartoon
       this.new = data.data.new
+      let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds");
+      if (favoriteFilmIds) {
+        favoriteFilmIds = JSON.parse(favoriteFilmIds);
+        this.anime.forEach(item => {
+          item.isFavorite = favoriteFilmIds.includes(item.id);
+        });
+        this.films.forEach(item => {
+          item.isFavorite = favoriteFilmIds.includes(item.id);
+        });
+        this.serials.forEach(item => {
+          item.isFavorite = favoriteFilmIds.includes(item.id);
+        });
+         this.cartoons.forEach(item => {
+          item.isFavorite = favoriteFilmIds.includes(item.id);
+        });
+        this.new.forEach(item => {
+          item.isFavorite = favoriteFilmIds.includes(item.id);
+        });
+        localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
+      }
+  
     });
 
   }

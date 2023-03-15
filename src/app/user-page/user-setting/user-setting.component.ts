@@ -37,7 +37,8 @@ import { trigger, style, animate, transition } from '@angular/animations';
 })
 export class UserSettingComponent implements OnInit {
   
-  
+  private userData = new BehaviorSubject<any>(null);
+  userData$ = this.userData.asObservable();
 
   imageChangedEvent: any = '';
   public croppedImage: any;
@@ -78,7 +79,7 @@ export class UserSettingComponent implements OnInit {
     private title: Title
   ) {
     this.settingForm = new FormGroup({
-      name: new FormControl("", [Validators.minLength(4), Validators.maxLength(15),Validators.pattern("/^([а-яё\s]+|[a-z\s]+)$/iu")]),
+      name: new FormControl("", [Validators.minLength(4), Validators.maxLength(15),Validators.pattern("^[а-яА-ЯёЁa-zA-Z0-9]+$")]),
       about: new FormControl("", []),
       user_name: new FormControl("", [Validators.required,Validators.minLength(4), Validators.maxLength(15),Validators.pattern("^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$")]),
   
@@ -176,9 +177,9 @@ export class UserSettingComponent implements OnInit {
       this.settingForm.value.about = " "
     }
     const formData = this.settingForm.value;
-    debugger
     this.userService.userChangeInfo(formData).subscribe((result) => {
-      this.userInfoUpdate.next(result)
+     debugger
+     this.auth.user$.next(formData)
       this.alertify.success('Успешно изменено');
     })
   }

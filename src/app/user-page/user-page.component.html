@@ -27,17 +27,9 @@
         </div>
         <app-user-setting (userInfoUpdate)="updatingUserInfo(user)" style="display: none;"></app-user-setting>
         <div class="user-discription">
-          <!--           <h1 class="user-profile-text">Статус: <span class="user-status">Online</span></h1>
-          <h1 class="user-profile-text">Группа: <span class="user-group">Администратор</span></h1> -->
-
+          <h1 class="user-profile-text">Имя пользователя: <span class="user-info">{{user.user_name}}</span></h1>
           <h1 class="user-profile-text">Имя: <span class="user-info">{{user.name}}</span></h1>
-          <h1 *ngIf="user.birth_date" class="user-profile-text">Возраст: <span class="user-info">{{user.birth_date}}</span></h1>
-          <!-- <h1 *ngIf="user.country.name" class="user-profile-text">Страна: <span class="user-info">{{user.country.name}}</span></h1>
-          <h1 *ngIf="user.city.name" class="user-profile-text">Город: <span class="user-info">{{user.city.name}}</span></h1> -->
           <p class="user-profile-text">Немного о себе: <span class="user-info">{{user.about}}</span></p>
-          <!-- <h1 class="user-profile-text">Репутация: <span class="user-info">666 (Легенда НайтСити)</span></h1>
-          <h1 class="user-profile-text">Друзей: <span class="user-info">5</span></h1> -->
-          <!-- <h1 class="user-profile-text">Коментариев: <span class="user-info">100</span></h1> -->
         </div>
       </div>
       <app-favorite *ngIf="isMyUser" class="block" [film]="film"></app-favorite>

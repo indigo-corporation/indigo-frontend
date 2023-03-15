@@ -79,7 +79,9 @@ export class UserPageComponent implements OnInit {
   } */
 
   updatingUserInfo(userInfo) {
+    debugger
     this.user = userInfo
+    this.cdr.detectChanges();
   }
 
   localStorageOutComes(userId) {

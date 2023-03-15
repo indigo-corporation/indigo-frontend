@@ -26,7 +26,7 @@
             </form>
         </div>
 
-        <form [formGroup]="settingForm">
+        <form [formGroup]="settingForm" (ngSubmit)="userChangeInfo()">
             <div class="form-group">
                 <label class="sett-label" for="inputUserName">Ваше имя пользователя</label>
                 <input type="text" id="inputUserName" class="form-control"
@@ -51,7 +51,7 @@
                 <textarea maxlength="400"  style="height:100% ;" id="inputAbout" class="text-input" rows="6"
                     placeholder="О себе" formControlName="about"></textarea>
             </div>
-            <button [disabled]="settingForm.invalid" mat-stroked-button class="user-btn" (click)="userChangeInfo()" type="submit">Изменить</button>
+            <button [disabled]="settingForm.invalid" mat-stroked-button class="user-btn" type="submit">Изменить</button>
         </form>
     </form>
 

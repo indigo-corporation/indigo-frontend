@@ -2,6 +2,7 @@ import { Component, OnInit, Input,AfterViewInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { api2Service } from '../services/api2.service';
+import { authService } from "../services/authService.service";
 
 @Component({
   selector: 'app-card-for-swipers',
@@ -19,11 +20,12 @@ import { api2Service } from '../services/api2.service';
 })
 export class CardForSwipersComponent implements OnInit,AfterViewInit{
   @Input() card: any;
-
+  login
   private subscription = new Subscription();
   sliderWidth:number
   constructor(
     private api2Service: api2Service,
+    private auth: authService,
   ) { }
 
   ngOnInit() {

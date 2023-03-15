@@ -28,12 +28,14 @@ export class authService {
             this.http.get(this.url + "auth/me").subscribe((data) => {
                 if (data['state'] == true) {
                     let user = data['data']
+                    
                     localStorage.setItem("user", JSON.stringify(user))
                     this.user$.next(user)
                 }
             });
         }
     }
+
 
     isLogIn () {
         return !!this.getAuthToken()
@@ -65,6 +67,7 @@ export class authService {
         localStorage.removeItem("user")
         this.user$.next(null)
         this.router.navigate([""])
+       
         return this.http.post(this.url + "auth/logout", null)
     }
 }

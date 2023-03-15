@@ -79,7 +79,7 @@ export class CardContentComponent implements OnInit {
     let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
     
     if (favoriteFilmIds) {
-
+      debugger
     favoriteFilmIds = JSON.parse(favoriteFilmIds)
      this.favoriteFilmIds = favoriteFilmIds
      this.checkIfFavoriteFilm()

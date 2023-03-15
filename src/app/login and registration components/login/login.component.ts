@@ -6,6 +6,8 @@ import { authService } from "../../services/authService.service";
 import { MatDialogRef} from "@angular/material/dialog";
 import { ReactiveFormsModule } from '@angular/forms';
 import  * as alertyfy from 'alertifyjs';
+import { api2Service } from '../../services/api2.service';
+import { favoriteService } from '../../services/favorite.service';
 import { AlertifyService } from '../../services/alertify.service';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ModalLoginComponent } from 'src/app/modal-login/modal-login.component';
@@ -17,6 +19,7 @@ import { ModalLoginComponent } from 'src/app/modal-login/modal-login.component';
 })
 export class LoginComponent implements OnInit {
 hidediv:boolean=true
+favoriteFilmIds
 loginForm = new FormGroup ({
   email: new FormControl ("",[Validators.required,Validators.email]),
   password: new FormControl ("",[Validators.required,Validators.minLength(6)])
@@ -25,6 +28,9 @@ constructor(
   private router: Router,
   private route: ActivatedRoute,
   private auth: authService,
+  private api2Service: api2Service,
+  private  favoriteService:favoriteService,
+ 
   private ReactiveFormsModule:ReactiveFormsModule,
   private alertify:AlertifyService,
   public modalRef: MdbModalRef<ModalLoginComponent>,) 
@@ -46,14 +52,24 @@ constructor(
   get email(): FormControl {
     return this.loginForm.get("email") as FormControl;
   }
- 
+
+   getFavoriteArray() {
+    this.api2Service.getFavoriteArray().subscribe((data) => {
+    let favoriteFilmIds = data.data
+    localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
+     }) 
+    
+  } 
+
+
     logIn() {
       this.auth.logInUser(this.loginForm.value).subscribe((result)=>{
        let token = result["data"]["access_token"]
        if (token) {
         localStorage.setItem("token",token);
         this.alertify.success('Вход успешный');
-        this.auth.getUser() 
+        this.auth.getUser()
+        this.getFavoriteArray()
         this.close()
         const currentRoute = this.router.url;
         if (currentRoute === '/reg') {

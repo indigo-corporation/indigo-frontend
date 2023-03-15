@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, AfterViewInit,  } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { api2Service } from '../services/api2.service';
+import { ModalLoginComponent } from '../modal-login/modal-login.component';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { authService } from "../services/authService.service";
 
 @Component({
   selector: 'app-card',
@@ -29,7 +32,9 @@ import { api2Service } from '../services/api2.service';
 })
 export class CardComponent implements OnInit {
   @Input() card: any;
+  login
   isFavorite: boolean = false
+  modalRef: MdbModalRef<ModalLoginComponent> | null = null;
   /*   @Input() container: HTMLElement; */
   myOptions = {
     'placement': 'left',
@@ -37,14 +42,23 @@ export class CardComponent implements OnInit {
     'showDelay': 500,
   }
 
-  constructor( private api2Service: api2Service,) { }
+  constructor( 
+    private api2Service: api2Service,
+    private modalService: MdbModalService,
+    private auth: authService,) { }
 
   ngOnInit() {
-
-
+    this.auth.user$.subscribe(x => {
+      this.login = x != null
+    })
+   
   }
 
   postFavorite() {
+    if (!this.login) {
+      this.openLogin()
+      return
+    }
     let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
     
     this.api2Service.postFavorite(this.card.id).subscribe((data) => {
@@ -94,6 +108,13 @@ export class CardComponent implements OnInit {
     } else {
       tooltipDiv.style.right = "auto%";
     }
+  }
+
+  openLogin() {
+    this.modalRef = this.modalService.open(ModalLoginComponent, {
+    });
+    this.modalRef.onClose.subscribe((data: any) => {
+    });
   }
 
   mOut(event) {

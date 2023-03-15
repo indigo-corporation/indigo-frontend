@@ -194,6 +194,7 @@ export class HeaderComponent implements OnInit {
 
   signOut() {
     this.auth.logOut()
+    localStorage.clear()
   }
 
 

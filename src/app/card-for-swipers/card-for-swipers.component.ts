@@ -30,7 +30,8 @@ export class CardForSwipersComponent implements OnInit,AfterViewInit{
     private api2Service: api2Service,
     private auth: authService,
     private modalService: MdbModalService,
-  ) { }
+  ) 
+  { }
 
   ngOnInit() {
     this.auth.user$.subscribe(x => {
@@ -55,7 +56,6 @@ export class CardForSwipersComponent implements OnInit,AfterViewInit{
       favoriteFilmIds.push(this.card.id)
       localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
       }
-      debugger
       this.card.isFavorite = true
     })
   }

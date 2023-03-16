@@ -55,7 +55,6 @@ export class MainComponent implements OnInit {
         this.new.forEach(item => {
           item.isFavorite = favoriteFilmIds.includes(item.id);
         });
-        localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
       }
   
     });

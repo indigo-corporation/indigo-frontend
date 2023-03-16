@@ -28,7 +28,6 @@ export class authService {
             this.http.get(this.url + "auth/me").subscribe((data) => {
                 if (data['state'] == true) {
                     let user = data['data']
-                    
                     localStorage.setItem("user", JSON.stringify(user))
                     this.user$.next(user)
                 }

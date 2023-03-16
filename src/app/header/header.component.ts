@@ -120,6 +120,7 @@ export class HeaderComponent implements OnInit {
       navbar.classList.remove('sticky');
     }
   }
+  
 
 
 

@@ -7,7 +7,6 @@ import { MatDialogRef} from "@angular/material/dialog";
 import { ReactiveFormsModule } from '@angular/forms';
 import  * as alertyfy from 'alertifyjs';
 import { api2Service } from '../../services/api2.service';
-import { favoriteService } from '../../services/favorite.service';
 import { AlertifyService } from '../../services/alertify.service';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ModalLoginComponent } from 'src/app/modal-login/modal-login.component';
@@ -29,8 +28,6 @@ constructor(
   private route: ActivatedRoute,
   private auth: authService,
   private api2Service: api2Service,
-  private  favoriteService:favoriteService,
- 
   private ReactiveFormsModule:ReactiveFormsModule,
   private alertify:AlertifyService,
   public modalRef: MdbModalRef<ModalLoginComponent>,) 
@@ -53,14 +50,6 @@ constructor(
     return this.loginForm.get("email") as FormControl;
   }
 
-   getFavoriteArray() {
-    this.api2Service.getFavoriteArray().subscribe((data) => {
-    let favoriteFilmIds = data.data
-    localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
-     }) 
-    
-  } 
-
 
     logIn() {
       this.auth.logInUser(this.loginForm.value).subscribe((result)=>{
@@ -68,12 +57,12 @@ constructor(
        if (token) {
         localStorage.setItem("token",token);
         this.alertify.success('Вход успешный');
-        this.auth.getUser()
-        this.getFavoriteArray()
-        this.close()
+        this.auth.getUser() 
+        this.router.navigate(['user-page']);
+        this.close() 
         const currentRoute = this.router.url;
         if (currentRoute === '/reg') {
-            this.router.navigate(['/']);
+           this.router.navigate(['user-page']);
         } 
        } 
       },() => {

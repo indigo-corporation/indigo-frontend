@@ -67,7 +67,7 @@
                         </button>
                     </div>
                     <div class="discription-text-block">
-                        <p class="discription-text genre-btn">{{film.release_date | date:"y":"ru"}}</p>
+                        <p class="discription-text genre-btn">{{film.year}}</p>
 
                         <span *ngFor="let country of film.countries">
                             <p class="discription-text genre-btn">{{country.title}}</p>

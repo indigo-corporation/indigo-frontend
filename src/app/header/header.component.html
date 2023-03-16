@@ -12,19 +12,17 @@
       <i (click)="toggleBell()" class="far fa-bell user-nav" aria-hidden="true">
         <span class="icon-info">1</span>
       </i>  -->
-    <div [matMenuTriggerFor]="menu">
-      <img class="user-photo" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';"
+    <div style="position: relative;">
+      <img (click)="toggleMenu()" class="user-photo" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';"
         [src]="user.poster_url" alt="">
-    </div>
+        <ul [@subMenuAnimation] class="menu-user" *ngIf="isMenuOpen">
+          <li class="name-menu"> <i class="fa fa-user menu-user-i" aria-hidden="true"></i><a class="item-menu" href="/user-page"  routerLink="/user-page">Профиль</a></li>
+          <li class="name-menu"> <i class="fa fa-cog menu-user-i" aria-hidden="true"></i><a class="item-menu" href="/user-settings" routerLink="/user-settings">Настройки</a></li>
+          <li class="name-menu" (click)="signOut()"> <i class="fas fa-sign-out-alt menu-user-i" aria-hidden="true"></i><a class="item-menu" >Выход</a></li>
+          </ul>
+    </div> 
   </div>
-  <mat-menu #menu="matMenu">
-    <button routerLink="/user-page" href="/user-page" mat-menu-item><i class="fa fa-user" aria-hidden="true"><span
-          class="name-menu">Профиль</span></i></button>
-    <button routerLink="/user-settings" href="/user-settings" mat-menu-item><i class="fa fa-cog" aria-hidden="true"><span
-          class="name-menu">Настройки</span></i></button>
-    <button (click)="signOut()" mat-menu-item><i class="fas fa-sign-out-alt"><span
-          class="name-menu">Выход</span></i></button>
-  </mat-menu>
+ 
   <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
     [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
     <span class="navbar-toggler-icon"></span>

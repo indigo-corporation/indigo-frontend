@@ -74,6 +74,7 @@ export class HeaderComponent implements OnInit {
   threshold: number;
   page: any
   category
+  isMenuOpen: boolean = false;
   constructor(
     private router: Router,
     @Inject(DOCUMENT) document,
@@ -96,6 +97,7 @@ export class HeaderComponent implements OnInit {
       if (evt instanceof NavigationEnd) {
         this.arrowsUp()
         this.searchClose()
+        this.isMenuOpen = false
         this.isCollapsed = true;
         this.isNotification = false
       }
@@ -123,6 +125,10 @@ export class HeaderComponent implements OnInit {
   
 
 
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 
   ngOnInit() {
     this.auth.user$.subscribe(x => {

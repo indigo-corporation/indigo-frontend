@@ -32,7 +32,7 @@ export class CardMainComponent implements OnInit, OnChanges {
   };
   config: SwiperOptions = {
     slidesPerView: 3,
-    spaceBetween: 10,
+    spaceBetween: 1,
     navigation: true,
     pagination: { clickable: false },
     scrollbar: { draggable: true },

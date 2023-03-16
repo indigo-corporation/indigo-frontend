@@ -16,9 +16,9 @@
       <img (click)="toggleMenu()" class="user-photo" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';"
         [src]="user.poster_url" alt="">
         <ul [@subMenuAnimation] class="menu-user" *ngIf="isMenuOpen">
-          <li class="name-menu"> <i class="fa fa-user menu-user-i" aria-hidden="true"></i><a class="item-menu" href="/user-page"  routerLink="/user-page">Профиль</a></li>
-          <li class="name-menu"> <i class="fa fa-cog menu-user-i" aria-hidden="true"></i><a class="item-menu" href="/user-settings" routerLink="/user-settings">Настройки</a></li>
-          <li class="name-menu" (click)="signOut()"> <i class="fas fa-sign-out-alt menu-user-i" aria-hidden="true"></i><a class="item-menu" >Выход</a></li>
+          <li class="name-menu item-menu" href="/user-page"  routerLink="/user-page"> <i class="fa fa-user menu-user-i" aria-hidden="true"></i>Профиль</li>
+          <li class="name-menu item-menu" href="/user-settings" routerLink="/user-settings"> <i class="fa fa-cog menu-user-i" aria-hidden="true"></i>Настройки</li>
+          <li class="name-menu item-menu" (click)="signOut()"> <i class="fas fa-sign-out-alt menu-user-i" aria-hidden="true"></i>Выход</li>
           </ul>
     </div> 
   </div>

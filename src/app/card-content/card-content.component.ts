@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges,Input } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges,Input,AfterViewInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { api2Service } from '../services/api2.service';
 import { api } from '../services/api.service';
@@ -29,7 +29,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
   ],
   styleUrls: ['./card-content.component.scss']
 })
-export class CardContentComponent implements OnInit {
+export class CardContentComponent implements OnInit{
 
   url: string = window.location.href;
   public id: any
@@ -41,6 +41,7 @@ export class CardContentComponent implements OnInit {
   favoriteFilmIds
   isTogther: boolean = true
   isFilm: boolean = true
+  userFavorite
   constructor(
     private api2Service: api2Service,
     private api: api,
@@ -57,51 +58,28 @@ export class CardContentComponent implements OnInit {
     var slug: string = this.route.snapshot.params.id;
     this.slug = slug.split("-")
     this.id = this.slug.pop()
-    localStorage.getItem("")
-    this.getfind(this.id);
     this.auth.user$.subscribe(x => {
       this.login = x != null
-     
+      this.getfind(this.id);
+      if (this.login) {
+        let user = x
+       this.userFavorite = user.favorite_film_ids
+      }
     })
   }
 
-  checkIfFavoriteFilm() {
-    if (this.favoriteFilmIds) {
-      if (this.favoriteFilmIds.includes(this.film.id)) {
-        this.film.isFavorite = true
-      } else {
-        this.film.isFavorite = false
-      }
-    }
-  }
 
-  getFavoriteArray() {
-    let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
-    
-    if (favoriteFilmIds) {
-      debugger
-    favoriteFilmIds = JSON.parse(favoriteFilmIds)
-     this.favoriteFilmIds = favoriteFilmIds
-     this.checkIfFavoriteFilm()
-    } else { 
-    this.api2Service.getFavoriteArray().subscribe((data) => {
-     favoriteFilmIds = data.data
 
-    localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
-     this.favoriteFilmIds = favoriteFilmIds 
-     this.checkIfFavoriteFilm()
-     }) 
-   }
-    
-  }
   
-
- 
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
       this.film = data.data;
-      if (this.login) {
-        this.getFavoriteArray()
+      if (this.userFavorite && this.film) {
+        if (this.film && this.userFavorite.includes(this.film.id)) {
+          this.film.isFavorite = true
+        } else {
+          this.film.isFavorite = false
+        }
       }
       let imdbID = this.film.imdb_id;
       this.title.setTitle("Смотреть" + " " + this.film.title + " " + "онлайн бесплатно в хорошем качестве")

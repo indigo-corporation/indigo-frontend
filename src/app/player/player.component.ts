@@ -64,7 +64,6 @@ export class PlayerComponent implements OnInit {
     ); 
 
     if(this.film.shiki_id) {
-      debugger
       this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://kodik.cc/find-player?shikimoriID="+this.film.shiki_id);
     } else {
       let kodiciUrl = "https://kodikapi.com/search?token=c93d194dd1a2f6cc95b3095a9940dfb2&imdb_id="+this.film.imdb_id;

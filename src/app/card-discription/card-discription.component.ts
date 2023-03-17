@@ -95,11 +95,15 @@ export class CardDiscriptionComponent implements OnInit {
   }
 
   url: string = window.location.href;
-
+  userFavorite
   ngOnInit() {
     window.location.href
     this.auth.user$.subscribe(x => {
       this.login = x != null
+      if (this.login) {
+        let user = x
+       this.userFavorite = user.favorite_film_ids
+      }
     })
    
     this.category = this.route.snapshot.params.category
@@ -112,10 +116,6 @@ export class CardDiscriptionComponent implements OnInit {
   }
 
 
-
-
-
-
   telegramUrl: string = "https://t.me/share/url?url=";
   facebookUrl: string = "https://www.facebook.com/sharer/sharer.php?u=";
 
@@ -125,12 +125,12 @@ export class CardDiscriptionComponent implements OnInit {
     window.open(url, "_blank");
   }
   currentUrl
+  
   shareOnFacebook() {
     this.currentUrl = window.location.href;
     let url = this.facebookUrl + encodeURIComponent(this.currentUrl);
     window.open(url, "_blank");
   }
-
 
 
   moreText() {
@@ -154,23 +154,14 @@ export class CardDiscriptionComponent implements OnInit {
 
   }
 
- 
-  
-    
 
   postFavorite() {
     if (!this.login) {
       this.openLogin()
       return
     }
-    let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
-    
     this.api2Service.postFavorite(this.film.id).subscribe((data) => {
-      if(favoriteFilmIds) {
-        favoriteFilmIds = JSON.parse(favoriteFilmIds)
-      favoriteFilmIds.push(this.film.id)
-      localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
-      }
+      this.userFavorite.push(this.film.id)
       this.film.isFavorite = true
     })
   }
@@ -187,12 +178,9 @@ export class CardDiscriptionComponent implements OnInit {
   }
 
   removeFavorite() {
-    let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
     this.api2Service.removeFavorite(this.film.id).subscribe((data) => {
-      if(favoriteFilmIds){
-        favoriteFilmIds = JSON.parse(favoriteFilmIds)
-        favoriteFilmIds = favoriteFilmIds.filter(x => x != this.film.id)
-        localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds)) 
+      if(this.userFavorite){
+        this.userFavorite = this.userFavorite.filter(x => x != this.film.id)
       }
       this.film.isFavorite = false   
     })

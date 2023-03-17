@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Input } from '@angular/core'
 import { Meta, Title } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { authService } from "../services/authService.service";
 
 @Component({
   selector: 'app-cards',
@@ -55,9 +56,12 @@ export class CardsComponent implements OnInit {
   sortDirection:string ="desc"
   @Input() data: any
   public id: any
+  login
+  userFavorite
   constructor(
     private api2Service: api2Service,
     private el:ElementRef,
+    private auth: authService,
     private router: Router,
     private route: ActivatedRoute,
     private meta: Meta,
@@ -70,6 +74,13 @@ export class CardsComponent implements OnInit {
 
 
   ngOnInit() {
+    this.auth.user$.subscribe(x => {
+      this.login = x != null
+      if (this.login) {
+        let user = x
+       this.userFavorite = user.favorite_film_ids
+      }
+    })
     this.page=this.route.snapshot.queryParams.page
     if(!this.page) {
       this.page = 1 
@@ -109,15 +120,9 @@ export class CardsComponent implements OnInit {
   getData(page) {
     this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection).subscribe((data) => {
       this.data = data.data.items
-      let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds");
-    if (favoriteFilmIds) {
-      favoriteFilmIds = JSON.parse(favoriteFilmIds);
       this.data.forEach(item => {
-        item.isFavorite = favoriteFilmIds.includes(item.id);
+        item.isFavorite =  this.userFavorite.includes(item.id);
       });
-      localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
-    }
-
       this.totalRecords = data.data.pagination.total
       this.totalPages = data.data.pagination.total_pages
     });

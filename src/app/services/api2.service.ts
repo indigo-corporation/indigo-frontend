@@ -80,10 +80,6 @@ export class api2Service {
         return this.get("users/"+ user_id)
     }
 
-    getFavoriteArray(): Observable<any> {
-        return this.get("favorite-films/all-ids")
-    }
-
     getFavoriteFilms(): Observable<getFavorite> {
         return this.get("favorite-films/all")
     }

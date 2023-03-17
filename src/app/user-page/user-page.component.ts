@@ -65,26 +65,10 @@ export class UserPageComponent implements OnInit {
     this.title.setTitle("Профиль")
     this.auth.user$.subscribe(x => {
       this.user = x
+      debugger
       this.cdr.detectChanges();
-      this.getFavoriteArray()
+   
     })
-  }
-
-  getFavoriteArray() {
-    let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
-    if (favoriteFilmIds) {
-    favoriteFilmIds = JSON.parse(favoriteFilmIds)
-     this.favoriteFilmIds = favoriteFilmIds
-    } else { 
-    this.api2Service.getFavoriteArray().subscribe((data) => {
-     favoriteFilmIds = data.data
-
-    localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
-     this.favoriteFilmIds = favoriteFilmIds 
-
-     }) 
-   }
-    
   }
 
 /*   ngAfterViewInit() {

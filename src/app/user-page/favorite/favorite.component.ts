@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { api2Service } from '../../services/api2.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { authService } from '../../services/authService.service';
 
 @Component({
   selector: 'app-favorite',
@@ -11,6 +12,7 @@ export class FavoriteComponent implements OnInit {
   favoriteFilms: any
   term: any;
   totalRecords: number
+  userFavorite
   page: number
   isFav:boolean = false
   @Input() data: any
@@ -18,10 +20,15 @@ export class FavoriteComponent implements OnInit {
   constructor(
     private api2Service: api2Service,
     private router: Router,
+    private auth: authService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.auth.user$.subscribe(x => {
+      let user = x
+      this.userFavorite = user.favorite_film_ids
+    })
     this.getFavoriteFilms()
   }
 
@@ -48,13 +55,10 @@ export class FavoriteComponent implements OnInit {
         } else {
           this.isFav = false
         }
-      let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds");
-      if (favoriteFilmIds) {
-        favoriteFilmIds = JSON.parse(favoriteFilmIds);
+      if (this.userFavorite) {
         this.favoriteFilms.forEach(item => {
-          item.isFavorite = favoriteFilmIds.includes(item.id);
+          item.isFavorite = this.userFavorite.includes(item.id);
         });
-        localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
       }
       this.totalRecords = data.data.pagination.total
     })

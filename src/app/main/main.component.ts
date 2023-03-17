@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { api } from '../services/api.service';
 import { api2Service } from '../services/api2.service';
 import { Meta, Title } from '@angular/platform-browser';
-
+import { authService } from "../services/authService.service";
 
 @Component({
   selector: 'app-main',
@@ -17,15 +17,23 @@ export class MainComponent implements OnInit {
   @Input() anime: any
   @Input() cartoons: any
   @Input() new: any
-
-
+  login
+  userFavorite
   constructor(
     private apiService: api,
     private api2Service: api2Service,
     private meta: Meta,
+    private auth: authService,
     private title: Title) { }
 
   ngOnInit() {
+    this.auth.user$.subscribe(x => {
+      this.login = x != null
+      if (this.login) {
+        let user = x
+       this.userFavorite = user.favorite_film_ids
+      }
+    })
     this.title.setTitle("Смотреть фильмы и сериалы онлайн в хорошем качестве 720p hd и без регистрации")
     this.getData()
   }
@@ -37,23 +45,21 @@ export class MainComponent implements OnInit {
       this.anime = data.data.anime
       this.cartoons = data.data.cartoon
       this.new = data.data.new
-      let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds");
-      if (favoriteFilmIds) {
-        favoriteFilmIds = JSON.parse(favoriteFilmIds);
+      if (this.userFavorite) {
         this.anime.forEach(item => {
-          item.isFavorite = favoriteFilmIds.includes(item.id);
+          item.isFavorite = this.userFavorite.includes(item.id);
         });
         this.films.forEach(item => {
-          item.isFavorite = favoriteFilmIds.includes(item.id);
+          item.isFavorite = this.userFavorite.includes(item.id);
         });
         this.serials.forEach(item => {
-          item.isFavorite = favoriteFilmIds.includes(item.id);
+          item.isFavorite = this.userFavorite.includes(item.id);
         });
          this.cartoons.forEach(item => {
-          item.isFavorite = favoriteFilmIds.includes(item.id);
+          item.isFavorite = this.userFavorite.includes(item.id);
         });
         this.new.forEach(item => {
-          item.isFavorite = favoriteFilmIds.includes(item.id);
+          item.isFavorite = this.userFavorite.includes(item.id);
         });
       }
   

@@ -25,6 +25,7 @@ export class CardForSwipersComponent implements OnInit,AfterViewInit{
   login
   private subscription = new Subscription();
   sliderWidth:number
+  userFavorite
   modalRef: MdbModalRef<ModalLoginComponent> | null = null;
   constructor(
     private api2Service: api2Service,
@@ -36,6 +37,10 @@ export class CardForSwipersComponent implements OnInit,AfterViewInit{
   ngOnInit() {
     this.auth.user$.subscribe(x => {
       this.login = x != null
+      if (this.login) {
+        let user = x
+       this.userFavorite = user.favorite_film_ids
+      }
     })
   }
 
@@ -48,13 +53,9 @@ export class CardForSwipersComponent implements OnInit,AfterViewInit{
       this.openLogin()
       return
     }
-    let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
-    
     this.api2Service.postFavorite(this.card.id).subscribe((data) => {
-      if(favoriteFilmIds) {
-        favoriteFilmIds = JSON.parse(favoriteFilmIds)
-      favoriteFilmIds.push(this.card.id)
-      localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
+      if(this.userFavorite) {
+        this.userFavorite.push(this.card.id)
       }
       this.card.isFavorite = true
     })
@@ -68,12 +69,9 @@ export class CardForSwipersComponent implements OnInit,AfterViewInit{
   }
 
   removeFavorite() {
-    let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
     this.api2Service.removeFavorite(this.card.id).subscribe((data) => {
-      if(favoriteFilmIds){
-        favoriteFilmIds = JSON.parse(favoriteFilmIds)
-        favoriteFilmIds = favoriteFilmIds.filter(x => x != this.card.id)
-        localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds)) 
+      if(this.userFavorite){
+        this.userFavorite = this.userFavorite.filter(x => x != this.card.id)
       }
       this.card.isFavorite = false   
     })

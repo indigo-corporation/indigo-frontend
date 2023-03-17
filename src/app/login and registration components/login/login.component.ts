@@ -56,14 +56,14 @@ constructor(
        let token = result["data"]["access_token"]
        if (token) {
         localStorage.setItem("token",token);
-        this.alertify.success('Вход успешный');
-        this.auth.getUser() 
-        this.router.navigate(['user-page']);
-        this.close() 
+   /*      this.auth.getUser()  */
+     /*    this.router.navigate(['user-page']); */
         const currentRoute = this.router.url;
         if (currentRoute === '/reg') {
-           this.router.navigate(['user-page']);
+          window.location.replace('')
+        /*    this.router.navigate(['user-page']); */
         } 
+        window.location.reload()
        } 
       },() => {
       this.alertify.error("Неправильный пароль или email");

@@ -62,11 +62,6 @@ export class authService {
 
 
     logOut() {
-        localStorage.removeItem("token")
-        localStorage.removeItem("user")
-        this.user$.next(null)
-        this.router.navigate([""])
-        localStorage.clear()
         return this.http.post(this.url + "auth/logout", null)
     }
 }

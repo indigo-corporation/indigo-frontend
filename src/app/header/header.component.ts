@@ -200,7 +200,11 @@ export class HeaderComponent implements OnInit {
   }
 
   signOut() {
-    this.auth.logOut()
+    this.auth.logOut().subscribe((data)=> {
+      debugger
+      localStorage.clear()
+      window.location.replace('')
+    })
   }
 
 

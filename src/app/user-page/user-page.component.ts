@@ -72,9 +72,7 @@ export class UserPageComponent implements OnInit {
 
   getFavoriteArray() {
     let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
-    
     if (favoriteFilmIds) {
-      debugger
     favoriteFilmIds = JSON.parse(favoriteFilmIds)
      this.favoriteFilmIds = favoriteFilmIds
     } else { 
@@ -99,7 +97,6 @@ export class UserPageComponent implements OnInit {
   } */
 
   updatingUserInfo(userInfo) {
-    debugger
     this.user = userInfo
     this.cdr.detectChanges();
   }
@@ -179,8 +176,6 @@ export class UserPageComponent implements OnInit {
       if (this.user.id) {
         this.isContact = true
       }
-
-      debugger
       localStorage.setItem("contactIds", JSON.stringify(this.contactIds))
     })
   }
@@ -198,14 +193,12 @@ export class UserPageComponent implements OnInit {
   }
 
   blockUser(userId) {
-    debugger
     this.messangerService.postBannedUseradd(userId).subscribe((data) => {
       this.isBlock = true
     })
   }
 
   unBlockUser(userId) {
-    debugger
     this.messangerService.postBannedUseradd(userId).subscribe((data) => {
       this.isBlock = false
     })

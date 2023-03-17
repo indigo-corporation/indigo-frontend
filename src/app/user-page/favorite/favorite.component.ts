@@ -12,6 +12,7 @@ export class FavoriteComponent implements OnInit {
   term: any;
   totalRecords: number
   page: number
+  isFav:boolean = false
   @Input() data: any
   @Input() film: any
   constructor(
@@ -24,6 +25,14 @@ export class FavoriteComponent implements OnInit {
     this.getFavoriteFilms()
   }
 
+  ngAfterViewInit () {
+    if(this.favoriteFilms) {
+        this.isFav = true
+      } else {
+        this.isFav = false
+      }
+  }
+
   myOptions = {
     'placement': 'left',
     'theme': 'dark',
@@ -34,6 +43,11 @@ export class FavoriteComponent implements OnInit {
   getFavoriteFilms() {
     this.api2Service.getFavoriteFilms().subscribe((data) => {
       this.favoriteFilms = data.data.items
+      if(this.favoriteFilms.length === 0) {
+          this.isFav = true
+        } else {
+          this.isFav = false
+        }
       let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds");
       if (favoriteFilmIds) {
         favoriteFilmIds = JSON.parse(favoriteFilmIds);

@@ -107,7 +107,6 @@ export class CardDiscriptionComponent implements OnInit {
 
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
-      debugger
       this.genres = data;
     });
   }
@@ -127,7 +126,6 @@ export class CardDiscriptionComponent implements OnInit {
   }
   currentUrl
   shareOnFacebook() {
-    debugger
     this.currentUrl = window.location.href;
     let url = this.facebookUrl + encodeURIComponent(this.currentUrl);
     window.open(url, "_blank");
@@ -173,7 +171,6 @@ export class CardDiscriptionComponent implements OnInit {
       favoriteFilmIds.push(this.film.id)
       localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
       }
-      debugger
       this.film.isFavorite = true
     })
   }
@@ -191,7 +188,6 @@ export class CardDiscriptionComponent implements OnInit {
 
   removeFavorite() {
     let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
-    debugger
     this.api2Service.removeFavorite(this.film.id).subscribe((data) => {
       if(favoriteFilmIds){
         favoriteFilmIds = JSON.parse(favoriteFilmIds)

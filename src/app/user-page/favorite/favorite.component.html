@@ -1,8 +1,14 @@
-<div *ngIf="favoriteFilms" style="min-height:100%; position: relative;" class="container main block">
+<div *ngIf="favoriteFilms && favoriteFilms.length > 0" style="min-height:100%; position: relative;" class="container main block">
   <h1 routerLink="/favorite" href="/favorite" class="favorite-title">Избранные</h1>
   <div class="card-row">
-    <div *ngFor="let card of favoriteFilms.slice(0,6)">
-      <app-card [card]="card">
-      </app-card>
-    </div>
+      <div *ngFor="let card of favoriteFilms.slice(0,6)">
+          <app-card [card]="card">
+          </app-card>
+      </div>
   </div>
+  
+</div>
+<div style="height:100%;" *ngIf="!(favoriteFilms && favoriteFilms.length > 0)">
+  <h1 routerLink="/favorite" href="/favorite" class="favorite-title">Избранные</h1>
+  <p style="margin-left: 10px;">Здесь пока что ничего нету!Добавь себе новые избранные</p>
+</div>

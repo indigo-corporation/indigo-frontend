@@ -67,14 +67,12 @@ export class CardComponent implements OnInit {
       favoriteFilmIds.push(this.card.id)
       localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
       }
-      debugger
       this.card.isFavorite = true
     })
   }
 
   removeFavorite() {
     let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
-    debugger
     this.api2Service.removeFavorite(this.card.id).subscribe((data) => {
       if(favoriteFilmIds){
         favoriteFilmIds = JSON.parse(favoriteFilmIds)

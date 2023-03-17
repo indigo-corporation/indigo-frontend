@@ -69,7 +69,6 @@ export class CardForSwipersComponent implements OnInit,AfterViewInit{
 
   removeFavorite() {
     let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds")
-    debugger
     this.api2Service.removeFavorite(this.card.id).subscribe((data) => {
       if(favoriteFilmIds){
         favoriteFilmIds = JSON.parse(favoriteFilmIds)

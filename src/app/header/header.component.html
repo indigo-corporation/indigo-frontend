@@ -12,6 +12,7 @@
       <i (click)="toggleBell()" class="far fa-bell user-nav" aria-hidden="true">
         <span class="icon-info">1</span>
       </i>  -->
+      <i routerLink="/favorite" href="/favorite" class="fa fa-heart favorite-item" aria-hidden="true"></i>
     <div style="position: relative;">
       <img (click)="toggleMenu()" class="user-photo" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';"
         [src]="user.poster_url" alt="">

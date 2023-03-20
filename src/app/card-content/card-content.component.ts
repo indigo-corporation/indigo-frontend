@@ -35,13 +35,14 @@ export class CardContentComponent implements OnInit{
   public id: any
   term: any;
   @Input() film: any
+  userFavorite
   totalRecords: string
   login: any
   slug
   favoriteFilmIds
   isTogther: boolean = true
   isFilm: boolean = true
-  userFavorite
+  
   constructor(
     private api2Service: api2Service,
     private api: api,
@@ -58,14 +59,17 @@ export class CardContentComponent implements OnInit{
     var slug: string = this.route.snapshot.params.id;
     this.slug = slug.split("-")
     this.id = this.slug.pop()
+   
     this.auth.user$.subscribe(x => {
       this.login = x != null
-      this.getfind(this.id);
+      
       if (this.login) {
         let user = x
-       this.userFavorite = user.favorite_film_ids
+        
+       this.userFavorite =  user.favorite_film_ids
       }
     })
+    this.getfind(this.id);
   }
 
 

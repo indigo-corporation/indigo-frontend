@@ -1,6 +1,6 @@
 <div [@enterAnimation] class="container main">
     <div *ngIf="isTogther">
-        <app-card-discription class="container-card" [film]="film">
+        <app-card-discription  class="container-card" [userFavorite]="userFavorite" [film]="film">
         </app-card-discription> 
         <app-more-films></app-more-films>
         <app-comments [filmId]="id"></app-comments>

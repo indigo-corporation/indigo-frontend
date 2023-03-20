@@ -104,7 +104,7 @@ export class CardDiscriptionComponent implements OnInit {
         let user = x
        this.userFavorite = user.favorite_film_ids
       }
-    })
+    }) 
    
     this.category = this.route.snapshot.params.category
   }

@@ -69,7 +69,6 @@ export class FavoriteComponent implements OnInit {
     const newFavorites = this.favoriteFilms.map(film => film.id);
     this.userFavorite = this.user.favorite_film_ids
     this.auth.user$.next(this.userFavorite);
-   debugger
   }
 
 

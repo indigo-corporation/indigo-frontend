@@ -80,8 +80,8 @@ export class api2Service {
         return this.get("users/"+ user_id)
     }
 
-    getFavoriteFilms(): Observable<getFavorite> {
-        return this.get("favorite-films/all")
+    getFavoriteFilms(page = 1): Observable<getFavorite> {
+        return this.get("favorite-films/all", {page:page})
     }
 
     search(find, page): Observable<search> {

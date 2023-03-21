@@ -35,6 +35,10 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
           if (error.status == 404) {
             return throwError(error);
           }
+          if (error.status == 401) {
+            window.location.replace("")
+            return throwError(error);
+          }
           const errorMessage = error.error.data.message
          
           this.alertify.error(errorMessage);

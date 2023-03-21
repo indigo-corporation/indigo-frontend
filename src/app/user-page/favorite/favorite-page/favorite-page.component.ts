@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Input,Output,EventEmitter,HostListener } from '@angular/core';
 import { api2Service } from '../../../services/api2.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
@@ -25,6 +25,7 @@ export class FavoritePageComponent implements OnInit {
   favoriteFilms: any
   term: any;
   totalRecords: number
+  totalPages: number
   page: number
   userFavorite
   cardId 
@@ -40,6 +41,10 @@ export class FavoritePageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.page=this.route.snapshot.queryParams.page
+    if(!this.page) {
+      this.page = 1 
+    }
     this.title.setTitle("Избранные")
   
     this.auth.user$.subscribe(x => {
@@ -56,31 +61,41 @@ export class FavoritePageComponent implements OnInit {
   }
 
   filterCard(cardId) {
-    debugger
     this.cardId = cardId
     this.favoriteFilms = this.favoriteFilms.filter(x => x.id !== cardId);
   }
 
 
+  threshold
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(e) {
+    this.threshold = 500;
+    if (window.pageYOffset > this.threshold && this.page < this.totalPages) {
+      this.page++
+      this.getFavoriteFilmsInfinity()
+  }
+}
+
+  getFavoriteFilmsInfinity() {
+    this.api2Service.getFavoriteFilms(this.page).subscribe((data) => {
+      this.favoriteFilms = this.favoriteFilms.concat(data.data.items)
+      this.favoriteFilms.forEach(item => {
+        item.isFavorite = this.userFavorite.includes(item.id);
+      });
+    })
+  }
+
+
   getFavoriteFilms() {
-    this.api2Service.getFavoriteFilms().subscribe((data) => {
+    this.api2Service.getFavoriteFilms(this.page).subscribe((data) => {
       this.favoriteFilms = data.data.items
       if (this.userFavorite) {
         this.favoriteFilms.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);
         });
       }
+      this.totalPages = data.data.pagination.total_pages
       this.totalRecords = data.data.pagination.total
     })
-  }
-
-  onPageChange(page) {
-    this.page = page
-    this.router.navigate(["/favorite"], {
-      relativeTo: this.route,
-      queryParams: {
-        page: this.page
-      }
-    });
   }
 }

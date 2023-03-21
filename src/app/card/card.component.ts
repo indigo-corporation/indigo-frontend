@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit,  } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, Output,EventEmitter  } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { api2Service } from '../services/api2.service';
 import { ModalLoginComponent } from '../modal-login/modal-login.component';
@@ -32,11 +32,12 @@ import { authService } from "../services/authService.service";
 })
 export class CardComponent implements OnInit {
   @Input() card: any;
+  @Output() removeCard = new EventEmitter<any>();
   login
+  user
   userFavorite
   isFavorite: boolean = false
   modalRef: MdbModalRef<ModalLoginComponent> | null = null;
-  /*   @Input() container: HTMLElement; */
   myOptions = {
     'placement': 'left',
     'theme': 'dark',
@@ -52,8 +53,8 @@ export class CardComponent implements OnInit {
     this.auth.user$.subscribe(x => {
       this.login = x != null
       if (this.login) {
-        let user = x
-       this.userFavorite = user.favorite_film_ids
+        this.user = x
+       this.userFavorite = this.user.favorite_film_ids
       }
     })
    
@@ -74,8 +75,14 @@ export class CardComponent implements OnInit {
 
   removeFavorite() {
     this.api2Service.removeFavorite(this.card.id).subscribe((data) => {
+
       if(this.userFavorite){
+        this.removeCard.next(this.card.id)
         this.userFavorite = this.userFavorite.filter(x => x != this.card.id)
+        this.userFavorite = data.data.favorite_ids
+        this.user.favorite_film_ids = this.userFavorite
+        localStorage.setItem("user",JSON.stringify(this.user))
+        debugger
       }
       this.card.isFavorite = false   
     })

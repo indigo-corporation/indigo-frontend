@@ -1,12 +1,24 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
 import { api2Service } from '../../../services/api2.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { authService } from '../../../services/authService.service';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-favorite-page',
   templateUrl: './favorite-page.component.html',
+  animations: [
+    trigger('cardAnimation', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('500ms ease-out', style({ opacity: 1}))
+      ]),
+      transition(':leave', [
+        animate('500ms ease-out', style({ opacity: 0 }))
+      ])
+    ])
+  ],
   styleUrls: ['./favorite-page.component.scss']
 })
 export class FavoritePageComponent implements OnInit {
@@ -15,6 +27,9 @@ export class FavoritePageComponent implements OnInit {
   totalRecords: number
   page: number
   userFavorite
+  cardId 
+  user
+  @Output() filterUserFavorite = new EventEmitter<any>();
   constructor(
     private api2Service: api2Service,
     private router: Router,
@@ -28,9 +43,9 @@ export class FavoritePageComponent implements OnInit {
     this.title.setTitle("Избранные")
   
     this.auth.user$.subscribe(x => {
-      let user = x
+      this.user = x
       this.getFavoriteFilms()
-      this.userFavorite = user.favorite_film_ids
+      this.userFavorite = this.user.favorite_film_ids
     })
   }
 
@@ -38,6 +53,12 @@ export class FavoritePageComponent implements OnInit {
     'placement': 'left',
     'theme': 'dark',
     'showDelay': 500,
+  }
+
+  filterCard(cardId) {
+    debugger
+    this.cardId = cardId
+    this.favoriteFilms = this.favoriteFilms.filter(x => x.id !== cardId);
   }
 
 

@@ -27,7 +27,7 @@
     </button>
   </div>
   <div  class="card-row">
-    <app-card [card]="card" [container]="container" *ngFor="let card of data | paginate: { 
+    <app-card [card]="card" [userFavorite]="userFavorite" (filterUserFavorite)="filterUserFavorite($event)" [container]="container" *ngFor="let card of data | paginate: { 
       id: 'listing_pagination',
       itemsPerPage: 48,
       currentPage: page,

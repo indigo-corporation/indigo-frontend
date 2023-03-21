@@ -65,7 +65,6 @@ export class UserPageComponent implements OnInit {
     this.title.setTitle("Профиль")
     this.auth.user$.subscribe(x => {
       this.user = x
-      debugger
       this.cdr.detectChanges();
    
     })

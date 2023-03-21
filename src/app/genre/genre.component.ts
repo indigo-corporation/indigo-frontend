@@ -3,6 +3,7 @@ import { api2Service } from '../services/api2.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { authService } from "../services/authService.service";
 
 @Component({
   selector: 'app-genre',
@@ -31,7 +32,9 @@ export class GenreComponent implements OnInit {
   genres: any
   favoriteFilmIds
   genre:any
+  userFavorite
   type:any
+  login
   category:any
   isSortAnime:boolean =false
   isSort:boolean = false
@@ -46,6 +49,7 @@ export class GenreComponent implements OnInit {
   constructor(
     private api2Service: api2Service, 
     private router: Router, 
+    private auth: authService,
     private route: ActivatedRoute,
     private meta: Meta,
     private title: Title) { }
@@ -57,7 +61,13 @@ export class GenreComponent implements OnInit {
     }
 
   ngOnInit() {
-
+    this.auth.user$.subscribe(x => {
+      this.login = x != null
+      if (this.login) {
+        let user = x
+       this.userFavorite = user.favorite_film_ids
+      }
+    })
     this.page=this.route.snapshot.queryParams.page
     if(!this.page) {
       this.page = 1 
@@ -137,13 +147,10 @@ getGenreAnime() {
   getGenreFilms(id,page,category) {
     this.api2Service.getGenreFilms(id,page,category,this.sortField,this.sortDirection).subscribe((data) => {
       this.data = data.data.items
-      let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds");
-      if (favoriteFilmIds) {
-        favoriteFilmIds = JSON.parse(favoriteFilmIds);
+      if (this.userFavorite) {
         this.data.forEach(item => {
-          item.isFavorite = favoriteFilmIds.includes(item.id);
+          item.isFavorite = this.userFavorite.includes(item.id);
         });
-        localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
       }
       this.totalRecords = data.data.pagination.total
     });

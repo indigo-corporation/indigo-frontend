@@ -80,6 +80,7 @@ export class CardsComponent implements OnInit {
         let user = x
        this.userFavorite = user.favorite_film_ids
       }
+     debugger
     })
     this.page=this.route.snapshot.queryParams.page
     if(!this.page) {
@@ -121,12 +122,22 @@ export class CardsComponent implements OnInit {
     this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection).subscribe((data) => {
       this.data = data.data.items
       this.data.forEach(item => {
-        item.isFavorite =  this.userFavorite.includes(item.id);
+        item.isFavorite = this.userFavorite.includes(item.id);
       });
       this.totalRecords = data.data.pagination.total
       this.totalPages = data.data.pagination.total_pages
     });
   }
+
+  filterUserFavorite(userFavorite) {
+    if(userFavorite) {
+      this.data.forEach(item => {
+        item.isFavorite = userFavorite.includes(item.id);
+      });
+    }
+   
+    debugger
+  } 
 
 
   onPageChange(page) {

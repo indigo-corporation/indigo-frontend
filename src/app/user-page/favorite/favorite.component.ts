@@ -2,21 +2,36 @@ import { Component, OnInit, Input } from '@angular/core';
 import { api2Service } from '../../services/api2.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { authService } from '../../services/authService.service';
+import { trigger, style, animate, transition } from '@angular/animations';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-favorite',
   templateUrl: './favorite.component.html',
+  animations: [
+    trigger('cardAnimation', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('500ms ease-out', style({ opacity: 1}))
+      ]),
+      transition(':leave', [
+        animate('500ms ease-out', style({ opacity: 0 }))
+      ])
+    ])
+  ],
   styleUrls: ['./favorite.component.scss']
 })
 export class FavoriteComponent implements OnInit {
   favoriteFilms: any
   term: any;
   totalRecords: number
-  userFavorite
   page: number
+  cardId
+  user
   isFav:boolean = false
   @Input() data: any
   @Input() film: any
+  @Input() userFavorite: any
   constructor(
     private api2Service: api2Service,
     private router: Router,
@@ -26,8 +41,8 @@ export class FavoriteComponent implements OnInit {
 
   ngOnInit() {
     this.auth.user$.subscribe(x => {
-      let user = x
-      this.userFavorite = user.favorite_film_ids
+      this.user = x
+      this.userFavorite = this.user.favorite_film_ids
     })
     this.getFavoriteFilms()
   }
@@ -44,6 +59,17 @@ export class FavoriteComponent implements OnInit {
     'placement': 'left',
     'theme': 'dark',
     'showDelay': 500,
+  }
+
+
+  filterCard(cardId) {
+    debugger
+    this.cardId = cardId
+    this.favoriteFilms = this.favoriteFilms.filter(x => x.id !== cardId);
+    const newFavorites = this.favoriteFilms.map(film => film.id);
+    this.userFavorite = this.user.favorite_film_ids
+    this.auth.user$.next(this.userFavorite);
+   debugger
   }
 
 

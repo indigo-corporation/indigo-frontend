@@ -1,6 +1,6 @@
 <div *ngIf="favoriteFilms && favoriteFilms.length > 0" style="min-height:100%; position: relative;"
   class="container main block">
-  <ms-infinite-scroll (scrolled)="onWindowScroll()">
+  <ms-infinite-scroll (scrolled)="genContent()">
     <div class="card-row">
       <app-card [@cardAnimation] [card]="card" [userFavorite]="userFavorite" (removeCard)="filterCard($event)"
         *ngFor="let card of favoriteFilms">

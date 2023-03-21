@@ -66,24 +66,21 @@ export class FavoritePageComponent implements OnInit {
   }
 
 
-  threshold
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll(e) {
-    this.threshold = 500;
-    if (window.pageYOffset > this.threshold && this.page < this.totalPages) {
+  genContent(): void {
+    if (this.page < this.totalPages) {
       this.page++
       this.getFavoriteFilmsInfinity()
+    }
   }
-}
 
-  getFavoriteFilmsInfinity() {
+ getFavoriteFilmsInfinity() {
     this.api2Service.getFavoriteFilms(this.page).subscribe((data) => {
       this.favoriteFilms = this.favoriteFilms.concat(data.data.items)
       this.favoriteFilms.forEach(item => {
         item.isFavorite = this.userFavorite.includes(item.id);
       });
     })
-  }
+  } 
 
 
   getFavoriteFilms() {

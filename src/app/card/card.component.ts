@@ -75,7 +75,6 @@ export class CardComponent implements OnInit {
 
   removeFavorite() {
     this.api2Service.removeFavorite(this.card.id).subscribe((data) => {
-
       if(this.userFavorite) {
         this.removeCard.next(this.card.id)
         this.userFavorite = this.userFavorite.filter(x => x != this.card.id)

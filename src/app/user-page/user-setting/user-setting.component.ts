@@ -181,7 +181,6 @@ export class UserSettingComponent implements OnInit {
     }
     const formData = this.settingForm.value;
     this.userService.userChangeInfo(formData).subscribe((result) => {
-     debugger
      this.auth.user$.next(formData)
       this.alertify.success('Успешно изменено');
     })
@@ -203,7 +202,7 @@ export class UserSettingComponent implements OnInit {
       let pic = data["data"]
       localStorage.setItem("user", JSON.stringify(pic));
       this.auth.user$.next(pic);
-      window.location.reload()
+     /*  window.location.reload() */
       this.alertify.success('Картинка загружена');
     })
   }

@@ -25,11 +25,14 @@ export class authService {
     getUser() {
         let user = localStorage.getItem("user")
         if (user) {
-            this.user$.next(user)
+            this.user$.next(JSON.parse(user))
         } if (this.getAuthToken()) {
             this.http.get(this.url + "auth/me").subscribe((data) => {
                 if (data['state'] == true) {
                     let user = data['data']
+                    user.poster_small = user.poster_small + "?d="+Date.now()
+                    user.poster_medium = user.poster_medium + "?d="+Date.now()
+                    user.poster_large = user.poster_large+ "?d="+Date.now() 
                     localStorage.setItem("user", JSON.stringify(user))
                     this.user$.next(user)
                 }

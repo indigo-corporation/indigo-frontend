@@ -112,7 +112,6 @@ export class HeaderComponent implements OnInit {
 
 
 
-
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
     this.threshold = 202;
@@ -137,9 +136,7 @@ export class HeaderComponent implements OnInit {
     if (this.auth.user$ && this.auth.user$.subscribe) {
       this.auth.user$.subscribe(x => {
         this.login = x != null
-        this.user = x
-         this.cdRef.detectChanges(); 
-      
+        this.user = x  
         this.isShown = false;
       })
     }

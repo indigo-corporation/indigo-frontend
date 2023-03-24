@@ -1,4 +1,4 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter,ChangeDetectorRef } from '@angular/core';
 import { api2Service } from '../../services/api2.service';
 import { Input } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
@@ -39,7 +39,9 @@ export class CommentComponent implements OnInit {
   @Output() likeSubmitted = new EventEmitter<any>();
   @Input() filmId: any
   @Input() comment: any
+  userAvatar:any
   constructor(
+    private cdRef: ChangeDetectorRef,
     private api2Service: api2Service,
     private auth: authService,
     private route:ActivatedRoute,
@@ -51,9 +53,18 @@ export class CommentComponent implements OnInit {
     this.isShown = false;
     this.isCollapsed = false;
     this.auth.user$.subscribe(x => {
+
+      if(x) {
+        this.user = x
+        this.userAvatar = x.poster_small + "?d="+Date.now()
+        this.cdRef.detectChanges(); 
+      }
       this.login = x != null
+     
+    
     })
   }
+
   postLike(is_like) {
     if(this.login) {
       this.api2Service.postLike(this.comment.id, is_like).subscribe((data) => {
@@ -110,6 +121,17 @@ export class CommentComponent implements OnInit {
     this.textArea = this.comment.user.name
     this.comment.answers.push(comment)
   }
+
+getAvatar(comment) {  
+  let commentUserId = comment.user.id
+  if (commentUserId === this.user?.id) {
+    
+    return this.user.poster_small
+    
+  }
+  return comment.user.poster_small
+
+}
 
   getComment() {
     this.api2Service.getComments(this.filmId, 1).subscribe((data) => {

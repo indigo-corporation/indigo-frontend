@@ -3,7 +3,7 @@
     <div class="wrapper">
         <div class="flex" *ngIf="user">
             <img class="avatars-comments" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';"
-                src="{{user.poster_medium}}">
+            [src]="user.poster_medium">
                 <a routerLink="/user-page" href="/user-page" class="comments-user">{{user.name}}</a>
               <!--   <a class="comments-user admin">Администратор</a> -->
         </div>

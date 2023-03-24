@@ -1,5 +1,6 @@
-import { Component, OnInit, HostListener, Inject, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, HostListener, Inject, ElementRef, ChangeDetectorRef,ApplicationRef} from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -74,6 +75,7 @@ export class HeaderComponent implements OnInit {
   threshold: number;
   page: any
   category
+  user$: Observable<Date>;
   isMenuOpen: boolean = false;
   constructor(
     private router: Router,
@@ -86,11 +88,14 @@ export class HeaderComponent implements OnInit {
     private api2Service: api2Service,
     private modalService: MdbModalService,
     private MatMenuModule: MatMenuModule,
+    private cdRef: ChangeDetectorRef,
+    private appRef: ApplicationRef,
     private dialog: MatDialog) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
     this.router.events.subscribe((evt) => {
+      
       if (evt instanceof NavigationEnd) {
         this.router.navigated = false;
       }
@@ -123,21 +128,23 @@ export class HeaderComponent implements OnInit {
     }
   }
   
-
-
-
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  ngOnInit() {
-    this.auth.user$.subscribe(x => {
-      this.login = x != null
-      this.user = x
-      this.isShown = false;
-    })
-  }
 
+  ngOnInit() {
+    if (this.auth.user$ && this.auth.user$.subscribe) {
+      this.auth.user$.subscribe(x => {
+        this.login = x != null
+        this.user = x
+         this.cdRef.detectChanges(); 
+      
+        this.isShown = false;
+      })
+    }
+  
+  }
 
   toggleSearch() {
     this.isShown = !this.isShown

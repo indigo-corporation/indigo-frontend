@@ -42,8 +42,11 @@ export class UserSettingComponent implements OnInit {
 
   imageChangedEvent: any = '';
   public croppedImage: any;
-  
+
+  @Output() userImgUpdate = new EventEmitter<any>();
+
   @Output() userInfoUpdate = new EventEmitter<any>();
+
   imageForm = new FormGroup({
     picture: new FormControl("", []),
   })
@@ -196,7 +199,11 @@ export class UserSettingComponent implements OnInit {
   postPicture() {
     let file = base64ToFile(this.croppedImage);
     const myFile = new File([file], "1.jpg", { lastModified: Date.now() });
-    this.userService.getPicture(myFile).subscribe((result) => {
+    this.userService.getPicture(myFile).subscribe((data) => {
+      let pic = data["data"]
+      localStorage.setItem("user", JSON.stringify(pic));
+      this.auth.user$.next(pic);
+      window.location.reload()
       this.alertify.success('Картинка загружена');
     })
   }

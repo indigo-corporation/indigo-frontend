@@ -36,6 +36,7 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
             return throwError(error);
           }
           if (error.status == 401) {
+            localStorage.clear()
             window.location.replace("")
             return throwError(error);
           }

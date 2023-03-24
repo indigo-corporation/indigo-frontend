@@ -15,7 +15,7 @@
       <i routerLink="/favorite" href="/favorite" class="fa fa-heart favorite-item" aria-hidden="true"></i>
     <div style="position: relative;">
       <img (click)="toggleMenu()" class="user-photo" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';"
-        [src]="user.poster_url" alt="">
+        [src]="user.poster_small" alt="">
         <ul [@subMenuAnimation] class="menu-user" *ngIf="isMenuOpen">
           <li class="name-menu item-menu" href="/user-page"  routerLink="/user-page"> <i class="fa fa-user menu-user-i" aria-hidden="true"></i>Профиль</li>
           <li class="name-menu item-menu" href="/user-settings" routerLink="/user-settings"> <i class="fa fa-cog menu-user-i" aria-hidden="true"></i>Настройки</li>
@@ -23,6 +23,7 @@
           </ul>
     </div> 
   </div>
+
  
   <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
     [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">

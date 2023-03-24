@@ -199,6 +199,7 @@ const appRoutes: Routes = [
     InfiniteScrollModule
   ],
   providers: [
+    
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

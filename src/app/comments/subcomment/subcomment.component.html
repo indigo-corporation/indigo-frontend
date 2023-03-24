@@ -1,7 +1,7 @@
 <div [@enterAnimation] class="comments-body">
     <div *ngIf="comment" class="avatar">
         <img class="avatars-comments img-responsive"
-            onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" src="{{comment.user.poster_url}}">
+            onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" src="{{comment.user.poster_small}}">
         <a (click)="onLogin()" class="comments-user">{{comment.user.name}}</a>
         <p class="comments-item">{{comment.created_at | date:"d MMMM y":"ru"}}</p>
     </div>

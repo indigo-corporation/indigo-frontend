@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable} from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable, of } from "rxjs";
 import * as e from "express";
@@ -9,15 +9,17 @@ import { ActivatedRoute, Router } from '@angular/router';
     providedIn: 'root'
 })
 
+
 export class authService {
     user$ = new BehaviorSubject<any>(null);
 
-
     readonly url = "https://api.indigofilms.online/api/"
     readonly apiKey = "1|jrWKPCXBPlgGmBp1YMqtnwW4pwesoCzuxNLqPk62"
-    constructor(private http: HttpClient,private router: Router,
+    constructor(
+        private http: HttpClient,
+        private router: Router,
         private route: ActivatedRoute,) {
-
+          
     }
 
     getUser() {

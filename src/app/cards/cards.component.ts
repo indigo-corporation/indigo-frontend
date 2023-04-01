@@ -51,13 +51,14 @@ export class CardsComponent implements OnInit {
   favoriteFilmIds
   isSortAnime:boolean =false
   isSort:boolean = false
-
   sortField:string = "release_date"
   sortDirection:string ="desc"
   @Input() data: any
   public id: any
   login
   userFavorite
+
+  loader:boolean = true
   constructor(
     private api2Service: api2Service,
     private el:ElementRef,
@@ -74,13 +75,13 @@ export class CardsComponent implements OnInit {
 
 
   ngOnInit() {
+    this.loader=true
     this.auth.user$.subscribe(x => {
       this.login = x != null
       if (this.login) {
         let user = x
        this.userFavorite = user.favorite_film_ids
       }
-     debugger
     })
     this.page=this.route.snapshot.queryParams.page
     if(!this.page) {
@@ -121,6 +122,7 @@ export class CardsComponent implements OnInit {
   getData(page) {
     this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection).subscribe((data) => {
       this.data = data.data.items
+      this.loader = false
       this.data.forEach(item => {
         item.isFavorite = this.userFavorite.includes(item.id);
       });
@@ -135,8 +137,6 @@ export class CardsComponent implements OnInit {
         item.isFavorite = userFavorite.includes(item.id);
       });
     }
-   
-    debugger
   } 
 
 

@@ -26,7 +26,8 @@
     <i [@enterAnimationArrow] *ngIf="sortField === 'imdb_rating' && sortDirection === 'desc'" class='fas fa-caret-down arrow'></i>
     </button>
   </div>
-  <div  class="card-row">
+
+  <div class="card-row">
     <app-card [card]="card" [userFavorite]="userFavorite" (filterUserFavorite)="filterUserFavorite($event)" [container]="container" *ngFor="let card of data | paginate: { 
       id: 'listing_pagination',
       itemsPerPage: 48,

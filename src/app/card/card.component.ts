@@ -35,6 +35,7 @@ export class CardComponent implements OnInit {
   @Output() removeCard = new EventEmitter<any>();
   login
   user
+  template: any[] = new Array(48);
   userFavorite
   isFavorite: boolean = false
   modalRef: MdbModalRef<ModalLoginComponent> | null = null;
@@ -43,13 +44,20 @@ export class CardComponent implements OnInit {
     'theme': 'dark',
     'showDelay': 500,
   }
-
+  defaultImage = "../../assets/error-404.avif"  
   constructor( 
     private api2Service: api2Service,
     private modalService: MdbModalService,
-    private auth: authService,) { }
-
+    private auth: authService){
+      
+  
+     }
+     isTemplate:boolean=true
   ngOnInit() {
+    this.isTemplate = true 
+     if(this.card) {
+      this.isTemplate = false
+    }  
     this.auth.user$.subscribe(x => {
       this.login = x != null
       if (this.login) {
@@ -81,7 +89,6 @@ export class CardComponent implements OnInit {
         this.userFavorite = data.data.favorite_ids
         this.user.favorite_film_ids = this.userFavorite
         localStorage.setItem("user",JSON.stringify(this.user))
-        debugger
       }
       this.card.isFavorite = false   
     })

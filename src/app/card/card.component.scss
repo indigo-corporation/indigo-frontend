@@ -46,6 +46,7 @@ p {
 
 .card {
   max-width: 100%;
+  cursor: pointer;
   background-color: transparent;
   text-align: start;
   border: none;
@@ -327,7 +328,7 @@ input[type="checkbox"]:checked+.favorite-ic {
   border-radius: 5px;
   max-width: 250px;
   min-height: 288px;
-  max-height: 50px;
+  aspect-ratio:2/3;
   width: 100%;
   object-fit: unset;
   transition: 0.5s;
@@ -429,7 +430,6 @@ input[type="checkbox"]:checked+.favorite-ic {
     border-radius: 5px;
     max-width: 250px;
     min-height: 171px;
-    max-height: 50px;
     width: 100%;
     object-fit: unset;
     transition: 0.5s;
@@ -523,7 +523,6 @@ input[type="checkbox"]:checked+.favorite-ic {
     border-radius: 9px;
     min-width: 120px;
     min-height: 174px;
-    max-height: 50px;
     width: 100%;
     object-fit: unset;
   }
@@ -618,7 +617,6 @@ input[type="checkbox"]:checked+.favorite-ic {
     border-radius: 5px;
     max-width: 250px;
     min-height: 171px;
-    max-height: 50px;
     width: 100%;
     object-fit: unset;
     transition: 0.5s;
@@ -724,7 +722,6 @@ input[type="checkbox"]:checked+.favorite-ic {
     /* max-width: 70px; */
     min-width: 114px;
     min-height: 188px;
-    max-height: 50px;
     width: 100%;
     object-fit: unset;
     transition: 0.5s;
@@ -806,12 +803,11 @@ input[type="checkbox"]:checked+.favorite-ic {
 
   .filters__img {
     height: 100%;
-    cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.1882352941);
     border-radius: 5px;
     max-width: 150px;
     min-height: 223px;
-    max-height: 50px;
+    aspect-ratio: 2/3;
     width: 100%;
     object-fit: unset;
     transition: 0.5s;

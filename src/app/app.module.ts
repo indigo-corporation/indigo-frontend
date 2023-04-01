@@ -33,6 +33,8 @@ import {
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LazyLoadImageModule, LAZYLOAD_IMAGE_HOOKS, ScrollHooks } from 'ng-lazyload-image';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 
@@ -167,6 +169,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+   NgxSkeletonLoaderModule.forRoot(),
+    LazyLoadImageModule,
     ImageCropperModule,
     OAuthModule.forRoot(),
     AppRoutingModule,
@@ -243,6 +247,7 @@ const appRoutes: Routes = [
       multi: true
     },
     AlertifyService,
+    { provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }
   ],
   bootstrap: [AppComponent],
 })

@@ -25,7 +25,7 @@ export class CardForSwipersComponent implements OnInit,AfterViewInit{
   login
   private subscription = new Subscription();
   sliderWidth:number
-  userFavorite
+  userFavorite 
   modalRef: MdbModalRef<ModalLoginComponent> | null = null;
   constructor(
     private api2Service: api2Service,

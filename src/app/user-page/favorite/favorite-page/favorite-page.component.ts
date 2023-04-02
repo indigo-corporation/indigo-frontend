@@ -30,6 +30,7 @@ export class FavoritePageComponent implements OnInit {
   userFavorite
   cardId 
   user
+  loader:boolean = true
   @Output() filterUserFavorite = new EventEmitter<any>();
   constructor(
     private api2Service: api2Service,
@@ -73,6 +74,10 @@ export class FavoritePageComponent implements OnInit {
     }
   }
 
+  getRange(num: number): number[] {
+    return Array(num).fill(0).map((_, i) => i);
+  }
+
  getFavoriteFilmsInfinity() {
     this.api2Service.getFavoriteFilms(this.page).subscribe((data) => {
       this.favoriteFilms = this.favoriteFilms.concat(data.data.items)
@@ -86,6 +91,7 @@ export class FavoritePageComponent implements OnInit {
   getFavoriteFilms() {
     this.api2Service.getFavoriteFilms(this.page).subscribe((data) => {
       this.favoriteFilms = data.data.items
+ 
       if (this.userFavorite) {
         this.favoriteFilms.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);

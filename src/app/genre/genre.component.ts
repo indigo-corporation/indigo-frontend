@@ -35,6 +35,8 @@ export class GenreComponent implements OnInit {
   userFavorite
   type:any
   login
+  loader:boolean = true
+
   category:any
   isSortAnime:boolean =false
   isSort:boolean = false
@@ -94,7 +96,9 @@ export class GenreComponent implements OnInit {
     this.title.setTitle("Смотреть " + typeName + " " + this.genre.title + " в хорошем качестве в 720p hd")
   }
 
-  
+  getRange(num: number): number[] {
+    return Array(num).fill(0).map((_, i) => i);
+  }
 
   getGenre() {
     let ls = localStorage.getItem("genres")
@@ -147,6 +151,7 @@ getGenreAnime() {
   getGenreFilms(id,page,category) {
     this.api2Service.getGenreFilms(id,page,category,this.sortField,this.sortDirection).subscribe((data) => {
       this.data = data.data.items
+      this.loader = false
       if (this.userFavorite) {
         this.data.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);

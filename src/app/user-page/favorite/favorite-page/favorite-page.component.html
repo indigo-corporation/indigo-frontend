@@ -8,6 +8,14 @@
     </div>
   </ms-infinite-scroll>
 </div>
+<!-- <div *ngIf="loader" class="card-row">
+  <div *ngFor="let i of getRange(48)">
+    <ngx-skeleton-loader count="1" appearance="circle"
+      [theme]="{ width: '170px', height: '275px', 'border-radius': '5px', margin: '2px' }"></ngx-skeleton-loader>
+    <ngx-skeleton-loader count="2" appearance="line"
+      [theme]="{ width: '100%', height: '20px', margin: '2px' }"></ngx-skeleton-loader>
+  </div>
+</div> -->
 
 <div style="min-height: 500px;" class="container main block" *ngIf="!(favoriteFilms && favoriteFilms.length > 0)">
   <p style="margin-left: 10px;">Здесь пока что ничего нету! Добавь себе новые избранные</p>

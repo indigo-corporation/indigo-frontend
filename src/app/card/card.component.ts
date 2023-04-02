@@ -35,8 +35,11 @@ export class CardComponent implements OnInit {
   @Output() removeCard = new EventEmitter<any>();
   login
   user
-  template: any[] = new Array(48);
+
   userFavorite
+
+  @Input() loader: boolean
+  
   isFavorite: boolean = false
   modalRef: MdbModalRef<ModalLoginComponent> | null = null;
   myOptions = {
@@ -49,15 +52,10 @@ export class CardComponent implements OnInit {
     private api2Service: api2Service,
     private modalService: MdbModalService,
     private auth: authService){
-      
-  
      }
-     isTemplate:boolean=true
+    
+
   ngOnInit() {
-    this.isTemplate = true 
-     if(this.card) {
-      this.isTemplate = false
-    }  
     this.auth.user$.subscribe(x => {
       this.login = x != null
       if (this.login) {

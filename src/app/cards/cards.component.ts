@@ -53,7 +53,11 @@ export class CardsComponent implements OnInit {
   isSort:boolean = false
   sortField:string = "release_date"
   sortDirection:string ="desc"
+
+
+  cardContent: any;
   @Input() data: any
+
   public id: any
   login
   userFavorite
@@ -72,10 +76,14 @@ export class CardsComponent implements OnInit {
 
   }
 
+  getRange(num: number): number[] {
+    return Array(num).fill(0).map((_, i) => i);
+  }
+
 
 
   ngOnInit() {
-    this.loader=true
+   
     this.auth.user$.subscribe(x => {
       this.login = x != null
       if (this.login) {
@@ -120,10 +128,12 @@ export class CardsComponent implements OnInit {
     this.getData(1);
   }
   getData(page) {
+    this.loader = true
     this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection).subscribe((data) => {
       this.data = data.data.items
       this.loader = false
       this.data.forEach(item => {
+ 
         item.isFavorite = this.userFavorite.includes(item.id);
       });
       this.totalRecords = data.data.pagination.total

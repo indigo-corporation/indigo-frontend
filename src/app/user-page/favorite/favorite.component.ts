@@ -28,6 +28,7 @@ export class FavoriteComponent implements OnInit {
   page: number
   cardId
   user
+  loader:boolean = true
   isFav:boolean = false
   @Input() data: any
   @Input() film: any
@@ -45,6 +46,10 @@ export class FavoriteComponent implements OnInit {
       this.userFavorite = this.user.favorite_film_ids
     })
     this.getFavoriteFilms()
+  }
+
+  getRange(num: number): number[] {
+    return Array(num).fill(0).map((_, i) => i);
   }
 
   ngAfterViewInit () {
@@ -75,6 +80,7 @@ export class FavoriteComponent implements OnInit {
   getFavoriteFilms() {
     this.api2Service.getFavoriteFilms().subscribe((data) => {
       this.favoriteFilms = data.data.items
+      this.loader = false
       if(this.favoriteFilms.length === 0) {
           this.isFav = true
         } else {

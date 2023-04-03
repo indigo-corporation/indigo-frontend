@@ -1,4 +1,15 @@
-<div style="height: auto" class="container main">
+<div *ngIf="loader">
+        <ngx-spinner
+        bdColor='black'
+        size="medium"
+        color="#4c3f93"
+        type="ball-clip-rotate"
+      >
+        <p style="font-size: 20px; color: white">Загрузка...</p>
+      </ngx-spinner>
+      </div>
+
+<div *ngIf="!loader" style="height: auto" class="container main">
         <app-card-main style="height: auto" category="new" [data]="new"></app-card-main>
         <app-card-main style="height: auto" category="film" [data]="films"></app-card-main>
         <app-card-main style="height: auto" category="serial" [data]="serials"></app-card-main>

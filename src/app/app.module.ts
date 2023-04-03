@@ -1,4 +1,4 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -35,7 +35,7 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LazyLoadImageModule, LAZYLOAD_IMAGE_HOOKS, ScrollHooks } from 'ng-lazyload-image';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 import { AppComponent } from './app.component';
@@ -88,7 +88,6 @@ import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { CardComponent } from './card/card.component';
 import { CardForSwipersComponent } from './card-for-swipers/card-for-swipers.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { SpinnerLoaderComponent } from './spinner-loader/spinner-loader.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -97,10 +96,10 @@ const appRoutes: Routes = [
   { path: 'support', component: SupportPageComponent },
   /* { path: 'message/:id', component: MessangerComponent, canActivate: [AuthGuard]  }, */
   { path: 'copyright', component: CopyrightComponent, },
- /*  { path: 'friends', component: MessangerComponent, canActivate: [AuthGuard]  },
-  { path: 'message', component: MessangerComponent, canActivate: [AuthGuard]  }, */
-/*   { path: 'card-profile/:id/watch-together', component: CardContentComponent }, */
-  { path: 'favorite', component: FavoritePageComponent, canActivate: [AuthGuard]  },
+  /*  { path: 'friends', component: MessangerComponent, canActivate: [AuthGuard]  },
+   { path: 'message', component: MessangerComponent, canActivate: [AuthGuard]  }, */
+  /*   { path: 'card-profile/:id/watch-together', component: CardContentComponent }, */
+  { path: 'favorite', component: FavoritePageComponent, canActivate: [AuthGuard] },
   { path: 'remember-pass', component: RememberPassComponent },
   { path: ':type/genre/:id', component: GenreComponent },
   { path: 'film', component: CardsComponent },
@@ -108,7 +107,7 @@ const appRoutes: Routes = [
   { path: 'serial', component: CardsComponent },
   { path: 'cartoon', component: CardsComponent },
   { path: ':category/:id', component: CardContentComponent },
-  { path: 'reg', component: RegisterComponent, canActivate: [AuthGuard]},
+  { path: 'reg', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'user-page/:id', component: UserPageComponent, canActivate: [AuthGuard] },
   { path: 'user-page', component: UserPageComponent, canActivate: [AuthGuard] },
   { path: 'user-settings', component: UserSettingComponent, canActivate: [AuthGuard] },
@@ -164,12 +163,11 @@ const appRoutes: Routes = [
     ModalLoginComponent,
     CardComponent,
     CardForSwipersComponent,
-    SpinnerLoaderComponent ,
 
   ],
   imports: [
     BrowserModule,
-   NgxSkeletonLoaderModule.forRoot(),
+    NgxSkeletonLoaderModule.forRoot(),
     LazyLoadImageModule,
     ImageCropperModule,
     OAuthModule.forRoot(),
@@ -200,10 +198,12 @@ const appRoutes: Routes = [
     AngularTelegramLoginWidgetModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-clip-rotate' }),
     InfiniteScrollModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
-    
+
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
@@ -232,9 +232,9 @@ const appRoutes: Routes = [
       provide: LOCALE_ID,
       useValue: 'ru'
     },
-    { 
-      provide: LOCALE_ID, 
-      useValue: 'en-GB' 
+    {
+      provide: LOCALE_ID,
+      useValue: 'ru'
     },
     {
       provide: HTTP_INTERCEPTORS,

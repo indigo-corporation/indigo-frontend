@@ -52,6 +52,7 @@
     "ngx-infinite-scroll": "^14.0.0",
     "ngx-pagination": "^6.0.3",
     "ngx-skeleton-loader": "^5.0.0",
+    "ngx-spinner": "^14.0.0",
     "ngx-star-rating": "^2.1.0",
     "npm": "^9.6.2",
     "rxjs": "~7.5.0",

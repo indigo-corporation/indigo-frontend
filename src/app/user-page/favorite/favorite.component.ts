@@ -3,7 +3,8 @@ import { api2Service } from '../../services/api2.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { authService } from '../../services/authService.service';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { BehaviorSubject } from 'rxjs';
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: 'app-favorite',
@@ -35,21 +36,19 @@ export class FavoriteComponent implements OnInit {
   @Input() userFavorite: any
   constructor(
     private api2Service: api2Service,
+    private spinner: NgxSpinnerService,
     private router: Router,
     private auth: authService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.spinner.show();
     this.auth.user$.subscribe(x => {
       this.user = x
       this.userFavorite = this.user.favorite_film_ids
     })
     this.getFavoriteFilms()
-  }
-
-  getRange(num: number): number[] {
-    return Array(num).fill(0).map((_, i) => i);
   }
 
   ngAfterViewInit () {
@@ -80,6 +79,7 @@ export class FavoriteComponent implements OnInit {
   getFavoriteFilms() {
     this.api2Service.getFavoriteFilms().subscribe((data) => {
       this.favoriteFilms = data.data.items
+      this.spinner.hide();
       this.loader = false
       if(this.favoriteFilms.length === 0) {
           this.isFav = true

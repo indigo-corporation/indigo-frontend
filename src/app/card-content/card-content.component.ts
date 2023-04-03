@@ -10,6 +10,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { authService } from "../services/authService.service";
 import { Meta, Title } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-card-content',
@@ -42,13 +43,15 @@ export class CardContentComponent implements OnInit{
   favoriteFilmIds
   isTogther: boolean = true
   isFilm: boolean = true
-  
+  loader:boolean = true
+
   constructor(
     private api2Service: api2Service,
     private api: api,
     private router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
+    private spinner: NgxSpinnerService,
     private auth: authService,
     private dialog: MatDialog,
     private meta: Meta,
@@ -56,6 +59,7 @@ export class CardContentComponent implements OnInit{
 
   }
   ngOnInit() {
+    this.spinner.show();
     var slug: string = this.route.snapshot.params.id;
     this.slug = slug.split("-")
     this.id = this.slug.pop()
@@ -78,6 +82,8 @@ export class CardContentComponent implements OnInit{
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
       this.film = data.data;
+      this.loader = false
+      this.spinner.hide();
       if (this.userFavorite && this.film) {
         if (this.film && this.userFavorite.includes(this.film.id)) {
           this.film.isFavorite = true

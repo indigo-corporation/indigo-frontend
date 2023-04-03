@@ -1,24 +1,32 @@
-<div *ngIf="favoriteFilms && favoriteFilms.length > 0" style="min-height:100%; position: relative;" class="container main block">
-  <h1 routerLink="/favorite" href="/favorite" class="favorite-title">Избранные</h1>
-  <div class="card-row">
-      <div *ngFor="let card of favoriteFilms.slice(0,6)">
-          <div *ngIf="!loader">
-            <app-card [@cardAnimation] [userFavorite]="userFavorite" (removeCard)="filterCard($event)" [card]="card">
-            </app-card>
-          </div>
-          <div *ngIf="loader" class="card-row">
-            <div *ngFor="let i of getRange(6)">
-              <ngx-skeleton-loader count="1" appearance="circle"
-                [theme]="{ width: '170px', height: '275px', 'border-radius': '5px', margin: '2px' }"></ngx-skeleton-loader>
-              <ngx-skeleton-loader count="2" appearance="line"
-                [theme]="{ width: '100%', height: '20px', margin: '2px' }"></ngx-skeleton-loader>
+<div *ngIf="loader">
+  <ngx-spinner
+  bdColor='black'
+  size="medium"
+  color="#4c3f93"
+  type="ball-clip-rotate"
+>
+  <p style="font-size: 20px; color: white">Загрузка...</p>
+</ngx-spinner>
+</div>
+
+
+
+<div *ngIf="!loader">
+  <div *ngIf="favoriteFilms && favoriteFilms.length > 0" style="min-height:100%; position: relative;" class="container main block">
+    <h1 routerLink="/favorite" href="/favorite" class="favorite-title">Избранные</h1>
+    <div class="card-row">
+        <div *ngFor="let card of favoriteFilms.slice(0,6)">
+            <div>
+              <app-card [@cardAnimation] [userFavorite]="userFavorite" (removeCard)="filterCard($event)" [card]="card">
+              </app-card>
             </div>
-          </div>
-      </div>
+        </div>
+    </div>
+    
   </div>
-  
+  <div style="height:100%;" *ngIf="!(favoriteFilms && favoriteFilms.length > 0)">
+    <h1 routerLink="/favorite" href="/favorite" class="favorite-title">Избранные</h1>
+    <p style="margin-left: 10px;">Здесь пока что ничего нету!Добавь себе новые избранные</p>
+  </div>
 </div>
-<div style="height:100%;" *ngIf="!(favoriteFilms && favoriteFilms.length > 0)">
-  <h1 routerLink="/favorite" href="/favorite" class="favorite-title">Избранные</h1>
-  <p style="margin-left: 10px;">Здесь пока что ничего нету!Добавь себе новые избранные</p>
-</div>
+

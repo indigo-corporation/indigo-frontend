@@ -11,7 +11,7 @@ import * as e from 'express';
 import { Meta, Title } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
 
-@Component({
+@Component({  
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
   animations: [
@@ -66,7 +66,6 @@ export class UserPageComponent implements OnInit {
     this.auth.user$.subscribe(x => {
       this.user = x
       this.cdr.detectChanges();
-   
     })
   }
 

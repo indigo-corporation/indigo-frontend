@@ -6,6 +6,8 @@ import { Input } from '@angular/core'
 import { Meta, Title } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { authService } from "../services/authService.service";
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: 'app-cards',
@@ -70,20 +72,15 @@ export class CardsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private meta: Meta,
+    private spinner: NgxSpinnerService,
     private title: Title
   ) {
     this.data = new Array<any>()
 
   }
 
-  getRange(num: number): number[] {
-    return Array(num).fill(0).map((_, i) => i);
-  }
-
-
-
   ngOnInit() {
-   
+    this.spinner.show();
     this.auth.user$.subscribe(x => {
       this.login = x != null
       if (this.login) {
@@ -132,6 +129,7 @@ export class CardsComponent implements OnInit {
     this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection).subscribe((data) => {
       this.data = data.data.items
       this.loader = false
+      this.spinner.hide();
       this.data.forEach(item => {
  
         item.isFavorite = this.userFavorite.includes(item.id);

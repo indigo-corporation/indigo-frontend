@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { authService } from '../../../services/authService.service';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-favorite-page',
@@ -36,12 +37,14 @@ export class FavoritePageComponent implements OnInit {
     private api2Service: api2Service,
     private router: Router,
     private route: ActivatedRoute,
+    private spinner: NgxSpinnerService,
     private meta: Meta,
     private auth: authService,
     private title: Title
   ) { }
 
   ngOnInit() {
+    this.spinner.show();
     this.page=this.route.snapshot.queryParams.page
     if(!this.page) {
       this.page = 1 
@@ -74,10 +77,6 @@ export class FavoritePageComponent implements OnInit {
     }
   }
 
-  getRange(num: number): number[] {
-    return Array(num).fill(0).map((_, i) => i);
-  }
-
  getFavoriteFilmsInfinity() {
     this.api2Service.getFavoriteFilms(this.page).subscribe((data) => {
       this.favoriteFilms = this.favoriteFilms.concat(data.data.items)
@@ -91,7 +90,8 @@ export class FavoritePageComponent implements OnInit {
   getFavoriteFilms() {
     this.api2Service.getFavoriteFilms(this.page).subscribe((data) => {
       this.favoriteFilms = data.data.items
- 
+      this.spinner.hide();
+      this.loader = false
       if (this.userFavorite) {
         this.favoriteFilms.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);

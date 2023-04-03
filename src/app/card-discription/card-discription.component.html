@@ -71,7 +71,7 @@
                             <p class="discription-text genre-btn">{{film.year}}</p>
                         </span>
                     
-                        <span class="overview-item" *ngFor="let country of film.countries">
+                        <span class="overview-item" *ngFor="let country of film.countries.slice(0,2)">
                             <p class="discription-text genre-btn">{{country.title}}</p>
                         </span>
                         <!--   <p *ngIf="film.runtime" class="discription-text">{{film.runtime}} минуты</p> -->

@@ -1,21 +1,25 @@
+<div *ngIf="loader">
+  <ngx-spinner
+  bdColor='black'
+  size="medium"
+  color="#4c3f93"
+  type="ball-clip-rotate"
+>
+  <p style="font-size: 20px; color: white">Загрузка...</p>
+</ngx-spinner>
+</div>
+
 <div *ngIf="favoriteFilms && favoriteFilms.length > 0" style="min-height:100%; position: relative;"
   class="container main block">
   <ms-infinite-scroll (scrolled)="genContent()">
-    <div class="card-row">
+    <div *ngIf="!loader" class="card-row">
       <app-card [@cardAnimation] [card]="card" [userFavorite]="userFavorite" (removeCard)="filterCard($event)"
         *ngFor="let card of favoriteFilms">
       </app-card>
     </div>
   </ms-infinite-scroll>
 </div>
-<!-- <div *ngIf="loader" class="card-row">
-  <div *ngFor="let i of getRange(48)">
-    <ngx-skeleton-loader count="1" appearance="circle"
-      [theme]="{ width: '170px', height: '275px', 'border-radius': '5px', margin: '2px' }"></ngx-skeleton-loader>
-    <ngx-skeleton-loader count="2" appearance="line"
-      [theme]="{ width: '100%', height: '20px', margin: '2px' }"></ngx-skeleton-loader>
-  </div>
-</div> -->
+
 
 <div style="min-height: 500px;" class="container main block" *ngIf="!(favoriteFilms && favoriteFilms.length > 0)">
   <p style="margin-left: 10px;">Здесь пока что ничего нету! Добавь себе новые избранные</p>

@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { authService } from "../services/authService.service";
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: 'app-genre',
@@ -51,6 +53,7 @@ export class GenreComponent implements OnInit {
   constructor(
     private api2Service: api2Service, 
     private router: Router, 
+    private spinner: NgxSpinnerService,
     private auth: authService,
     private route: ActivatedRoute,
     private meta: Meta,
@@ -63,6 +66,7 @@ export class GenreComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.spinner.show();
     this.auth.user$.subscribe(x => {
       this.login = x != null
       if (this.login) {
@@ -94,10 +98,6 @@ export class GenreComponent implements OnInit {
     }
     let typeName = this.nameType[this.type]
     this.title.setTitle("Смотреть " + typeName + " " + this.genre.title + " в хорошем качестве в 720p hd")
-  }
-
-  getRange(num: number): number[] {
-    return Array(num).fill(0).map((_, i) => i);
   }
 
   getGenre() {
@@ -151,6 +151,7 @@ getGenreAnime() {
   getGenreFilms(id,page,category) {
     this.api2Service.getGenreFilms(id,page,category,this.sortField,this.sortDirection).subscribe((data) => {
       this.data = data.data.items
+      this.spinner.hide();
       this.loader = false
       if (this.userFavorite) {
         this.data.forEach(item => {

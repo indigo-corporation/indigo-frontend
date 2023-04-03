@@ -4,6 +4,9 @@ import { Router, NavigationEnd } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { AlertifyService } from '../services/alertify.service';
+import { NgxSpinnerService } from "ngx-spinner";
+import { authService } from '../services/authService.service';
+
 
 @Component({
   selector: 'app-search-page',
@@ -16,15 +19,19 @@ export class SearchPageComponent implements OnInit {
   page: number = 1
   data: Array<any>
   name: any
+  loader:boolean = true
   find: any
-  favoriteFilmIds
+  user
+  userFavorite
   public id: any
   constructor(
     private api2Service: api2Service,
     private router: Router,
     private route: ActivatedRoute,
     private meta: Meta,
+    private spinner: NgxSpinnerService,
     private title: Title,
+    private auth: authService,
     private alertify:AlertifyService) {
     this.data = new Array<any>()
     /*  this.router.routeReuseStrategy.shouldReuseRoute = function () {
@@ -43,6 +50,11 @@ export class SearchPageComponent implements OnInit {
     'showDelay': 500,
   }
   ngOnInit() {
+    this.spinner.show();
+    this.auth.user$.subscribe(x => {
+      this.user = x
+      this.userFavorite = this.user.favorite_film_ids
+    })
     this.title.setTitle("Поиск")
     this.page = this.route.snapshot.queryParams.page
     this.route.queryParams.subscribe((queryParams: any) => {
@@ -78,13 +90,12 @@ export class SearchPageComponent implements OnInit {
     }
       this.api2Service.search(find, page).subscribe((data) => {
       this.data = data.data.items
-      let favoriteFilmIds: any = localStorage.getItem("favoriteFilmIds");
-      if (favoriteFilmIds) {
-        favoriteFilmIds = JSON.parse(favoriteFilmIds);
+      this.spinner.hide();
+      this.loader = false
+      if (this.userFavorite) {
         this.data.forEach(item => {
-          item.isFavorite = favoriteFilmIds.includes(item.id);
+          item.isFavorite = this.userFavorite.includes(item.id);
         });
-        localStorage.setItem("favoriteFilmIds", JSON.stringify(favoriteFilmIds))
       }
       this.totalRecords = data.data.pagination.total
     })

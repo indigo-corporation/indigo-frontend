@@ -4,6 +4,7 @@ import { api } from '../services/api.service';
 import { api2Service } from '../services/api2.service';
 import { Meta, Title } from '@angular/platform-browser';
 import { authService } from "../services/authService.service";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-main',
@@ -18,15 +19,18 @@ export class MainComponent implements OnInit {
   @Input() cartoons: any
   @Input() new: any
   login
+  loader:boolean = true
   userFavorite
   constructor(
     private apiService: api,
     private api2Service: api2Service,
+    private spinner: NgxSpinnerService,
     private meta: Meta,
     private auth: authService,
     private title: Title) { }
 
   ngOnInit() {
+    this.spinner.show();
     this.auth.user$.subscribe(x => {
       this.login = x != null
       if (this.login) {
@@ -45,6 +49,8 @@ export class MainComponent implements OnInit {
       this.anime = data.data.anime
       this.cartoons = data.data.cartoon
       this.new = data.data.new
+      this.loader = false
+      this.spinner.hide();
       if (this.userFavorite) {
         this.anime.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);

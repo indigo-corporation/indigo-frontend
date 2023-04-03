@@ -70,7 +70,6 @@ getGenresAnime() {
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
       this.genres = data;
-      debugger
     });
   }
 }

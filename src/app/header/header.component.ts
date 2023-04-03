@@ -9,7 +9,6 @@ import { authService } from "../services/authService.service";
 import { MatMenuModule } from '@angular/material/menu';
 import { api2Service } from '../services/api2.service';
 import { Input } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
@@ -79,7 +78,6 @@ export class HeaderComponent implements OnInit {
   isMenuOpen: boolean = false;
   constructor(
     private router: Router,
-    @Inject(DOCUMENT) document,
     private route: ActivatedRoute,
     private http: HttpClient,
     private elementRef: ElementRef,
@@ -180,10 +178,12 @@ export class HeaderComponent implements OnInit {
     this.isArrow3 = false;
     this.isArrow4 = false;
     const arrowElms = document.querySelectorAll(".arrow");
-    arrowElms.forEach((arrowElm) => {
-      (arrowElm as HTMLElement).style.transform = "";
-      (arrowElm as HTMLElement).style.color = "";
-    });
+    if (arrowElms.length) {
+      arrowElms.forEach((arrowElm) => {
+        (arrowElm as HTMLElement).style.transform = "";
+        (arrowElm as HTMLElement).style.color = "";
+      });
+    }
   }
 
 

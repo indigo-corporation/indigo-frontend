@@ -67,7 +67,6 @@ export class FavoriteComponent implements OnInit {
 
 
   filterCard(cardId) {
-    debugger
     this.cardId = cardId
     this.favoriteFilms = this.favoriteFilms.filter(x => x.id !== cardId);
     const newFavorites = this.favoriteFilms.map(film => film.id);

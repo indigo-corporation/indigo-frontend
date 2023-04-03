@@ -127,10 +127,12 @@ genreArrow(sortField) {
 
 arrowsUp(): void {
   const arrowElms = document.querySelectorAll(".arrow");
-  arrowElms.forEach((arrowElm) => {
-    (arrowElm as HTMLElement).style.transform = "";
-    (arrowElm as HTMLElement).style.color = "";
-  });
+  if (arrowElms.length) {
+    arrowElms.forEach((arrowElm) => {
+      (arrowElm as HTMLElement).style.transform = "";
+      (arrowElm as HTMLElement).style.color = "";
+    });
+  }
 }
 
 getGenreAnime() {

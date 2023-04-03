@@ -28,7 +28,6 @@ export class api {
       for (var key in params) {
           url+=key+"="+params[key] + "&"+ apikey  
       }          
-      debugger
         return this.http.get<any>(url,
           { headers: headers })
     }

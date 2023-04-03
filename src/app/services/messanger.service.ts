@@ -14,7 +14,6 @@ export class messangerService {
     }
     delete(method, body = {}) {
         let url = this.url + method
-        console.log(url, body);
         return this.http.delete<any>(url, body)
     }
 
@@ -23,14 +22,12 @@ export class messangerService {
         for (var key in params) {
             url += "&" + key + "=" + params[key]
         }
-        console.log(this.http.get<any>(url));
 
         return this.http.get<any>(url)
     }
 
     post(method, body = {}) {
         let url = this.url + method
-        console.log(url, body);
         return this.http.post<any>(url, body)
     }
 

@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app-server",
+    "module": "commonjs",
+    "target": "es2015",
+    "types": ["node"],
+    "paths": {
+      "swiper_angular": ["node_modules/swiper/angular"]
+    }
+  },
+  "files": [
+    "src/main.server.ts",
+    "server.ts",
+    "server.ts"
+  ],
+  "angularCompilerOptions": {
+    "entryModule": "./src/app/app.server.module#AppServerModule"
+  }
+}
+

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { api2Service } from '../services/api2.service';
@@ -20,7 +20,8 @@ import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
   ],
   styleUrls: ['./card-for-swipers.component.scss']
 })
-export class CardForSwipersComponent implements OnInit,AfterViewInit{
+export class CardForSwipersComponent implements OnInit {
+
   @Input() card: any;
   login
   private subscription = new Subscription();
@@ -42,10 +43,6 @@ export class CardForSwipersComponent implements OnInit,AfterViewInit{
        this.userFavorite = user.favorite_film_ids
       }
     })
-  }
-
-  ngAfterViewInit() {
-    
   }
 
   postFavorite() {

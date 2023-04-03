@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
-import  * as alertyfy from 'alertifyjs';
-
+import * as alertify from "alertifyjs";
 @Injectable ({
     providedIn: "root"
 })
@@ -8,25 +7,23 @@ import  * as alertyfy from 'alertifyjs';
 export class AlertifyService {
 
     constructor() {
-        alertyfy.set('notifier','position', "top-center");
+        alertify.set('notifier','position', "top-center");
     }
 
     success(message: string) {
-        alertyfy.success(message);
+        alertify.success(message);
     }
 
     warning(message: string) {
-        alertyfy.warning(message);
+        alertify.warning(message);
     }
 
    error(message: string) {
-    alertyfy.error(message);
-    console.log(message);
-    
+        alertify.error(message);
    }
 
    setPosition(position:string) {
-    alertyfy.set('notifier','position', position);
+        alertify.set('notifier','position', position);
    }
     
 }

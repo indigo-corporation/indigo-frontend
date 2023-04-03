@@ -42,12 +42,10 @@ export class AuthInterceptorService implements HttpInterceptor {
                     if (err.status === 401 && err.url !== "https://api.indigofilms.online/api/auth/logout") {
                         this.auth.logOut()
                         this.router.navigate([""])
-                        console.log(err);
                     }
                 }
                 if (err.status === 404) {
                     this.router.navigate(["404"])
-                    this.alertify
                 }
                 return throwError(err);
             })

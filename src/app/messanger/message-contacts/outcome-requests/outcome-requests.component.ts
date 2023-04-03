@@ -27,7 +27,6 @@ export class OutcomeRequestsComponent implements OnChanges, OnInit {
 
   getOutComes() {
     let outComesKey="outComes"
-    debugger
     let outComesLs = localStorage.getItem(outComesKey)
     if(outComesLs !== null) {
       this.outComes = JSON.parse(outComesLs)
@@ -49,14 +48,12 @@ export class OutcomeRequestsComponent implements OnChanges, OnInit {
   }
 
   destroyRequest(outComeId) {
-    debugger
     this.messangerService.destroyRequest(outComeId).subscribe((data) => {
       this.outComes = this.outComes.filter(x => x.id !=outComeId)
       if (this.outComes.length === 0) {
         this.isWrapper = true
         this.isOutComes = false
       }
-      debugger
     })
   }
 }

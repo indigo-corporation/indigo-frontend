@@ -84,8 +84,6 @@ import { Meta, Title } from '@angular/platform-browser';
     }
   
     CreateUser() {
-       console.log(this.telegramAuth);
-      console.warn(this.authForm.value)
         this.auth.registerUser(this.authForm.value).subscribe((result) => {
           let token = result["data"]["access_token"]
           if (token) {

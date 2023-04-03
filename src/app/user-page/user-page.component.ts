@@ -200,22 +200,18 @@ export class UserPageComponent implements OnInit {
       let myUser = this.user
       this.user = data.data
       this.isMyUser = myUser.id == this.user.id
-      console.log(myUser, this.user);
     });
   }
 
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
       this.film = data;
-      console.log(this.film);
       let imdbID = this.film.imdb_id;
-      console.log(imdbID);
     });
   }
 
   getData(page) {
     this.api2Service.getData(page).subscribe((data) => {
-      console.log(data);
       this.data = data
       this.totalRecords = data.data.items
     });

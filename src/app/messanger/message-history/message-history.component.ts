@@ -36,7 +36,6 @@ export class MessageHistoryComponent implements OnInit {
     this.messangerService.deleteMessage(messageId).subscribe((data)=>{
      this.messages = this.chat.messages.filter(x => x.id != messageId)
       this.chat.messages=this.messages 
-      console.log(this.chat);
     })
   } 
 
@@ -57,7 +56,6 @@ export class MessageHistoryComponent implements OnInit {
 
 
   onPostMessage() {
-    console.log(this.message); 
     this.messangerService.postMessage(this.chat.id, this.textArea).subscribe((data)=> {
       this.message=data.data
       this.messages = this.chat.messages

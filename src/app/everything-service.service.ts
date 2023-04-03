@@ -11,6 +11,5 @@ export class EverythingServiceService {
   public doClick($event) {
     this.users = $event
     this.onClick.next(this.users);
-    debugger
   }
 }

@@ -60,12 +60,9 @@ export class MessageChatComponent implements OnInit {
     if (this.chatId) {
       this.onUserChatCreate.next(this.chatId)
     }
-    console.log(this.chatId);
   }
 
   onScroll() {
-    console.log("scrolled down!!");
-    debugger
     if(this.page < this.totalPages) {
       this.page++
       this.getChatsInfinity()
@@ -78,13 +75,11 @@ export class MessageChatComponent implements OnInit {
   getChat(id) {
     this.messangerService.getChat(id).subscribe((data) => {
       this.chat = data.data
-      debugger
     })
   }
 
   onUserChat($event) {
     let chatId = $event
-    console.log($event);
     this.location.replaceState("/message/" + chatId);
     this.onUsers.next($event);
     
@@ -97,19 +92,16 @@ export class MessageChatComponent implements OnInit {
       this.totalPages = data.data.pagination.total_pages
       this.currentPage = data.data.pagination.current_page
       this.page = this.currentPage
-      debugger
     })
   }
 
   getChatsInfinity() {
     this.messangerService.getChats(this.page).subscribe((data) => {
       this.chats = this.chats.concat(data.data.items)
-      console.log(this.chats);
     })
   }
 
   openModal($event) {
-    console.log($event);
     this.modalRef = this.modalService.open(ModalComponent, {
       data: { chat: $event },
     });
@@ -117,10 +109,8 @@ export class MessageChatComponent implements OnInit {
       if (data != null) {
         this.chats = this.chats.filter(x => x.id != data)
         this.chat = false
-        debugger
         this.onChat.next(this.chat)
       }
-      console.log(data);
     });
   }
 }

@@ -171,7 +171,7 @@ const appRoutes: Routes = [
     ResetPasswordComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
     NgxSkeletonLoaderModule.forRoot(),
     LazyLoadImageModule,
     ImageCropperModule,
@@ -207,7 +207,6 @@ const appRoutes: Routes = [
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
-
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

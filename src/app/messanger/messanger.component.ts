@@ -70,35 +70,27 @@ export class MessangerComponent implements OnInit {
 
 
   chatNull($event) {
-    console.log($event);
     this.chat = $event
-    debugger
-   console.log(this.chat);
-   
   }
 
   chatCreate($event) {
     this.chat = $event
-    debugger
   }
 
   getChatByUser(user_id) {
     this.messangerService.getChatByUser(user_id).subscribe((data)=> {
       this.chat = data.data
-      debugger
     })
   }
 
   getChat(id) {
     this.messangerService.getChat(id).subscribe((data)=> {
       this.chat = data.data
-      debugger
     })
   }
 
   onUsersSub(value) {
     this.getChat(value) 
-    debugger
   }
 
   onNavigateSecMenu($event) {

@@ -213,9 +213,7 @@ export class UserPageComponent implements OnInit {
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
       this.film = data;
-      console.log(this.film);
       let imdbID = this.film.imdb_id;
-      console.log(imdbID);
     });
   }
  */

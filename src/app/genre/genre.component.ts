@@ -7,7 +7,6 @@ import { authService } from "../services/authService.service";
 import { NgxSpinnerService } from "ngx-spinner";
 
 
-
 @Component({
   selector: 'app-genre',
   templateUrl: './genre.component.html',
@@ -104,10 +103,10 @@ export class GenreComponent implements OnInit {
 
     if (this.typeName === "Аниме") {
       this.getGenreAnime()
-      this.title.setTitle("Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd") 
+      this.title.setTitle("Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd")
     } else {
       this.getGenre()
-      this.title.setTitle("Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd") 
+      this.title.setTitle("Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd")
     }
     this.updateMetaTagsGenre()
   }
@@ -116,7 +115,7 @@ export class GenreComponent implements OnInit {
     this.meta.updateTag({ name: 'og:title', content: "Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd" });
     this.meta.updateTag({ name: 'og:description', content: "Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd" });
     this.meta.updateTag({ name: 'og:url', content: this.url });
-    this.meta.updateTag({ name: 'og:site_name', content: 'IndigoFilms' }); 
+    this.meta.updateTag({ name: 'og:site_name', content: 'IndigoFilms' });
   }
 
   getGenre() {
@@ -144,18 +143,20 @@ export class GenreComponent implements OnInit {
     this.getGenreFilms(this.id, this.page, this.type)
   }
 
-  arrowsUp(): void {
-    const arrowElms = document.querySelectorAll(".arrow");
+arrowsUp(): void {
+  const arrowElms = document.querySelectorAll(".arrow");
+  if (arrowElms.length) {
     arrowElms.forEach((arrowElm) => {
       (arrowElm as HTMLElement).style.transform = "";
       (arrowElm as HTMLElement).style.color = "";
     });
   }
+}
 
   getGenreAnime() {
     let ls = localStorage.getItem("genresAnime")
     if (ls) {
-      
+
       this.genres = JSON.parse(ls)
       this.genre = this.genres.filter(x => x.id == this.id)[0]
     }

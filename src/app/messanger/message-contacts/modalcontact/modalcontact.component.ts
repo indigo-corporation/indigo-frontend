@@ -19,7 +19,6 @@ export class ModalContactComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.contact);
     this.getContacts()
   }
 
@@ -35,11 +34,8 @@ export class ModalContactComponent implements OnInit {
 
   deleteContact() {
     let contactId = this.contact
-    debugger
     this.messangerService.removeContact(contactId).subscribe((data) => {
-      console.log(this.contacts);
-      
-      debugger
+
       this.close()
     })
   }

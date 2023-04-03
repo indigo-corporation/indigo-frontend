@@ -19,7 +19,6 @@ export class ModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.chat);
     this.getChats()
   }
 
@@ -35,11 +34,8 @@ export class ModalComponent implements OnInit {
 
   deleteChat() {
     let chatId = this.chat
-    debugger
     this.messangerService.deleteChat(chatId).subscribe((data) => {
-      console.log(this.chats);
-      
-      debugger
+
       this.close()
     })
   }

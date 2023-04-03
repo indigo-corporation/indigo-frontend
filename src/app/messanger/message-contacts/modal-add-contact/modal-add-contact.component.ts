@@ -43,7 +43,6 @@ export class ModalAddContactComponent implements OnInit {
     if ($event.target.value.length >= 2) {
       this.getUsersSearch($event.target.value)
     }
-    console.log($event.target.value.length);
   }
 
   getUsersSearch(find) {
@@ -54,10 +53,8 @@ export class ModalAddContactComponent implements OnInit {
 
   addContact(userId) {
     this.userId = userId
-    debugger
     this.messangerService.addContact(this.userId).subscribe((data) => {
       this.data = data
-      debugger
       this.close()
     })
   }

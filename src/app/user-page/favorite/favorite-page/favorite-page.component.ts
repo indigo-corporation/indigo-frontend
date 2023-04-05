@@ -43,7 +43,8 @@ export class FavoritePageComponent implements OnInit {
   
     this.auth.user$.subscribe(x => {
       this.user = x
-      this.userFavorite = this.user.favorite_film_ids
+      this.getFavoriteFilms()
+      this.userFavorite = this.user ? this.user.favorite_film_ids : [];
     })
     this.getFavoriteFilms()
   }
@@ -68,9 +69,9 @@ export class FavoritePageComponent implements OnInit {
    genContent(): void {
     if (this.page < this.totalPages) {
       this.page++
-    
+
     }
-  } 
+  }
 
  getFavoriteFilmsInfinity() {
     this.api2Service.getFavoriteFilms(this.page).subscribe((data) => {
@@ -79,7 +80,7 @@ export class FavoritePageComponent implements OnInit {
         item.isFavorite = this.userFavorite.includes(item.id);
       });
     })
-  }  
+  }
 
 
   getFavoriteFilms() {
@@ -89,7 +90,7 @@ export class FavoritePageComponent implements OnInit {
       if (this.userFavorite) {
         this.favoriteFilms.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);
-   
+
         });
       }
       this.loader = false

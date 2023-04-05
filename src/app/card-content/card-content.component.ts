@@ -61,7 +61,7 @@ export class CardContentComponent implements OnInit{
   }
   ngOnInit() {
     this.spinner.show();
-    
+
     var slug: string = this.route.snapshot.params.id;
     this.slug = slug.split("-")
     this.id = this.slug.pop()

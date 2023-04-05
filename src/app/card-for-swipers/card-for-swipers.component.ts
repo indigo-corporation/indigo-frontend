@@ -40,7 +40,7 @@ export class CardForSwipersComponent implements OnInit {
       this.login = x != null
       if (this.login) {
         let user = x
-       this.userFavorite = user.favorite_film_ids
+        this.userFavorite = user ? user.favorite_film_ids : [];
       }
     })
   }

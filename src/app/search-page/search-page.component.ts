@@ -53,7 +53,7 @@ export class SearchPageComponent implements OnInit {
   /*   this.spinner.show(); */
     this.auth.user$.subscribe(x => {
       this.user = x
-      this.userFavorite = this.user.favorite_film_ids
+      this.userFavorite = this.user ? this.user.favorite_film_ids : [];
     })
     this.title.setTitle("Поиск")
     this.page = this.route.snapshot.queryParams.page

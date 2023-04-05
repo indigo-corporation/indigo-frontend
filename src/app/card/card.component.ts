@@ -60,7 +60,7 @@ export class CardComponent implements OnInit {
       this.login = x != null
       if (this.login) {
         this.user = x
-       this.userFavorite = this.user.favorite_film_ids
+        this.userFavorite = this.user ? this.user.favorite_film_ids : [];
       }
     })
    

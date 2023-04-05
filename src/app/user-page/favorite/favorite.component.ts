@@ -46,7 +46,7 @@ export class FavoriteComponent implements OnInit {
     this.spinner.show();
     this.auth.user$.subscribe(x => {
       this.user = x
-      this.userFavorite = this.user.favorite_film_ids
+      this.userFavorite = this.user ? this.user.favorite_film_ids : [];
     })
     this.getFavoriteFilms()
   }
@@ -69,9 +69,7 @@ export class FavoriteComponent implements OnInit {
   filterCard(cardId) {
     this.cardId = cardId
     this.favoriteFilms = this.favoriteFilms.filter(x => x.id !== cardId);
-    const newFavorites = this.favoriteFilms.map(film => film.id);
-    this.userFavorite = this.user.favorite_film_ids
-    this.auth.user$.next(this.userFavorite);
+    this.userFavorite = this.user ? this.user.favorite_film_ids : [];
   }
 
 

@@ -183,17 +183,11 @@
                 "/copyright",
                 "/remember-pass",
                 "/film",
-                "/film/:id",
                 "/anime",
-                "/anime/:id",
                 "/serial",
-                "/serial/:id",
                 "/cartoon",
-                "/cartoon/:id",
                 "/dialog",
                 "/reg",
-                "/user-page/:id",
-                "/user-page",
                 "/404",
                 "**"
               ]

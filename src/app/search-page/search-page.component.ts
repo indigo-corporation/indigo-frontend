@@ -92,7 +92,7 @@ export class SearchPageComponent implements OnInit {
       this.data = data.data.items
       this.spinner.hide();
       this.loader = false
-      if (this.userFavorite) {
+      if (this.userFavorite && this.data) {
         this.data.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);
         });

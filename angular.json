@@ -185,11 +185,11 @@
                 "/film",
                 "/anime",
                 "/serial",
+                "/anime/saga-o-vinlande-2-8389",
                 "/cartoon",
                 "/dialog",
                 "/reg",
-                "/404",
-                "**"
+                "/404"
               ]
             },
             "configurations": {

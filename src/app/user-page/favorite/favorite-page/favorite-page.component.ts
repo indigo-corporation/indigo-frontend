@@ -80,9 +80,11 @@ export class FavoritePageComponent implements OnInit {
  getFavoriteFilmsInfinity() {
     this.api2Service.getFavoriteFilms(this.page).subscribe((data) => {
       this.favoriteFilms = this.favoriteFilms.concat(data.data.items)
+     if(this.favoriteFilms && this.userFavorite) {
       this.favoriteFilms.forEach(item => {
         item.isFavorite = this.userFavorite.includes(item.id);
       });
+     }
     })
   } 
 
@@ -92,7 +94,7 @@ export class FavoritePageComponent implements OnInit {
       this.favoriteFilms = data.data.items
       this.spinner.hide();
       this.loader = false
-      if (this.userFavorite) {
+      if (this.userFavorite && this.favoriteFilms) {
         this.favoriteFilms.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);
         });

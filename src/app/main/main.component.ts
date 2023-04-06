@@ -51,7 +51,7 @@ export class MainComponent implements OnInit {
       this.new = data.data.new
       this.loader = false
       this.spinner.hide();
-      if (this.userFavorite) {
+      if (this.userFavorite && this.films && this.serials && this.anime && this.cartoons && this.new) {
         this.anime.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);
         });

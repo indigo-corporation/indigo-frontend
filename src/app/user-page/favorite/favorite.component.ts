@@ -83,7 +83,7 @@ export class FavoriteComponent implements OnInit {
         } else {
           this.isFav = false
         }
-      if (this.userFavorite) {
+      if (this.userFavorite && this.data.length) {
         this.favoriteFilms.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);
         });

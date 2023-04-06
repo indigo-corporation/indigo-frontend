@@ -80,7 +80,7 @@ export class MoreFilmsComponent implements OnInit {
   getTopRated() {
     this.api2Service.getFilmsMain().subscribe((data) => {
       this.data = data.data.new
-      if (this.userFavorite) {
+      if (this.userFavorite && this.data) {
         this.data.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);
         });

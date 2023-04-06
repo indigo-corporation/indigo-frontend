@@ -132,11 +132,6 @@ export class CardsComponent implements OnInit, AfterViewInit {
   }
 
 
-  ngAfterViewInit() {
-
-  }
-
-
   updateMetaTagsCategory() {
     this.meta.updateTag({ name: 'og:title', content: "Смотреть " + this.typeName + " " + " в хорошем качестве в 720p hd" });
     this.meta.updateTag({ name: 'og:description', content: "Смотреть " + this.typeName + " " + " в хорошем качестве в 720p hd, , индигофилмс, индиго филмс, indigofilms, indigo films" });
@@ -154,17 +149,19 @@ export class CardsComponent implements OnInit, AfterViewInit {
       });
       this.loader = false
       this.spinner.hide();
-      if (this.userFavorite) {
+      if(this.data && this.userFavorite) {
         this.data.forEach(item => {
+
           item.isFavorite = this.userFavorite.includes(item.id);
         });
       }
+
       this.totalRecords = data.data.pagination.total
     });
   }
 
   filterUserFavorite(userFavorite) {
-    if (userFavorite.length) {
+    if(userFavorite.length && this.data) {
       this.data.forEach(item => {
         item.isFavorite = userFavorite.includes(item.id);
       });

@@ -1,19 +1,14 @@
 <div *ngIf="loader">
-    <ngx-spinner
-    bdColor='black'
-    size="medium"
-    color="#4c3f93"
-    type="ball-clip-rotate"
-  >
+  <ngx-spinner bdColor='black' size="medium" color="#4c3f93" type="ball-clip-rotate">
     <p style="font-size: 20px; color: white">Загрузка...</p>
   </ngx-spinner>
-  </div>
+</div>
 
 <div *ngIf="!loader" [@enterAnimation] class="container main">
-    <div *ngIf="isTogther">
-        <app-card-discription  class="container-card" [film]="film">
-        </app-card-discription> 
-        <app-more-films></app-more-films>
-        <app-comments [filmId]="id"></app-comments>
-    </div>
+  <div *ngIf="isTogther">
+    <app-card-discription class="container-card" [film]="film">
+    </app-card-discription>
+    <app-more-films></app-more-films>
+    <app-comments [filmId]="id"></app-comments>
+  </div>
 </div>

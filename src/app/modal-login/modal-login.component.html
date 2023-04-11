@@ -9,7 +9,7 @@
                     <asl-google-signin-button (click)="loginWithGoogle()" type="standard"
                         size="large"></asl-google-signin-button>
                 </div>
-                <angular-telegram-login-widget (load)="onLoad()" (loadError)="onLoadError()" (login)="onLogin($event)"
+                <angular-telegram-login-widget style="margin-left: 17px" (load)="onLoad()" (loadError)="onLoadError()" (login)="onLogin($event)"
                     [botName]="botName"></angular-telegram-login-widget>
                 <script async src="https://telegram.org/js/telegram-widget.js?21" data-telegram-login="IndigoFilmsBot"
                     data-size="large" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>

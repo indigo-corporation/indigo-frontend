@@ -8,10 +8,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import "@angular/common/locales/global/ru"
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { authService } from "../services/authService.service";
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { NgxSpinnerService } from "ngx-spinner";
-import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-card-content',

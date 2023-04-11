@@ -22,7 +22,7 @@ constructor(private scroll: ViewportScroller,
    }
 
   ngOnInit():void {
-    this.seo.initDefaultMetaInfomation()
+ /*    this.seo.initDefaultMetaInfomation() */
 
   }
 

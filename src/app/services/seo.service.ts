@@ -12,7 +12,7 @@ export class SeoService {
   ) {
 
    }
-
+/* 
    initDefaultMetaInfomation() {
     this.title.setTitle("IndigoFilms")
 
@@ -24,6 +24,6 @@ export class SeoService {
       {name:"description", content: "Смотри фильмы и сериалы онлайн на IndigoFilm, ОРИГИНАЛЬНЫЙ сайт IndigoFilm, большая база фильмов и сериалов онлайн!"},
       {name:"keywords", content: "Фильмы, Сериалы, Аниме, Мультфильмы"},
     ]);
-}
+} */
 
 }

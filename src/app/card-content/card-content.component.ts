@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges,Input,AfterViewInit} from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, Input, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { api2Service } from '../services/api2.service';
 import { api } from '../services/api.service';
@@ -30,7 +30,7 @@ import { NgxSpinnerService } from "ngx-spinner";
   ],
   styleUrls: ['./card-content.component.scss']
 })
-export class CardContentComponent implements OnInit{
+export class CardContentComponent implements OnInit {
 
   url: string = window.location.href;
   public id: any
@@ -43,7 +43,7 @@ export class CardContentComponent implements OnInit{
   favoriteFilmIds
   isTogther: boolean = true
   isFilm: boolean = true
-  loader:boolean = true
+  loader: boolean = true
 
   constructor(
     private api2Service: api2Service,
@@ -66,7 +66,7 @@ export class CardContentComponent implements OnInit{
     this.id = this.slug.pop()
     this.auth.user$.subscribe(x => {
       this.login = x != null
-      
+
       if (this.login) {
         let user = x
         this.userFavorite = user ? user.favorite_film_ids : [];
@@ -77,7 +77,7 @@ export class CardContentComponent implements OnInit{
 
 
 
-  
+
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
       this.film = data.data;

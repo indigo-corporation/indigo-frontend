@@ -45,6 +45,7 @@ export class UserPageComponent implements OnInit {
   contactIds: any
   currentUser: any
   favoriteFilmIds: any
+  minHeight: number;
   data: any
   public id: any
   outComes: any
@@ -65,12 +66,18 @@ export class UserPageComponent implements OnInit {
     this.title.setTitle("Профиль")
     this.auth.user$.subscribe(x => {
       this.user = x
+      let userId = Number(this.route.snapshot.paramMap.get('id'));
+      if (userId) {
+        this.userGet(userId)
+      }
+
       this.cdr.detectChanges();
     })
+
   }
 
 /*   ngAfterViewInit() {
-    let userId = Number(this.route.snapshot.paramMap.get('id'));
+  
     if (userId) {
       this.localStorageOutComes(userId)
       this.getIsContact(userId)
@@ -203,7 +210,7 @@ export class UserPageComponent implements OnInit {
       console.log(myUser, this.user);
     });
   }
-
+/* 
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
       this.film = data;
@@ -212,7 +219,7 @@ export class UserPageComponent implements OnInit {
       console.log(imdbID);
     });
   }
-
+ */
   getData(page) {
     this.api2Service.getData(page).subscribe((data) => {
       console.log(data);

@@ -8,9 +8,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import "@angular/common/locales/global/ru"
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { authService } from "../services/authService.service";
-import { Meta, Title } from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { NgxSpinnerService } from "ngx-spinner";
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-card-content',
@@ -69,8 +70,8 @@ export class CardContentComponent implements OnInit{
       
       if (this.login) {
         let user = x
-        
-       this.userFavorite =  user.favorite_film_ids
+
+        this.userFavorite = user ? user.favorite_film_ids : [];
       }
     })
     this.getfind(this.id);
@@ -84,6 +85,7 @@ export class CardContentComponent implements OnInit{
       this.film = data.data;
       this.loader = false
       this.spinner.hide();
+
       if (this.userFavorite && this.film) {
         if (this.film && this.userFavorite.includes(this.film.id)) {
           this.film.isFavorite = true
@@ -91,24 +93,29 @@ export class CardContentComponent implements OnInit{
           this.film.isFavorite = false
         }
       }
-      let imdbID = this.film.imdb_id;
+
       this.title.setTitle("Смотреть" + " " + this.film.title + " " + "онлайн бесплатно в хорошем качестве")
-      this.meta.addTags([
-        { property: 'og:title', content: this.film.title },
-        { property: 'og:description', content: this.film.overview },
-        { property: 'og:image', content: this.film.poster },
-        { property: 'og:url', content: this.url},
-        { property:'og:type', content:'website'},
-        { property:'og:site_name', content:'IndigoFilms'}
-      ]);
+      debugger
+      this.updateMetaTags()
+
       if (this.film.is_anime === true) {
         this.meta.addTag(
           { name: "description", content: this.film.title + this.film.original_title + "Аниме, Анимесериалы, Анимесериал, Смотреть Аниме онлайн, Аниме HD, совместный просмотр" })
       }
+
       if (this.film.is_serila === true) {
         this.meta.addTag(
           { name: "description", content: this.film.title + this.film.original_title + "Сериалы, сериал, Смотреть сериалы онлайн, сериалы HD, совместный просмотр" })
       }
+
     });
+  }
+
+
+  updateMetaTags() {
+    this.meta.updateTag({ name: 'og:title', content: this.film.title });
+    this.meta.updateTag({ name: 'og:description', content: this.film.overview });
+    this.meta.updateTag({ name: 'og:url', content: this.url });
+    this.meta.updateTag({ name:'og:site_name', content:'IndigoFilms' });
   }
 }

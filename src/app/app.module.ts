@@ -94,6 +94,7 @@ const appRoutes: Routes = [
   { path: 'search-page', component: SearchPageComponent },
   { path: 'sitemap.xml', redirectTo: 'assets/sitemap.xml' },
   { path: 'support', component: SupportPageComponent },
+  { path: 'user-page/:id', component: UserPageComponent, canActivate: [AuthGuard] },
   /* { path: 'message/:id', component: MessangerComponent, canActivate: [AuthGuard]  }, */
   { path: 'copyright', component: CopyrightComponent, },
   /*  { path: 'friends', component: MessangerComponent, canActivate: [AuthGuard]  },
@@ -108,7 +109,6 @@ const appRoutes: Routes = [
   { path: 'cartoon', component: CardsComponent },
   { path: ':category/:id', component: CardContentComponent },
   { path: 'reg', component: RegisterComponent, canActivate: [AuthGuard] },
-  { path: 'user-page/:id', component: UserPageComponent, canActivate: [AuthGuard] },
   { path: 'user-page', component: UserPageComponent, canActivate: [AuthGuard] },
   { path: 'user-settings', component: UserSettingComponent, canActivate: [AuthGuard] },
   { path: '404', component: NotfoundComponent },

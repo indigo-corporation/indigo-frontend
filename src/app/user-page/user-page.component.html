@@ -1,9 +1,9 @@
 
-<div [@enterAnimationPage] style="height: 100%;min-height: 950px;" class="container main">
+<div [@enterAnimationPage] style="min-height: 100%;" class="container main">
       <div class="mat-tab-user">
         <div class="user-tabs_user-photo">
           <img class="user-photo" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" [src]="user.poster_large" alt="">
-            <div *ngIf="!isMyUser" class="buttons-group">
+            <!-- <div *ngIf="!isMyUser" class="buttons-group">
               <button (click)="OnChat()" mat-raised-button class="user-btn">
                 Написать сообщение
               </button>
@@ -24,7 +24,7 @@
                 <button *ngIf="isBlock" (click)="unBlockUser(user.id)" class="btn-unblock" mat-raised-button>
                   Разблокировать
               </button>
-            </div>
+            </div> -->
         </div>
         <app-user-setting (userInfoUpdate)="updatingUserInfo(user)" style="display: none;"></app-user-setting>
         <div class="user-discription">

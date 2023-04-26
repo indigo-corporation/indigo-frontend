@@ -1,30 +1,27 @@
 <div class="container main">
-    <form [@enterAnimationPage] class="page" [formGroup]="settingForm">
+    <form [@enterAnimationPage] class="page">
         <div *ngIf="user.email" class="form-group">
             <label class="sett-label">Email</label>
             <input type="text" value="{{user?.email}}" class="form-control" disabled>
         </div>
-        <div>
-            <form class="page" [formGroup]="imageForm" (ngSubmit)="postPicture()">
-                <h1 class="label-input">Загрузить картинку</h1>
+        <form class="page" [formGroup]="imageForm" (ngSubmit)="postPicture()">
+            <h1 class="label-input">Загрузить картинку</h1>
 
-                <input class="input-img" type="file" (change)="fileChangeEvent($event)" />
+            <input class="input-img" type="file" (change)="fileChangeEvent($event)" />
 
-                <image-cropper *ngIf="imageChangedEvent" [imageChangedEvent]="imageChangedEvent" 
-                    [maintainAspectRatio]="true"
-                    [aspectRatio]="1 / 1" 
-                    [resizeToWidth]="300" format="jpeg" 
-                    (imageCropped)="imageCropped($event)"
-                    (imageLoaded)="imageLoaded($event)" 
-                    (cropperReady)="cropperReady()"
-                    (loadImageFailed)="loadImageFailed()"></image-cropper>
+            <image-cropper *ngIf="imageChangedEvent" [imageChangedEvent]="imageChangedEvent" 
+                [maintainAspectRatio]="true"
+                [aspectRatio]="1 / 1" 
+                [resizeToWidth]="300" format="jpeg" 
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded($event)" 
+                (cropperReady)="cropperReady()"
+                (loadImageFailed)="loadImageFailed()"></image-cropper>
 
-                <img [src]="croppedImage" />
+            <img [src]="croppedImage" />
 
-                <button mat-stroked-button class="user-btn" type="submit">Загрузить</button>
-            </form>
-        </div>
-
+            <button mat-stroked-button class="user-btn" type="submit">Загрузить</button>
+        </form>
         <form [formGroup]="settingForm" (ngSubmit)="userChangeInfo()">
             <div class="form-group">
                 <label class="sett-label" for="inputUserName">Ваше имя пользователя</label>

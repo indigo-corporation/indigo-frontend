@@ -47,7 +47,7 @@
     <p style="font-size: 20px; color: white">Загрузка...</p>
   </ngx-spinner>
   </div>
-  <div *ngIf="!loader"class="card-row">
+  <div *ngIf="!loader" class="card-row">
       <app-card  [card]="card" [userFavorite]="userFavorite" [loader]="loader"
       (filterUserFavorite)="filterUserFavorite($event)" [container]="container" *ngFor="let card of data | paginate: { 
           id: 'listing_pagination',

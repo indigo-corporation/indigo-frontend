@@ -160,13 +160,18 @@ export class CardsComponent implements OnInit {
   }
 
   genreArrow(sortField) {
+   
     let sortDirection = "desc"
     if(this.sortField === sortField) {
       sortDirection = this.sortDirection === "desc" ? "asc" : "desc"
+      this.spinner.show();
+      this.loader = true
     } 
     this.sortField = sortField
     this.sortDirection = sortDirection
     this.getData(1)
+    this.loader = false
+    this.spinner.hide();
   }
 
   arrowsUp(): void {

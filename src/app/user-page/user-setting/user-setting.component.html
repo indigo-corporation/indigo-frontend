@@ -53,11 +53,18 @@
 
 
 
-    <form *ngIf="user.email" [formGroup]="passChangeForm" (ngSubmit)="passChage()" class="page">
+    <form *ngIf="user.email" [formGroup]="passChangeForm" class="page">
         <h1 class="passname">Изменить пароль</h1>
         <div class="form-group">
             <label class="sett-label" for="inputPassword">Пароль</label>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" formControlName="pass">
+            <div style="position: relative;">
+                <input [type]="show ? 'text' : 'password'" id="inputPassword" class="form-control" placeholder="Пароль" formControlName="pass">
+                <button class="icon-pass-eye" (click)="password()">
+                    <i *ngIf="!show" class="far fa-eye"></i>
+                    <i *ngIf="show"class="far fa-eye-slash"></i>
+                  </button>
+            </div>
+           
             <div class="auth-error" *ngIf="pass.errors?.['required'] && (pass.touched || pass.dirty)">
                 Заполните поле Пароль
             </div>
@@ -69,8 +76,14 @@
 
         <div class="form-group">
             <label class="sett-label" for="inputConfirmPassword">Подтвердить пароль</label>
-            <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Подтвердить пароль"
+            <div style="position: relative;">
+            <input [type]="showConfPass ? 'text' : 'password'" id="inputConfirmPassword" class="form-control" placeholder="Подтвердить пароль"
                 formControlName="confPass">
+                <button class="icon-pass-eye" (click)="confirmPassword()">
+                    <i *ngIf="!showConfPass" class="far fa-eye"></i>
+                    <i *ngIf="showConfPass"class="far fa-eye-slash"></i>
+                  </button>
+                </div>
             <div class="auth-error" *ngIf="confPass.errors?.['required'] && (confPass.touched || confPass.dirty)">
                 Заполните поле Подтвердить Пароль
             </div>
@@ -78,6 +91,7 @@
                 Пароль не совпадает
             </div>
         </div>
-        <button mat-raised-button [disabled]="passChangeForm.invalid" class="user-btn" type="submit">Изменить</button>
+        <button mat-raised-button [disabled]="passChangeForm.invalid" (click)="passChage()" class="user-btn" type="submit">Изменить</button>
     </form>
+    
 </div>

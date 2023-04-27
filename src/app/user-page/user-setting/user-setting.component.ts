@@ -187,6 +187,17 @@ export class UserSettingComponent implements OnInit {
     })
   }
 
+  showConfPass:boolean = false
+  show:boolean = false
+
+  password() {
+    this.show = !this.show;
+  }
+
+  confirmPassword() {
+    this.showConfPass = !this.showConfPass;
+  }
+
 
 
   passChage() {

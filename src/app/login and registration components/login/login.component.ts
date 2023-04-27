@@ -19,6 +19,7 @@ import { ModalLoginComponent } from 'src/app/modal-login/modal-login.component';
 export class LoginComponent implements OnInit {
 hidediv:boolean=true
 favoriteFilmIds
+show:boolean = false
 loginForm = new FormGroup ({
   email: new FormControl ("",[Validators.required,Validators.email]),
   password: new FormControl ("",[Validators.required,Validators.minLength(6)])
@@ -39,6 +40,13 @@ constructor(
   ngOnInit() {
     
   }
+
+ 
+
+  passwordEye() {
+    this.show = !this.show;
+  }
+
   close(): void {
     this.modalRef.close()
   }

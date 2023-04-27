@@ -11,7 +11,13 @@
   </div>
   <div class="form-group">
     <label for="inputPassword">Пароль</label>
-    <input type="password" tabindex="-1" placeholder="Введите Пароль" class="form-control" formControlName="password">
+    <div style="position: relative;">
+      <input [type]="show ? 'text' : 'password'" tabindex="-1" placeholder="Введите Пароль" class="form-control" formControlName="password">
+      <button class="icon-pass-eye" (click)="passwordEye()">
+          <i *ngIf="!show" class="far fa-eye"></i>
+          <i *ngIf="show"class="far fa-eye-slash"></i>
+        </button>
+  </div>
     <div class="auth-error" *ngIf="password.errors?.['required'] && (password.touched || password.dirty)">
       Заполните поле Пароль
     </div>

@@ -130,12 +130,12 @@ export class CardsComponent implements OnInit {
       this.data = data.data.items
       this.loader = false
       this.spinner.hide();
-      this.data.forEach(item => {
- 
-        item.isFavorite = this.userFavorite.includes(item.id);
-      });
+      if (this.userFavorite) {
+        this.data.forEach(item => {
+          item.isFavorite = this.userFavorite.includes(item.id);
+        });
+      }
       this.totalRecords = data.data.pagination.total
-      this.totalPages = data.data.pagination.total_pages
     });
   }
 

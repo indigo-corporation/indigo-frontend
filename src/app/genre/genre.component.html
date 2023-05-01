@@ -37,7 +37,7 @@
   <div *ngIf="!loader" class="card-row">
     <app-card [card]="card" *ngFor="let card of data | paginate: { 
       id: 'listing_pagination',
-      itemsPerPage: 24,
+      itemsPerPage: 48,
       currentPage: page,
       totalItems: totalRecords
     }">

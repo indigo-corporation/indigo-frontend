@@ -24,6 +24,8 @@ import { NgxSpinnerService } from "ngx-spinner";
   ],
   styleUrls: ['./genre.component.scss']
 })
+
+
 export class GenreComponent implements OnInit {
   totalRecords: string
   data: any

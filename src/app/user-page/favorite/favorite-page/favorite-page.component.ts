@@ -20,6 +20,7 @@ export class FavoritePageComponent implements OnInit {
   userFavorite
   cardId 
   user
+  userString
   loader:boolean = true
   @Output() filterUserFavorite = new EventEmitter<any>();
   constructor(
@@ -58,6 +59,11 @@ export class FavoritePageComponent implements OnInit {
     this.favoriteFilms = this.favoriteFilms.filter(x => x.id !== cardId);
   }
 
+  pushCard(cardId) {
+    this.cardId = cardId
+    this.favoriteFilms.push(this.cardId);
+  }
+
 
   genContent(): void {
     if (this.page < this.totalPages) {
@@ -81,8 +87,11 @@ export class FavoritePageComponent implements OnInit {
       this.favoriteFilms = data.data.items
       this.loader = false
       this.spinner.hide();
-    
+      
+      this.userString = localStorage.getItem("user")
+      this.userFavorite = JSON.parse(this.userString)
       if (this.userFavorite) {
+        
         this.favoriteFilms.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);
         });

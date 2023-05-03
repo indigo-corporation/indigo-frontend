@@ -14,7 +14,7 @@
   <div *ngIf="!loader">
   <ms-infinite-scroll (scrolled)="genContent()">
     <div class="card-row">
-      <app-card [card]="card" [userFavorite]="userFavorite" (removeCard)="filterCard($event)"
+      <app-card [card]="card" [userFavorite]="userFavorite" (addCard)="pushCard($event)" (removeCard)="filterCard($event)"
         *ngFor="let card of favoriteFilms">
       </app-card>
     </div>

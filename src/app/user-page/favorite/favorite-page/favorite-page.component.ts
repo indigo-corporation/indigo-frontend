@@ -88,12 +88,14 @@ export class FavoritePageComponent implements OnInit {
       this.loader = false
       this.spinner.hide();
       
-      this.userString = localStorage.getItem("user")
-      this.userFavorite = JSON.parse(this.userString)
+    /*   this.userString = localStorage.getItem("user")
+      this.userFavorite = JSON.parse(this.userString) 
+      this.userFavorite =this.userFavorite.favorite_film_ids */
       if (this.userFavorite) {
-        
+
         this.favoriteFilms.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);
+         /*  localStorage.setItem("user",JSON.stringify(this.userFavorite)) */
         });
       }
         

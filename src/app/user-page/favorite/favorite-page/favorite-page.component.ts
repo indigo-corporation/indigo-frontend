@@ -43,9 +43,9 @@ export class FavoritePageComponent implements OnInit {
   
     this.auth.user$.subscribe(x => {
       this.user = x
-      this.getFavoriteFilms()
       this.userFavorite = this.user.favorite_film_ids
     })
+    this.getFavoriteFilms()
   }
 
   myOptions = {
@@ -65,12 +65,12 @@ export class FavoritePageComponent implements OnInit {
   }
 
 
-  genContent(): void {
+   genContent(): void {
     if (this.page < this.totalPages) {
       this.page++
-      this.getFavoriteFilmsInfinity()
+    
     }
-  }
+  } 
 
  getFavoriteFilmsInfinity() {
     this.api2Service.getFavoriteFilms(this.page).subscribe((data) => {
@@ -79,26 +79,21 @@ export class FavoritePageComponent implements OnInit {
         item.isFavorite = this.userFavorite.includes(item.id);
       });
     })
-  } 
+  }  
 
 
   getFavoriteFilms() {
+    this.loader = true
     this.api2Service.getFavoriteFilms(this.page).subscribe((data) => {
       this.favoriteFilms = data.data.items
-      this.loader = false
-      this.spinner.hide();
-      
-    /*   this.userString = localStorage.getItem("user")
-      this.userFavorite = JSON.parse(this.userString) 
-      this.userFavorite =this.userFavorite.favorite_film_ids */
       if (this.userFavorite) {
-
         this.favoriteFilms.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);
-         /*  localStorage.setItem("user",JSON.stringify(this.userFavorite)) */
+   
         });
       }
-        
+      this.loader = false
+      this.spinner.hide();
       this.totalPages = data.data.pagination.total_pages
       this.totalRecords = data.data.pagination.total
     })

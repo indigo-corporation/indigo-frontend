@@ -1,4 +1,4 @@
-import { Component, OnInit,ElementRef } from '@angular/core';
+import { Component, OnInit,ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { api2Service } from '../services/api2.service';
 import { ActivatedRoute } from '@angular/router';
@@ -8,22 +8,11 @@ import { trigger, style, animate, transition } from '@angular/animations';
 import { authService } from "../services/authService.service";
 import { NgxSpinnerService } from "ngx-spinner";
 
-
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
   animations: [
-    trigger('enterAnimationPage', [
-      transition(':enter', [
-        style({ height: '0', opacity: '0', overflow: 'hidden' }),
-        animate('600ms ease-in-out', style({ height: '*', opacity: '1', overflow: 'hidden' }))
-      ]),
-      transition(':leave', [
-        style({ height: '*', opacity: '1', overflow: 'hidden' }),
-        animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
-      ])
-    ]
-    ),
+   
     trigger('enterAnimationArrow', [
       transition(':enter', [
         style({ opacity: 0 }),
@@ -55,8 +44,6 @@ export class CardsComponent implements OnInit {
   isSort:boolean = false
   sortField:string = "release_date"
   sortDirection:string ="desc"
-
-
   cardContent: any;
   @Input() data: any
 
@@ -125,7 +112,6 @@ export class CardsComponent implements OnInit {
     this.getData(1);
   }
   getData(page) {
-    this.loader = true
     this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection).subscribe((data) => {
       this.data = data.data.items
       this.loader = false
@@ -159,19 +145,14 @@ export class CardsComponent implements OnInit {
     this.getData(page)
   }
 
-  genreArrow(sortField) {
-   
+  sortArrow(sortField) {
     let sortDirection = "desc"
     if(this.sortField === sortField) {
       sortDirection = this.sortDirection === "desc" ? "asc" : "desc"
-      this.spinner.show();
-      this.loader = true
     } 
     this.sortField = sortField
     this.sortDirection = sortDirection
     this.getData(1)
-    this.loader = false
-    this.spinner.hide();
   }
 
   arrowsUp(): void {

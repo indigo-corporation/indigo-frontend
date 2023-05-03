@@ -9,17 +9,6 @@ import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-favorite-page',
   templateUrl: './favorite-page.component.html',
-  animations: [
-    trigger('cardAnimation', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('500ms ease-out', style({ opacity: 1}))
-      ]),
-      transition(':leave', [
-        animate('500ms ease-out', style({ opacity: 0 }))
-      ])
-    ])
-  ],
   styleUrls: ['./favorite-page.component.scss']
 })
 export class FavoritePageComponent implements OnInit {
@@ -90,13 +79,15 @@ export class FavoritePageComponent implements OnInit {
   getFavoriteFilms() {
     this.api2Service.getFavoriteFilms(this.page).subscribe((data) => {
       this.favoriteFilms = data.data.items
-      this.spinner.hide();
       this.loader = false
+      this.spinner.hide();
+    
       if (this.userFavorite) {
         this.favoriteFilms.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);
         });
       }
+        
       this.totalPages = data.data.pagination.total_pages
       this.totalRecords = data.data.pagination.total
     })

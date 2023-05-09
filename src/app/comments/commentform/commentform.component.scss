@@ -113,13 +113,23 @@ button {
     font-size: 16px;
     display: inline-block;
     color: #222427;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: black !important;
+    position: absolute;
+    bottom: -66px;
+    right: -360px;
+    z-index: 2;
+}
+
+.emoji-mart {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    display: inline-block;
+    color: #222427;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
-    background: #fff;
-    position: absolute;
-    right: -2px;
-    top: 134px;
-    z-index: 2;
+    background: black !important;
 }
 
 
@@ -289,6 +299,26 @@ textarea {
         align-items: start;
     }
 }
+
+
+@media all and (max-width: 900px) {
+    .emoji-mart {
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+        font-size: 16px;
+        display: inline-block;
+        color: #222427;
+        border: 1px solid black;
+        border-radius: 5px;
+        background: black;
+        position: absolute;
+        right: -2px;
+        bottom: 103px;
+        z-index: 2;
+    }
+}
+
+
+
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     .wrapper {

@@ -23,6 +23,28 @@ export class CommentformComponent implements OnInit {
   public textArea: string = '';
   user: any
 
+  i18n = {
+    search: 'Поиск',
+    clear: 'Очистить',
+    notfound: 'Не найдено',
+    categories: {
+      search: 'Результаты поиска',
+      recent: 'Недавно использованные',
+      smileys: 'Смайлики и эмоции',
+      people: 'Люди и животные',
+      nature: 'Еда, природа и путешествия',
+      foods: 'Еда и напитки',
+      activity: 'Спорт и активный отдых',
+      places: 'Путешествия и места',
+      objects: 'Предметы',
+      symbols: 'Символы',
+      flags: 'Флаги',
+      custom: 'Кастомные эмодзи',
+    },
+    categorieslabel: 'Категории эмодзи',
+  };
+
+
  ngOnInit() {
   if (this.auth.user$ && this.auth.user$.subscribe) {
     this.auth.user$.subscribe(x => {

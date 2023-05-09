@@ -139,6 +139,28 @@
     grid-template-columns: 36% 37% 36%;
     margin: 0 17px 0 21px;
   }
+  .sort {
+    grid-gap: 13px;
+    margin: 19px 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+}
+.btn-sort {
+  margin-left: 0px;
+  width: 100%;
+}
+
+  .sort-anime {
+    justify-content: center;
+    display: flex;
+    grid-gap: 13px;
+    margin: 19px 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 10px;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {

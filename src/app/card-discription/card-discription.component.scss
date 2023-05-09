@@ -112,6 +112,7 @@ summary {
 
 .share {
     display: flex;
+    flex-wrap: wrap;
     background: #1c1c1c;
     padding: 10px;
     align-items: center;
@@ -537,9 +538,10 @@ iframe {
 @media screen and (min-width: 360px) and (max-width: 720px) {
     .card-image {
         width: 100%;
-        max-height: 373px;
-        max-width: 270px;
+        max-height: 416px;
+        max-width: 100%;
         margin-left: 10px;
+        margin: 0 auto;
     }
     .poster {
         text-align: center;
@@ -611,9 +613,10 @@ iframe {
 
     .card-image {
         width: 100%;
-        border-radius: 14px;
-        max-width: 223px;
-        max-height: fit-content;
+        max-height: 416px;
+        max-width: 100%;
+        margin-left: 10px;
+        margin: 0 auto;
     }
 
     #imdb {
@@ -635,9 +638,10 @@ iframe {
 @media screen and (min-width: 412px) and (max-width: 915px) {
     .card-image {
         width: 100%;
-        max-height: 373px;
-        max-width: 270px;
+        max-height: 416px;
+        max-width: 100%;
         margin-left: 10px;
+        margin: 0 auto;
     }
     .poster {
         text-align: center;

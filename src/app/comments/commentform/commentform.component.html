@@ -12,7 +12,7 @@
                 <textarea maxlength="400" [(ngModel)]="textArea" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="1"
                     placeholder="Напишите ваш отзыв"></textarea>
                     <button class="smile-btn" (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">😀</button>
-                    <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible" (emojiSelect)="addEmoji($event)" title="Choose your emoji"></emoji-mart>
+                    <emoji-mart class="emoji-mart" [i18n]="i18n" [locale]="ru" *ngIf="isEmojiPickerVisible" (emojiSelect)="addEmoji($event)" title="Choose your emoji"></emoji-mart>
             </div>
             <button (click)="postOnBtn()" type="submit" mat-raised-button class="btn btn-danger btn-comment">Оставить отзыв</button>
         </div>

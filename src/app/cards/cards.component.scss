@@ -11,23 +11,21 @@
   margin-bottom: 49px;
 }
 
-
-
 .sort-anime {
-  justify-content: center;
+  justify-content: flex-start;
   display: flex;
   flex-wrap: wrap;
   margin: 19px 0;
+  margin-left: 10px;
 }
 
 .sort {
-  justify-content: center;
+  justify-content: start;
   display: flex;
   flex-wrap: wrap;
   margin: 19px 0;
+  margin-left: 10px;
 }
-
-
 
 .arrow {
   transition: 0.5s;

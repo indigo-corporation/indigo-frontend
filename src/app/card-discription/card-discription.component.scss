@@ -556,12 +556,18 @@ iframe {
     background: #bb0fc794;
     color: white;
     margin-right: 5px;
+    &:hover {
+        background: rgb(187 15 199 / 52%);
+    }
 }
 
 .down-btn {
     color: white;
     background: #3c3cab;
     margin-right: 5px;
+    &:hover {
+        background: #3c3cabc2;
+    }
 }
 
 

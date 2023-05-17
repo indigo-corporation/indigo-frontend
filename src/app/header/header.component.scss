@@ -48,6 +48,7 @@
      font-size: 24px;
      font-family: "TT Norms Pro,Helvetica,sans-serif";
      letter-spacing: 0.1em;
+     text-shadow: 1px 5px 3px #0c0b0b82;
 
      &:hover {
          color: white;
@@ -297,6 +298,15 @@
      /* сначала элемент невидимый */
      transition: opacity 1s ease-out;
  }
+
+ @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
  .navbar.sticky {
      /* добавьте стили для состояния sticky */

@@ -278,7 +278,7 @@ textarea {
 @media screen and (min-width: 360px) and (max-width: 720px) {
     .wrapper {
         display: grid;
-        grid-template-columns: 28% 79%;
+        grid-template-columns: 22% 79%;
         align-items: start;
     }
 
@@ -295,7 +295,7 @@ textarea {
 @media screen and (min-width: 412px) and (max-width: 915px) {
     .wrapper{
         display: grid;
-        grid-template-columns: 24% 84%;
+        grid-template-columns: 22% 79%;
         align-items: start;
     }
 }

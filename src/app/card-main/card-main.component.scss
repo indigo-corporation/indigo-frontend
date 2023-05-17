@@ -54,6 +54,16 @@ a {
 }
 
 
+@media all and (max-width: 900px) {
+  .container {
+    padding: 10px 0;
+  }
+ 
+}
+
+
+
+
 @media screen and (max-width: 1024px) {
   .main {
     height: 377px;

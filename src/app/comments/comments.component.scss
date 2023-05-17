@@ -264,3 +264,11 @@ button {
     color: rgb(134 227 128);
     cursor: pointer;
 }
+
+
+@media all and (max-width: 900px) {
+    .comment-guard {
+        font-size: 11px;
+    }
+    
+}

@@ -14,30 +14,51 @@
         <button class="btn-share" (click)="shareOnFacebook()">
             <img class="share-icon" style="width: 32px;" src="assets/icons-facebook.png">
         </button>
-       
+
     </div>
     <div class="buttons-bl">
         <div class="content-card">
             <div *ngIf="film" class="poster">
-                <img onerror="if(this.src != 'error.jpg') this.src = 'assets/error-404.avif';" class="card-image"
+                <div style="position: relative;">
+                    <img onerror="if(this.src != 'error.jpg') this.src = 'assets/error-404.avif';" class="card-image"
                     alt="{{film.title}}" [src]="film.poster">
+                     
+                    <div class="buttons">
+                        <!--  <button style="margin-left: 0" (click)="change(false)" mat-raised-button class="card-btn">
+                            <i class="fas fa-play-circle"></i>
+                            Смотреть вместе
+                        </button> -->
+                        <button [@enterAnimationText] (click)="postFavorite()" *ngIf="!film.isFavorite"
+                            class="favorite">
+                           
+                            <input style="display: none" id="favorite" type="checkbox">
+                            <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
+                        </button>
+
+                        <button [@enterAnimationText] (click)="removeFavorite()" *ngIf="film.isFavorite"
+                            class="favorite">
+                          
+                            <input style="display: none" id="favorite" checked type="checkbox">
+                            <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
 
                 <div class="discriptionforfilm">
-                   
-                    
-                    <div class="discriptionforfilm2">
-                        <h1 style="margin-left: 0" class="card-title-original">{{film.original_title}}</h1>
-                        <h1 class="card-title-original">
-                            <div class="raiting-box">
-                                <div id="imdb" *ngIf="film.imdb_rating">IMDb {{film.imdb_rating}}</div>
-                                <div id="shiki" *ngIf="film.shiki_rating">
-                                    <div>SHIKIMORI {{film.shiki_rating}}</div>
-                                </div>
+                   <div>
+                    <div class="title-and-raiting">
+                        <div class="raiting-box">
+                            <div id="imdb" *ngIf="film.imdb_rating">IMDb {{film.imdb_rating}}</div>
+                            <div id="shiki" *ngIf="film.shiki_rating && film.shiki_rating !== '0.00'">
+                              SHIKIMORI {{film.shiki_rating}}
                             </div>
-                        </h1>
+                        </div>
+                        <h1 class="card-title-ru">{{film.title}}</h1>
+                        <h1 style="margin-left: 0" class="card-title-original">{{film.original_title}}</h1>
                     </div>
-
-                    <h1 class="card-title-ru">{{film.title}}</h1>
+                   </div>
+                    
+                    
                     <div class="cont">
                         <div class="stars">
                             <ngb-rating [max]="5" ([film])="film" (click)="postStars()"
@@ -49,36 +70,19 @@
                         </div>
 
                     </div>
-                    <div class="buttons">
-                        <!--  <button style="margin-left: 0" (click)="change(false)" mat-raised-button class="card-btn">
-                            <i class="fas fa-play-circle"></i>
-                            Смотреть вместе
-                        </button> -->
-                        <button [@enterAnimationText] (click)="postFavorite()" *ngIf="!film.isFavorite" class="favorite">
-                            <span mat-raised-button class="favorite-text">Добавить в избранные</span>
-                            <input style="display: none" id="favorite" type="checkbox">
-                            <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
-                        </button>
-
-                        <button [@enterAnimationText] (click)="removeFavorite()" *ngIf="film.isFavorite" class="favorite">
-                            <span mat-raised-button class="favorite-text">Убрать из избранных</span>
-                            <input style="display: none" id="favorite" checked type="checkbox">
-                            <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
-                        </button>
-                    </div>
                     <div class="discription-text-block">
                         <span class="overview-item">
-                            <p class="discription-text genre-btn">{{film.year}}</p>
+                            <p class="discription-text up-btn">{{film.year}}</p>
                         </span>
-                    
+
                         <span class="overview-item" *ngFor="let country of film.countries.slice(0,2)">
-                            <p class="discription-text genre-btn">{{country.title}}</p>
+                            <p class="discription-text up-btn">{{country.title}}</p>
                         </span>
                         <!--   <p *ngIf="film.runtime" class="discription-text">{{film.runtime}} минуты</p> -->
                     </div>
                     <div class="genre-block">
                         <span class="genre-item" *ngFor="let genre of film.genres">
-                            <p class="discription-text genre-btn" routerLink="/{{category}}/genre/{{genre.id}}"
+                            <p class="discription-text down-btn" routerLink="/{{category}}/genre/{{genre.id}}"
                                 href="/{{category}}/genre/{{genre.id}}"> {{genre.title}} </p>
                         </span>
                     </div>

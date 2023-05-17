@@ -95,7 +95,6 @@ export class CardContentComponent implements OnInit{
       }
 
       this.title.setTitle("Смотреть" + " " + this.film.title + " " + "онлайн бесплатно в хорошем качестве")
-      debugger
       this.updateMetaTags()
 
       if (this.film.is_anime === true) {

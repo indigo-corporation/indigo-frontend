@@ -114,6 +114,10 @@ export class CardsComponent implements OnInit {
   getData(page) {
     this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection).subscribe((data) => {
       this.data = data.data.items
+      this.data.forEach(item => {
+
+        item.shiki_rating = item.shiki_rating !== "0.00" ? item.shiki_rating : null
+      });
       this.loader = false
       this.spinner.hide();
       if (this.userFavorite) {

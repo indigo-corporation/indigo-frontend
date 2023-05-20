@@ -6,9 +6,24 @@
         <p class="comments-item">{{comment.created_at | date:"d MMMM y":"ru"}}</p>
     </div>
     <div class="comments-block">
-        <p class="comment-text">
-            {{comment.body}}
-        </p>
+        <div *ngIf="comment">
+            <div *ngIf="!textView">
+                <p class="comment-text">
+                    {{comment.body}}
+                </p>
+            </div>
+            <div *ngIf="textView" [@enterAnimationPage]>
+                <p class="comment-text-open">
+                    {{comment.body}}
+                </p>
+            </div>
+            <div class="comment-spoiler">
+                <a *ngIf="!textView" class="moreTextBtn" (click)="openCloseText()">Подробнеe</a>
+                <a *ngIf="textView" class="moreTextBtn" (click)="openCloseText()">Свернуть</a>
+            </div>
+            
+        </div>
+      
         <div class="icons-comments">
             <div class="comment-nav">
                 <label (click)="changeLike(true)">

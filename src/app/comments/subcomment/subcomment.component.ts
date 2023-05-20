@@ -34,6 +34,7 @@ export class SubcommentComponent implements OnInit {
   user: any
   login: boolean = false
   comments: any
+  textView: boolean = false
   @Input() comment: any
   @Input() filmId: any
   modalRef: MdbModalRef<ModalLoginComponent> | null = null;
@@ -102,6 +103,11 @@ export class SubcommentComponent implements OnInit {
     this.modalRef.onClose.subscribe((data: any) => {
  
     });
+  }
+
+    
+  openCloseText() {
+    this.textView = !this.textView
   }
 
   changeLike(type) {

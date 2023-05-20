@@ -1,4 +1,4 @@
-<div [@enterAnimation] style="min-height: 40%" class="container main back">
+<div [@enterAnimation] style="min-height: 40%;" class="container main back">
     <div class="comments-head">
         <app-commentform  (commentPosted)="onCommentPosted({comment:$event, parentId:null})" *ngIf="login" [comment]="comment" [filmId]="filmId"></app-commentform>
         <div class="comment-guard" *ngIf="!login">

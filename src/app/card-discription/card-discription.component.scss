@@ -156,7 +156,6 @@ summary {
 
 .discription-text-block {
     display: flex;
-    margin-left: 4px;
     margin-top: 11px;
     flex-wrap: wrap;
 }
@@ -236,7 +235,6 @@ span {
 
 .genre-block {
     display: flex;
-    margin-top: 10px;
     flex-wrap: wrap;
 }
 
@@ -345,13 +343,12 @@ span {
     font-size: 22px;
 }
 
-
 .favorite:hover .favorite-ic {
     color: rgb(255, 255, 255);
 }
 
 .favorite:hover {
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(109 9 115 / 68%);
 }
 
 .favorite:hover .favorite-text {
@@ -565,6 +562,7 @@ iframe {
     color: white;
     background: #3c3cab;
     margin-right: 5px;
+    margin-top: 10px;
     &:hover {
         background: #3c3cabc2;
     }

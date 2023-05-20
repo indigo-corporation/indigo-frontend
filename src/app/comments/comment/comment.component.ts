@@ -22,6 +22,16 @@ import { trigger, style, animate, transition } from '@angular/animations';
         style({ height: '*', opacity: '1', overflow: 'hidden' }),
         animate('400ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
       ])
+    ]),
+    trigger('enterAnimationPage', [
+      transition(':enter', [
+        style({ height: '0', opacity: '0', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '*', opacity: '1', overflow: 'hidden' }))
+      ]),
+      transition(':leave', [
+        style({ height: '*', opacity: '1', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
+      ])
     ]
     )
   ],
@@ -34,6 +44,7 @@ export class CommentComponent implements OnInit {
   public textArea: string
   login: boolean = false
   user: any
+  textView: boolean = false
   modalRef: MdbModalRef<ModalLoginComponent> | null = null;
   comments: any;
   @Output() likeSubmitted = new EventEmitter<any>();
@@ -99,6 +110,13 @@ export class CommentComponent implements OnInit {
       this.openDialog()
     }
   }
+
+  
+  openCloseText() {
+    this.textView = !this.textView
+  }
+
+
 
 
 

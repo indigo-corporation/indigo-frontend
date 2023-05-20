@@ -393,6 +393,11 @@ button {
 
 }
 
+@media screen and (min-width: 1400px) {
+     .moreTextBtn {
+        display: none;
+    }
+}
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
     .icons-comments {

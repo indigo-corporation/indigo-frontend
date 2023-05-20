@@ -165,7 +165,6 @@ i {
     bottom: 16px;
 }
 
-
 .smile-btn {
     position: absolute;
     right: 1px;
@@ -504,6 +503,10 @@ button {
         grid-template-columns: 10% 90%;
         border-bottom-right-radius: 0px;
         grid-gap: 1px;
+    }
+
+     .moreTextBtn {
+        display: none;
     }
 
  

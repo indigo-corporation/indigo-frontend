@@ -324,7 +324,7 @@ button {
     color: red;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 900px) {
     .icons-comments {
         font-size: 16px;
         display: flex;
@@ -351,6 +351,10 @@ button {
         text-decoration: none;
         border: none;
     }
+
+    .moreTextBtn {
+        font-size: 10px;
+       }
 
     .comments-item {
         color: #e7e1e1;

@@ -397,7 +397,7 @@ button {
 
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 900px) {
     .icons-comments {
         font-size: 16px;
         display: flex;
@@ -406,6 +406,10 @@ button {
         align-items: center;
         flex-direction: row;
     }
+
+   .moreTextBtn {
+    font-size: 10px;
+   }
 
     .comment-guard {
         color: white;

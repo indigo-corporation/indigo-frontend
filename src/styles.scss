@@ -62,9 +62,9 @@ a:not([href]):not([class]) {
 html,
 body {
   height: 100%;
-  padding-top: 200px;
-  position: relative;
-  bottom: 22px;
+ /*  padding-top: 200px; */
+  /* position: relative;
+  bottom: 22px; */
   line-height: 1.25;
   font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
 }
@@ -342,11 +342,11 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-  body {
+/*   body {
     padding-top: 100px;
     bottom: 124px;
     position: relative;
-  }
+  } */
 }
 
 /* Importing Bootstrap SCSS file. */

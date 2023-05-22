@@ -1,4 +1,4 @@
-<div *ngIf="loader">
+<div >
   <ngx-spinner
   bdColor='black'
   size="medium"
@@ -10,7 +10,7 @@
 </div>
 
 
-<div *ngIf="!loader" style="min-height: 100%;position:relative" class="container main block">
+<div style="min-height: 100%;position:relative" class="container main block">
   <h1 class="card-title">Поиск</h1>
   <form FormGroup="searhForm" (ngSubmit)="onPageChange(1)" class="form-search form-inline form-search">
     <div class="form-group">

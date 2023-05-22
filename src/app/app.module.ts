@@ -91,7 +91,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
-  { path: 'search-page', component: SearchPageComponent },
+
   { path: 'sitemap.xml', redirectTo: 'assets/sitemap.xml' },
   { path: 'support', component: SupportPageComponent },
   { path: 'user-page/:id', component: UserPageComponent, canActivate: [AuthGuard] },
@@ -107,6 +107,7 @@ const appRoutes: Routes = [
   { path: 'anime', component: CardsComponent },
   { path: 'serial', component: CardsComponent },
   { path: 'cartoon', component: CardsComponent },
+  { path: 'search-page', component: SearchPageComponent },
   { path: ':category/:id', component: CardContentComponent },
   { path: 'reg', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'user-page', component: UserPageComponent, canActivate: [AuthGuard] },

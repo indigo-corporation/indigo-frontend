@@ -86,6 +86,8 @@ export class SearchPageComponent implements OnInit {
 
   search(find, page = 1) {
     if (!find) {
+      this.spinner.hide();
+      this.loader = false
       return
     }
       this.api2Service.search(find, page).subscribe((data) => {

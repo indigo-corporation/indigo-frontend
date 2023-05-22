@@ -5,8 +5,7 @@
             <a (click)="onLogin()" class="comments-user">{{comment.user.name}}</a>
             <p class="comments-item">{{comment.created_at | date:"d MMMM y":"ru"}}</p>
         </div>
-        <div class="comments-block">
-            
+        <div class="comments-block">    
             <div *ngIf="comment">
                 <div *ngIf="!textView">
                     <p class="comment-text">
@@ -22,10 +21,7 @@
                     <a *ngIf="!textView" class="moreTextBtn" (click)="openCloseText()">Подробнеe</a>
                     <a *ngIf="textView" class="moreTextBtn" (click)="openCloseText()">Свернуть</a>
                 </div>
-                
             </div>
-
-
 
             <div class="icons-comments">
                 <div class="comment-nav">

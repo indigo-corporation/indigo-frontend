@@ -69,8 +69,7 @@ export class SubcommentComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    debugger
-    if (this.comment.body.length > 200) {
+    if (this.comment.body.length > 300) {
       this.isCommentView = true
     } else {
       this.isCommentView = false

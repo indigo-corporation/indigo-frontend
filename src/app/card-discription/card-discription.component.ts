@@ -121,7 +121,6 @@ export class CardDiscriptionComponent implements OnInit, AfterViewInit {
   }
 
   checkOverviewLength() {
-    debugger
     if (!this.film.overview) {
       this.isFilmOverview = false
     }

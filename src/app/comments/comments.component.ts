@@ -103,9 +103,8 @@ export class CommentsComponent implements OnInit {
   getComment() {
     this.api2Service.getComments(this.filmId, this.page).subscribe((data) => {
       this.comments = data.data.items
-      debugger
       this.comments.forEach(item => {
-        item.isCommentView = item.body.length > 160;
+        item.isCommentView = item.body.length > 300;
         console.log(item.body.length);
       });
       this.totalRecords = data.data.pagination.total
@@ -119,7 +118,7 @@ export class CommentsComponent implements OnInit {
       this.comments = this.comments.concat(data.data.items)
       this.comments.forEach(item => {
         
-        item.isCommentView = item.body.length > 160;
+        item.isCommentView = item.body.length > 300;
       });
     });
   }

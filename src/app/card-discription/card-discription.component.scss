@@ -178,7 +178,7 @@ p {
     text-overflow: ellipsis;
     display: -moz-box;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 }
 
@@ -804,6 +804,11 @@ iframe {
         margin-left: 10px;
         font-size: 14px;
     }
+
+    .moreTextBtn {
+        font-size: 12px;
+    }
+
 
     .textOverview {
         font-size: 12px;

@@ -17,7 +17,7 @@
                     {{comment.body}}
                 </p>
             </div>
-            <div class="comment-spoiler">
+            <div *ngIf="comment.body.length > 160" class="comment-spoiler">
                 <a *ngIf="!textView" class="moreTextBtn" (click)="openCloseText()">Подробнеe</a>
                 <a *ngIf="textView" class="moreTextBtn" (click)="openCloseText()">Свернуть</a>
             </div>

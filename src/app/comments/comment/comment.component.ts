@@ -38,27 +38,32 @@ import { trigger, style, animate, transition } from '@angular/animations';
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent implements OnInit {
+
   isShown: boolean = false
   isCollapsed: boolean = true
+  isCommentView: boolean = false
   isNullCom: boolean;
-  public textArea: string
   login: boolean = false
-  user: any
   textView: boolean = false
+
+  public textArea: string
+  
+  user: any
   modalRef: MdbModalRef<ModalLoginComponent> | null = null;
   comments: any;
+
   @Output() likeSubmitted = new EventEmitter<any>();
   @Input() filmId: any
   @Input() comment: any
+
   userAvatar:any
   constructor(
     private cdRef: ChangeDetectorRef,
     private api2Service: api2Service,
     private auth: authService,
-    private route:ActivatedRoute,
     private modalService: MdbModalService,
-    private router:Router ,
-    private dialog: MatDialog) { }
+    private router:Router
+    ) { }
 
   ngOnInit(): void {
     this.isShown = false;
@@ -74,6 +79,10 @@ export class CommentComponent implements OnInit {
       this.login = x != null
     })
   }
+
+
+  
+
 
   postLike(is_like) {
     if(this.login) {

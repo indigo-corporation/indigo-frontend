@@ -102,8 +102,11 @@
                     <p class="textOverview">{{film.overview}}
                     </p>
                 </div>
-                <a *ngIf="!textView" class="moreTextBtn" (click)="moreText()">Подробнеe</a>
-                <a *ngIf="textView" class="moreTextBtn" (click)="backText()">Свернуть</a>
+                <div *ngIf="isFilmOverview">
+                    <a *ngIf="!textView" class="moreTextBtn" (click)="moreText()">Подробнеe</a>
+                    <a *ngIf="textView" class="moreTextBtn" (click)="backText()">Свернуть</a>
+                </div>
+                
             </div>
 
 

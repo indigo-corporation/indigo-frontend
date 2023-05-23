@@ -8,6 +8,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ModalLoginComponent } from 'src/app/modal-login/modal-login.component';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { log } from 'console';
 
 @Component({
   selector: 'app-comments',
@@ -78,6 +79,9 @@ export class CommentsComponent implements OnInit {
   }
 
 
+
+
+
   genContent(): void {
     if (this.page < this.totalPages) {
       this.page++
@@ -99,6 +103,11 @@ export class CommentsComponent implements OnInit {
   getComment() {
     this.api2Service.getComments(this.filmId, this.page).subscribe((data) => {
       this.comments = data.data.items
+      debugger
+      this.comments.forEach(item => {
+        item.isCommentView = item.body.length > 160;
+        console.log(item.body.length);
+      });
       this.totalRecords = data.data.pagination.total
       this.totalPages = data.data.pagination.total_pages
     });
@@ -108,6 +117,10 @@ export class CommentsComponent implements OnInit {
   getCommentInfinity() {
     this.api2Service.getComments(this.filmId, this.page).subscribe((data) => {
       this.comments = this.comments.concat(data.data.items)
+      this.comments.forEach(item => {
+        
+        item.isCommentView = item.body.length > 160;
+      });
     });
   }
 

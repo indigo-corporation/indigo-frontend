@@ -7,7 +7,17 @@
     align-self: center;
     width: 99px;
 }
-
+.comment-text-open {
+    word-wrap: break-word;
+    padding: 15px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    display: -webkit-box;
+    overflow-y: auto;
+    -webkit-box-orient: vertical;
+}
 
 
 a {
@@ -373,6 +383,7 @@ button {
     .comments-body {
         display: flex;
         padding: 9px;
+        border-top: 1px solid #00000052;
         background-color: #2c212e;
         margin-top: 5px;
         position: relative;
@@ -396,6 +407,24 @@ button {
     }
 
 }
+
+@media screen and (max-width: 900px) {
+    .comment-text {
+        word-wrap: break-word;
+        padding: 15px;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -moz-box;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        height: 175px;
+    }
+
+}
+
+
 
 @media screen and (min-width: 1400px) {
      .moreTextBtn {

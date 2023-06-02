@@ -13,6 +13,7 @@ import { authService } from './services/authService.service';
   providedIn:"root"
 })
 export class HttpErrorInterceptorService implements HttpInterceptor {
+  errorMessage:any
 
   constructor(private alertify:AlertifyService, private auth:authService) {}
 
@@ -29,7 +30,10 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
           if (errorCode == 120) {
             return throwError(error);
           }
-          if (error.status == 422) {
+        /*  if (error.status == 422) {
+            return throwError(error);
+          }  */
+          if (error.status == 404) {
             return throwError(error);
           }
           if (error.status == 404) {
@@ -40,9 +44,13 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
             window.location.replace("")
             return throwError(error);
           }
-          const errorMessage = error.error.data.message
+          this.errorMessage = error.error.data.message
+          debugger
+          if (this.errorMessage == "The email has already been taken.") {
+            this.errorMessage = "Эмейл занят"
+          }
          
-          this.alertify.error(errorMessage);
+          this.alertify.error(this.errorMessage);
           return throwError(error);
         })
       );

@@ -93,7 +93,7 @@ import { Meta, Title } from '@angular/platform-browser';
            this.alertify.success('Успешная регистрация'); 
             this.auth.getUser()
             this.router.navigate(["/"])               
-           } 
+           }
         })
     }
 }

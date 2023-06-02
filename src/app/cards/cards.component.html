@@ -1,5 +1,7 @@
 <div style="min-height:100%; position: relative;" class="container main block">
-  
+  <div>
+    <h1>Реклама</h1>
+  </div> 
   <div *ngIf="isSortAnime" class="sort-anime">
 
     <button (click)="sortArrow('release_date')" class="btn-sort">По году выпуска
@@ -53,7 +55,6 @@
       <p style="font-size: 20px; color: white">Загрузка...</p>
     </ngx-spinner>
   </div>
-
   <div *ngIf="!loader" class="card-row">
     <app-card 
     [card]="card" 
@@ -69,7 +70,6 @@
         }">
     </app-card>
   </div>
-
   <div *ngIf="data.length >=1" class="paginate">
     <pagination-controls id="listing_pagination" directionalLinks="true" (pageChange)="onPageChange($event)"
       previousLabel="Назад" nextLabel="Вперед">

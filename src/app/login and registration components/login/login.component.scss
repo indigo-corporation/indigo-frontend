@@ -7,14 +7,19 @@ body {
 }
 
 .btn-reg {
-    font-weight: bold;
-    margin-top: 10px;
+    font-weight: 700;
+    margin-top: 18px;
     width: 100%;
     background: #4c3f93;
-    color: white;
+    color: #fff;
+    height: 40px;
     &:hover {
         color: black;
     }
+}
+
+label {
+    margin: 5px 0;
 }
 
 .icon-pass-eye {
@@ -59,8 +64,9 @@ input{
 
 .login {
     font-weight: bold;
-    margin-top: 10px;
     width: 100%;
+    margin-top: 40px;
+    height: 40px;
     background: #4c3f93;
     color: white;
     &:hover {

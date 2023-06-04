@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable, of } from "rxjs";
 import * as e from "express";
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class authService {
     user$ = new BehaviorSubject<any>(null);
 
-    readonly url = "https://api.indigofilms.online/api/"
+    readonly url = environment.apiUrl;
     readonly apiKey = "1|jrWKPCXBPlgGmBp1YMqtnwW4pwesoCzuxNLqPk62"
     constructor(
         private http: HttpClient,

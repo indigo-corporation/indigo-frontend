@@ -193,6 +193,7 @@
      position: absolute;
      top: 100;
      right: 0;
+     width: 143px;
      border-radius: 8px;
      padding: 0;
      z-index: 3;
@@ -367,7 +368,8 @@
      margin-left: 6px;
      display: flex;
      align-items: center;
-     padding: 16px;
+     padding: 16px 28px;
+     border-bottom: 1px solid #00000030;
      margin: 0;
      background: #4c3f93;
 

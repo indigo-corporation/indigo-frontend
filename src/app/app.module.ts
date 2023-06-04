@@ -36,7 +36,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LazyLoadImageModule, LAZYLOAD_IMAGE_HOOKS, ScrollHooks } from 'ng-lazyload-image';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgxSpinnerModule } from "ngx-spinner";
-
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -87,11 +87,12 @@ import { AutoFocusDirectiveDirective } from './auto-focus-directive.directive';
 import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { CardComponent } from './card/card.component';
 import { CardForSwipersComponent } from './card-for-swipers/card-for-swipers.component';
-import { ImageCropperModule } from 'ngx-image-cropper';
+import { NewPassComponent } from './new-pass/new-pass.component';
+
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
-
+  { path: 'support', component: SupportPageComponent },
   { path: 'sitemap.xml', redirectTo: 'assets/sitemap.xml' },
   { path: 'support', component: SupportPageComponent },
   { path: 'user-page/:id', component: UserPageComponent, canActivate: [AuthGuard] },
@@ -109,6 +110,7 @@ const appRoutes: Routes = [
   { path: 'cartoon', component: CardsComponent },
   { path: 'search-page', component: SearchPageComponent },
   { path: ':category/:id', component: CardContentComponent },
+  { path: 'remember-pass1488', component: NewPassComponent },
   { path: 'reg', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'user-page', component: UserPageComponent, canActivate: [AuthGuard] },
   { path: 'user-settings', component: UserSettingComponent, canActivate: [AuthGuard] },
@@ -164,7 +166,7 @@ const appRoutes: Routes = [
     ModalLoginComponent,
     CardComponent,
     CardForSwipersComponent,
-
+    NewPassComponent
   ],
   imports: [
     BrowserModule,
@@ -198,7 +200,6 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     AngularTelegramLoginWidgetModule,
     MatNativeDateModule,
-    ReactiveFormsModule,
     NgxSpinnerModule.forRoot({ type: 'ball-clip-rotate' }),
     InfiniteScrollModule
   ],

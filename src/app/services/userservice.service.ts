@@ -2,13 +2,15 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import * as e from "express";
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class userService {
-    readonly url = "https://api.indigofilms.online/api/"
+    readonly url = environment.apiUrl;
     constructor(private http: HttpClient) {
 
     }

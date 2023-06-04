@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://api.indigofilms.online/api'
+  apiUrl: 'https://api.indigofilms.online/api/'
 };
 
 

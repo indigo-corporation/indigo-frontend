@@ -37,8 +37,6 @@ export class GenreMenuComponent implements OnInit {
     } else {
       this.getGenres()
     }
-
-    this.id = this.route.snapshot.paramMap.get('slug');
     this.category = this.route.snapshot.params.category 
   } 
 

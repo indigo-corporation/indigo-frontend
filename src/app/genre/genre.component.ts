@@ -5,7 +5,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { authService } from "../services/authService.service";
 import { NgxSpinnerService } from "ngx-spinner";
-import { log } from 'console';
+
 
 
 @Component({
@@ -100,7 +100,6 @@ export class GenreComponent implements OnInit {
     var slug: string = this.route.snapshot.params.slug;
     this.slug = slug.split("-")
     this.id = this.slug.pop()
-
     this.getGenreFilms(this.id, this.page, this.type)
 
     if (this.typeName === "Аниме") {

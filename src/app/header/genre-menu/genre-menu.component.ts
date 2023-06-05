@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
 import { api2Service } from 'src/app/services/api2.service';
 import { Router,ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 @Component({
   selector: 'app-genre-menu',
   templateUrl: './genre-menu.component.html',
@@ -38,8 +37,9 @@ export class GenreMenuComponent implements OnInit {
     } else {
       this.getGenres()
     }
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.category = this.route.snapshot.params.category
+
+    this.id = this.route.snapshot.paramMap.get('slug');
+    this.category = this.route.snapshot.params.category 
   } 
 
   getGenres() {
@@ -70,7 +70,6 @@ getGenresAnime() {
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
       this.genres = data;
-      debugger
     });
   }
 }

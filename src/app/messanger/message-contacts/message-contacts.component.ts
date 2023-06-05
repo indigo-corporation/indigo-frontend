@@ -48,7 +48,6 @@ export class MessageContactsComponent implements OnInit {
   }
 
   onScroll() {
-    console.log("scrolled down!!");
     debugger
     if(this.page < this.totalPages) {
       this.page++
@@ -64,7 +63,6 @@ export class MessageContactsComponent implements OnInit {
     if ($event.target.value.length >= 2) {
       this.getSearchContacts($event.target.value)
     }
-    console.log($event.target.value.length);
   }
 
   getSearchContacts(find) {
@@ -102,7 +100,6 @@ export class MessageContactsComponent implements OnInit {
   getContactsInfinity() {
     this.messangerService.getContacts(this.page).subscribe((data)=> {
        this.contacts = this.contacts.concat(data.data.items)
-      console.log(this.contacts);
     })
   }
 
@@ -128,8 +125,6 @@ export class MessageContactsComponent implements OnInit {
       this.contact = false
       this.onContact.next(this.contact)
     } 
-      console.log(data);
-      debugger
     }); 
   }
 

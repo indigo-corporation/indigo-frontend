@@ -43,7 +43,6 @@ export class AuthInterceptorService implements HttpInterceptor {
                     if (err.status === 401 && err.url !== environment.apiUrl) {
                         this.auth.logOut()
                         this.router.navigate([""])
-                        console.log(err);
                     }
                 }
                 if (err.status === 404) {

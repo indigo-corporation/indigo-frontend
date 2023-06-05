@@ -18,11 +18,11 @@ export class SeoService {
 
     this.metaTag.addTags([
       {name:"viewport", content:"width=device-width, initial-scale=1"},
-      {name:"author", content: "IndigoFilm"},
+      {name:"author", content: "IndigoFilms"},
       {name:"language", content: "ru"},
       {name:"robots", content: "index, follow"},
-      {name:"description", content: "Смотри фильмы и сериалы онлайн на IndigoFilm, ОРИГИНАЛЬНЫЙ сайт IndigoFilm, большая база фильмов и сериалов онлайн!"},
-      {name:"keywords", content: "Фильмы, Сериалы, Аниме, Мультфильмы"},
+      {name:"description", content: "Смотри фильмы и сериалы онлайн на IndigoFilms, ОРИГИНАЛЬНЫЙ сайт IndigoFilms, большая база фильмов и сериалов онлайн!, индигофилмс, индиго филмс, indigofilms, indigo films индигофилмс, индиго филмс, indigofilms, indigo films"},
+      {name:"keywords", content: "Фильмы, Сериалы, Аниме, Мультфильмы, индигофилмс, индиго филмс, indigofilms, indigo films"},
     ]);
 }
 

@@ -103,7 +103,7 @@ const appRoutes: Routes = [
   /*   { path: 'card-profile/:id/watch-together', component: CardContentComponent }, */
   { path: 'favorite', component: FavoritePageComponent, canActivate: [AuthGuard] },
   { path: 'remember-pass', component: RememberPassComponent },
-  { path: ':type/genre/:id', component: GenreComponent },
+  { path: ':type/genre/:slug', component: GenreComponent },
   { path: 'film', component: CardsComponent },
   { path: 'anime', component: CardsComponent },
   { path: 'serial', component: CardsComponent },

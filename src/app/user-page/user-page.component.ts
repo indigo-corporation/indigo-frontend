@@ -207,7 +207,6 @@ export class UserPageComponent implements OnInit {
       let myUser = this.user
       this.user = data.data
       this.isMyUser = myUser.id == this.user.id
-      console.log(myUser, this.user);
     });
   }
 /* 
@@ -222,7 +221,6 @@ export class UserPageComponent implements OnInit {
  */
   getData(page) {
     this.api2Service.getData(page).subscribe((data) => {
-      console.log(data);
       this.data = data
       this.totalRecords = data.data.items
     });

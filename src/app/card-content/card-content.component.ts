@@ -61,16 +61,15 @@ export class CardContentComponent implements OnInit{
   }
   ngOnInit() {
     this.spinner.show();
+    
     var slug: string = this.route.snapshot.params.id;
     this.slug = slug.split("-")
     this.id = this.slug.pop()
-   
     this.auth.user$.subscribe(x => {
       this.login = x != null
       
       if (this.login) {
         let user = x
-
         this.userFavorite = user ? user.favorite_film_ids : [];
       }
     })
@@ -99,12 +98,12 @@ export class CardContentComponent implements OnInit{
 
       if (this.film.is_anime === true) {
         this.meta.addTag(
-          { name: "description", content: this.film.title + this.film.original_title + "Аниме, Анимесериалы, Анимесериал, Смотреть Аниме онлайн, Аниме HD, совместный просмотр" })
+          { name: "description", content: this.film.title + this.film.original_title + "Аниме, Анимесериалы, Анимесериал, Смотреть Аниме онлайн, Аниме HD, совместный просмотр, индигофилмс, индиго филмс, indigofilms, indigo films" })
       }
 
       if (this.film.is_serila === true) {
         this.meta.addTag(
-          { name: "description", content: this.film.title + this.film.original_title + "Сериалы, сериал, Смотреть сериалы онлайн, сериалы HD, совместный просмотр" })
+          { name: "description", content: this.film.title + this.film.original_title + "Сериалы, сериал, Смотреть сериалы онлайн, сериалы HD, совместный просмотр, индигофилмс, индиго филмс, indigofilms, indigo films" })
       }
 
     });
@@ -113,7 +112,7 @@ export class CardContentComponent implements OnInit{
 
   updateMetaTags() {
     this.meta.updateTag({ name: 'og:title', content: this.film.title });
-    this.meta.updateTag({ name: 'og:description', content: this.film.overview });
+    this.meta.updateTag({ name: 'og:description', content: this.film.overview});
     this.meta.updateTag({ name: 'og:url', content: this.url });
     this.meta.updateTag({ name:'og:site_name', content:'IndigoFilms' });
   }

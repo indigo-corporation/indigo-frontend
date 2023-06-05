@@ -25,17 +25,12 @@ export class NewPassComponent implements OnInit {
     {
         validators: this.MustMatch("password", "confirmPassword")
     })
-    console.log(this.newPassForm);
-    
-   
   }
 
   ngOnInit() {
-    console.log(this.newPassForm.value);
   }
 
   onSubmit() {
-    console.log(this.newPassForm.value);
     
   }
 

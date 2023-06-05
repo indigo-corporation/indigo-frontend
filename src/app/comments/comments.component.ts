@@ -105,7 +105,6 @@ export class CommentsComponent implements OnInit {
       this.comments = data.data.items
       this.comments.forEach(item => {
         item.isCommentView = item.body.length > 300;
-        console.log(item.body.length);
       });
       this.totalRecords = data.data.pagination.total
       this.totalPages = data.data.pagination.total_pages

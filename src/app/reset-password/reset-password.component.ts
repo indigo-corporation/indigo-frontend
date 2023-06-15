@@ -62,7 +62,7 @@ export class ResetPasswordComponent implements OnInit {
       if (token) {
       localStorage.setItem("token",token);
       this.alertify.success('Успешно изменено'); 
-      this.router.navigate(["/"])   
+      window.location.replace('') 
       }    
     })
   }

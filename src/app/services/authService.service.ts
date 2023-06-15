@@ -65,6 +65,13 @@ export class authService {
         return this.http.post(this.url + "auth/google", data)
     }
 
+    sendResetPassword(data) {
+        return this.http.post(this.url + "auth/send-reset-password", data)
+    }
+
+    resetPassword(data) {
+        return this.http.post(this.url + "auth/reset-password", data)
+    }
 
     logOut() {
         return this.http.post(this.url + "auth/logout", null)

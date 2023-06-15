@@ -88,7 +88,7 @@ import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { CardComponent } from './card/card.component';
 import { CardForSwipersComponent } from './card-for-swipers/card-for-swipers.component';
 import { NewPassComponent } from './new-pass/new-pass.component';
-
+import { ResetPasswordComponent } from './reset-password/reset-password.component'
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -102,7 +102,8 @@ const appRoutes: Routes = [
    { path: 'message', component: MessangerComponent, canActivate: [AuthGuard]  }, */
   /*   { path: 'card-profile/:id/watch-together', component: CardContentComponent }, */
   { path: 'favorite', component: FavoritePageComponent, canActivate: [AuthGuard] },
-  { path: 'remember-pass', component: RememberPassComponent },
+  { path: 'send-reset-password', component: RememberPassComponent },
+  { path: 'reset-password/:token', component: ResetPasswordComponent },
   { path: ':type/genre/:slug', component: GenreComponent },
   { path: 'film', component: CardsComponent },
   { path: 'anime', component: CardsComponent },
@@ -166,7 +167,8 @@ const appRoutes: Routes = [
     ModalLoginComponent,
     CardComponent,
     CardForSwipersComponent,
-    NewPassComponent
+    NewPassComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

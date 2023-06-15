@@ -22,7 +22,7 @@
       Заполните поле Пароль
     </div>
      <div style="display: flex; justify-content: flex-end;">
-      <a tabindex="-1" class="btn-remember" (click)="close()" routerLink="/remember-pass" href="/remember-pass">Забыл пароль?</a>
+      <a tabindex="-1" class="btn-remember" (click)="close()" routerLink="/send-reset-password" href="/send-reset-password">Забыл пароль?</a>
     </div>
     
     <div class="auth-error" *ngIf="password.errors?.['minlength'] || password.errors?.['maxlength'] && (password.touched || password.dirty)">

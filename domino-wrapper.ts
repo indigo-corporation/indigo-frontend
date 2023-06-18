@@ -6,6 +6,8 @@ const template = readFileSync(join('dist/front-end/browser', 'index.html')).toSt
 const win = domino.createWindow(template);
 
 // Заполняем глобальный объект `window` данными, которые нам нужны на стороне сервера
-(global as any)['window'] = win;
-(global as any)['document'] = win.document;
+(global as any).window = win;
+(global as any).document = win.document;
+(global as any).navigator = win.navigator;
+(global as any).location = win.location;
 (global as any)['sessionStorage'] = win.sessionStorage;

@@ -35,7 +35,6 @@ export class RememberPassComponent implements OnInit {
   }
 
   postEmail() {
-    debugger
     this.auth.sendResetPassword(this.emailForm.value).subscribe((data)=> {
       console.log(data);
       this.alertify.warning('Подтвердите восстановления пороля на почте'); 

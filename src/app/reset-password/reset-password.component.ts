@@ -50,7 +50,6 @@ export class ResetPasswordComponent implements OnInit {
 
   ngOnInit() {
     this.tokenParam = this.route.snapshot.params.token;
-    debugger
   this.resetPassForm.patchValue({
         token: this.tokenParam
       }); 

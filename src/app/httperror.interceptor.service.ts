@@ -45,7 +45,6 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
             return throwError(error);
           }
           this.errorMessage = error.error.data.message
-          debugger
           if (this.errorMessage == "The email has already been taken.") {
             this.errorMessage = "Эмейл занят"
           }

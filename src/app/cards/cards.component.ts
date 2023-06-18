@@ -106,7 +106,6 @@ export class CardsComponent implements OnInit, AfterViewInit {
     }
 
     if (this.category === this.type) {
-      debugger
       this.title.setTitle("Смотреть Фильмы в хорошем качестве в 720p hd")
       this.meta.addTag(
         { name: "description", content: "Фильмы, Фильм, Смотреть фильмы онлайн, фильмы HD, совместный просмотр, индигофилмс, индиго филмс, indigofilms, indigo films" })

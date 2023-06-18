@@ -1,4 +1,13 @@
-import { Component, OnInit, HostListener, Inject, ElementRef, ChangeDetectorRef, ApplicationRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  HostListener,
+  Inject,
+  ElementRef,
+  ChangeDetectorRef,
+  ApplicationRef,
+  PLATFORM_ID
+} from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -11,6 +20,7 @@ import { api2Service } from '../services/api2.service';
 import { Input } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -92,9 +102,13 @@ export class HeaderComponent implements OnInit {
     private MatMenuModule: MatMenuModule,
     private cdRef: ChangeDetectorRef,
     private appRef: ApplicationRef,
-    private dialog: MatDialog) {
+    private dialog: MatDialog,
+    @Inject(PLATFORM_ID) private platformId: Object
+    ) {
 
-    this.isMobile = window.matchMedia('(max-width: 900px)').matches;
+    if (isPlatformBrowser(this.platformId)) {
+      this.isMobile = window.matchMedia('(max-width: 900px)').matches;
+    }
 
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -125,8 +139,10 @@ export class HeaderComponent implements OnInit {
   onWindowScroll(e) {
     this.threshold = 0;
     const navbar = this.elementRef.nativeElement.querySelector('#navbar');
-    if (window.matchMedia('(max-width: 600px)').matches) {
-      this.threshold = 0;
+    if (isPlatformBrowser(this.platformId)) {
+      if (window.matchMedia('(max-width: 600px)').matches) {
+        this.threshold = 0;
+      }
     }
 
     if (window.pageYOffset > this.threshold) {

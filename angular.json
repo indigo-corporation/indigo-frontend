@@ -179,17 +179,18 @@
             "options": {
               "routes": [
                 "/",
-                "/search-page",
-                "/support",
-                "/copyright",
-                "/remember-pass",
                 "/film",
                 "/anime",
                 "/serial",
-                "/anime/saga-o-vinlande-2-8389",
                 "/cartoon",
-                "/dialog",
-                "/reg",
+                "/anime/sdelay-moy-den-27671",
+                "/cartoon/gubka-bob-kvadratnye-shtany-predstavlyaet-prilivnuyu-zonu-81402",
+                "/serial/kino-pro-banditov-81956",
+                "/film/hezabyvaemyy-god-ocen-81906",
+                "/search-page",
+                "/support",
+                "/copyright",
+                "/send-reset-password",
                 "/404"
               ]
             },

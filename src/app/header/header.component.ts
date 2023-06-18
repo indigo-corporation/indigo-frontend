@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Inject, ElementRef, ChangeDetectorRef,ApplicationRef} from '@angular/core';
+import { Component, OnInit, HostListener, Inject, ElementRef, ChangeDetectorRef, ApplicationRef } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -60,12 +60,14 @@ export class HeaderComponent implements OnInit {
   isArrow2: boolean = false;
   isArrow3: boolean = false;
   isArrow4: boolean = false;
+  isMainMenuOpen: boolean = true;
   @Input() data: any
   arrowId: any = ""
   user: any
   film: any
   body: any
   serchElm
+
   isNotification: boolean = false
   arrowIdValue
   modalRef: MdbModalRef<ModalLoginComponent> | null = null;
@@ -73,6 +75,8 @@ export class HeaderComponent implements OnInit {
   id: any
   threshold: number;
   page: any
+  isMobile: boolean;
+  isLargeScreen: boolean = true;
   category
   user$: Observable<Date>;
   isMenuOpen: boolean = false;
@@ -89,11 +93,14 @@ export class HeaderComponent implements OnInit {
     private cdRef: ChangeDetectorRef,
     private appRef: ApplicationRef,
     private dialog: MatDialog) {
+
+    this.isMobile = window.matchMedia('(max-width: 900px)').matches;
+
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
     this.router.events.subscribe((evt) => {
-      
+
       if (evt instanceof NavigationEnd) {
         this.router.navigated = false;
       }
@@ -101,21 +108,25 @@ export class HeaderComponent implements OnInit {
         this.arrowsUp()
         this.searchClose()
         this.isMenuOpen = false
-        this.isCollapsed = true;
+        this.isCollapsed = true
         this.isNotification = false
       }
     });
-
+    this.checkScreenSize();
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.checkScreenSize();
+  }
 
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
-    this.threshold = 202;
+    this.threshold = 0;
     const navbar = this.elementRef.nativeElement.querySelector('#navbar');
     if (window.matchMedia('(max-width: 600px)').matches) {
-      this.threshold = 100;
+      this.threshold = 0;
     }
 
     if (window.pageYOffset > this.threshold) {
@@ -124,26 +135,42 @@ export class HeaderComponent implements OnInit {
       navbar.classList.remove('sticky');
     }
   }
-  
+
+  checkScreenSize() {
+    this.isLargeScreen = window.innerWidth >= 900; // Здесь вы можете задать свою ширину экрана для разделения на большие и маленькие экраны
+  }
+
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
-
 
   ngOnInit() {
     if (this.auth.user$ && this.auth.user$.subscribe) {
       this.auth.user$.subscribe(x => {
         this.login = x != null
-        this.user = x  
+        this.user = x
         this.isShown = false;
       })
     }
-  
+
+  }
+
+  toggleSearchMobile(search) {
+    this.isLargeScreen = false
+    const term = search || "";
+    this.router.navigate(["/search-page"], {
+      queryParams: {
+        page: 1,
+        term: term
+      }
+    });
   }
 
   toggleSearch() {
+    this.isLargeScreen = true
     this.isShown = !this.isShown
   }
+
 
   toggleBell() {
     this.isNotification = !this.isNotification
@@ -204,7 +231,7 @@ export class HeaderComponent implements OnInit {
   }
 
   signOut() {
-    this.auth.logOut().subscribe((data)=> {
+    this.auth.logOut().subscribe((data) => {
       localStorage.clear()
       window.location.replace('')
     })

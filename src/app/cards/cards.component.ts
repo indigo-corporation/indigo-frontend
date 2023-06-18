@@ -1,4 +1,4 @@
-import { Component, OnInit,ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { api2Service } from '../services/api2.service';
 import { ActivatedRoute } from '@angular/router';
@@ -7,23 +7,13 @@ import { Meta, Title } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { authService } from "../services/authService.service";
 import { NgxSpinnerService } from "ngx-spinner";
-
+import { log } from 'console';
 
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
   animations: [
-    trigger('enterAnimationPage', [
-      transition(':enter', [
-        style({ height: '0', opacity: '0', overflow: 'hidden' }),
-        animate('600ms ease-in-out', style({ height: '*', opacity: '1', overflow: 'hidden' }))
-      ]),
-      transition(':leave', [
-        style({ height: '*', opacity: '1', overflow: 'hidden' }),
-        animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
-      ])
-    ]
-    ),
+
     trigger('enterAnimationArrow', [
       transition(':enter', [
         style({ opacity: 0 }),
@@ -37,26 +27,26 @@ import { NgxSpinnerService } from "ngx-spinner";
   ],
   styleUrls: ['./cards.component.scss']
 })
-export class CardsComponent implements OnInit {
+export class CardsComponent implements OnInit, AfterViewInit {
 
   isArrow1: boolean = false;
   isArrow2: boolean = false;
   isArrow3: boolean = false;
   category: any
+  url: string = window.location.href;
   term: any;
   totalRecords: number
   page: number
   name: any
   log: any
-  totalPages:any
+  totalPages: any
   film: any
+  type: any
   favoriteFilmIds
-  isSortAnime:boolean =false
-  isSort:boolean = false
-  sortField:string = "release_date"
-  sortDirection:string ="desc"
-
-
+  isSortAnime: boolean = false
+  isSort: boolean = false
+  sortField: string = "release_date"
+  sortDirection: string = "desc"
   cardContent: any;
   @Input() data: any
 
@@ -64,10 +54,19 @@ export class CardsComponent implements OnInit {
   login
   userFavorite
 
-  loader:boolean = true
+
+  typeName: string
+  nameTypeRu = {
+    film: "Фильмы",
+    serial: "Сериалы",
+    anime: "Аниме",
+    cartoon: "Мультфильмы"
+  }
+
+  loader: boolean = true
   constructor(
     private api2Service: api2Service,
-    private el:ElementRef,
+    private el: ElementRef,
     private auth: authService,
     private router: Router,
     private route: ActivatedRoute,
@@ -80,6 +79,7 @@ export class CardsComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.spinner.show();
     this.auth.user$.subscribe(x => {
       this.login = x != null
@@ -88,57 +88,80 @@ export class CardsComponent implements OnInit {
         this.userFavorite = user ? user.favorite_film_ids : [];
       }
     })
-    this.page=this.route.snapshot.queryParams.page
-    if(!this.page) {
-      this.page = 1 
-    }
+
+    this.page = this.route.snapshot.queryParams.page
     this.category = this.route.snapshot.url[0].path
-      if (this.category === "anime") {
-        this.isSortAnime = true
-        this.isSort = false
-      } else {
-        this.isSort = true
-      }
-    if (this.category === "film") {
+    this.typeName = this.nameTypeRu[this.category]
+
+    this.updateMetaTagsCategory()
+
+    if (!this.page) {
+      this.page = 1
+    }
+    if (this.category === "anime") {
+      this.isSortAnime = true
+      this.isSort = false
+    } else {
+      this.isSort = true
+    }
+
+    if (this.category === this.type) {
+      debugger
       this.title.setTitle("Смотреть Фильмы в хорошем качестве в 720p hd")
       this.meta.addTag(
-        { name: "description", content: "Фильмы, Фильм, Смотреть фильмы онлайн, фильмы HD, совместный просмотр" })
+        { name: "description", content: "Фильмы, Фильм, Смотреть фильмы онлайн, фильмы HD, совместный просмотр, индигофилмс, индиго филмс, indigofilms, indigo films" })
     }
 
-    if (this.category === "serial") {
+    if (this.category === "Cериалы") {
       this.title.setTitle("Смотреть Сериалы в хорошем качестве в 720p hd")
       this.meta.addTag(
-        { name: "description", content: "Сериалы, сериал, Смотреть сериалы онлайн, сериалы HD, совместный просмотр" })
+        { name: "description", content: "Сериалы, сериал, Смотреть сериалы онлайн, сериалы HD, совместный просмотр, индигофилмс, индиго филмс, indigofilms, indigo films" })
     }
 
-    if (this.category === "cartoon") {
+    if (this.category === "Мультфильмы") {
       this.title.setTitle("Смотреть Мультфильмы в хорошем качестве в 720p hd")
       this.meta.addTag(
-        { name: "description", content: "Мультфильмы, Мультфильмсериалы, Мультфильтсериал, Смотреть Мультфильмы онлайн, Мультфильмы HD, совместный просмотр" })
+        { name: "description", content: "Мультфильмы, Мультфильмсериалы, Мультфильтсериал, Смотреть Мультфильмы онлайн, Мультфильмы HD, совместный просмотр, индигофилмс, индиго филмс, indigofilms, indigo films" })
     }
-
-    if (this.category === "anime") {
+    if (this.category === "Аниме") {
       this.title.setTitle("Смотреть Аниме в хорошем качестве в 720p hd")
       this.meta.addTag(
-        { name: "description", content: "Аниме, Анимесериалы, Анимесериал, Смотреть Аниме онлайн, Аниме HD, совместный просмотр" })
+        { name: "description", content: "Аниме, Анимесериалы, Анимесериал, Смотреть Аниме онлайн, Аниме HD, совместный просмотр, индигофилмс, индиго филмс, indigofilms, indigo films" })
     }
     this.getData(1);
   }
+
+
+  ngAfterViewInit() {
+
+  }
+
+
+  updateMetaTagsCategory() {
+    this.meta.updateTag({ name: 'og:title', content: "Смотреть " + this.typeName + " " + " в хорошем качестве в 720p hd" });
+    this.meta.updateTag({ name: 'og:description', content: "Смотреть " + this.typeName + " " + " в хорошем качестве в 720p hd, , индигофилмс, индиго филмс, indigofilms, indigo films" });
+    this.meta.updateTag({ name: 'og:url', content: this.url });
+    this.meta.updateTag({ name: 'og:site_name', content: 'IndigoFilms' });
+  }
+
+
   getData(page) {
-    this.loader = true
     this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection).subscribe((data) => {
       this.data = data.data.items
+      this.data.forEach(item => {
+
+        item.shiki_rating = item.shiki_rating !== "0.00" ? item.shiki_rating : null
+      });
       this.loader = false
       this.spinner.hide();
       if(this.data && this.userFavorite) {
         this.data.forEach(item => {
- 
+
           item.isFavorite = this.userFavorite.includes(item.id);
         });
       }
-    
+
       this.totalRecords = data.data.pagination.total
-      this.totalPages = data.data.pagination.total_pages
     });
   }
 
@@ -148,7 +171,7 @@ export class CardsComponent implements OnInit {
         item.isFavorite = userFavorite.includes(item.id);
       });
     }
-  } 
+  }
 
 
   onPageChange(page) {
@@ -162,11 +185,11 @@ export class CardsComponent implements OnInit {
     this.getData(page)
   }
 
-  genreArrow(sortField) {
+  sortArrow(sortField) {
     let sortDirection = "desc"
-    if(this.sortField === sortField) {
+    if (this.sortField === sortField) {
       sortDirection = this.sortDirection === "desc" ? "asc" : "desc"
-    } 
+    }
     this.sortField = sortField
     this.sortDirection = sortDirection
     this.getData(1)

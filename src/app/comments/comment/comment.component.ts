@@ -22,32 +22,48 @@ import { trigger, style, animate, transition } from '@angular/animations';
         style({ height: '*', opacity: '1', overflow: 'hidden' }),
         animate('400ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
       ])
+    ]),
+    trigger('enterAnimationPage', [
+      transition(':enter', [
+        style({ height: '0', opacity: '0', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '*', opacity: '1', overflow: 'hidden' }))
+      ]),
+      transition(':leave', [
+        style({ height: '*', opacity: '1', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
+      ])
     ]
     )
   ],
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent implements OnInit {
+
   isShown: boolean = false
   isCollapsed: boolean = true
+  isCommentView: boolean = false
   isNullCom: boolean;
-  public textArea: string
   login: boolean = false
+  textView: boolean = false
+
+  public textArea: string
+  
   user: any
   modalRef: MdbModalRef<ModalLoginComponent> | null = null;
   comments: any;
+
   @Output() likeSubmitted = new EventEmitter<any>();
   @Input() filmId: any
   @Input() comment: any
+
   userAvatar:any
   constructor(
     private cdRef: ChangeDetectorRef,
     private api2Service: api2Service,
     private auth: authService,
-    private route:ActivatedRoute,
     private modalService: MdbModalService,
-    private router:Router ,
-    private dialog: MatDialog) { }
+    private router:Router
+    ) { }
 
   ngOnInit(): void {
     this.isShown = false;
@@ -59,11 +75,14 @@ export class CommentComponent implements OnInit {
         this.userAvatar = x.poster_small + "?d="+Date.now()
         this.cdRef.detectChanges(); 
       }
+      
       this.login = x != null
-     
-    
     })
   }
+
+
+  
+
 
   postLike(is_like) {
     if(this.login) {
@@ -78,6 +97,7 @@ export class CommentComponent implements OnInit {
       this.openDialog()
     }
   }
+
   postUnLike() {
     if(this.login) {
       this.api2Service.postUnLike(this.comment.id).subscribe((data) => {
@@ -100,7 +120,9 @@ export class CommentComponent implements OnInit {
     }
   }
 
-
+  openCloseText() {
+    this.textView = !this.textView
+  }
 
   changeLike(type) {
     let prevType = this.comment.like ? this.comment.like.is_like: null
@@ -109,7 +131,6 @@ export class CommentComponent implements OnInit {
     } else {
       this.postLike(type)
      }
-
   }
 
   onCommentPosted(comment) {
@@ -125,12 +146,9 @@ export class CommentComponent implements OnInit {
 getAvatar(comment) {  
   let commentUserId = comment.user.id
   if (commentUserId === this.user?.id) {
-    
     return this.user.poster_small
-    
   }
   return comment.user.poster_small
-
 }
 
   getComment() {
@@ -143,7 +161,6 @@ getAvatar(comment) {
     this.modalRef = this.modalService.open(ModalLoginComponent, {
     });
     this.modalRef.onClose.subscribe((data: any) => {
- 
     });
   }
 
@@ -155,5 +172,4 @@ getAvatar(comment) {
   OpenComments() {
     this.isCollapsed = !this.isCollapsed;
   }
-
 }

@@ -1,55 +1,68 @@
-
-
-<div [@enterAnimationPage] style="min-height:100%; position: relative;" class="container main block">
+<div style="min-height:100%; position: relative;" class="container main block">
+<!--   <div>
+    <h1>Реклама</h1>
+  </div> --> 
   <div *ngIf="isSortAnime" class="sort-anime">
-    <button (click)="genreArrow('release_date')" class="btn-sort">По году выпуска
+
+    <button (click)="sortArrow('release_date')" class="btn-sort">По году выпуска
       <i [@enterAnimationArrow] *ngIf="sortField === 'release_date' && sortDirection === 'asc'"
         class='fas fa-caret-up arrow'></i>
       <i [@enterAnimationArrow] *ngIf="sortField === 'release_date' && sortDirection === 'desc'"
         class='fas fa-caret-down arrow'></i>
     </button>
-    <button (click)="genreArrow('imdb_rating')" class="btn-sort">По рейтингу imdb
+
+    <button (click)="sortArrow('imdb_rating')" class="btn-sort">По рейтингу imdb
       <i [@enterAnimationArrow] *ngIf="sortField === 'imdb_rating' && sortDirection === 'asc'"
         class='fas fa-caret-up arrow'></i>
       <i [@enterAnimationArrow] *ngIf="sortField === 'imdb_rating' && sortDirection === 'desc'"
         class='fas fa-caret-down arrow'></i>
     </button>
-    <button (click)="genreArrow('shiki_rating')" class="btn-sort">По рейтингу shiki
+
+    <button (click)="sortArrow('shiki_rating')" class="btn-sort">По рейтингу shiki
       <i [@enterAnimationArrow] *ngIf="sortField === 'shiki_rating' && sortDirection === 'asc'"
         class='fas fa-caret-up arrow'></i>
       <i [@enterAnimationArrow] *ngIf="sortField === 'shiki_rating' && sortDirection === 'desc'"
         class='fas fa-caret-down arrow'></i>
     </button>
+
   </div>
 
   <div *ngIf="isSort" class="sort">
-    <button (click)="genreArrow('release_date')" class="btn-sort">По году выпуска
+
+    <button (click)="sortArrow('release_date')" class="btn-sort">По году выпуска
+
       <i [@enterAnimationArrow] *ngIf="sortField === 'release_date' && sortDirection === 'asc'"
         class='fas fa-caret-up arrow'></i>
       <i [@enterAnimationArrow] *ngIf="sortField === 'release_date' && sortDirection === 'desc'"
         class='fas fa-caret-down arrow'></i>
 
     </button>
-    <button (click)="genreArrow('imdb_rating')" class="btn-sort">По рейтингу imdb
+
+    <button (click)="sortArrow('imdb_rating')" class="btn-sort">По рейтингу imdb
+
       <i [@enterAnimationArrow] *ngIf="sortField === 'imdb_rating' && sortDirection === 'asc'"
         class='fas fa-caret-up arrow'></i>
+
       <i [@enterAnimationArrow] *ngIf="sortField === 'imdb_rating' && sortDirection === 'desc'"
         class='fas fa-caret-down arrow'></i>
+
     </button>
+
   </div>
+
   <div *ngIf="loader">
-    <ngx-spinner
-    bdColor='black'
-    size="medium"
-    color="#4c3f93"
-    type="ball-clip-rotate"
-  >
-    <p style="font-size: 20px; color: white">Загрузка...</p>
-  </ngx-spinner>
+    <ngx-spinner bdColor='black' size="medium" color="#4c3f93" type="ball-clip-rotate">
+      <p style="font-size: 20px; color: white">Загрузка...</p>
+    </ngx-spinner>
   </div>
-  <div *ngIf="!loader"class="card-row">
-      <app-card  [card]="card" [userFavorite]="userFavorite" [loader]="loader"
-      (filterUserFavorite)="filterUserFavorite($event)" [container]="container" *ngFor="let card of data | paginate: { 
+  <div *ngIf="!loader" class="card-row">
+    <app-card 
+    [card]="card" 
+    [userFavorite]="userFavorite" 
+    [loader]="loader"
+    (filterUserFavorite)="filterUserFavorite($event)" 
+    [container]="container"
+    *ngFor="let card of data | paginate: { 
           id: 'listing_pagination',
           itemsPerPage: 48,
           currentPage: page,
@@ -57,14 +70,6 @@
         }">
     </app-card>
   </div>
-<!--   <div *ngIf="loader" class="card-row">
-    <div *ngFor="let i of getRange(48)">
-      <ngx-skeleton-loader count="1" appearance="circle"
-        [theme]="{ width: '170px', height: '275px', 'border-radius': '5px', margin: '2px' }"></ngx-skeleton-loader>
-      <ngx-skeleton-loader count="2" appearance="line"
-        [theme]="{ width: '100%', height: '20px', margin: '2px' }"></ngx-skeleton-loader>
-    </div>
-  </div> -->
   <div *ngIf="data.length >=1" class="paginate">
     <pagination-controls id="listing_pagination" directionalLinks="true" (pageChange)="onPageChange($event)"
       previousLabel="Назад" nextLabel="Вперед">

@@ -1,45 +1,59 @@
 <div style="position: relative;">
-<div class="comments-body">
-    <div *ngIf="comment" class="avatar">
-        <img class="avatars-comments img-responsive"
-             src="{{getAvatar(comment)}}">
-        <a (click)="onLogin()" class="comments-user">{{comment.user.name}}</a>
-        <p class="comments-item">{{comment.created_at | date:"d MMMM y":"ru"}}</p>
-    </div>
-    <div class="comments-block">
-        <p class="comment-text">
-            {{comment.body}}
-        </p>
-        <div class="icons-comments">
-            <div class="comment-nav">
-                <a mat-raised-button *ngIf="comment.answers && comment.answers.length" class="more"
-                    (click)="OpenComments()" type="checkbox">Еще {{comment.answers.length}}</a>
-            </div>
-            <div class="comment-nav">
-                <label (click)="changeLike(true)">
-                    {{comment.likes_count}}
-                    <i [class.active]="comment.like && comment.like.is_like === true" class="fas fa-thumbs-up like">
-                    </i>
-                </label>
-                <label (click)="changeLike(false)">
-                    {{comment.dislikes_count}}
-                    <i [class.active]="comment.like && comment.like.is_like === false"
-                        class="fas fa-thumbs-down dislike">
-                    </i>
-                </label>
-            </div>
-            <div class="comment-nav">
-                <a mat-raised-button class="comments-item_write-com" (click)="toggleShow()" type="checkbox">Ответить</a>
+    <div class="comments-body">
+        <div *ngIf="comment" class="avatar">
+            <img class="avatars-comments img-responsive" src="{{getAvatar(comment)}}">
+            <a (click)="onLogin()" class="comments-user">{{comment.user.name}}</a>
+            <p class="comments-item">{{comment.created_at | date:"d MMMM y":"ru"}}</p>
+        </div>
+        <div class="comments-block">    
+            <div *ngIf="comment">
+                <div *ngIf="!textView">
+                    <p class="comment-text">
+                        {{comment.body}}
+                    </p>
+                </div>
+                <div *ngIf="textView" [@enterAnimationPage]>
+                    <p class="comment-text-open">
+                        {{comment.body}}
+                    </p>
+                </div>
+                <div *ngIf="comment.isCommentView" class="comment-spoiler">
+                    <a *ngIf="!textView" class="moreTextBtn" (click)="openCloseText()">Подробнеe</a>
+                    <a *ngIf="textView" class="moreTextBtn" (click)="openCloseText()">Свернуть</a>
+                </div>
             </div>
 
+            <div class="icons-comments">
+                <div class="comment-nav">
+                    <a mat-raised-button *ngIf="comment.answers && comment.answers.length" class="more"
+                        (click)="OpenComments()" type="checkbox">Еще {{comment.answers.length}}</a>
+                </div>
+                <div class="comment-nav">
+                    <label (click)="changeLike(true)">
+                        {{comment.likes_count}}
+                        <i [class.active]="comment.like && comment.like.is_like === true" class="fas fa-thumbs-up like">
+                        </i>
+                    </label>
+                    <label (click)="changeLike(false)">
+                        {{comment.dislikes_count}}
+                        <i [class.active]="comment.like && comment.like.is_like === false"
+                            class="fas fa-thumbs-down dislike">
+                        </i>
+                    </label>
+                </div>
+                <div class="comment-nav">
+                    <a mat-raised-button class="comments-item_write-com" (click)="toggleShow()"
+                        type="checkbox">Ответить</a>
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
 
-<div [@enterAnimation] *ngIf="isCollapsed">
-    <app-subcomment [@enterAnimation] *ngFor="let comment of comment.answers" (subcommentPosted)="onSubCommentPosted($event)"
-        [filmId]="filmId" [comment]="comment"></app-subcomment>
-</div>
+    <div [@enterAnimation] *ngIf="isCollapsed">
+        <app-subcomment [@enterAnimation] *ngFor="let comment of comment.answers"
+            (subcommentPosted)="onSubCommentPosted($event)" [filmId]="filmId" [comment]="comment"></app-subcomment>
+    </div>
 
 </div>
 <div *ngIf="isShown">

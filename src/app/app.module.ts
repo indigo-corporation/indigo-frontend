@@ -36,7 +36,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LazyLoadImageModule, LAZYLOAD_IMAGE_HOOKS, ScrollHooks } from 'ng-lazyload-image';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NgxSpinnerModule } from "ngx-spinner";
-
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -87,28 +87,32 @@ import { AutoFocusDirectiveDirective } from './auto-focus-directive.directive';
 import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { CardComponent } from './card/card.component';
 import { CardForSwipersComponent } from './card-for-swipers/card-for-swipers.component';
-import { ImageCropperModule } from 'ngx-image-cropper';
+import { NewPassComponent } from './new-pass/new-pass.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component'
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
-  { path: 'search-page', component: SearchPageComponent },
+  { path: 'support', component: SupportPageComponent },
   { path: 'sitemap.xml', redirectTo: 'assets/sitemap.xml' },
   { path: 'support', component: SupportPageComponent },
+  { path: 'user-page/:id', component: UserPageComponent, canActivate: [AuthGuard] },
   /* { path: 'message/:id', component: MessangerComponent, canActivate: [AuthGuard]  }, */
   { path: 'copyright', component: CopyrightComponent, },
   /*  { path: 'friends', component: MessangerComponent, canActivate: [AuthGuard]  },
    { path: 'message', component: MessangerComponent, canActivate: [AuthGuard]  }, */
   /*   { path: 'card-profile/:id/watch-together', component: CardContentComponent }, */
   { path: 'favorite', component: FavoritePageComponent, canActivate: [AuthGuard] },
-  { path: 'remember-pass', component: RememberPassComponent },
-  { path: ':type/genre/:id', component: GenreComponent },
+  { path: 'send-reset-password', component: RememberPassComponent },
+  { path: 'reset-password/:token', component: ResetPasswordComponent },
+  { path: ':type/genre/:slug', component: GenreComponent },
   { path: 'film', component: CardsComponent },
   { path: 'anime', component: CardsComponent },
   { path: 'serial', component: CardsComponent },
   { path: 'cartoon', component: CardsComponent },
+  { path: 'search-page', component: SearchPageComponent },
   { path: ':category/:id', component: CardContentComponent },
+  { path: 'remember-pass1488', component: NewPassComponent },
   { path: 'reg', component: RegisterComponent, canActivate: [AuthGuard] },
-  { path: 'user-page/:id', component: UserPageComponent, canActivate: [AuthGuard] },
   { path: 'user-page', component: UserPageComponent, canActivate: [AuthGuard] },
   { path: 'user-settings', component: UserSettingComponent, canActivate: [AuthGuard] },
   { path: '404', component: NotfoundComponent },
@@ -163,7 +167,8 @@ const appRoutes: Routes = [
     ModalLoginComponent,
     CardComponent,
     CardForSwipersComponent,
-
+    NewPassComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
@@ -197,7 +202,6 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     AngularTelegramLoginWidgetModule,
     MatNativeDateModule,
-    ReactiveFormsModule,
     NgxSpinnerModule.forRoot({ type: 'ball-clip-rotate' }),
     InfiniteScrollModule
   ],

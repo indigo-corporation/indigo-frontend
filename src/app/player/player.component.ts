@@ -1,15 +1,7 @@
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
-import { MatDialog } from "@angular/material/dialog";
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatIconModule } from '@angular/material/icon';
 import { Input } from '@angular/core'
-import { Inject } from '@angular/core';
-import { Renderer2 } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { api } from '../services/api.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { trigger, style, animate, transition } from '@angular/animations';
 @Component({
   selector: 'app-player',
@@ -51,9 +43,7 @@ export class PlayerComponent implements OnInit {
   public safeSrc: SafeResourceUrl;
   constructor(
     private sanitizer: DomSanitizer,
-    private http: HttpClient,
-    private router: Router,
-    private api: api
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -84,7 +74,6 @@ export class PlayerComponent implements OnInit {
     
   }
   onPlayer(player: string) {
-    let shId = this.film.shiki_id
     this.currentPlayer = player;
     if (player === 'kodic' && this.film.shiki_id) {
       this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://kodik.cc/find-player?shikimoriID=" + this.film.shiki_id);

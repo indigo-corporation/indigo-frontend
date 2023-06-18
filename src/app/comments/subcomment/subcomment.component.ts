@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
 import { api2Service } from '../../services/api2.service';
 import { authService } from "../../services/authService.service";
-import { MatDialog } from "@angular/material/dialog";
-import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ModalLoginComponent } from 'src/app/modal-login/modal-login.component';
@@ -15,37 +13,52 @@ import { trigger, style, animate, transition } from '@angular/animations';
   animations: [
     trigger('enterAnimation', [
       transition(':enter', [
-        style({ height: '0', opacity: '0'}),
-        animate('400ms ease-in-out', style({ height: '*', opacity: '1'}))
+        style({ height: '0', opacity: '0' }),
+        animate('400ms ease-in-out', style({ height: '*', opacity: '1' }))
       ]),
       transition(':leave', [
         style({ height: '*', opacity: '1', overflow: 'hidden' }),
-        animate('400ms ease-in-out', style({ height: '0', opacity: '0'}))
+        animate('400ms ease-in-out', style({ height: '0', opacity: '0' }))
+      ])
+    ]
+    ),
+    trigger('enterAnimationPage', [
+      transition(':enter', [
+        style({ height: '0', opacity: '0', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '*', opacity: '1', overflow: 'hidden' }))
+      ]),
+      transition(':leave', [
+        style({ height: '*', opacity: '1', overflow: 'hidden' }),
+        animate('600ms ease-in-out', style({ height: '0', opacity: '0', overflow: 'hidden' }))
       ])
     ]
     )
   ],
   styleUrls: ['./subcomment.component.scss']
 })
-export class SubcommentComponent implements OnInit {
+export class SubcommentComponent implements OnInit, AfterViewInit {
+
   @Output() subcommentPosted = new EventEmitter<any>();
-  isShown: boolean;
-  isCollapsed: boolean;
-  user: any
-  login: boolean = false
-  comments: any
   @Input() comment: any
   @Input() filmId: any
+
+  isShown: boolean;
+  isCollapsed: boolean;
+  textView: boolean = false
+  login: boolean = false
+  isCommentView: boolean = true
+
+  user: any
+  comments: any
   modalRef: MdbModalRef<ModalLoginComponent> | null = null;
 
   constructor(
     private api2Service: api2Service,
     private modalService: MdbModalService,
     private auth: authService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private dialog: MatDialog) { }
-  
+    private router: Router
+  ) { }
+
   ngOnInit(): void {
     this.auth.user$.subscribe(x => {
       this.user = x
@@ -53,6 +66,14 @@ export class SubcommentComponent implements OnInit {
     })
     this.isShown = false;
     this.isCollapsed = false;
+  }
+
+  ngAfterViewInit() {
+    if (this.comment.body.length > 300) {
+      this.isCommentView = true
+    } else {
+      this.isCommentView = false
+    }
   }
 
   onCommentPosted(comment) {
@@ -74,6 +95,7 @@ export class SubcommentComponent implements OnInit {
       this.openDialog()
     }
   }
+
   postUnLike() {
     if (this.login) {
       this.api2Service.postUnLike(this.comment.id).subscribe((data) => {
@@ -100,8 +122,12 @@ export class SubcommentComponent implements OnInit {
     this.modalRef = this.modalService.open(ModalLoginComponent, {
     });
     this.modalRef.onClose.subscribe((data: any) => {
- 
+
     });
+  }
+
+  openCloseText() {
+    this.textView = !this.textView
   }
 
   changeLike(type) {
@@ -111,9 +137,7 @@ export class SubcommentComponent implements OnInit {
     } else {
       this.postLike(type)
     }
-
   }
-
 
   getComment() {
     this.api2Service.getComments(this.filmId, 1).subscribe((data) => {

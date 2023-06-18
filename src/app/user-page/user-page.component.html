@@ -1,37 +1,40 @@
 
-<div [@enterAnimationPage] style="height: 100%;min-height: 950px;" class="container main">
-      <div class="mat-tab-user">
-        <div class="user-tabs_user-photo">
-          <img class="user-photo" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" [src]="user.poster_large" alt="">
-            <div *ngIf="!isMyUser" class="buttons-group">
-              <button (click)="OnChat()" mat-raised-button class="user-btn">
-                Написать сообщение
-              </button>
-              <div *ngIf="isWaiting">
-                <button *ngIf="!isContact" (click)="AddContact()" mat-raised-button class="user-btn">
-                  Добавить в друзья
+<div [@enterAnimationPage] style="min-height: 100%;" class="container main">
+      <div style="min-height: 950px;">
+        <div class="mat-tab-user">
+          <div class="user-tabs_user-photo">
+            <img class="user-photo" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" [src]="user.poster_large" alt="">
+              <!-- <div *ngIf="!isMyUser" class="buttons-group">
+                <button (click)="OnChat()" mat-raised-button class="user-btn">
+                  Написать сообщение
                 </button>
-                <button *ngIf="isContact" (click)="removeContact()" mat-raised-button class="user-btn btn-remove">
-                  Убрать из друзья
+                <div *ngIf="isWaiting">
+                  <button *ngIf="!isContact" (click)="AddContact()" mat-raised-button class="user-btn">
+                    Добавить в друзья
+                  </button>
+                  <button *ngIf="isContact" (click)="removeContact()" mat-raised-button class="user-btn btn-remove">
+                    Убрать из друзья
+                  </button>
+                </div>
+                  <button *ngIf="!isWaiting" (click)="notWaiting(user.id)" mat-raised-button class="user-btn btn-remove">
+                    Отменить запроc в друзья
+                  </button>
+                  <button *ngIf="!isBlock" (click)="blockUser(user.id)" mat-raised-button class="btn-block">
+                    Заблокировать
+                  </button>
+                  <button *ngIf="isBlock" (click)="unBlockUser(user.id)" class="btn-unblock" mat-raised-button>
+                    Разблокировать
                 </button>
-              </div>
-                <button *ngIf="!isWaiting" (click)="notWaiting(user.id)" mat-raised-button class="user-btn btn-remove">
-                  Отменить запроc в друзья
-                </button>
-                <button *ngIf="!isBlock" (click)="blockUser(user.id)" mat-raised-button class="btn-block">
-                  Заблокировать
-                </button>
-                <button *ngIf="isBlock" (click)="unBlockUser(user.id)" class="btn-unblock" mat-raised-button>
-                  Разблокировать
-              </button>
-            </div>
+              </div> -->
+          </div>
+          <app-user-setting (userInfoUpdate)="updatingUserInfo(user)" style="display: none;"></app-user-setting>
+          <div class="user-discription">
+            <h1 class="user-profile-text">Имя пользователя: <span class="user-info">{{user.user_name}}</span></h1>
+            <h1 class="user-profile-text">Имя: <span class="user-info">{{user.name}}</span></h1>
+            <p class="user-profile-text">Немного о себе: <span class="user-info">{{user.about}}</span></p>
+          </div>
         </div>
-        <app-user-setting (userInfoUpdate)="updatingUserInfo(user)" style="display: none;"></app-user-setting>
-        <div class="user-discription">
-          <h1 class="user-profile-text">Имя пользователя: <span class="user-info">{{user.user_name}}</span></h1>
-          <h1 class="user-profile-text">Имя: <span class="user-info">{{user.name}}</span></h1>
-          <p class="user-profile-text">Немного о себе: <span class="user-info">{{user.about}}</span></p>
-        </div>
+        <app-favorite *ngIf="isMyUser" class="block" [film]="film"></app-favorite>
       </div>
-      <app-favorite *ngIf="isMyUser" class="block" [film]="film"></app-favorite>
+  
 </div>

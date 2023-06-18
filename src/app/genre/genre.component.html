@@ -1,4 +1,8 @@
-<div style="min-height:100%;position:relative" class="container main block">
+<div style="
+min-height:100%;
+position:relative" 
+class="container main block">
+  
   <div *ngIf="isSortAnime" class="sort-anime">
     <button (click)="genreArrow('release_date')" class="btn-sort">По году выпуска
       <i [@enterAnimationArrow] *ngIf="sortField === 'release_date' && sortDirection === 'asc'"
@@ -34,10 +38,11 @@
         class='fas fa-caret-down arrow'></i>
     </button>
   </div>
+
   <div *ngIf="!loader" class="card-row">
     <app-card [card]="card" *ngFor="let card of data | paginate: { 
       id: 'listing_pagination',
-      itemsPerPage: 24,
+      itemsPerPage: 48,
       currentPage: page,
       totalItems: totalRecords
     }">
@@ -54,6 +59,7 @@
     <p style="font-size: 20px; color: white">Загрузка...</p>
   </ngx-spinner>
   </div>
+
   <div *ngIf="data">
     <div *ngIf="data.length" class="paginate">
       <pagination-controls id="listing_pagination" directionalLinks="true" (pageChange)="onPageChange($event)"

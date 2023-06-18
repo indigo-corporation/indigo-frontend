@@ -15,14 +15,15 @@ import { search } from '../models/search';
 
 import { getLocalFavorite } from '../models/getLocalFavorite';
 import { getFindItem } from '../models/getFindItem';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class api2Service {
-    
-    readonly url = "https://api.indigofilms.online/api/"
+    readonly url = environment.apiUrl;
     constructor(private http: HttpClient) {
 
     }

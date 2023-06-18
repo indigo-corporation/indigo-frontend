@@ -13,6 +13,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { authService } from './services/authService.service';
 import { HeaderComponent } from "./header/header.component"
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: "root"
@@ -23,7 +24,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         private route: ActivatedRoute,) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-      let url = "https://api.indigofilms.online"
+      const url = environment.apiUrl;
         if(!request.url.includes(url)) {
             return next.handle(request)
         }
@@ -39,7 +40,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         return next.handle(request).pipe(
             catchError((err) => {
                 if (err instanceof HttpErrorResponse) {
-                    if (err.status === 401 && err.url !== "https://api.indigofilms.online/api/auth/logout") {
+                    if (err.status === 401 && err.url !== environment.apiUrl) {
                         this.auth.logOut()
                         this.router.navigate([""])
                     }

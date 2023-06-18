@@ -2,6 +2,12 @@
 
 .buttons {
     display: flex;
+    justify-content: flex-start;
+    padding: 0;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .buttons-bl {
@@ -27,6 +33,8 @@ button {
 .raiting-box {
     display: flex;
     flex-direction: row;
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    font-weight: bold;
 }
 
 ngb-raiting {
@@ -39,7 +47,6 @@ ngb-raiting {
     font-size: 45px;
     width: 100%;
     text-align: center;
-    margin-bottom: 10px;
     display: flex;
 }
 
@@ -78,6 +85,9 @@ div.stars {
     font-size: 14px;
     margin-left: 11px;
     font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 0;
+    color: #ada7a7;
 }
 
 .card-title-ru {
@@ -112,6 +122,7 @@ summary {
 
 .share {
     display: flex;
+    flex-wrap: wrap;
     background: #1c1c1c;
     padding: 10px;
     align-items: center;
@@ -125,12 +136,13 @@ summary {
 
 .share-icon {
     transition: transform 0.3s ease-out;
+
     &:hover {
         transition: transform 0.3s ease-out;
         transform: scale(1.1)
     }
-  
-    
+
+
 }
 
 .btn-share {
@@ -144,7 +156,6 @@ summary {
 
 .discription-text-block {
     display: flex;
-    margin-left: 4px;
     margin-top: 11px;
     flex-wrap: wrap;
 }
@@ -167,7 +178,7 @@ p {
     text-overflow: ellipsis;
     display: -moz-box;
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 }
 
@@ -186,7 +197,7 @@ p {
 
 .textOverview {
     color: #c0bec7;
-    font-size: 15px;
+    font-size: 14px;
     font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
     margin: 0;
     line-height: 1.65;
@@ -224,22 +235,17 @@ span {
 
 .genre-block {
     display: flex;
-    margin-top:10px;
     flex-wrap: wrap;
 }
 
-
-
-.genre-item {
-    margin: 6px 4px;
-}
-
-.discriptionforfilm2 {
+.title-and-raiting {
     display: flex;
     color: white;
+    flex-direction: column;
     text-align: start;
     flex-wrap: wrap;
 }
+
 
 .discriptionforfilm {
     display: flex;
@@ -260,9 +266,12 @@ span {
     background: #4c3f93;
     color: white;
 }
+
 .discription-text {
-    margin-left: 3px;
+    margin-left: 8px;
 }
+
+
 
 .card-btn:hover {
     box-shadow: inset 34px 0px 26px 0px rgb(0 16 22);
@@ -318,11 +327,11 @@ span {
 
 .favorite {
     border: none;
-    padding: 6px 31px;
-    border-radius: 5px;
+    padding: 6px 20px;
+    border-radius: 14px;
     color: white;
-    background-color: #573aad;
-    margin-left: 4px;
+    background-color: #573aadc7;
+    margin-left: 0;
 }
 
 .favorite-text {
@@ -330,12 +339,16 @@ span {
     margin-right: 10px;
 }
 
+.favorite-ic {
+    font-size: 22px;
+}
+
 .favorite:hover .favorite-ic {
     color: rgb(255, 255, 255);
 }
 
 .favorite:hover {
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(109 9 115 / 68%);
 }
 
 .favorite:hover .favorite-text {
@@ -434,7 +447,7 @@ input[type="checkbox"]:checked+.favorite-ic {
     opacity: 0;
 }
 
-.genre-btn:hover {
+.down-btn .up-btn:hover {
     color: white;
     background-color: #3f3787;
     padding: 5px auto;
@@ -442,6 +455,8 @@ input[type="checkbox"]:checked+.favorite-ic {
     transition: 0.6s;
     border-radius: 5px;
 }
+
+
 
 .favorit {
     color: white;
@@ -491,6 +506,7 @@ iframe {
 }
 
 .discription-text {
+    cursor: pointer;
     font-size: 12px;
     margin-left: 4px;
     color: white;
@@ -501,7 +517,7 @@ iframe {
 }
 
 .discription-text:first-child {
-    margin: 0;
+
     margin-left: 4px;
 }
 
@@ -526,21 +542,41 @@ iframe {
 
 #imdb {
     color: #f3c45b;
+    margin-right: 10px;
 }
 
 #shiki {
     color: #c67aed;
-    margin-left: 10px;
+}
+
+.up-btn {
+    background: #bb0fc794;
+    color: white;
+    margin-right: 5px;
+    &:hover {
+        background: rgb(187 15 199 / 52%);
+    }
+}
+
+.down-btn {
+    color: white;
+    background: #3c3cab;
+    margin-right: 5px;
+    margin-top: 10px;
+    &:hover {
+        background: #3c3cabc2;
+    }
 }
 
 
 @media screen and (min-width: 360px) and (max-width: 720px) {
     .card-image {
         width: 100%;
-        max-height: 373px;
-        max-width: 270px;
+        max-width: 100%;
         margin-left: 10px;
+        margin: 0 auto;
     }
+
     .poster {
         text-align: center;
         margin-right: 22px;
@@ -548,6 +584,7 @@ iframe {
         display: flex;
         flex-direction: column;
     }
+
     .discriptionforfilm {
         display: flex;
         flex-direction: column;
@@ -555,44 +592,53 @@ iframe {
         text-transform: uppercase;
         margin-top: 16px;
     }
-    .discriptionforfilm2 {
+
+    .title-and-raiting {
         display: flex;
         color: white;
+        flex-direction: column;
+        text-align: start;
+        flex-wrap: wrap;
     }
+
+
     .discription-text-block {
         display: flex;
         margin-left: 0px;
-        margin-top: 11px;
         flex-wrap: wrap;
     }
+
     .block-title {
         color: white;
         padding: 0px 22px;
         padding-bottom: 42px;
     }
+
     .buttons {
         display: flex;
         justify-content: flex-start;
-        background-color: black;
         padding: 0;
         flex-wrap: wrap;
+        position: absolute;
+        top: 0;
+        right: 0;
     }
+
     .favorite {
         border: none;
-        padding: 6px 31px;
-        border-radius: 5px;
+        padding: 6px 20px;
+        border-radius: 2px;
         color: white;
-        background-color: #573aad;
+        background-color: #573aadc7;
         margin-left: 0;
     }
-    
+
     .discription-text {
-        margin-left: 0px;
+        margin-left: 8px;
     }
-    .discription-text:first-child {
-         margin: 0; 
-    }
+
 }
+
 @media screen and (min-width: 667px) and (max-width: 375px) {
     .discriptionforfilm {
         display: flex;
@@ -601,6 +647,7 @@ iframe {
         text-transform: uppercase;
         margin-top: 35px;
     }
+
     .poster {
         text-align: center;
         margin-right: 22px;
@@ -611,22 +658,26 @@ iframe {
 
     .card-image {
         width: 100%;
-        border-radius: 14px;
-        max-width: 223px;
-        max-height: fit-content;
+        max-height: 416px;
+        max-width: 100%;
+        margin-left: 10px;
+        margin: 0 auto;
     }
 
     #imdb {
         color: #f3c45b;
-        margin-left: -10px;
+        margin-left: 10px;
     }
 
 
-    .discriptionforfilm2 {
+    .title-and-raiting {
         display: flex;
         color: white;
+        flex-direction: column;
+        text-align: start;
         flex-wrap: wrap;
     }
+
 
 }
 
@@ -635,10 +686,11 @@ iframe {
 @media screen and (min-width: 412px) and (max-width: 915px) {
     .card-image {
         width: 100%;
-        max-height: 373px;
-        max-width: 270px;
+        max-width: 100%;
         margin-left: 10px;
+        margin: 0 auto;
     }
+
     .poster {
         text-align: center;
         margin-right: 22px;
@@ -646,6 +698,7 @@ iframe {
         display: flex;
         flex-direction: column;
     }
+
     .discriptionforfilm {
         display: flex;
         flex-direction: column;
@@ -653,43 +706,51 @@ iframe {
         text-transform: uppercase;
         margin-top: 16px;
     }
-    .discriptionforfilm2 {
+
+    .title-and-raiting {
         display: flex;
         color: white;
+        flex-direction: column;
+        text-align: start;
+        flex-wrap: wrap;
     }
+
     .discription-text-block {
         display: flex;
         margin-left: 0px;
         margin-top: 11px;
         flex-wrap: wrap;
     }
+
     .block-title {
         color: white;
         padding: 0px 22px;
         padding-bottom: 42px;
     }
+
     .buttons {
         display: flex;
         justify-content: flex-start;
-        background-color: black;
         padding: 0;
         flex-wrap: wrap;
+        position: absolute;
+        top: 0;
+        right: 0;
     }
+
     .favorite {
         border: none;
-        padding: 6px 31px;
-        border-radius: 5px;
+        padding: 6px 20px;
+        border-radius: 2px;
         color: white;
-        background-color: #573aad;
+        background-color: #573aadc7;
         margin-left: 0;
     }
-    
+
     .discription-text {
-        margin-left: 0px;
+        margin-left: 8px;
     }
-    .discription-text:first-child {
-         margin: 0; 
-    }
+
 }
 
 
@@ -704,6 +765,7 @@ iframe {
         text-transform: uppercase;
         margin-top: 35px;
     }
+
     .poster {
         text-align: center;
         margin-right: 22px;
@@ -721,13 +783,15 @@ iframe {
 
     #imdb {
         color: #f3c45b;
-        margin-left: -10px;
+        margin-left: 10px;
     }
 
 
-    .discriptionforfilm2 {
+    .title-and-raiting {
         display: flex;
         color: white;
+        flex-direction: column;
+        text-align: start;
         flex-wrap: wrap;
     }
 
@@ -739,19 +803,70 @@ iframe {
         color: #c67aed;
         margin-left: 10px;
         font-size: 14px;
-      }
+    }
 
-      .poster {
+    .moreTextBtn {
+        font-size: 12px;
+    }
+
+
+    .textOverview {
+        font-size: 12px;
+    }
+
+    .overviewFilm {
+        font-size: 14px;
+        margin-top: 13px;
+    }
+
+    .t {
+        font-size: 12px;
+    }
+
+    .container-card {
+        padding: 0;
+    }
+
+    .share-txt {
+        font-size: 11px;
+    }
+
+    .card-image {
+        width: 100%;
+        border-radius: 0;
+        max-width: 100%;
+    }
+
+    .card-title-ru {
+        color: white;
+        text-align: left;
+        font-weight: bold;
+        padding-top: 2px;
+        font-size: 19px;
+        margin: 0;
+    }
+
+    .raiting-box {
+        display: flex;
+        flex-direction: row;
+        font-size: 14px;
+        font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+        font-weight: bold;
+        margin-left: 10px;
+    }
+
+    .poster {
+        margin: 0;
+        padding: 0;
         text-align: center;
-        margin-right: 22px;
-        padding: 0px 3px;
         display: flex;
         flex-direction: column;
     }
-    .discriptionforfilm2 {
+
+    .title-and-raiting {
         display: flex;
         color: white;
-        align-items: center;
+        flex-direction: column;
         text-align: start;
         flex-wrap: wrap;
     }
@@ -761,12 +876,16 @@ iframe {
         margin-left: -10px;
     }
 
-      .content-card {
+    .content-card {
+        padding-top: 0px;
         padding: 0px 0px;
-        padding-top: 9px;
     }
-  }
-  
+
+    .discriptionforfilm {
+        margin: 13px 20px;
+    }
+}
+
 
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -785,27 +904,24 @@ iframe {
         display: flex;
         flex-direction: row;
     }
+
     .card-image {
-        width: 100%;
         border-radius: 14px;
-        max-width: 223px;
         max-height: fit-content;
     }
 
     #imdb {
         color: #f3c45b;
-        margin-left: -10px;
+        margin-left: 10px;
     }
 
 
-    .discriptionforfilm2 {
+    .title-and-raiting {
         display: flex;
         color: white;
+        flex-direction: column;
+        text-align: start;
         flex-wrap: wrap;
     }
 
 }
-
-
-
-

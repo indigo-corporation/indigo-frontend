@@ -3,6 +3,7 @@
 
 .container {
     font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    padding: 0;
     padding-bottom: 10px;
 }
 
@@ -263,4 +264,12 @@ button {
 .login:hover {
     color: rgb(134 227 128);
     cursor: pointer;
+}
+
+
+@media all and (max-width: 900px) {
+    .comment-guard {
+        font-size: 11px;
+    }
+    
 }

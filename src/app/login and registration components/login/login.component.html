@@ -11,13 +11,19 @@
   </div>
   <div class="form-group">
     <label for="inputPassword">Пароль</label>
-    <input type="password" tabindex="-1" placeholder="Введите Пароль" class="form-control" formControlName="password">
+    <div style="position: relative;">
+      <input [type]="show ? 'text' : 'password'" tabindex="-1" placeholder="Введите Пароль" class="form-control" formControlName="password">
+      <button class="icon-pass-eye" (click)="passwordEye()">
+          <i *ngIf="!show" class="far fa-eye"></i>
+          <i *ngIf="show"class="far fa-eye-slash"></i>
+        </button>
+  </div>
     <div class="auth-error" *ngIf="password.errors?.['required'] && (password.touched || password.dirty)">
       Заполните поле Пароль
     </div>
-    <!-- <div style="display: flex; justify-content: flex-end;">
-      <a tabindex="-1" class="btn-remember" (click)="close()" routerLink="/remember-pass" href="/remember-pass">Забыл пароль?</a>
-    </div> -->
+     <div style="display: flex; justify-content: flex-end;">
+      <a tabindex="-1" class="btn-remember" (click)="close()" routerLink="/send-reset-password" href="/send-reset-password">Забыл пароль?</a>
+    </div>
     
     <div class="auth-error" *ngIf="password.errors?.['minlength'] || password.errors?.['maxlength'] && (password.touched || password.dirty)">
       Пароль должен быть минимум 6 символов

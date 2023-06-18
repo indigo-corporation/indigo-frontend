@@ -141,6 +141,30 @@ i {
     z-index: 2;
 }
 
+.moreTextBtn {
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.comment-text-open {
+    word-wrap: break-word;
+    padding: 15px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    display: -webkit-box;
+    overflow-y: auto;
+    -webkit-box-orient: vertical;
+}
+
+.comment-spoiler {
+    position: absolute;
+    left: 15px;
+    bottom: 16px;
+}
 
 .smile-btn {
     position: absolute;
@@ -159,7 +183,6 @@ i {
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
     max-width: 100px;
     width: 100%;
 }
@@ -281,11 +304,10 @@ button {
 .more {
     font-size: 14px;
     margin-left: 17px;
-    background: #6161d1;
-    border: none;
+    border: 1px solid #6161d1;
+    background: none;
     cursor: pointer;
     color: white;
-    background: #4c3f93;
     border-radius: 5px;
     text-decoration: none;
     margin-right: 10px;
@@ -334,6 +356,7 @@ button {
     .comments-block {
         color: #ffffff;
         font-size: 14px;
+        margin-bottom: 33px;
         border-radius: 5px;
         width: 100%;
         max-width: 100%;
@@ -362,7 +385,7 @@ button {
         grid-gap: 1px;
     }
 
-    @media screen and (min-width: 375px) and (max-width: 667px){
+    @media screen and (min-width: 375px) and (max-width: 667px) {
         .icons-comments {
             font-size: 16px;
             display: flex;
@@ -375,7 +398,7 @@ button {
 
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 900px) {
     .icons-comments {
         font-size: 16px;
         display: flex;
@@ -385,10 +408,63 @@ button {
         flex-direction: row;
     }
 
+   .moreTextBtn {
+    font-size: 10px;
+   }
+
+   .more {
+    padding: 0;
+   }
+
+    .comment-guard {
+        color: white;
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 35px;
+        padding: 10px;
+        background: rgba(76, 63, 147, 0.4196078431);
+    }
+
+    .comments-user {
+        font-size: 12px;
+        cursor: pointer;
+        color: #c1b3b3;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+    }
+
+    .comments-item {
+        color: #e7e1e1;
+        text-align: center;
+        font-size: 8px;
+        width: 100%;
+        margin: 0;
+    }
+
     .comment-text {
         word-wrap: break-word;
         padding: 15px;
         max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -moz-box;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        height: 165px;
+    }
+
+    .comment-text-open {
+        word-wrap: break-word;
+        padding: 15px;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -moz-box;
+        display: -webkit-box;
+        overflow-y: auto;
+        -webkit-box-orient: vertical;
     }
 
     .comments-body {
@@ -402,8 +478,9 @@ button {
         margin: 0 auto;
         display: grid;
         grid-gap: 0;
-        grid-template-columns: 13% 84% 2%;
+        grid-template-columns: 21% 82%;
         border-bottom-right-radius: 0px;
+        min-height: 200px;
     }
 
     .comment-nav {
@@ -411,7 +488,15 @@ button {
     }
 }
 
+@media screen and (min-width: 900px) and (max-width: 1600px) {
+    .moreTextBtn {
+        display: none;
+    }
+
+}
+
 @media screen and (min-width: 1400px) {
+   
     .comments-body {
         padding: 9px;
         background-color: rgba(14, 13, 13, 0.3215686275);
@@ -429,4 +514,9 @@ button {
         grid-gap: 1px;
     }
 
+     .moreTextBtn {
+        display: none;
+    }
+
+ 
 }

@@ -60,14 +60,16 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   onSearch(search) {
-    this.router.navigate(["/search-page"], {
-      queryParams: {
-        page: 1,
-        term: search
-      }
-    });
-    this.onSearchSubmmited.next(true)
-  }
+    const term = search || "";
+      this.router.navigate(["/search-page"], {
+        queryParams: {
+          page: 1,
+          term: term
+        }
+      });
+      this.onSearchSubmmited.next(true)
+    }
+
 
   search(find, page) {
     this.api2Service.search(find, page).subscribe((data) => {

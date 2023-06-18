@@ -113,13 +113,23 @@ button {
     font-size: 16px;
     display: inline-block;
     color: #222427;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: black !important;
+    position: absolute;
+    bottom: -66px;
+    right: -360px;
+    z-index: 2;
+}
+
+.emoji-mart {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    display: inline-block;
+    color: #222427;
     border: 1px solid #d9d9d9;
     border-radius: 5px;
-    background: #fff;
-    position: absolute;
-    right: -2px;
-    top: 134px;
-    z-index: 2;
+    background: black !important;
 }
 
 
@@ -268,8 +278,9 @@ textarea {
 @media screen and (min-width: 360px) and (max-width: 720px) {
     .wrapper {
         display: grid;
-        grid-template-columns: 28% 79%;
+        grid-template-columns: 22% 79%;
         align-items: start;
+        padding: 13px;
     }
 
     .avatars-comments {
@@ -285,10 +296,46 @@ textarea {
 @media screen and (min-width: 412px) and (max-width: 915px) {
     .wrapper{
         display: grid;
-        grid-template-columns: 24% 84%;
+        grid-template-columns: 22% 79%;
         align-items: start;
+        padding: 13px;
     }
 }
+
+
+@media all and (max-width: 900px) {
+
+    textarea{
+        overflow: hidden;
+        margin: 0;
+        padding: auto;
+        border: 0;
+        outline: 0;
+        width: 100%;
+        font-size: 12px;
+        resize: none;
+        min-height: 100px;
+        overflow-y: auto;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .emoji-mart {
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+        font-size: 16px;
+        display: inline-block;
+        color: #222427;
+        border: 1px solid black;
+        border-radius: 5px;
+        background: black;
+        position: absolute;
+        right: -2px;
+        bottom: 103px;
+        z-index: 2;
+    }
+}
+
+
+
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     .wrapper {

@@ -1,3 +1,4 @@
+
 .container-card {
   background-color: #0e0d0d !important;
   z-index: 1;
@@ -8,13 +9,21 @@
   z-index: 1;
 }
 
+a, p, div, span {
+  letter-spacing: 0;
+}
 
+h1, h2, h3, h4, h5, h6, p {
+  font-size: inherit;
+font-weight: inherit;
+}
 
 h1,
 h2,
 h3,
 h4,
 h5 {
+  letter-spacing: 0;
   margin: 0;
   font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
 }
@@ -25,6 +34,7 @@ h5 {
 @import "swiper/scss/navigation";
 @import "../node_modules/alertifyjs/build/css/alertify.min.css";
 @import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
+
 
 .swiper-pagination-bullet {
   background-color: white !important;
@@ -62,9 +72,9 @@ a:not([href]):not([class]) {
 html,
 body {
   height: 100%;
-  padding-top: 200px;
-  position: relative;
-  bottom: 22px;
+ /*  padding-top: 200px; */
+  /* position: relative;
+  bottom: 22px; */
   line-height: 1.25;
   font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
 }
@@ -288,6 +298,24 @@ button.mat-menu-item:hover {
   background: #817abb !important;
 }
 
+.emoji-mart {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  display: inline-block;
+  color: white !important;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  background: black !important;
+}
+
+.emoji-mart-category-label span {
+  display: block;
+  width: 100%;
+  font-weight: 500;
+  padding: 5px 6px;
+  background-color: rgb(0 0 0 / 95%) !important;
+}
+
 .mat-menu-content {
   padding: 0px !important;
 }
@@ -324,11 +352,11 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-  body {
+/*   body {
     padding-top: 100px;
     bottom: 124px;
     position: relative;
-  }
+  } */
 }
 
 /* Importing Bootstrap SCSS file. */

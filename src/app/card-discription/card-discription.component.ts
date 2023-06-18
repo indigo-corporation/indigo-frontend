@@ -1,20 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, AfterViewChecked, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit, ElementRef } from '@angular/core';
 import { api2Service } from '../services/api2.service';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog } from "@angular/material/dialog";
-import { MatSnackBar } from '@angular/material/snack-bar';
 import "@angular/common/locales/global/ru"
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { SafeResourceUrl } from '@angular/platform-browser';
 import { authService } from "../services/authService.service";
-import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms"
-import { DecimalPipe, formatNumber } from '@angular/common';
-import { hasClassName } from '@ng-bootstrap/ng-bootstrap/util/util';
+import { FormGroup, FormControl, FormBuilder } from "@angular/forms"
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ModalLoginComponent } from '../modal-login/modal-login.component';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-card-discription',
@@ -42,45 +35,60 @@ import { Meta } from '@angular/platform-browser';
   templateUrl: './card-discription.component.html',
   styleUrls: ['./card-discription.component.scss']
 })
-export class CardDiscriptionComponent implements OnInit {
+
+export class CardDiscriptionComponent implements OnInit, AfterViewInit {
+
   term: any;
   totalRecords: any
-  isFavorite: boolean = false
   name: any
   favorite: []
   log: any
-  isPlayer: boolean = false
   favoriteFilmIds: any
   login: any
   film_id: number
+
   public safeSrc: SafeResourceUrl;
+
+  @Input() category: any
+  @Input() stars: any
   @Input() film: any
+
   @Output() isRaited = new EventEmitter<boolean>();
   @Output() isWatchSub = new EventEmitter<boolean>();
+
   public id: any
   public form: FormGroup;
+
+  textView: boolean = false
+  isPlayer: boolean = false
+  isFavorite: boolean = false
   isPlayerKodic: boolean = true
   isPlayerSveta: boolean = false
-  textView: boolean = false
+  isFilmOverview: boolean = true
+ 
+  telegramUrl: string = "https://t.me/share/url?url=";
+  facebookUrl: string = "https://www.facebook.com/sharer/sharer.php?u=";
+  
+  url: string = window.location.href;
+  userFavorite
+ 
   srcKodic: any
   srcSveta: any
   raiting: any
   genres
   modalRef: MdbModalRef<ModalLoginComponent> | null = null;
-  @Input() category: any
-  @Input() stars: any
   raitingControl = new FormControl(0)
   rating3: number;
+  currentUrl
+
   constructor(
     private api2Service: api2Service,
-    private router: Router,
-    private meta: Meta,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private sanitizer: DomSanitizer,
     private auth: authService,
     private modalService: MdbModalService,
-    private el: ElementRef) {
+    private el: ElementRef) 
+    {
     this.rating3 = 0;
 
     this.form = this.fb.group({
@@ -94,8 +102,7 @@ export class CardDiscriptionComponent implements OnInit {
     cartoon: "Мультфильм"
   }
 
-  url: string = window.location.href;
-  userFavorite
+
   ngOnInit() {
     window.location.href
     this.auth.user$.subscribe(x => {
@@ -109,23 +116,34 @@ export class CardDiscriptionComponent implements OnInit {
     this.category = this.route.snapshot.params.category
   }
 
+  ngAfterViewInit() {
+    this.checkOverviewLength();
+  }
+
+  checkOverviewLength() {
+   debugger
+    if (!this.film.overview) {
+      this.isFilmOverview = false
+    }
+    if (this.film.overview.length > 300) {  
+      this.isFilmOverview = true
+    } else {
+      this.isFilmOverview = false
+    }
+  }
+
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
       this.genres = data;
     });
   }
 
-
-  telegramUrl: string = "https://t.me/share/url?url=";
-  facebookUrl: string = "https://www.facebook.com/sharer/sharer.php?u=";
-
   shareOnTelegram() {
     let currentUrl = window.location.href;
     let url = this.telegramUrl + encodeURIComponent(currentUrl);
     window.open(url, "_blank");
   }
-  currentUrl
-  
+
   shareOnFacebook() {
     this.currentUrl = window.location.href;
     let url = this.facebookUrl + encodeURIComponent(this.currentUrl);

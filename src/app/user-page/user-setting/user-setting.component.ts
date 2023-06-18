@@ -181,9 +181,21 @@ export class UserSettingComponent implements OnInit {
     }
     const formData = this.settingForm.value;
     this.userService.userChangeInfo(formData).subscribe((result) => {
-     this.auth.user$.next(formData)
+      this.user = result["data"]
+      this.auth.user$.next(this.user) 
       this.alertify.success('Успешно изменено');
     })
+  }
+
+  showConfPass:boolean = false
+  show:boolean = false
+
+  password() {
+    this.show = !this.show;
+  }
+
+  confirmPassword() {
+    this.showConfPass = !this.showConfPass;
   }
 
 

@@ -95,7 +95,6 @@ export class CardContentComponent implements OnInit {
       }
 
       this.title.setTitle("Смотреть" + " " + this.film.title + " " + "онлайн бесплатно в хорошем качестве")
-      debugger
       this.meta.updateTag({ property: 'og:title', content: this.film.title });
       this.meta.updateTag({ property: 'og:description', content: this.film.overview });
       this.meta.updateTag({ property: 'og:image', content: this.film.poster });

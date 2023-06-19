@@ -177,9 +177,6 @@
           "prerender": {
             "builder": "@nguniversal/builders:prerender",
             "options": {
-              "optimization": {
-                "fonts": false
-              },
               "routes": [
                 "/",
                 "/film",

@@ -178,11 +178,6 @@
             "builder": "@nguniversal/builders:prerender",
             "options": {
               "optimization": {
-                "scripts": true,
-                "styles": {
-                  "minify": true,
-                  "inlineCritical": true
-                },
                 "fonts": false
               },
               "routes": [

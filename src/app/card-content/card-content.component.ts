@@ -114,6 +114,8 @@ export class CardContentComponent implements OnInit{
   updateMetaTags() {
     this.meta.updateTag({ name: 'og:title', content: this.film.title });
     this.meta.updateTag({ name: 'og:description', content: this.film.overview});
+    this.meta.updateTag({ name: 'og:img', content: this.film.poster});
+    this.meta.updateTag({ name: 'vk:img', content: this.film.poster});
     this.meta.updateTag({ name: 'og:url', content: this.url });
     this.meta.updateTag({ name:'og:site_name', content:'IndigoFilms' });
   }

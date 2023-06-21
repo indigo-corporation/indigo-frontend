@@ -49,7 +49,7 @@ export class CardComponent implements OnInit {
     'theme': 'dark',
     'showDelay': 500,
   }
-  defaultImage = "../../assets/error-404.avif"  
+  defaultImage = "../../assets/favicon.ico"  
   constructor( 
     private api2Service: api2Service,
     private modalService: MdbModalService,

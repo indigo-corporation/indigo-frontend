@@ -80,7 +80,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-    this.spinner.show();
+   /*  this.spinner.show(); */
     this.auth.user$.subscribe(x => {
       this.login = x != null
       if (this.login) {

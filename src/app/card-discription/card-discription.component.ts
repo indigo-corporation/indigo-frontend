@@ -64,7 +64,7 @@ export class CardDiscriptionComponent implements OnInit, AfterViewInit {
   isFavorite: boolean = false
   isPlayerKodic: boolean = true
   isPlayerSveta: boolean = false
-  isFilmOverview: boolean = true
+  isFilmOverviewButtons: boolean = true
  
   telegramUrl: string = "https://t.me/share/url?url=";
   facebookUrl: string = "https://www.facebook.com/sharer/sharer.php?u=";
@@ -121,15 +121,7 @@ export class CardDiscriptionComponent implements OnInit, AfterViewInit {
   }
 
   checkOverviewLength() {
-   debugger
-    if (!this.film.overview) {
-      this.isFilmOverview = false
-    }
-    if (this.film.overview.length > 300) {  
-      this.isFilmOverview = true
-    } else {
-      this.isFilmOverview = false
-    }
+    this.isFilmOverviewButtons = this.film.overview && this.film.overview.length > 578;
   }
 
   getfind(id) {

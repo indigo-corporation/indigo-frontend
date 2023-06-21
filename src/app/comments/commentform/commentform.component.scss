@@ -68,6 +68,7 @@ hr {
     color: #c9bcbc;
     text-align: center;
     text-decoration: none;
+    word-wrap: break-word;
     &:hover {
         color: #535050;
     }
@@ -272,6 +273,7 @@ textarea {
 .flex {
     display: flex;
     flex-direction: column;
+    margin-right: 21px;
 }
 
 
@@ -284,12 +286,11 @@ textarea {
     }
 
     .avatars-comments {
-        max-width: 66px;
         border: 1px solid transparent;
         border-radius: 5px;
         align-self: center;
         width: 100%;
-        height: 77px;
+        max-width: 71px;
     }
 }
 

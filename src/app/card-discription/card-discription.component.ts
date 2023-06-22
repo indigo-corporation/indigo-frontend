@@ -80,7 +80,7 @@ export class CardDiscriptionComponent implements OnInit, AfterViewInit {
   raitingControl = new FormControl(0)
   rating3: number;
   currentUrl
-
+  defaultImage = "../../assets/favicon.ico"  
   constructor(
     private api2Service: api2Service,
     private route: ActivatedRoute,

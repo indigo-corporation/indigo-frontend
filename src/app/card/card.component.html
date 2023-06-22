@@ -2,7 +2,7 @@
   <div [@enterAnimationPage] class="card" style="width: 13rem;" >
     <div class="card-head">
       <a routerLink="/{{card.category}}/{{card.slug}}">
-        <img onerror="if(this.src != 'error.jpg')  this.src = 'assets/error-404.avif';" class="filters__img" alt="{{card.title}}"  [defaultImage] ="defaultImage" [lazyLoad]="card.poster">
+        <img onerror="if(this.src != 'error.jpg')  this.src = 'assets/favicon.ico';" class="filters__img" alt="{{card.title}}"  [defaultImage] ="defaultImage" [lazyLoad]="card.poster">
       </a>
       <button [@enterAnimationText]  (click)="postFavorite()" *ngIf="!card.isFavorite" class="favorite">
         <input style="display: none" id="favorite" type="checkbox">

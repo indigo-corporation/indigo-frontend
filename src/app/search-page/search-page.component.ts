@@ -50,7 +50,7 @@ export class SearchPageComponent implements OnInit {
     'showDelay': 500,
   }
   ngOnInit() {
-    this.spinner.show();
+  /*   this.spinner.show(); */
     this.auth.user$.subscribe(x => {
       this.user = x
       this.userFavorite = this.user ? this.user.favorite_film_ids : [];

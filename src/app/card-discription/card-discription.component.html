@@ -23,9 +23,7 @@
         <div class="content-card">
             <div *ngIf="film" class="poster">
                 <div style="position: relative;">
-                    <img onerror="if(this.src != 'error.jpg') this.src = 'assets/error-404.avif';" class="card-image"
-                    alt="{{film.title}}" [src]="film.poster">
-                     
+                    <img onerror="if(this.src != 'error.jpg')  this.src = 'assets/favicon.ico';" class="card-image" alt="{{film.title}}" [defaultImage] ="defaultImage" [lazyLoad]="film.poster">         
                     <div class="buttons">
                         <!--  <button style="margin-left: 0" (click)="change(false)" mat-raised-button class="card-btn">
                             <i class="fas fa-play-circle"></i>

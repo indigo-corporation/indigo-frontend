@@ -143,7 +143,7 @@
             },
             "configurations": {
               "production": {
-                "outputHashing": "all",
+                "outputHashing": "media",
                 "optimization": true,
                 "fileReplacements": [
                   {
@@ -177,7 +177,19 @@
           "prerender": {
             "builder": "@nguniversal/builders:prerender",
             "options": {
-              "routesFile": "./routes.txt",
+              "routes": [
+                "/",
+                "/film",
+                "/serial",
+                "/anime",
+                "/cartoon",
+                "/404",
+                "/copyright",
+                "/reg",
+                "/search-page",
+                "/send-reset-password",
+                "/support"
+              ],
               "guessRoutes": false
             },
             "configurations": {

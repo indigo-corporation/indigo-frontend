@@ -52,7 +52,7 @@ export class SearchPageComponent implements OnInit {
     'showDelay': 500,
   }
   ngOnInit() {
-  /*   this.spinner.show(); */
+  this.spinner.show();
   this.updateMetaTags()
     this.auth.user$.subscribe(x => {
       this.user = x

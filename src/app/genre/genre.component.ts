@@ -49,6 +49,7 @@ export class GenreComponent implements OnInit {
   isSort: boolean = false
   sortField: string = "release_date"
   sortDirection: string = "desc"
+  defaultImage = "../../assets/favicon.ico"  
   nameTypeRu = {
     film: "Фильмы",
     serial: "Сериалы",
@@ -116,6 +117,8 @@ export class GenreComponent implements OnInit {
     this.meta.updateTag({ name: 'og:title', content: "Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd" });
     this.meta.updateTag({ name: 'og:description', content: "Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd" });
     this.meta.updateTag({ name: 'og:url', content: this.url });
+    this.meta.updateTag({ name: 'og:image', content: this.defaultImage});
+    this.meta.updateTag({ name: 'vk:image', content: this.defaultImage});
     this.meta.updateTag({ name: 'og:site_name', content: 'IndigoFilms' });
   }
 

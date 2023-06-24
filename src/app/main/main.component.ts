@@ -12,7 +12,7 @@ import { NgxSpinnerService } from "ngx-spinner";
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-
+ 
   @Input() films: any
   @Input() serials: any
   @Input() anime: any
@@ -21,6 +21,8 @@ export class MainComponent implements OnInit {
   login
   loader:boolean = true
   userFavorite
+  url: string = window.location.href;
+  defaultImage = "../../assets/favicon.ico"  
   constructor(
     private apiService: api,
     private api2Service: api2Service,
@@ -39,7 +41,18 @@ export class MainComponent implements OnInit {
       }
     })
     this.title.setTitle("Смотреть фильмы и сериалы онлайн в хорошем качестве 720p hd и без регистрации")
+    this.updateMetaTags()
     this.getData()
+  }
+
+  
+  updateMetaTags() {
+    this.meta.updateTag({ name: 'og:title', content: 'IndigoFilms' });
+    this.meta.updateTag({ name: 'og:description', content: "Смотреть фильмы сериалы, мультфильмы и аниме онлайн в хорошем качестве 720p 1080p hd и без регистрации"});
+    this.meta.updateTag({ name: 'og:image', content: this.defaultImage});
+    this.meta.updateTag({ name: 'vk:image', content: this.defaultImage});
+    this.meta.updateTag({ name: 'og:url', content: this.url });
+    this.meta.updateTag({ name:'og:site_name', content:'IndigoFilms' });
   }
 
   getData() {

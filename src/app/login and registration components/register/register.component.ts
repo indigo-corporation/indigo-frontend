@@ -19,6 +19,8 @@ import { Meta, Title } from '@angular/platform-browser';
     submitted:boolean=false
     repeatPass:string = 'none';
     user
+    url: string = window.location.href;
+    defaultImage = "../../assets/favicon.ico"  
     @Input() telegramAuth:any
   constructor(
     private auth:authService,
@@ -42,6 +44,7 @@ import { Meta, Title } from '@angular/platform-browser';
     }
 
     ngOnInit() {
+      this.updateMetaTags()
       this.auth.user$.subscribe(x => {
         this.user = x
         if(this.user) {
@@ -49,6 +52,15 @@ import { Meta, Title } from '@angular/platform-browser';
         }
       })
       this.title.setTitle("Регистрация")
+    }
+
+    updateMetaTags() {
+      this.meta.updateTag({ name: 'og:title', content: 'Регистрация' });
+      this.meta.updateTag({ name: 'og:description', content: "Смотреть фильмы сериалы, мультфильмы и аниме онлайн в хорошем качестве 720p 1080p hd и без регистрации"});
+      this.meta.updateTag({ name: 'og:image', content: this.defaultImage});
+      this.meta.updateTag({ name: 'vk:image', content: this.defaultImage});
+      this.meta.updateTag({ name: 'og:url', content: this.url });
+      this.meta.updateTag({ name:'og:site_name', content:'IndigoFilms' });
     }
 
  

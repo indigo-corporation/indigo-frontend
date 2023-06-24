@@ -40,7 +40,7 @@ export class GenreComponent implements OnInit {
   genre: any
   userFavorite
   type: any
-  typeName:string
+  typeName: string
   login
   loader: boolean = true
   slug
@@ -49,7 +49,7 @@ export class GenreComponent implements OnInit {
   isSort: boolean = false
   sortField: string = "release_date"
   sortDirection: string = "desc"
-  defaultImage = "../../assets/favicon.ico"  
+  defaultImage = "../../assets/favicon.ico"
   nameTypeRu = {
     film: "Фильмы",
     serial: "Сериалы",
@@ -72,12 +72,12 @@ export class GenreComponent implements OnInit {
   }
 
   ngOnInit() {
-/*     this.spinner.show(); */
+    this.spinner.show();
     this.auth.user$.subscribe(x => {
       this.login = x != null
       if (this.login) {
         let user = x
-       this.userFavorite = user ? user.favorite_film_ids : [];
+        this.userFavorite = user ? user.favorite_film_ids : [];
       }
     })
 
@@ -117,8 +117,8 @@ export class GenreComponent implements OnInit {
     this.meta.updateTag({ name: 'og:title', content: "Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd" });
     this.meta.updateTag({ name: 'og:description', content: "Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd" });
     this.meta.updateTag({ name: 'og:url', content: this.url });
-    this.meta.updateTag({ name: 'og:image', content: this.defaultImage});
-    this.meta.updateTag({ name: 'vk:image', content: this.defaultImage});
+    this.meta.updateTag({ name: 'og:image', content: this.defaultImage });
+    this.meta.updateTag({ name: 'vk:image', content: this.defaultImage });
     this.meta.updateTag({ name: 'og:site_name', content: 'IndigoFilms' });
   }
 
@@ -147,15 +147,15 @@ export class GenreComponent implements OnInit {
     this.getGenreFilms(this.id, this.page, this.type)
   }
 
-arrowsUp(): void {
-  const arrowElms = document.querySelectorAll(".arrow");
-  if (arrowElms.length) {
-    arrowElms.forEach((arrowElm) => {
-      (arrowElm as HTMLElement).style.transform = "";
-      (arrowElm as HTMLElement).style.color = "";
-    });
+  arrowsUp(): void {
+    const arrowElms = document.querySelectorAll(".arrow");
+    if (arrowElms.length) {
+      arrowElms.forEach((arrowElm) => {
+        (arrowElm as HTMLElement).style.transform = "";
+        (arrowElm as HTMLElement).style.color = "";
+      });
+    }
   }
-}
 
   getGenreAnime() {
     let ls = localStorage.getItem("genresAnime")

@@ -32,7 +32,7 @@ export class MainComponent implements OnInit {
     private title: Title) { }
 
   ngOnInit() {
-    /* this.spinner.show(); */
+    this.spinner.show(); 
     this.auth.user$.subscribe(x => {
       this.login = x != null
       if (this.login) {

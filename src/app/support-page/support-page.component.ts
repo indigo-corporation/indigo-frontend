@@ -11,7 +11,8 @@ import { Meta, Title } from '@angular/platform-browser';
 
 export class SupportPageComponent implements OnInit {
   supportForm : FormGroup
-  
+  url: string = window.location.href;
+  defaultImage = "../../assets/favicon.ico"  
   constructor(
     private FormBuilder:FormBuilder,
     private ReactiveFormsModule:ReactiveFormsModule,
@@ -39,7 +40,18 @@ export class SupportPageComponent implements OnInit {
   }
   ngOnInit() {
     this.title.setTitle("Поддержка")
+    this.updateMetaTags()
   }
+
+  updateMetaTags() {
+    this.meta.updateTag({ name: 'og:title', content: 'Поддержка' });
+    this.meta.updateTag({ name: 'og:description', content: "Смотреть фильмы сериалы, мультфильмы и аниме онлайн в хорошем качестве 720p 1080p hd и без регистрации"});
+    this.meta.updateTag({ name: 'og:image', content: this.defaultImage});
+    this.meta.updateTag({ name: 'vk:image', content: this.defaultImage});
+    this.meta.updateTag({ name: 'og:url', content: this.url });
+    this.meta.updateTag({ name:'og:site_name', content:'IndigoFilms' });
+  }
+
 
   userSendmessage() {
 

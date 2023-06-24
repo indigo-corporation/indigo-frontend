@@ -49,6 +49,8 @@ export class UserPageComponent implements OnInit {
   data: any
   public id: any
   outComes: any
+  url: string = window.location.href;
+  defaultImage = "../../assets/favicon.ico"  
   constructor(private apiService: api,
     private cdr: ChangeDetectorRef,
     private api2Service: api2Service,
@@ -63,6 +65,7 @@ export class UserPageComponent implements OnInit {
 
   }
   ngOnInit() {
+    this.updateMetaTags()
     this.title.setTitle("Профиль")
     this.auth.user$.subscribe(x => {
       this.user = x
@@ -74,6 +77,15 @@ export class UserPageComponent implements OnInit {
       this.cdr.detectChanges();
     })
 
+  }
+
+  updateMetaTags() {
+    this.meta.updateTag({ name: 'og:title', content: 'Профиль' });
+    this.meta.updateTag({ name: 'og:description', content: "Смотреть фильмы сериалы, мультфильмы и аниме онлайн в хорошем качестве 720p 1080p hd и без регистрации"});
+    this.meta.updateTag({ name: 'og:image', content: this.defaultImage});
+    this.meta.updateTag({ name: 'vk:image', content: this.defaultImage});
+    this.meta.updateTag({ name: 'og:url', content: this.url });
+    this.meta.updateTag({ name:'og:site_name', content:'IndigoFilms' });
   }
 
 /*   ngAfterViewInit() {

@@ -23,6 +23,8 @@ export class SearchPageComponent implements OnInit {
   find: any
   user
   userFavorite
+  url: string = window.location.href;
+  defaultImage = "../../assets/favicon.ico"  
   public id: any
   constructor(
     private api2Service: api2Service,
@@ -51,6 +53,7 @@ export class SearchPageComponent implements OnInit {
   }
   ngOnInit() {
   /*   this.spinner.show(); */
+  this.updateMetaTags()
     this.auth.user$.subscribe(x => {
       this.user = x
       this.userFavorite = this.user ? this.user.favorite_film_ids : [];
@@ -67,6 +70,15 @@ export class SearchPageComponent implements OnInit {
     if (this.term) {
       this.search(this.term)
     }
+  }
+
+  updateMetaTags() {
+    this.meta.updateTag({ name: 'og:title', content: 'Поиск' });
+    this.meta.updateTag({ name: 'og:description', content: "Смотреть фильмы сериалы, мультфильмы и аниме онлайн в хорошем качестве 720p 1080p hd и без регистрации"});
+    this.meta.updateTag({ name: 'og:image', content: this.defaultImage});
+    this.meta.updateTag({ name: 'vk:image', content: this.defaultImage});
+    this.meta.updateTag({ name: 'og:url', content: this.url });
+    this.meta.updateTag({ name:'og:site_name', content:'IndigoFilms' });
   }
 
   getData(page) {

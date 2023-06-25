@@ -1,8 +1,6 @@
 <div style="min-height: 100%" class="container main block">
   <h1 class="card-title">Рекомендации</h1>
-  <swiper [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
-    <ng-template *ngFor="let card of data" swiperSlide>
-      <app-card-for-swipers [card]="card"></app-card-for-swipers>
-    </ng-template>
-  </swiper>
+  <div class="card-row">
+      <app-card *ngFor="let card of data" [card]="card"></app-card>
+    </div>
 </div>

@@ -1,0 +1,15 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+<ShortName>IndigoFilms</ShortName>
+<Description>IndigoFilms Search</Description>
+<Contact>indigo.best.corporation@gmail.com</Contact>
+<Url type="text/html" template="https://indigofilms.online/search-page?page=1&find="/>
+<LongName>IndigoFilms Search</LongName>
+<Image height="16" width="16" type="icon">https://indigofilms.online/assets/favicon.ico</Image>
+<Developer>IndigoFilms (https://indigofilms.online)</Developer>
+<Attribution>Copyright (c) 2022 IndigoFilms. All Rights Reserved.</Attribution>
+<SyndicationRight>open</SyndicationRight>
+<AdultContent>false</AdultContent>
+<Language>ru-ru</Language>
+<OutputEncoding>utf-8</OutputEncoding>
+<InputEncoding>utf-8</InputEncoding>
+</OpenSearchDescription>

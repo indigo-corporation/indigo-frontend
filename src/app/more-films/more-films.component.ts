@@ -39,7 +39,7 @@ export class MoreFilmsComponent implements OnInit {
       this.login = x != null
       if (this.login) {
         let user = x
-       this.userFavorite = user.favorite_film_ids
+        this.userFavorite = user ? user.favorite_film_ids : [];
       }
     })
     this.category = this.route.snapshot.url[0].path
@@ -49,7 +49,6 @@ export class MoreFilmsComponent implements OnInit {
   getRecommendations() {
     this.api2Service.getRecommendations(this.filmId).subscribe((data) => {
       this.data = data.data
-      debugger
       if (this.userFavorite && this.data) {
         this.data.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);

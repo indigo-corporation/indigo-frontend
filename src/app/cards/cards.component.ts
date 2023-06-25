@@ -79,8 +79,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-
-   /*  this.spinner.show(); */
+    this.spinner.show();
     this.auth.user$.subscribe(x => {
       this.login = x != null
       if (this.login) {
@@ -153,7 +152,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
       });
       this.loader = false
       this.spinner.hide();
-      if(this.data && this.userFavorite) {
+      if (this.data && this.userFavorite) {
         this.data.forEach(item => {
 
           item.isFavorite = this.userFavorite.includes(item.id);
@@ -165,7 +164,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
   }
 
   filterUserFavorite(userFavorite) {
-    if(userFavorite && this.data) {
+    if (userFavorite && this.data) {
       this.data.forEach(item => {
         item.isFavorite = userFavorite.includes(item.id);
       });

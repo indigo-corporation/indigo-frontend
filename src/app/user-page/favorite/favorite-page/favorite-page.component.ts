@@ -43,7 +43,6 @@ export class FavoritePageComponent implements OnInit {
   
     this.auth.user$.subscribe(x => {
       this.user = x
-      this.getFavoriteFilms()
       this.userFavorite = this.user ? this.user.favorite_film_ids : [];
     })
     this.getFavoriteFilms()

@@ -160,7 +160,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
   }
 
   filterUserFavorite(userFavorite) {
-    if(userFavorite.length && this.data) {
+    if(userFavorite && this.data) {
       this.data.forEach(item => {
         item.isFavorite = userFavorite.includes(item.id);
       });

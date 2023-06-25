@@ -19,8 +19,8 @@ export class AppComponent implements OnInit {
 
   }
 
-  ngOnInit() {/*
-    this.seo.initDefaultMetaInfomation() */
+  ngOnInit() {
+ /*    this.seo.initDefaultMetaInfomation() */
   }
 
 }

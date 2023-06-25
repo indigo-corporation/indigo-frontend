@@ -69,6 +69,7 @@ export class CardContentComponent implements OnInit {
 
       if (this.login) {
         let user = x
+
         this.userFavorite = user ? user.favorite_film_ids : [];
       }
     })

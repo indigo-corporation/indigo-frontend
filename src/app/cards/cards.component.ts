@@ -53,7 +53,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
   public id: any
   login
   userFavorite
-  defaultImage = "../../assets/favicon.ico"
+  defaultImage = "../../assets/logo.png"
 
   typeName: string
   nameTypeRu = {

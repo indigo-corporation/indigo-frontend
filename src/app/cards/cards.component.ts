@@ -53,7 +53,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
   public id: any
   login
   userFavorite
-
+  defaultImage = "../../assets/favicon.ico"
 
   typeName: string
   nameTypeRu = {
@@ -139,6 +139,8 @@ export class CardsComponent implements OnInit, AfterViewInit {
     this.meta.updateTag({ name: 'og:title', content: "Смотреть " + this.typeName + " " + " в хорошем качестве в 720p hd" });
     this.meta.updateTag({ name: 'og:description', content: "Смотреть " + this.typeName + " " + " в хорошем качестве в 720p hd, , индигофилмс, индиго филмс, indigofilms, indigo films" });
     this.meta.updateTag({ name: 'og:url', content: this.url });
+    this.meta.updateTag({ name: 'og:image', content: this.defaultImage });
+    this.meta.updateTag({ name: 'vk:image', content: this.defaultImage });
     this.meta.updateTag({ name: 'og:site_name', content: 'IndigoFilms' });
   }
 

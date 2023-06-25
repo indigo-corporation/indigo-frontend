@@ -7,7 +7,6 @@ import { authService } from "../services/authService.service";
 import { NgxSpinnerService } from "ngx-spinner";
 
 
-
 @Component({
   selector: 'app-genre',
   templateUrl: './genre.component.html',

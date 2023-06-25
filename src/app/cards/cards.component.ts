@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { api2Service } from '../services/api2.service';
 import { ActivatedRoute } from '@angular/router';
@@ -27,7 +27,7 @@ import { log } from 'console';
   ],
   styleUrls: ['./cards.component.scss']
 })
-export class CardsComponent implements OnInit, AfterViewInit {
+export class CardsComponent implements OnInit {
 
   isArrow1: boolean = false;
   isArrow2: boolean = false;

@@ -64,7 +64,7 @@ export class CardDiscriptionComponent implements OnInit, AfterViewInit {
   isFavorite: boolean = false
   isPlayerKodic: boolean = true
   isPlayerSveta: boolean = false
-  isFilmOverviewButtons: boolean = true
+  isFilmOverviewButtons: boolean = false
  
   telegramUrl: string = "https://t.me/share/url?url=";
   facebookUrl: string = "https://www.facebook.com/sharer/sharer.php?u=";

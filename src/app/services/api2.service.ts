@@ -112,4 +112,9 @@ export class api2Service {
     getGenre(is_anime:number=0): Observable<any> {                         /// дата без итемов, жду
         return this.get("genres", {is_anime:is_anime} )
     }
+
+    getRecommendations(id:number): Observable<any> {                         /// дата без итемов, жду
+        return this.get("films/"+id+"/recommendations")
+    }
+
 }

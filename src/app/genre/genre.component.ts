@@ -48,7 +48,7 @@ export class GenreComponent implements OnInit {
   isSort: boolean = false
   sortField: string = "release_date"
   sortDirection: string = "desc"
-  defaultImage = "../../assets/favicon.ico"
+  defaultImage = "../../assets/logo.png"
   nameTypeRu = {
     film: "Фильмы",
     serial: "Сериалы",

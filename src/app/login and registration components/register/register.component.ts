@@ -20,7 +20,7 @@ import { Meta, Title } from '@angular/platform-browser';
     repeatPass:string = 'none';
     user
     url: string = window.location.href;
-    defaultImage = "../../assets/favicon.ico"  
+    defaultImage = "../../assets/logo.png" 
     @Input() telegramAuth:any
   constructor(
     private auth:authService,

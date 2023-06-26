@@ -24,7 +24,7 @@ export class SearchPageComponent implements OnInit {
   user
   userFavorite
   url: string = window.location.href;
-  defaultImage = "../../assets/favicon.ico"  
+  defaultImage = "../../assets/logo.png"
   public id: any
   constructor(
     private api2Service: api2Service,

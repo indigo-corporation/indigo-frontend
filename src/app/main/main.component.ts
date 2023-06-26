@@ -22,7 +22,7 @@ export class MainComponent implements OnInit {
   loader:boolean = true
   userFavorite
   url: string = window.location.href;
-  defaultImage = "../../assets/favicon.ico"  
+  defaultImage = "../../assets/logo.png"
   constructor(
     private apiService: api,
     private api2Service: api2Service,

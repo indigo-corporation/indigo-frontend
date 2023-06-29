@@ -1,0 +1,59 @@
+<div style="
+min-height:100%;
+position:relative" 
+class="container main block">
+  
+  <div *ngIf="isSortAnime" class="sort-anime">
+    <button (click)="sortArrow('imdb_rating')" class="btn-sort">По рейтингу imdb
+      <i [@enterAnimationArrow] *ngIf="sortField === 'imdb_rating' && sortDirection === 'asc'"
+        class='fas fa-caret-up arrow'></i>
+      <i [@enterAnimationArrow] *ngIf="sortField === 'imdb_rating' && sortDirection === 'desc'"
+        class='fas fa-caret-down arrow'></i>
+    </button>
+    <button (click)="sortArrow('shiki_rating')" class="btn-sort">По рейтингу shiki
+      <i [@enterAnimationArrow] *ngIf="sortField === 'shiki_rating' && sortDirection === 'asc'"
+        class='fas fa-caret-up arrow'></i>
+      <i [@enterAnimationArrow] *ngIf="sortField === 'shiki_rating' && sortDirection === 'desc'"
+        class='fas fa-caret-down arrow'></i>
+    </button>
+  </div> 
+
+ <div *ngIf="isSort" class="sort">
+    <button (click)="sortArrow('imdb_rating')" class="btn-sort">По рейтингу imdb
+      <i [@enterAnimationArrow] *ngIf="sortField === 'imdb_rating' && sortDirection === 'asc'"
+        class='fas fa-caret-up arrow'></i>
+      <i [@enterAnimationArrow] *ngIf="sortField === 'imdb_rating' && sortDirection === 'desc'"
+        class='fas fa-caret-down arrow'></i>
+    </button>
+  </div> 
+
+  <div *ngIf="!loader" class="card-row">
+    <app-card [card]="card" *ngFor="let card of data | paginate: { 
+      id: 'listing_pagination',
+      itemsPerPage: 48,
+      currentPage: page,
+      totalItems: totalRecords
+    }">
+    </app-card>
+  </div>
+
+  <div *ngIf="loader">
+    <ngx-spinner
+    bdColor='black'
+    size="medium"
+    color="#4c3f93"
+    type="ball-clip-rotate"
+  >
+    <p style="font-size: 20px; color: white">Загрузка...</p>
+  </ngx-spinner>
+  </div>
+
+  <div *ngIf="data">
+    <div *ngIf="data.length" class="paginate">
+      <pagination-controls id="listing_pagination" directionalLinks="true" (pageChange)="onPageChange($event)"
+        previousLabel="Назад" nextLabel="Вперед">
+      </pagination-controls>
+    </div>
+  </div>
+
+</div>

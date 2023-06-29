@@ -1,0 +1,193 @@
+.container {
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+  }
+  
+  .row {
+    margin-top: 15px;
+  }
+  
+  .card-row {
+    margin: 0 18px;
+    margin-bottom: 49px;
+  }
+  
+  .card {
+    max-width: 100%;
+    background-color: transparent;
+    text-align: start;
+    border: none;
+    padding: 0;
+    margin: 0px 3px;
+    padding: 10px 0;
+  }
+  
+  .paginate {
+    padding-top: 11px;
+    border-top: 1px solid;
+    position: absolute !important;
+    bottom: 0px;
+    margin-top: 17px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background: linear-gradient(222deg, #1a1a6a, rgb(116, 19, 108));
+    box-shadow: inset 0px 3px 155px 1px rgb(0 0 0 / 76%);
+  }
+  
+  .block {
+    padding: 10px 0px;
+  }
+  
+  .paginate {
+    position: relative;
+    bottom: 0px;
+    margin-top: 17px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+  
+  
+  .card-row {
+    padding-bottom: 89px;
+    display: grid;
+    grid-template-columns: 215px 215px 215px 215px 215px 215px;
+    margin: 0 6px 0 7px;
+    justify-content: center;
+    justify-items: center;
+  }
+  
+  .sort-anime {
+    justify-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 19px 0;
+    margin-left: 10px;
+  }
+  
+  
+  .sort {
+    justify-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 19px 0;
+    margin-left: 10px;
+    
+  }
+  
+  
+  .btn-sort {
+    padding: 7px;
+    border-radius: 9px;
+    border: none;
+    background: #4c3f93;
+    color: white;
+    margin-left: 10px;
+  }
+  
+  @media screen and (min-width: 360px) and (max-width: 720px) {
+    .card-row {
+      margin: 0 5px 0 0px;
+      padding-bottom: 89px;
+    }
+  }
+  
+  
+  
+  @media screen and (min-width: 390px) and (max-width: 844px) {
+    .card-row {
+      padding-bottom: 89px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+  
+  
+  
+  
+  
+  
+  @media screen and (min-width: 360px) and (max-width: 720px) {
+    .card-row {
+      padding-bottom: 89px;
+      display: grid;
+      grid-template-columns: 34% 34% 32%;
+      margin: 0 8px 0 6px;
+    }
+  }
+  
+  @media screen and (min-width: 390px) and (max-width: 844px) {
+    .card-row {
+      padding-bottom: 89px;
+      display: grid;
+      grid-template-columns: 34% 34% 35%;
+      margin: 0 5px 0 16px;
+    }
+  }
+  
+  @media screen and (min-width: 412px) and (max-width: 915px) {
+    .card-row {
+      padding-bottom: 89px;
+      display: grid;
+      grid-template-columns: 34% 33% 35%;
+      margin: 0 5px 0 16px;
+    }
+  }
+  
+  
+  @media all and (max-width: 900px) {
+    .card-row {
+      padding-bottom: 89px;
+      display: grid;
+      grid-template-columns: 36% 37% 36%;
+      margin: 0 17px 0 21px;
+    }
+  
+    .sort {
+      grid-gap: 13px;
+      margin: 19px 0;
+      display: flex;
+      flex-direction: column;
+      padding: 0px 10px;
+    }
+  
+    .btn-sort {
+      margin-left: 0px;
+      width: 100%;
+    }
+  
+    .sort-anime {
+      justify-content: center;
+      display: flex;
+      grid-gap: 13px;
+      margin: 19px 0;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      padding: 0px 10px;
+    }
+  }
+  
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .card-row {
+      padding-bottom: 89px;
+      display: grid;
+      grid-template-columns: 15% 16% 15% 16% 15% 16%;
+      grid-gap: 12px;
+      margin: 0 15px 0 24px;
+      justify-content: center;
+      justify-items: center;
+    }
+  }
+  
+  
+  @media screen and (min-width: 1024px) and (max-width: 1400px) {
+    .card-row {
+      padding-bottom: 89px;
+      display: grid;
+      grid-template-columns: 16% 16% 15% 16% 15% 16%;
+      grid-gap: 9px;
+      justify-content: center;
+      justify-items: center;
+    }
+  }

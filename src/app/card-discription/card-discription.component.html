@@ -73,18 +73,20 @@
                     </div>
                     <div class="discription-text-block">
                         <span class="overview-item">
-                            <p class="discription-text up-btn">{{film.year}}</p>
+                            <p class="discription-text up-btn" routerLink="/{{category}}/year/{{film.year}}"
+                            href="/{{category}}/year/{{film.year}}">{{film.year}}</p>
                         </span>
 
                         <span class="overview-item" *ngFor="let country of film.countries.slice(0,2)">
-                            <p class="discription-text up-btn">{{country.title}}</p>
+                            <p class="discription-text up-btn" routerLink="/{{category}}/country/{{country.id}}"
+                            href="/{{category}}/country/{{country.id}}">{{country.title}}</p>
                         </span>
                         <!--   <p *ngIf="film.runtime" class="discription-text">{{film.runtime}} минуты</p> -->
                     </div>
                     <div class="genre-block">
                         <span class="genre-item" *ngFor="let genre of film.genres">
-                            <p class="discription-text down-btn" routerLink="/{{category}}/genre/{{genre.id}}"
-                                href="/{{category}}/genre/{{genre.id}}"> {{genre.title}} </p>
+                            <p class="discription-text down-btn" routerLink="/{{category}}/genre/{{genre.slug}}"
+                                href="/{{category}}/genre/{{genre.slug}}"> {{genre.title}} </p>
                         </span>
                     </div>
 

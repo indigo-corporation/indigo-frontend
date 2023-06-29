@@ -89,14 +89,17 @@ export class api2Service {
         return this.get("films/search", {page:page, find:find } )
     }
 
-    getData(category = "", page = 1, sortField ="date", sortDirection="desc"): Observable<Result> {
-        let params = {page:page, sort_field:sortField, sort_direction:sortDirection}
+    getData(category = "", page = 1, sortField ="date", sortDirection="desc", genre_id = "", country_id = "", year= ""): Observable<Result> {
+        let params = {page:page, sort_field:sortField, sort_direction:sortDirection, genre_id:genre_id, country_id:country_id, year:year }
         if(category) {
              params["category"] = category
         }
         return this.get("films", params )
     }
-
+    getCountryList(): Observable<any> {
+    return this.get("world/film-countries")
+    }
+    
     getFilmsMain(): Observable<any> {
         return this.get("films/main")
     }
@@ -105,10 +108,6 @@ export class api2Service {
         return this.get("films/"+ id)
     }
 
-    getGenreFilms(id,page, category, sortField ="date", sortDirection="desc"): Observable<any> {                           /// дата без итемов, жду
-        return this.get("films/genre/" + id, {page:page, category:category, sort_field:sortField, sort_direction:sortDirection} )
-    }
- 
     getGenre(is_anime:number=0): Observable<any> {                         /// дата без итемов, жду
         return this.get("genres", {is_anime:is_anime} )
     }

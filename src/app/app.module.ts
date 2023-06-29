@@ -41,7 +41,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { CardsComponent } from './cards/cards.component';
+import { CardsComponent } from './categoryLists/cards/cards.component';
 import { SwiperComponent } from './swiper/swiper.component';
 import { CardMainComponent } from './card-main/card-main.component';
 import { MainComponent } from './main/main.component';
@@ -65,7 +65,7 @@ import { CommentComponent } from './comments/comment/comment.component';
 import { SubcommentComponent } from './comments/subcomment/subcomment.component';
 import { LayoutComponent } from './layout/layout.component';
 import { GenreMenuComponent } from './header/genre-menu/genre-menu.component';
-import { GenreComponent } from './genre/genre.component';
+import { GenreComponent } from './categoryLists/genre/genre.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { MessangerComponent } from './messanger/messanger.component';
 import { MessageContactsComponent } from './messanger/message-contacts/message-contacts.component';
@@ -88,7 +88,9 @@ import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { CardComponent } from './card/card.component';
 import { CardForSwipersComponent } from './card-for-swipers/card-for-swipers.component';
 import { NewPassComponent } from './new-pass/new-pass.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component'
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { YearListComponent } from './categoryLists/year-list/year-list.component';
+import { CountryListComponent } from './categoryLists/country-list/country-list.component'
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -105,6 +107,8 @@ const appRoutes: Routes = [
   { path: 'send-reset-password', component: RememberPassComponent },
   { path: 'reset-password/:token', component: ResetPasswordComponent },
   { path: ':type/genre/:slug', component: GenreComponent },
+  { path: ':type/year/:year', component: YearListComponent },
+  { path: ':type/country/:country_id', component: CountryListComponent },
   { path: 'film', component: CardsComponent },
   { path: 'anime', component: CardsComponent },
   { path: 'serial', component: CardsComponent },
@@ -168,7 +172,9 @@ const appRoutes: Routes = [
     CardComponent,
     CardForSwipersComponent,
     NewPassComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    YearListComponent,
+    CountryListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),

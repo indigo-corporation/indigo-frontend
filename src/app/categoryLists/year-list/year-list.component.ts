@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { api2Service } from '../services/api2.service';
+import { api2Service } from '../../services/api2.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { authService } from "../services/authService.service";
+import { authService } from "../../services/authService.service";
 import { NgxSpinnerService } from "ngx-spinner";
 
-
 @Component({
-  selector: 'app-genre',
-  templateUrl: './genre.component.html',
+  selector: 'app-year-list',
+  templateUrl: './year-list.component.html',
   animations: [
     trigger('enterAnimationArrow', [
       transition(':enter', [
@@ -22,27 +21,25 @@ import { NgxSpinnerService } from "ngx-spinner";
     ]
     )
   ],
-  styleUrls: ['./genre.component.scss']
+  styleUrls: ['./year-list.component.scss']
 })
-
-
-export class GenreComponent implements OnInit {
-  totalRecords: string
+export class YearListComponent implements OnInit {
   url: string = window.location.href;
   data: any
   page: number = 1
   id: any
   term: any
   name: any
-  genres: any
+  film: any
   favoriteFilmIds
-  genre: any
+  totalRecords:number
   userFavorite
   type: any
   typeName: string
   login
   loader: boolean = true
   slug
+  year
   category: any
   isSortAnime: boolean = false
   isSort: boolean = false
@@ -55,6 +52,9 @@ export class GenreComponent implements OnInit {
     anime: "Аниме",
     cartoon: "Мультфильмы"
   }
+
+ selectedGenre 
+ selectedCountry
   constructor(
     private api2Service: api2Service,
     private router: Router,
@@ -62,15 +62,10 @@ export class GenreComponent implements OnInit {
     private auth: authService,
     private route: ActivatedRoute,
     private meta: Meta,
-    private title: Title) { }
-
-  myOptions = {
-    'placement': 'left',
-    'theme': 'dark',
-    'showDelay': 500,
-  }
-
+    private title: Title
+  ) { }
   ngOnInit() {
+
     this.spinner.show();
     this.auth.user$.subscribe(x => {
       this.login = x != null
@@ -80,13 +75,12 @@ export class GenreComponent implements OnInit {
       }
     })
 
-
+  this.year = this.route.snapshot.params.year
     this.page = this.route.snapshot.queryParams.page
     if (!this.page) {
       this.page = 1
     }
     this.category = this.route.snapshot.url[0].path
-
     if (this.category === "anime") {
       this.isSortAnime = true
       this.isSort = false
@@ -97,56 +91,34 @@ export class GenreComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id')
     this.type = this.route.snapshot.paramMap.get("type")
     this.typeName = this.nameTypeRu[this.type]
-    var slug: string = this.route.snapshot.params.slug;
+/*     var slug: string = this.route.snapshot.params.slug;
     this.slug = slug.split("-")
-    this.id = this.slug.pop()
-    this.getGenreFilms(this.id, this.page, this.type)
-
-    if (this.typeName === "Аниме") {
-      this.getGenreAnime()
-      this.title.setTitle("Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd")
-    } else {
-      this.getGenre()
-      this.title.setTitle("Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd")
-    }
+    this.id = this.slug.pop() */
+    this.getYearFilmsList(1)
+    this.title.setTitle("Смотреть " + this.typeName + " " + this.year + " в хорошем качестве в 720p hd")
     this.updateMetaTagsGenre()
   }
 
   updateMetaTagsGenre() {
-    this.meta.updateTag({ name: 'og:title', content: "Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd" });
-    this.meta.updateTag({ name: 'og:description', content: "Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd" });
+    this.meta.updateTag({ name: 'og:title', content: "Смотреть " + this.typeName + " " + this.year + " в хорошем качестве в 720p hd" });
+    this.meta.updateTag({ name: 'og:description', content: "Смотреть " + this.typeName + " " + this.year + " в хорошем качестве в 720p hd" });
     this.meta.updateTag({ name: 'og:url', content: this.url });
     this.meta.updateTag({ name: 'og:image', content: this.defaultImage });
     this.meta.updateTag({ name: 'vk:image', content: this.defaultImage });
     this.meta.updateTag({ name: 'og:site_name', content: 'IndigoFilms' });
   }
 
-  getGenre() {
-    let ls = localStorage.getItem("genres")
-    if (ls) {
-      this.genres = JSON.parse(ls)
-      this.genre = this.genres.filter(x => x.id == this.id)[0]
-    }
-    else {
-      this.api2Service.getGenre().subscribe((data) => {
-        localStorage.setItem("genres", JSON.stringify(data.data))
-        this.genres = data.data.items
-        this.genre = this.genres.filter(x => x.id == this.id)[0]
-      });
-    }
-  }
-
-  genreArrow(sortField) {
+   sortArrow(sortField) {
     let sortDirection = "desc"
     if (this.sortField === sortField) {
       sortDirection = this.sortDirection === "desc" ? "asc" : "desc"
     }
     this.sortField = sortField
     this.sortDirection = sortDirection
-    this.getGenreFilms(this.id, this.page, this.type)
-  }
+    this.getYearFilmsList(1)
+  } 
 
-  arrowsUp(): void {
+   arrowsUp(): void {
     const arrowElms = document.querySelectorAll(".arrow");
     if (arrowElms.length) {
       arrowElms.forEach((arrowElm) => {
@@ -154,9 +126,9 @@ export class GenreComponent implements OnInit {
         (arrowElm as HTMLElement).style.color = "";
       });
     }
-  }
+  } 
 
-  getGenreAnime() {
+ /*  getGenreAnime() {
     let ls = localStorage.getItem("genresAnime")
     if (ls) {
 
@@ -170,11 +142,11 @@ export class GenreComponent implements OnInit {
         this.genre = this.genres.filter(x => x.id == this.id)[0]
       });
     }
-  }
+  } */
 
-  getGenreFilms(id, page, category) {
-    this.api2Service.getGenreFilms(id, page, category, this.sortField, this.sortDirection).subscribe((data) => {
-      this.data = data.data.items
+  getYearFilmsList(page) {
+    this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection, this.selectedGenre, this.selectedCountry, this.year  ).subscribe((data) => {
+      this.data = data.data.items      
       this.spinner.hide();
       this.loader = false
       if (this.userFavorite && this.data) {
@@ -184,16 +156,18 @@ export class GenreComponent implements OnInit {
       }
       this.totalRecords = data.data.pagination.total
     });
+    
   }
 
   onPageChange(page) {
     this.page = page
-    this.router.navigate(["/" + this.type + "/genre/" + this.id], {
+    this.router.navigate(["/" + this.category + "/year/" + this.year], {
       relativeTo: this.route,
       queryParams: {
         page: this.page
       }
     });
-    this.getGenreFilms(this.id, this.page, this.type)
+    this.getYearFilmsList(1)
   }
 }
+

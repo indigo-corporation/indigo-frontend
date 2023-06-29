@@ -1,0 +1,117 @@
+<div style="min-height:100%; position: relative;" class="container main block">
+  <!--   <div>
+    <h1>Реклама</h1>
+  </div> -->
+  <div class="sort-filter">
+    <div *ngIf="isSortAnime" class="sort-anime">
+
+      <button (click)="sortArrow('release_date')" class="btn-sort">По году выпуска
+        <i [@enterAnimationArrow] *ngIf="sortField === 'release_date' && sortDirection === 'asc'"
+          class='fas fa-caret-up arrow'></i>
+        <i [@enterAnimationArrow] *ngIf="sortField === 'release_date' && sortDirection === 'desc'"
+          class='fas fa-caret-down arrow'></i>
+      </button>
+
+      <button (click)="sortArrow('imdb_rating')" class="btn-sort">По рейтингу imdb
+        <i [@enterAnimationArrow] *ngIf="sortField === 'imdb_rating' && sortDirection === 'asc'"
+          class='fas fa-caret-up arrow'></i>
+        <i [@enterAnimationArrow] *ngIf="sortField === 'imdb_rating' && sortDirection === 'desc'"
+          class='fas fa-caret-down arrow'></i>
+      </button>
+
+      <button (click)="sortArrow('shiki_rating')" class="btn-sort">По рейтингу shiki
+        <i [@enterAnimationArrow] *ngIf="sortField === 'shiki_rating' && sortDirection === 'asc'"
+          class='fas fa-caret-up arrow'></i>
+        <i [@enterAnimationArrow] *ngIf="sortField === 'shiki_rating' && sortDirection === 'desc'"
+          class='fas fa-caret-down arrow'></i>
+      </button>
+
+    </div>
+
+    <div *ngIf="isSort" class="sort">
+
+      <button (click)="sortArrow('release_date')" class="btn-sort">По году выпуска
+
+        <i [@enterAnimationArrow] *ngIf="sortField === 'release_date' && sortDirection === 'asc'"
+          class='fas fa-caret-up arrow'></i>
+        <i [@enterAnimationArrow] *ngIf="sortField === 'release_date' && sortDirection === 'desc'"
+          class='fas fa-caret-down arrow'></i>
+
+      </button>
+
+      <button (click)="sortArrow('imdb_rating')" class="btn-sort">По рейтингу imdb
+
+        <i [@enterAnimationArrow] *ngIf="sortField === 'imdb_rating' && sortDirection === 'asc'"
+          class='fas fa-caret-up arrow'></i>
+
+        <i [@enterAnimationArrow] *ngIf="sortField === 'imdb_rating' && sortDirection === 'desc'"
+          class='fas fa-caret-down arrow'></i>
+
+      </button>
+
+    </div>
+
+    <div *ngIf="isSortAnime" style="margin-right: 10px;">
+<!--       <select class="select" id="country-select" (change)="onSelectCountry()" [(ngModel)]="selectedCountry"
+        name="country-select">
+        <option [value]="country" disabled selected>Страна</option>
+        <option *ngFor="let country of countries" [value]="country.id">{{country.title}}</option>
+      </select> -->
+      <select class="select" id="year-select" (change)="onSelectYear()" [(ngModel)]="selectedYear" name="year-select">
+        <option [value]=null selected>Год</option>
+        <option *ngFor="let year of years" [value]="year.value">{{year.title}}</option>
+      </select>
+
+      <select class="select" id="genre-select" (change)="onSelectGenre()"
+        [(ngModel)]="selectedGenre" name="genre-select">
+        <option [value]=null selected>Жанр</option>
+        <option *ngFor="let genre of genres" [value]="genre.id">{{genre.title}}</option>
+      </select>
+
+    </div>
+
+    <div *ngIf="isSort" style="margin-right: 10px;">
+      <select class="select" id="country-select" (change)="onSelectCountry()" [(ngModel)]="selectedCountry"
+        name="country-select">
+        <option [value]=null>Страна</option>
+        <option *ngFor="let country of countries" [value]="country.id">{{country.title}}</option>
+      </select>
+      <select class="select" id="year-select" (change)="onSelectYear()" [(ngModel)]="selectedYear" name="year-select">
+        <option [value]=null selected>Год</option>
+        <option *ngFor="let year of years" [value]="year.value">{{year.title}}</option>
+      </select>
+
+      <select class="select" id="genre-select" (change)="onSelectGenre()" [(ngModel)]="selectedGenre"
+        name="genre-select">
+        <option [value]=null selected>Жанр</option>
+        <option *ngFor="let genre of genres" [value]="genre.id">{{genre.title}}</option>
+      </select>
+    </div>
+  </div>
+  <div *ngIf="loader">
+    <ngx-spinner bdColor='black' size="medium" color="#4c3f93" type="ball-clip-rotate">
+      <p style="font-size: 20px; color: white">Загрузка...</p>
+    </ngx-spinner>
+  </div>
+  <div *ngIf="!loader" class="card-row">
+    <app-card [card]="card" [userFavorite]="userFavorite" [loader]="loader"
+      (filterUserFavorite)="filterUserFavorite($event)" [container]="container" *ngFor="let card of data | paginate: { 
+          id: 'listing_pagination',
+          itemsPerPage: 48,
+          currentPage: page,
+          totalItems: totalRecords
+        }">
+    </app-card>
+    <div *ngIf="data === null">
+      Информация
+      Новостей по данному запросу не найдено.
+    </div>
+  </div>
+  <div *ngIf="data.length >=1" class="paginate">
+    <pagination-controls id="listing_pagination" directionalLinks="true" (pageChange)="onPageChange($event)"
+      previousLabel="Назад" nextLabel="Вперед">
+    </pagination-controls>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

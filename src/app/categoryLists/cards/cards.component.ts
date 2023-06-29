@@ -1,13 +1,12 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ElementRef} from '@angular/core';
 import { Router } from '@angular/router';
-import { api2Service } from '../services/api2.service';
+import { api2Service } from '../../services/api2.service';
 import { ActivatedRoute } from '@angular/router';
 import { Input } from '@angular/core'
 import { Meta, Title } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { authService } from "../services/authService.service";
+import { authService } from "../../services/authService.service";
 import { NgxSpinnerService } from "ngx-spinner";
-import { log } from 'console';
 
 @Component({
   selector: 'app-cards',
@@ -27,7 +26,7 @@ import { log } from 'console';
   ],
   styleUrls: ['./cards.component.scss']
 })
-export class CardsComponent implements OnInit, AfterViewInit {
+export class CardsComponent implements OnInit {
 
   isArrow1: boolean = false;
   isArrow2: boolean = false;
@@ -63,6 +62,22 @@ export class CardsComponent implements OnInit, AfterViewInit {
     cartoon: "Мультфильмы"
   }
 
+  countries : any
+
+  selectedCountry:string
+  selectedYear: string;
+  selectedGenre: string
+
+  years: any[];
+
+  yearObject: any
+
+  genreAnime
+  genres
+
+  year: string
+  genre: string
+  country: string
   loader: boolean = true
   constructor(
     private api2Service: api2Service,
@@ -75,10 +90,14 @@ export class CardsComponent implements OnInit, AfterViewInit {
     private title: Title
   ) {
     this.data = new Array<any>()
-
   }
 
   ngOnInit() {
+  /*   this.selectedCountry = localStorage.getItem('countryFilter') || '';
+    this.selectedYear = localStorage.getItem('yearFilter') || '';
+    this.selectedGenre = localStorage.getItem('genreFilter') || ''; */
+
+    this.years = this.getYearRange(2023,1910);
     this.spinner.show();
     this.auth.user$.subscribe(x => {
       this.login = x != null
@@ -104,8 +123,14 @@ export class CardsComponent implements OnInit, AfterViewInit {
       this.isSort = true
     }
 
-    
-    if (this.category === "film") { 
+    if (this.typeName === "Аниме") {
+      this.getGenreAnime()
+    } else {
+      this.getGenre()
+    }
+
+
+    if (this.category === "film") {
       this.title.setTitle("Смотреть Фильмы в хорошем качестве в 720p hd")
       this.meta.addTag(
         { name: "description", content: "Фильмы, Фильм, Смотреть фильмы онлайн, фильмы HD, совместный просмотр, индигофилмс, индиго филмс, indigofilms, indigo films" })
@@ -127,14 +152,63 @@ export class CardsComponent implements OnInit, AfterViewInit {
       this.meta.addTag(
         { name: "description", content: "Аниме, Анимесериалы, Анимесериал, Смотреть Аниме онлайн, Аниме HD, совместный просмотр, индигофилмс, индиго филмс, indigofilms, indigo films" })
     }
+    this.route.queryParams.subscribe(params => {
+      if (this.selectedCountry) {
+         this.selectedCountry = params.country 
+      }
+    
+      if (this.selectedYear) {
+        this.selectedYear = params.year 
+      }
+    
+      if (this.selectedGenre) {
+        this.selectedGenre = params.genre ;
+      }
+      this.getData(1);
+    });
+   /*  this.getData(1); */
+    this.getCountryList()
+  }
+
+
+  getGenre() {
+    let ls = localStorage.getItem("genres")
+    if (ls) {
+      this.genres = JSON.parse(ls)
+    } else {
+      this.api2Service.getGenre().subscribe((data) => {
+        localStorage.setItem("genres", JSON.stringify(data.data))
+        this.genres = data.data.items
+      });
+    }
+  }
+
+  getGenreAnime() {
+    let ls = localStorage.getItem("genresAnime")
+    if (ls) {
+      this.genres = JSON.parse(ls)
+    } else {
+      this.api2Service.getGenre(1).subscribe((data) => {
+        localStorage.setItem("genresAnime", JSON.stringify(data.data))
+        this.genres = data.data
+      });
+    }
+  }
+
+  onSelectYear() {
+/*     localStorage.setItem('yearFilter', this.selectedYear); */
+    this.getData(1); // Отправляем данные на сервер
+  }
+
+  onSelectGenre() {
+ /*    localStorage.setItem('yearFilter', this.selectedGenre); */
     this.getData(1);
   }
 
-
-  ngAfterViewInit() {
-
+  onSelectCountry() {
+/*     localStorage.setItem('yearFilter', this.selectedCountry); */
+    this.getData(1);
   }
-
 
   updateMetaTagsCategory() {
     this.meta.updateTag({ name: 'og:title', content: "Смотреть " + this.typeName + " " + " в хорошем качестве в 720p hd" });
@@ -147,10 +221,9 @@ export class CardsComponent implements OnInit, AfterViewInit {
 
 
   getData(page) {
-    this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection).subscribe((data) => {
+    this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection, this.selectedGenre, this.selectedCountry, this.selectedYear).subscribe((data) => {
       this.data = data.data.items
       this.data.forEach(item => {
-
         item.shiki_rating = item.shiki_rating !== "0.00" ? item.shiki_rating : null
       });
       this.loader = false
@@ -161,9 +234,31 @@ export class CardsComponent implements OnInit, AfterViewInit {
           item.isFavorite = this.userFavorite.includes(item.id);
         });
       }
-
       this.totalRecords = data.data.pagination.total
     });
+  }
+
+  getCountryList() {
+    let ls = localStorage.getItem("countryList")
+    if (ls) {
+      this.countries = JSON.parse(ls)
+      this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+    }
+    else {
+      this.api2Service.getCountryList().subscribe((data)=> {
+        localStorage.setItem("countryList", JSON.stringify(data.data))
+        this.countries = data.data
+        this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+      })
+    }
+  }
+
+  getYearRange(startYear: number, endYear: number): { value: string; title: string; }[] {
+    const years: { value: string; title: string; }[] = [];
+    for (let year = startYear; year >= endYear; year--) {
+      years.push({ value: year.toString(), title: year.toString() });
+    }
+    return years;
   }
 
   filterUserFavorite(userFavorite) {
@@ -175,7 +270,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
   }
 
 
-  onPageChange(page) {
+ /*  onPageChange(page) {
     this.page = page
     this.router.navigate(["/" + this.category], {
       relativeTo: this.route,
@@ -184,6 +279,34 @@ export class CardsComponent implements OnInit, AfterViewInit {
       }
     });
     this.getData(page)
+  } */
+
+  onPageChange(page) {
+    this.page = page;
+    const queryParams = {
+      page: this.page,
+    /*   genre:this.selectedGenre,
+      country:this.selectedCountry,
+      year:this.selectedYear */
+    };
+    // Добавляем фильтры, если они установлены
+/*     if (this.selectedCountry) {
+      queryParams.country = this.selectedCountry
+    }
+  
+    if (this.selectedYear) {
+      queryParams.year = this.selectedYear
+    }
+  
+    if (this.selectedGenre) {
+      queryParams.genre = this.selectedGenre;
+    } */
+  
+    this.router.navigate(["/" + this.category], {
+      relativeTo: this.route,
+      queryParams: queryParams
+    });
+    this.getData(page);
   }
 
   sortArrow(sortField) {

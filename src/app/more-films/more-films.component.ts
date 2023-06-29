@@ -49,7 +49,6 @@ export class MoreFilmsComponent implements OnInit {
   getRecommendations() {
     this.api2Service.getRecommendations(this.filmId).subscribe((data) => {
       this.data = data.data
-      debugger
       if (this.userFavorite && this.data) {
         this.data.forEach(item => {
           item.isFavorite = this.userFavorite.includes(item.id);

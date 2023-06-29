@@ -69,12 +69,9 @@ export class CardsComponent implements OnInit {
   selectedGenre: string = 'undefined'
 
   years: any[];
-
   yearObject: any
-
   genreAnime
   genres
-
   year: string
   genre: string
   country: string
@@ -96,7 +93,6 @@ export class CardsComponent implements OnInit {
 
     let ls = localStorage.getItem("years")
     if (ls) {
-      debugger
       this.years = JSON.parse(ls)
     } else {
       this.years = this.getYearRange(2023,1910);

@@ -2,7 +2,7 @@
 min-height:100%;
 position:relative" 
 class="container main block">
-  
+<div class="sort-filter">
   <div *ngIf="isSortAnime" class="sort-anime">
     <button (click)="sortArrow('release_date')" class="btn-sort">По году выпуска
 
@@ -42,6 +42,30 @@ class="container main block">
         class='fas fa-caret-down arrow'></i>
     </button>
   </div> 
+  <div *ngIf="isSortAnime" class="filters">
+    <select class="select" id="year-select" (change)="onFiltersChange()" [(ngModel)]="selectedYear" name="year-select">
+      <option value="undefined">Год</option>
+      <option *ngFor="let year of years" [value]="year.value">{{year.title}}</option>
+    </select>
+    <select class="select" id="genre-select" (change)="onFiltersChange()" [(ngModel)]="selectedGenre"
+      name="genre-select">
+      <option value="undefined">Жанр</option>
+      <option *ngFor="let genre of genres" [value]="genre.id">{{genre.title}}</option>
+    </select>
+  </div>
+
+  <div *ngIf="isSort" class="filters">
+    <select class="select" id="year-select" (change)="onFiltersChange()" [(ngModel)]="selectedYear" name="year-select">
+      <option value="undefined">Год</option>
+      <option *ngFor="let year of years" [value]="year.value">{{year.title}}</option>
+    </select>
+    <select class="select" id="genre-select" (change)="onFiltersChange()" [(ngModel)]="selectedGenre"
+      name="genre-select">
+      <option value="undefined">Жанр</option>
+      <option *ngFor="let genre of genres" [value]="genre.id">{{genre.title}}</option>
+    </select>
+  </div>
+</div>
 
   <div *ngIf="!loader" class="card-row">
     <app-card [card]="card" *ngFor="let card of data | paginate: { 

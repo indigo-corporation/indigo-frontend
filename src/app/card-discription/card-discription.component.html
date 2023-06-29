@@ -78,8 +78,8 @@
                         </span>
 
                         <span class="overview-item" *ngFor="let country of film.countries.slice(0,2)">
-                            <p class="discription-text up-btn" routerLink="/{{category}}/country/{{country.id}}"
-                            href="/{{category}}/country/{{country.id}}">{{country.title}}</p>
+                            <p class="discription-text up-btn" routerLink="/{{category}}/country/{{country.slug}}"
+                            href="/{{category}}/country/{{country.slug}}">{{country.title}}</p>
                         </span>
                         <!--   <p *ngIf="film.runtime" class="discription-text">{{film.runtime}} минуты</p> -->
                     </div>

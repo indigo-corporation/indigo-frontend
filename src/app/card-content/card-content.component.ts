@@ -61,16 +61,13 @@ export class CardContentComponent implements OnInit{
   }
   ngOnInit() {
     this.spinner.show();
-
     var slug: string = this.route.snapshot.params.id;
     this.slug = slug.split("-")
     this.id = this.slug.pop()
     this.auth.user$.subscribe(x => {
       this.login = x != null
-      
       if (this.login) {
         let user = x
-
         this.userFavorite = user ? user.favorite_film_ids : [];
       }
     })

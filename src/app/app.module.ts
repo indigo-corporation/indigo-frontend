@@ -108,7 +108,7 @@ const appRoutes: Routes = [
   { path: 'reset-password/:token', component: ResetPasswordComponent },
   { path: ':type/genre/:slug', component: GenreComponent },
   { path: ':type/year/:year', component: YearListComponent },
-  { path: ':type/country/:country_id', component: CountryListComponent },
+  { path: ':type/country/:slug', component: CountryListComponent },
   { path: 'film', component: CardsComponent },
   { path: 'anime', component: CardsComponent },
   { path: 'serial', component: CardsComponent },

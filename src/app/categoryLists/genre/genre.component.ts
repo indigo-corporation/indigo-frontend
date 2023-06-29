@@ -106,14 +106,12 @@ export class GenreComponent implements OnInit {
       this.page = 1
     }
     this.category = this.route.snapshot.url[0].path
-
     if (this.category === "anime") {
       this.isSortAnime = true
       this.isSort = false
     } else {
       this.isSort = true
     }
-      debugger
     this.id = this.route.snapshot.paramMap.get('id')
     this.type = this.route.snapshot.paramMap.get("type")
     this.typeName = this.nameTypeRu[this.type]

@@ -46,6 +46,10 @@
     right: 0;
     text-align: center;
   }
+
+  .filters {
+    margin-right: 19px;
+  }
   
   
   .card-row {
@@ -73,6 +77,26 @@
     margin: 19px 0;
     margin-left: 10px;
     
+  }
+
+  .select {
+    font-size: 16px;
+    max-width: 150px;
+    min-width: 150px;
+    border-radius: 6px;
+    padding: 9px;
+    background: #4c3f93;
+    color: white;
+    border: none;
+    outline: none;
+    margin-left: 10px;
+  }
+
+  .sort-filter {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
   
   
@@ -142,6 +166,24 @@
       grid-template-columns: 36% 37% 36%;
       margin: 0 17px 0 21px;
     }
+
+    .select {
+      margin-bottom: 10px;
+      min-width: 100%;
+      margin-left:0px
+    }
+
+    .sort-filter {
+      display: block;
+    }
+
+    .filters {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      margin-right: 0px;
+    }
   
     .sort {
       grid-gap: 13px;
@@ -177,6 +219,13 @@
       margin: 0 15px 0 24px;
       justify-content: center;
       justify-items: center;
+    }
+
+    .sort-filter {
+      display: block;
+    }
+    .filters {
+      margin-right: 0px; 
     }
   }
   

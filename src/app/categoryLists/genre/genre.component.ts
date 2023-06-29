@@ -57,8 +57,12 @@ export class GenreComponent implements OnInit {
     cartoon: "Мультфильмы"
   }
 
-  country:string
-  year:string
+  selectedGenre: string = 'undefined'
+  selectedCountry: string = 'undefined'
+  selectedYear: string = 'undefined'
+  years:any
+  countries:any
+
   constructor(
     private api2Service: api2Service,
     private router: Router,
@@ -76,6 +80,17 @@ export class GenreComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.show();
+    let ls = localStorage.getItem("years")
+    if(ls) {
+      this.years = JSON.parse(ls)
+    }
+
+    let lsCountry = localStorage.getItem("countryList")
+    if (lsCountry) {
+      this.countries = JSON.parse(lsCountry)
+      this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+    }
+   
     this.auth.user$.subscribe(x => {
       this.login = x != null
       if (this.login) {
@@ -84,6 +99,8 @@ export class GenreComponent implements OnInit {
       }
     })
 
+    this.selectedCountry = this.route.snapshot.queryParams.country
+    this.selectedYear = this.route.snapshot.queryParams.year
     this.page = this.route.snapshot.queryParams.page
     if (!this.page) {
       this.page = 1
@@ -96,7 +113,7 @@ export class GenreComponent implements OnInit {
     } else {
       this.isSort = true
     }
- 
+      debugger
     this.id = this.route.snapshot.paramMap.get('id')
     this.type = this.route.snapshot.paramMap.get("type")
     this.typeName = this.nameTypeRu[this.type]
@@ -177,7 +194,10 @@ export class GenreComponent implements OnInit {
 
 
   getGenreFilms(page) {
-    this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection, this.id, this.country, this.year).subscribe((data) => {
+    let selectedCountry = this.selectedCountry !== 'undefined' ? this.selectedCountry : '';
+    let selectedYear = this.selectedYear !== 'undefined' ? this.selectedYear : '';
+
+    this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection, this.id, selectedCountry, selectedYear).subscribe((data) => {
       this.data = data.data.items
       this.spinner.hide();
       this.loader = false
@@ -190,14 +210,30 @@ export class GenreComponent implements OnInit {
     });
   }
 
+  onFiltersChange() {
+    this.onPageChange(1)
+  }
+
   onPageChange(page) {
-    this.page = page
-    this.router.navigate(["/" + this.type + "/genre/" + this.id], {
+    this.page = page;
+
+    let queryParams = {
+      page: this.page
+    };
+
+    if (this.selectedCountry && this.selectedCountry != 'undefined') {
+      queryParams["country"] = this.selectedCountry
+    }
+
+    if (this.selectedYear && this.selectedYear != 'undefined') {
+      queryParams["year"] = this.selectedYear
+    }
+
+    this.router.navigate(["/" + this.type + "/genre/" + this.genre.slug], {
       relativeTo: this.route,
-      queryParams: {
-        page: this.page
-      }
+      queryParams: queryParams
     });
+
     this.getGenreFilms(this.page)
   }
 }

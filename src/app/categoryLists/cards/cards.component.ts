@@ -93,11 +93,16 @@ export class CardsComponent implements OnInit {
   }
 
   ngOnInit() {
-  /*   this.selectedCountry = localStorage.getItem('countryFilter') || '';
-    this.selectedYear = localStorage.getItem('yearFilter') || '';
-    this.selectedGenre = localStorage.getItem('genreFilter') || ''; */
 
-    this.years = this.getYearRange(2023,1910);
+    let ls = localStorage.getItem("years")
+    if (ls) {
+      debugger
+      this.years = JSON.parse(ls)
+    } else {
+      this.years = this.getYearRange(2023,1910);
+      localStorage.setItem("years", JSON.stringify(this.years))
+    }
+    
     this.spinner.show();
     this.auth.user$.subscribe(x => {
       this.login = x != null

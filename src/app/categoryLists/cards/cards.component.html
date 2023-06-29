@@ -29,7 +29,6 @@
     </div>
 
     <div *ngIf="isSort" class="sort">
-
       <button (click)="sortArrow('release_date')" class="btn-sort">По году выпуска
 
         <i [@enterAnimationArrow] *ngIf="sortField === 'release_date' && sortDirection === 'asc'"
@@ -51,7 +50,7 @@
 
     </div>
 
-    <div *ngIf="isSortAnime" style="margin-right: 10px;">
+    <div *ngIf="isSortAnime" class="filters">
       <select class="select" id="year-select" (change)="onFiltersChange()" [(ngModel)]="selectedYear" name="year-select">
         <option value="undefined">Год</option>
         <option *ngFor="let year of years" [value]="year.value">{{year.title}}</option>
@@ -59,13 +58,13 @@
 
       <select class="select" id="genre-select" (change)="onFiltersChange()"
         [(ngModel)]="selectedGenre" name="genre-select">
-        <option value="undefined" >Жанр</option>
+        <option value="undefined">Жанр</option>
         <option *ngFor="let genre of genres" [value]="genre.id">{{genre.title}}</option>
       </select>
 
     </div>
 
-    <div *ngIf="isSort" style="margin-right: 10px;">
+    <div *ngIf="isSort" class="filters">
       <select class="select" id="country-select" (change)="onFiltersChange()" [(ngModel)]="selectedCountry"
         name="country-select">
         <option value="undefined">Страна</option>

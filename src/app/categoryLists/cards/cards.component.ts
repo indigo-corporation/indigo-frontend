@@ -64,9 +64,9 @@ export class CardsComponent implements OnInit {
 
   countries : any
 
-  selectedCountry:string
-  selectedYear: string;
-  selectedGenre: string
+  selectedCountry: string = 'undefined'
+  selectedYear: string = 'undefined'
+  selectedGenre: string = 'undefined'
 
   years: any[];
 
@@ -221,7 +221,11 @@ export class CardsComponent implements OnInit {
 
 
   getData(page) {
-    this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection, this.selectedGenre, this.selectedCountry, this.selectedYear).subscribe((data) => {
+    let selectedGenre = this.selectedGenre !== 'undefined' ? this.selectedGenre : '';
+    let selectedCountry = this.selectedCountry !== 'undefined' ? this.selectedCountry : '';
+    let selectedYear = this.selectedYear !== 'undefined' ? this.selectedYear : '';
+
+    this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection, selectedGenre, selectedCountry, selectedYear).subscribe((data) => {
       this.data = data.data.items
       this.data.forEach(item => {
         item.shiki_rating = item.shiki_rating !== "0.00" ? item.shiki_rating : null

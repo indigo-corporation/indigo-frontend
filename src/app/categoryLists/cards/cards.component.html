@@ -52,19 +52,14 @@
     </div>
 
     <div *ngIf="isSortAnime" style="margin-right: 10px;">
-<!--       <select class="select" id="country-select" (change)="onSelectCountry()" [(ngModel)]="selectedCountry"
-        name="country-select">
-        <option [value]="country" disabled selected>Страна</option>
-        <option *ngFor="let country of countries" [value]="country.id">{{country.title}}</option>
-      </select> -->
       <select class="select" id="year-select" (change)="onSelectYear()" [(ngModel)]="selectedYear" name="year-select">
-        <option [value]=null selected>Год</option>
+        <option value="undefined">Год</option>
         <option *ngFor="let year of years" [value]="year.value">{{year.title}}</option>
       </select>
 
       <select class="select" id="genre-select" (change)="onSelectGenre()"
         [(ngModel)]="selectedGenre" name="genre-select">
-        <option [value]=null selected>Жанр</option>
+        <option value="undefined" >Жанр</option>
         <option *ngFor="let genre of genres" [value]="genre.id">{{genre.title}}</option>
       </select>
 
@@ -73,17 +68,17 @@
     <div *ngIf="isSort" style="margin-right: 10px;">
       <select class="select" id="country-select" (change)="onSelectCountry()" [(ngModel)]="selectedCountry"
         name="country-select">
-        <option [value]=null>Страна</option>
+        <option value="undefined">Страна</option>
         <option *ngFor="let country of countries" [value]="country.id">{{country.title}}</option>
       </select>
       <select class="select" id="year-select" (change)="onSelectYear()" [(ngModel)]="selectedYear" name="year-select">
-        <option [value]=null selected>Год</option>
+        <option value="undefined">Год</option>
         <option *ngFor="let year of years" [value]="year.value">{{year.title}}</option>
       </select>
 
       <select class="select" id="genre-select" (change)="onSelectGenre()" [(ngModel)]="selectedGenre"
         name="genre-select">
-        <option [value]=null selected>Жанр</option>
+        <option value="undefined">Жанр</option>
         <option *ngFor="let genre of genres" [value]="genre.id">{{genre.title}}</option>
       </select>
     </div>

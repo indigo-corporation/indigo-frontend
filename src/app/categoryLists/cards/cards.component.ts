@@ -108,6 +108,10 @@ export class CardsComponent implements OnInit {
     })
 
     this.page = this.route.snapshot.queryParams.page
+    this.selectedCountry = this.route.snapshot.queryParams.country
+    this.selectedYear = this.route.snapshot.queryParams.year
+    this.selectedGenre = this.route.snapshot.queryParams.genre
+
     this.category = this.route.snapshot.url[0].path
     this.typeName = this.nameTypeRu[this.category]
 
@@ -195,19 +199,8 @@ export class CardsComponent implements OnInit {
     }
   }
 
-  onSelectYear() {
-/*     localStorage.setItem('yearFilter', this.selectedYear); */
-    this.getData(1); // Отправляем данные на сервер
-  }
-
-  onSelectGenre() {
- /*    localStorage.setItem('yearFilter', this.selectedGenre); */
-    this.getData(1);
-  }
-
-  onSelectCountry() {
-/*     localStorage.setItem('yearFilter', this.selectedCountry); */
-    this.getData(1);
+  onFiltersChange() {
+    this.onPageChange(1)
   }
 
   updateMetaTagsCategory() {
@@ -273,43 +266,30 @@ export class CardsComponent implements OnInit {
     }
   }
 
-
- /*  onPageChange(page) {
-    this.page = page
-    this.router.navigate(["/" + this.category], {
-      relativeTo: this.route,
-      queryParams: {
-        page: this.page
-      }
-    });
-    this.getData(page)
-  } */
-
   onPageChange(page) {
     this.page = page;
-    const queryParams = {
-      page: this.page,
-    /*   genre:this.selectedGenre,
-      country:this.selectedCountry,
-      year:this.selectedYear */
+
+    let queryParams = {
+      page: this.page
     };
-    // Добавляем фильтры, если они установлены
-/*     if (this.selectedCountry) {
-      queryParams.country = this.selectedCountry
+
+    if (this.selectedCountry && this.selectedCountry != 'undefined') {
+      queryParams["country"] = this.selectedCountry
     }
-  
-    if (this.selectedYear) {
-      queryParams.year = this.selectedYear
+
+    if (this.selectedYear && this.selectedYear != 'undefined') {
+      queryParams["year"] = this.selectedYear
     }
-  
-    if (this.selectedGenre) {
-      queryParams.genre = this.selectedGenre;
-    } */
+
+    if (this.selectedGenre && this.selectedGenre != 'undefined') {
+      queryParams["genre"] = this.selectedGenre;
+    }
   
     this.router.navigate(["/" + this.category], {
       relativeTo: this.route,
       queryParams: queryParams
     });
+
     this.getData(page);
   }
 

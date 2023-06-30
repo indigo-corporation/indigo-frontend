@@ -57,7 +57,7 @@ export class CountryListComponent implements OnInit {
   selectedCountry: string = 'undefined'
   selectedYear: string = 'undefined'
 
-  country 
+  country
   countrySlug
   genres
   countries
@@ -83,7 +83,7 @@ export class CountryListComponent implements OnInit {
     })
 
     this.selectedCountry = this.route.snapshot.queryParams.country
-    this.selectedYear = this.route.snapshot.queryParams.year 
+    this.selectedYear = this.route.snapshot.queryParams.year
     this.selectedGenre = this.route.snapshot.queryParams.genre
     this.countrySlug = this.route.snapshot.params.slug
     this.page = this.route.snapshot.queryParams.page
@@ -104,11 +104,6 @@ export class CountryListComponent implements OnInit {
     var slug: string = this.route.snapshot.params.slug;
     this.slug = slug.split("-")
     this.id = this.slug.pop()
-    let lsCountry = localStorage.getItem("countryList")
-    if (lsCountry) {
-      this.countries = JSON.parse(lsCountry)
-      this.country = this.countries.filter(x => x.id == this.id)[0]
-    }
     let ls = localStorage.getItem("years")
     if (ls) {
       this.years = JSON.parse(ls)
@@ -118,12 +113,14 @@ export class CountryListComponent implements OnInit {
     } else {
       this.getGenre()
     }
+    this.getCountryList()
     this.getCountryFilmsList(1)
     this.title.setTitle("Смотреть " + this.typeName + " " + this.country.title + " в хорошем качестве в 720p hd")
-    this.updateMetaTagsGenre()
+
+    this.updateMetaTags()
   }
 
-  updateMetaTagsGenre() {
+  updateMetaTags() {
     this.meta.updateTag({ name: 'og:title', content: "Смотреть " + this.typeName + " " + this.country.title + " в хорошем качестве в 720p hd" });
     this.meta.updateTag({ name: 'og:description', content: "Смотреть " + this.typeName + " " + this.country.title + " в хорошем качестве в 720p hd" });
     this.meta.updateTag({ name: 'og:url', content: this.url });
@@ -178,11 +175,28 @@ export class CountryListComponent implements OnInit {
     }
   }
 
+  getCountryList() {
+    let ls = localStorage.getItem("countryList")
+    if (ls) {
+      this.countries = JSON.parse(ls)
+      this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+      this.country = this.countries.filter(x => x.id == this.id)[0]
+    }
+    else {
+      this.api2Service.getCountryList().subscribe((data) => {
+        localStorage.setItem("countryList", JSON.stringify(data.data))
+        this.countries = data.data
+        this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+        this.country = this.countries.filter(x => x.id == this.id)[0]
+      })
+    }
+  }
+
 
   getCountryFilmsList(page) {
     let selectedGenre = this.selectedGenre !== 'undefined' ? this.selectedGenre : '';
     let selectedCountry = this.selectedCountry !== 'undefined' ? this.selectedCountry : '';
-    let selectedYear = this.selectedYear !== 'undefined' ? this.selectedYear : ''; 
+    let selectedYear = this.selectedYear !== 'undefined' ? this.selectedYear : '';
     this.api2Service.getData(this.category, this.page, this.sortField, this.sortDirection, selectedGenre, this.id, selectedYear).subscribe((data) => {
       this.data = data.data.items
       this.spinner.hide();
@@ -212,9 +226,9 @@ export class CountryListComponent implements OnInit {
       queryParams["country"] = this.selectedCountry
     } */
 
-     if (this.selectedYear && this.selectedYear != 'undefined') {
-       queryParams["year"] = this.selectedYear
-     } 
+    if (this.selectedYear && this.selectedYear != 'undefined') {
+      queryParams["year"] = this.selectedYear
+    }
 
     if (this.selectedGenre && this.selectedGenre != 'undefined') {
       queryParams["genre"] = this.selectedGenre;

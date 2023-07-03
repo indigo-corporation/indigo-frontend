@@ -221,7 +221,7 @@ export class HeaderComponent implements OnInit {
     this.isArrow3 = false;
     this.isArrow4 = false;
     const arrowElms = document.querySelectorAll(".arrow");
-    if (arrowElms.length) {
+    if (arrowElms.length && arrowElms) {
       arrowElms.forEach((arrowElm) => {
         (arrowElm as HTMLElement).style.transform = "";
         (arrowElm as HTMLElement).style.color = "";

@@ -57,7 +57,7 @@ export class CountryListComponent implements OnInit {
   selectedCountry: string = 'undefined'
   selectedYear: string = 'undefined'
 
-  country
+  country:any
   countrySlug
   genres
   countries
@@ -115,9 +115,11 @@ export class CountryListComponent implements OnInit {
     }
     this.getCountryList()
     this.getCountryFilmsList(1)
-    this.title.setTitle("Смотреть " + this.typeName + " " + this.country.title + " в хорошем качестве в 720p hd")
+    if(this.country && this.country.title) {
+      this.title.setTitle("Смотреть " + this.typeName + " " + this.country.title + " в хорошем качестве в 720p hd")
+      this.updateMetaTags()
+    }
 
-    this.updateMetaTags()
   }
 
   updateMetaTags() {

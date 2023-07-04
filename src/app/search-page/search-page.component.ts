@@ -53,28 +53,26 @@ export class SearchPageComponent implements OnInit {
   }
   ngOnInit() {
   this.spinner.show();
-  this.updateMetaTags()
     this.auth.user$.subscribe(x => {
       this.user = x
       this.userFavorite = this.user ? this.user.favorite_film_ids : [];
     })
-    this.title.setTitle("Поиск")
     this.page = this.route.snapshot.queryParams.page
     this.route.queryParams.subscribe((queryParams: any) => {
       this.page = queryParams.page;
       this.term = queryParams.term;
-      this.search(this.term)
 
     });
     this.term = this.route.snapshot.queryParams.find
-    if (this.term) {
+
       this.search(this.term)
-    }
+      this.title.setTitle("Поиск" + " " + this.term)
+      this.updateMetaTags()
   }
 
   updateMetaTags() {
-    this.meta.updateTag({ name: 'og:title', content: 'Поиск' });
-    this.meta.updateTag({ name: 'og:description', content: "Смотреть фильмы сериалы, мультфильмы и аниме онлайн в хорошем качестве 720p 1080p hd и без регистрации"});
+    this.meta.updateTag({ name: 'og:title', content: 'Поиск' + " " + this.term });
+    this.meta.updateTag({ name: 'og:description', content: 'Поиск' + " " + this.term});
     this.meta.updateTag({ name: 'og:image', content: this.defaultImage});
     this.meta.updateTag({ name: 'vk:image', content: this.defaultImage});
     this.meta.updateTag({ name: 'og:url', content: this.url });

@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges,Input,AfterViewInit} from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, Input, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { api2Service } from '../services/api2.service';
 import { api } from '../services/api.service';
@@ -31,7 +31,7 @@ import { Meta } from '@angular/platform-browser';
   ],
   styleUrls: ['./card-content.component.scss']
 })
-export class CardContentComponent implements OnInit{
+export class CardContentComponent implements OnInit {
 
   url: string = window.location.href;
   public id: any
@@ -44,7 +44,16 @@ export class CardContentComponent implements OnInit{
   favoriteFilmIds
   isTogther: boolean = true
   isFilm: boolean = true
-  loader:boolean = true
+  loader: boolean = true
+
+  typeName: string
+  nameTypeRu = {
+    film: "Фильм",
+    serial: "Сериал",
+    anime: "Аниме",
+    cartoon: "Мультфильм"
+  }
+  category:string
 
   constructor(
     private api2Service: api2Service,
@@ -61,6 +70,8 @@ export class CardContentComponent implements OnInit{
   }
   ngOnInit() {
     this.spinner.show();
+    this.category = this.route.snapshot.url[0].path
+    this.typeName = this.nameTypeRu[this.category]
     var slug: string = this.route.snapshot.params.id;
     this.slug = slug.split("-")
     this.id = this.slug.pop()
@@ -76,7 +87,7 @@ export class CardContentComponent implements OnInit{
 
 
 
-  
+
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {
       this.film = data.data;
@@ -93,27 +104,17 @@ export class CardContentComponent implements OnInit{
 
       this.title.setTitle("Смотреть" + " " + this.film.title + " " + "онлайн бесплатно в хорошем качестве")
       this.updateMetaTags()
-
-      if (this.film.is_anime === true) {
-        this.meta.addTag(
-          { name: "description", content: this.film.title + this.film.original_title + "Аниме, Анимесериалы, Анимесериал, Смотреть Аниме онлайн, Аниме HD, совместный просмотр, индигофилмс, индиго филмс, indigofilms, indigo films" })
-      }
-
-      if (this.film.is_serila === true) {
-        this.meta.addTag(
-          { name: "description", content: this.film.title + this.film.original_title + "Сериалы, сериал, Смотреть сериалы онлайн, сериалы HD, совместный просмотр, индигофилмс, индиго филмс, indigofilms, indigo films" })
-      }
-
     });
   }
 
 
   updateMetaTags() {
+    this.meta.updateTag({ name: "description", content: "Смотреть" + " " +  this.typeName + " " + this.film.title + " " + "онлайн в хорошем качестве совершенно бесплатно и без регистрации! Приятного просмотра!" });
     this.meta.updateTag({ name: 'og:title', content: this.film.title });
-    this.meta.updateTag({ name: 'og:description', content: this.film.overview});
-    this.meta.updateTag({ name: 'og:image', content: this.film.poster});
-    this.meta.updateTag({ name: 'vk:image', content: this.film.poster});
+    this.meta.updateTag({ name: 'og:description', content: this.film.overview });
+    this.meta.updateTag({ name: 'og:image', content: this.film.poster });
+    this.meta.updateTag({ name: 'vk:image', content: this.film.poster });
     this.meta.updateTag({ name: 'og:url', content: this.url });
-    this.meta.updateTag({ name:'og:site_name', content:'IndigoFilms' });
+    this.meta.updateTag({ name: 'og:site_name', content: 'IndigoFilms' });
   }
 }

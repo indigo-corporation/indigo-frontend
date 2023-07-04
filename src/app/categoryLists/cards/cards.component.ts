@@ -171,7 +171,6 @@ export class CardsComponent implements OnInit {
       }
       this.getData(1);
     });
-   /*  this.getData(1); */
     this.getCountryList()
   }
 
@@ -205,8 +204,8 @@ export class CardsComponent implements OnInit {
   }
 
   updateMetaTagsCategory() {
-    this.meta.updateTag({ name: 'og:title', content: "Смотреть " + this.typeName + " " + " в хорошем качестве в 720p hd" });
-    this.meta.updateTag({ name: 'og:description', content: "Смотреть " + this.typeName + " " + " в хорошем качестве в 720p hd, , индигофилмс, индиго филмс, indigofilms, indigo films" });
+    this.meta.updateTag({ name: 'og:title', content: "Смотреть " + this.typeName + " " + "в хорошем качестве в 720p hd" });
+    this.meta.updateTag({ name: 'og:description', content: "Смотреть " + this.typeName + " " + "в хорошем качестве в 720p hd, индигофилмс, индиго филмс, indigofilms, indigo films" });
     this.meta.updateTag({ name: 'og:url', content: this.url });
     this.meta.updateTag({ name: 'og:image', content: this.defaultImage });
     this.meta.updateTag({ name: 'vk:image', content: this.defaultImage });

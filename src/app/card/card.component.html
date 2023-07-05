@@ -20,7 +20,7 @@
             <span class="card-year">
               {{card.year}}</span> </p>
           <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
-          <div *ngIf="card.shiki_rating !== '0.00'">
+          <div *ngIf="card.shiki_rating && card.shiki_rating !== '0.00'">
             <div class="shiki">SHIKIMORI {{card.shiki_rating}} </div>
           </div>
           <p class="tooltip-overview" style="text-align: left;">{{card.overview}}<span id="dot">...</span></p>

@@ -311,8 +311,6 @@ a {
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.1882352941);
   border-radius: 5px;
-  max-width: 250px;
-  min-height: 288px;
   aspect-ratio: 2/3;
   width: 100%;
   object-fit: unset;
@@ -391,7 +389,7 @@ a {
 }
 
 
-@media all and (max-width: 900px) {
+@media all and (max-width: 1024px) {
 
   .favorite {
     color: #fff;
@@ -423,8 +421,6 @@ a {
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.1882352941);
     border-radius: 5px;
-    max-width: 108px;
-    min-height: 175px;
     aspect-ratio: 2/3;
     width: 100%;
     object-fit: unset;
@@ -519,8 +515,6 @@ a {
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.1882352941);
     border-radius: 9px;
-    min-width: 110px;
-    min-height: 158px;
     aspect-ratio: 2/3;
     width: 100%;
     object-fit: unset;
@@ -617,10 +611,8 @@ a {
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.1882352941);
     border-radius: 5px;
-    width: 132px;
-    min-height: 198px;
     aspect-ratio: 2/3;
-    /* width: 100%; */
+    width: 100%;
     object-fit: unset;
   }
 
@@ -685,10 +677,8 @@ a {
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.1882352941);
     border-radius: 5px;
-    width: 132px;
-    min-height: 198px;
+    width: 100%;
     aspect-ratio: 2/3;
-    /* width: 100%; */
     object-fit: unset;
   }
 

@@ -60,7 +60,8 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   onSearch(search) {
-    const term = search || "";
+    if(search.length >= 2) {
+      const term = search || "";
       this.router.navigate(["/search-page"], {
         queryParams: {
           page: 1,
@@ -68,6 +69,8 @@ export class SearchComponent implements OnInit, AfterViewInit {
         }
       });
       this.onSearchSubmmited.next(true)
+    }
+    
     }
 
 

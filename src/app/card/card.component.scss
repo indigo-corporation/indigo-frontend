@@ -326,8 +326,6 @@ input[type="checkbox"]:checked+.favorite-ic {
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.1882352941);
   border-radius: 5px;
-  max-width: 250px;
-  min-height: 288px;
   aspect-ratio:2/3;
   width: 100%;
   object-fit: unset;
@@ -432,8 +430,7 @@ input[type="checkbox"]:checked+.favorite-ic {
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.1882352941);
     border-radius: 5px;
-    max-width: 250px;
-    min-height: 171px;
+    aspect-ratio: 2/3;
     width: 100%;
     object-fit: unset;
     transition: 0.5s;
@@ -526,8 +523,7 @@ input[type="checkbox"]:checked+.favorite-ic {
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.1882352941);
     border-radius: 9px;
-    min-width: 120px;
-    min-height: 174px;
+    aspect-ratio: 2/3;
     width: 100%;
     object-fit: unset;
   }
@@ -611,9 +607,12 @@ input[type="checkbox"]:checked+.favorite-ic {
 
 @media all and (max-width: 900px) {
   .info-icon {
-    display: none;
+    display: none !important;
   }
+
 }
+
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .card-icon_text {
     margin: 0;
@@ -633,9 +632,7 @@ input[type="checkbox"]:checked+.favorite-ic {
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.1882352941);
     border-radius: 5px;
-    /* max-width: 70px; */
-    min-width: 114px;
-    min-height: 188px;
+    aspect-ratio: 2/3;
     width: 100%;
     object-fit: unset;
     transition: 0.5s;
@@ -700,6 +697,7 @@ input[type="checkbox"]:checked+.favorite-ic {
   }
 
 }
+
 
 @media screen and (min-width: 1024px) and (max-width: 1400px) {
   .card-icon_text {
@@ -811,8 +809,7 @@ input[type="checkbox"]:checked+.favorite-ic {
     cursor: pointer;
     border: 1px solid rgba(255, 255, 255, 0.1882352941);
     border-radius: 5px;
-    max-width: 250px;
-    min-height: 171px;
+    aspect-ratio: 2/3;
     width: 100%;
     object-fit: unset;
     transition: 0.5s;

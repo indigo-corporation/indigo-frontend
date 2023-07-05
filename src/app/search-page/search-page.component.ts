@@ -61,7 +61,7 @@ export class SearchPageComponent implements OnInit {
     this.route.queryParams.subscribe((queryParams: any) => {
       this.page = queryParams.page;
       this.term = queryParams.term;
-
+      this.search(this.term)
     });
     this.term = this.route.snapshot.queryParams.find
 
@@ -88,10 +88,9 @@ export class SearchPageComponent implements OnInit {
 
 
   onKeyPressEvent($event: any) {
-    if ($event.target.value.length >= 1) {
+    if ($event.target.value.length >= 2) {
       this.search($event.target.value, 1)
     }
-    this.alertify.error('Должно быть хотя бы 2 буквы');
   }
 
   search(find, page = 1) {
@@ -100,17 +99,20 @@ export class SearchPageComponent implements OnInit {
       this.loader = false
       return
     }
+    if (find.length >= 2) {
       this.api2Service.search(find, page).subscribe((data) => {
-      this.data = data.data.items
-      this.spinner.hide();
-      this.loader = false
-      if (this.userFavorite && this.data) {
-        this.data.forEach(item => {
-          item.isFavorite = this.userFavorite.includes(item.id);
-        });
-      }
-      this.totalRecords = data.data.pagination.total
-    })
+        this.data = data.data.items
+        this.spinner.hide();
+        this.loader = false
+        if (this.userFavorite && this.data) {
+          this.data.forEach(item => {
+            item.isFavorite = this.userFavorite.includes(item.id);
+          });
+        }
+        this.totalRecords = data.data.pagination.total
+      })
+    }
+      
   }
 
   onPageChange(page) {
@@ -122,7 +124,7 @@ export class SearchPageComponent implements OnInit {
         find: this.term
       }
     });
-    if (this.term) {
+    if (this.term.length >= 2) {
       this.search(this.term, page);
     }
   }

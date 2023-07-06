@@ -57,15 +57,19 @@ export class SearchPageComponent implements OnInit {
       this.user = x
       this.userFavorite = this.user ? this.user.favorite_film_ids : [];
     })
+    
     this.page = this.route.snapshot.queryParams.page
+    if (!this.page) {
+      this.page = 1
+    }
     this.route.queryParams.subscribe((queryParams: any) => {
       this.page = queryParams.page;
       this.term = queryParams.term;
-      this.search(this.term)
+      this.search(this.term, this.page)
     });
     this.term = this.route.snapshot.queryParams.find
 
-      this.search(this.term)
+      this.search(this.term, this.page)
       this.title.setTitle("Поиск" + " " + this.term)
       this.updateMetaTags()
   }
@@ -93,14 +97,14 @@ export class SearchPageComponent implements OnInit {
     }
   }
 
-  search(find, page = 1) {
+  search(find, page) {
     if (!find) {
       this.spinner.hide();
       this.loader = false
       return
     }
     if (find.length >= 2) {
-      this.api2Service.search(find, page).subscribe((data) => {
+      this.api2Service.search(find, this.page).subscribe((data) => {
         this.data = data.data.items
         this.spinner.hide();
         this.loader = false
@@ -125,7 +129,7 @@ export class SearchPageComponent implements OnInit {
       }
     });
     if (this.term.length >= 2) {
-      this.search(this.term, page);
+      this.search(this.term, this.page);
     }
   }
 }

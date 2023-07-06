@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { api2Service } from '../services/api2.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router} from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { AlertifyService } from '../services/alertify.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { authService } from '../services/authService.service';
-
+import { FormGroup, FormControl} from "@angular/forms"
 
 @Component({
   selector: 'app-search-page',
@@ -19,13 +19,18 @@ export class SearchPageComponent implements OnInit {
   page: number = 1
   data: Array<any>
   name: any
-  loader:boolean = true
+  loader: boolean = true
   find: any
   user
   userFavorite
   url: string = window.location.href;
   defaultImage = "../../assets/logo.png"
   public id: any
+
+  searhForm: FormGroup
+
+
+
   constructor(
     private api2Service: api2Service,
     private router: Router,
@@ -34,7 +39,7 @@ export class SearchPageComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private title: Title,
     private auth: authService,
-    private alertify:AlertifyService) {
+    private alertify: AlertifyService) {
     this.data = new Array<any>()
     /*  this.router.routeReuseStrategy.shouldReuseRoute = function () {
        return false;
@@ -44,6 +49,9 @@ export class SearchPageComponent implements OnInit {
          this.router.navigated = false;
        }
      }); */
+    this.searhForm = new FormGroup({
+      term: new FormControl(""),
+    })
   }
 
   myOptions = {
@@ -52,35 +60,36 @@ export class SearchPageComponent implements OnInit {
     'showDelay': 500,
   }
   ngOnInit() {
-  this.spinner.show();
+    this.spinner.show();
     this.auth.user$.subscribe(x => {
       this.user = x
       this.userFavorite = this.user ? this.user.favorite_film_ids : [];
     })
-    
+
     this.page = this.route.snapshot.queryParams.page
     if (!this.page) {
       this.page = 1
     }
     this.route.queryParams.subscribe((queryParams: any) => {
       this.page = queryParams.page;
-      this.term = queryParams.term;
+      if (this.term) {
+        this.term = queryParams.term;
+      }
       this.search(this.term, this.page)
     });
-    this.term = this.route.snapshot.queryParams.find
-
-      this.search(this.term, this.page)
-      this.title.setTitle("Поиск" + " " + this.term)
-      this.updateMetaTags()
+    this.term = this.route.snapshot.queryParams.term
+    this.search(this.term, this.page)
+    this.title.setTitle("Поиск" + " " + this.term)
+    this.updateMetaTags()
   }
 
   updateMetaTags() {
     this.meta.updateTag({ name: 'og:title', content: 'Поиск' + " " + this.term });
-    this.meta.updateTag({ name: 'og:description', content: 'Поиск' + " " + this.term});
-    this.meta.updateTag({ name: 'og:image', content: this.defaultImage});
-    this.meta.updateTag({ name: 'vk:image', content: this.defaultImage});
+    this.meta.updateTag({ name: 'og:description', content: 'Поиск' + " " + this.term });
+    this.meta.updateTag({ name: 'og:image', content: this.defaultImage });
+    this.meta.updateTag({ name: 'vk:image', content: this.defaultImage });
     this.meta.updateTag({ name: 'og:url', content: this.url });
-    this.meta.updateTag({ name:'og:site_name', content:'IndigoFilms' });
+    this.meta.updateTag({ name: 'og:site_name', content: 'IndigoFilms' });
   }
 
   getData(page) {
@@ -97,14 +106,14 @@ export class SearchPageComponent implements OnInit {
     }
   }
 
-  search(find, page) {
-    if (!find) {
+  search(term, page) {
+    if (!term) {
       this.spinner.hide();
       this.loader = false
       return
     }
-    if (find.length >= 2) {
-      this.api2Service.search(find, this.page).subscribe((data) => {
+    if (term.length >= 2) {
+      this.api2Service.search(term, this.page).subscribe((data) => {
         this.data = data.data.items
         this.spinner.hide();
         this.loader = false
@@ -116,7 +125,7 @@ export class SearchPageComponent implements OnInit {
         this.totalRecords = data.data.pagination.total
       })
     }
-      
+
   }
 
   onPageChange(page) {
@@ -125,11 +134,9 @@ export class SearchPageComponent implements OnInit {
       relativeTo: this.route,
       queryParams: {
         page: this.page,
-        find: this.term
+        term: this.term
       }
     });
-    if (this.term.length >= 2) {
-      this.search(this.term, this.page);
-    }
+    this.search(this.term, this.page);
   }
 }

@@ -8,6 +8,8 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { authService } from '../services/authService.service';
 import { FormGroup, FormControl} from "@angular/forms"
 
+
+
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
@@ -83,6 +85,8 @@ export class SearchPageComponent implements OnInit {
     this.updateMetaTags()
   }
 
+
+
   updateMetaTags() {
     this.meta.updateTag({ name: 'og:title', content: 'Поиск' + " " + this.term });
     this.meta.updateTag({ name: 'og:description', content: 'Поиск' + " " + this.term });
@@ -112,6 +116,7 @@ export class SearchPageComponent implements OnInit {
       this.loader = false
       return
     }
+    debugger
     if (term.length >= 2) {
       this.api2Service.search(term, this.page).subscribe((data) => {
         this.data = data.data.items

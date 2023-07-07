@@ -5,6 +5,9 @@ import { Meta, Title } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { authService } from "../../services/authService.service";
 import { NgxSpinnerService } from "ngx-spinner";
+import { DOCUMENT } from '@angular/common';
+import { Inject } from '@angular/core';
+
 
 @Component({
   selector: 'app-year-list',
@@ -64,6 +67,7 @@ export class YearListComponent implements OnInit {
     private router: Router,
     private spinner: NgxSpinnerService,
     private auth: authService,
+    @Inject(DOCUMENT) private document: Document,
     private route: ActivatedRoute,
     private meta: Meta,
     private title: Title
@@ -112,6 +116,14 @@ export class YearListComponent implements OnInit {
     this.getYearFilmsList(1)
     this.title.setTitle("Смотреть " + this.typeName + " " + this.year + " в хорошем качестве в 720p hd")
     this.updateMetaTagsYear()
+    this.changeCanonicalLinkPath(this.url);
+  }
+
+  changeCanonicalLinkPath(newPath: string) {
+    const canonicalLink = this.document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', newPath);
+    }
   }
 
   updateMetaTagsYear() {

@@ -6,12 +6,13 @@ import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import "@angular/common/locales/global/ru"
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { authService } from "../services/authService.service";
 import { Title } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { NgxSpinnerService } from "ngx-spinner";
 import { Meta } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-card-content',
@@ -62,6 +63,7 @@ export class CardContentComponent implements OnInit {
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
     private spinner: NgxSpinnerService,
+    @Inject(DOCUMENT) private document: Document,
     private auth: authService,
     private dialog: MatDialog,
     private meta: Meta,
@@ -83,10 +85,16 @@ export class CardContentComponent implements OnInit {
       }
     })
     this.getfind(this.id);
+    this.changeCanonicalLinkPath(this.url);
   }
 
 
-
+  changeCanonicalLinkPath(newPath: string) {
+    const canonicalLink = this.document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', newPath);
+    }
+  }
 
   getfind(id) {
     this.api2Service.getfind(id).subscribe((data) => {

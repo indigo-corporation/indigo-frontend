@@ -7,6 +7,9 @@ import { Meta, Title } from '@angular/platform-browser';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { authService } from "../../services/authService.service";
 import { NgxSpinnerService } from "ngx-spinner";
+import { DOCUMENT } from '@angular/common';
+import { Inject } from '@angular/core';
+
 
 @Component({
   selector: 'app-cards',
@@ -83,6 +86,7 @@ export class CardsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private meta: Meta,
+    @Inject(DOCUMENT) private document: Document,
     private spinner: NgxSpinnerService,
     private title: Title
   ) {
@@ -172,6 +176,7 @@ export class CardsComponent implements OnInit {
       this.getData(1);
     });
     this.getCountryList()
+    this.changeCanonicalLinkPath(this.url);
   }
 
 
@@ -202,6 +207,14 @@ export class CardsComponent implements OnInit {
   onFiltersChange() {
     this.onPageChange(1)
   }
+
+  changeCanonicalLinkPath(newPath: string) {
+    const canonicalLink = this.document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', newPath);
+    }
+  }
+
 
   updateMetaTagsCategory() {
     this.meta.updateTag({ name: 'og:title', content: "Смотреть " + this.typeName + " " + "в хорошем качестве в 720p hd" });

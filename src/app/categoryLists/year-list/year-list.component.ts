@@ -62,6 +62,7 @@ export class YearListComponent implements OnInit {
 
   genres: any
   countries: any
+  urlSite:string
   constructor(
     private api2Service: api2Service,
     private router: Router,
@@ -91,6 +92,8 @@ export class YearListComponent implements OnInit {
         this.userFavorite = user ? user.favorite_film_ids : [];
       }
     })
+    this.urlSite = "https://indigofilms.online"
+    this.url = this.urlSite  + this.route.snapshot["_routerState"].url
     this.year = this.route.snapshot.params.year
     this.page = this.route.snapshot.queryParams.page
     if (!this.page) {

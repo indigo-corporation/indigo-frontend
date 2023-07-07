@@ -35,7 +35,7 @@ export class CardsComponent implements OnInit {
   isArrow2: boolean = false;
   isArrow3: boolean = false;
   category: any
-  url: string = window.location.href;
+  url: string
   term: any;
   totalRecords: number
   page: number
@@ -79,6 +79,7 @@ export class CardsComponent implements OnInit {
   genre: string
   country: string
   loader: boolean = true
+  urlSite:string
   constructor(
     private api2Service: api2Service,
     private el: ElementRef,
@@ -102,6 +103,8 @@ export class CardsComponent implements OnInit {
       this.years = this.getYearRange(2023,1910);
       localStorage.setItem("years", JSON.stringify(this.years))
     }
+    this.urlSite = "https://indigofilms.online"
+    this.url = this.urlSite  + this.route.snapshot["_routerState"].url
     
     this.spinner.show();
     this.auth.user$.subscribe(x => {

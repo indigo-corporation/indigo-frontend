@@ -64,6 +64,7 @@ export class CountryListComponent implements OnInit {
   genres
   countries
   years
+  urlSite:string
   constructor(
     private api2Service: api2Service,
     private router: Router,
@@ -100,7 +101,8 @@ export class CountryListComponent implements OnInit {
     } else {
       this.isSort = true
     }
-
+    this.urlSite = "https://indigofilms.online"
+    this.url = this.urlSite  + this.route.snapshot["_routerState"].url
     this.id = this.route.snapshot.paramMap.get('id')
     this.type = this.route.snapshot.paramMap.get("type")
     this.typeName = this.nameTypeRu[this.type]

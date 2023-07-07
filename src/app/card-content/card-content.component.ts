@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges, Input, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterState } from '@angular/router';
 import { api2Service } from '../services/api2.service';
 import { api } from '../services/api.service';
 import { ActivatedRoute } from '@angular/router';
@@ -34,7 +34,7 @@ import { Inject } from '@angular/core';
 })
 export class CardContentComponent implements OnInit {
 
-  url: string = window.location.href;
+  url: string 
   public id: any
   term: any;
   @Input() film: any
@@ -55,7 +55,7 @@ export class CardContentComponent implements OnInit {
     cartoon: "Мультфильм"
   }
   category:string
-
+  urlSite:string
   constructor(
     private api2Service: api2Service,
     private api: api,
@@ -74,6 +74,10 @@ export class CardContentComponent implements OnInit {
     this.spinner.show();
     this.category = this.route.snapshot.url[0].path
     this.typeName = this.nameTypeRu[this.category]
+    debugger
+    
+    this.urlSite = "https://indigofilms.online"
+    this.url = this.urlSite  + this.route.snapshot["_routerState"].url
     var slug: string = this.route.snapshot.params.id;
     this.slug = slug.split("-")
     this.id = this.slug.pop()

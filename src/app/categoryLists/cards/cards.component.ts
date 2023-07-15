@@ -137,8 +137,10 @@ export class CardsComponent implements OnInit {
 
     if (this.typeName === "Аниме") {
       this.getGenreAnime()
+      this.getCountryAnime()
     } else {
       this.getGenre()
+      this.getCountryList()
     }
 
 
@@ -178,7 +180,7 @@ export class CardsComponent implements OnInit {
       }
       this.getData(1);
     });
-    this.getCountryList()
+    
     this.changeCanonicalLinkPath(this.url);
   }
 
@@ -265,6 +267,15 @@ export class CardsComponent implements OnInit {
       })
     }
   }
+
+  getCountryAnime() {
+      this.api2Service.getCountryList().subscribe((data)=> {
+        this.countries = data.data
+        this.countries = this.countries.filter(x=>x.id === 45 || x.id === 110)
+        localStorage.setItem("countryAnime", JSON.stringify(this.countries))
+      })
+  }
+
 
   getYearRange(startYear: number, endYear: number): { value: string; title: string; }[] {
     const years: { value: string; title: string; }[] = [];

@@ -38,43 +38,25 @@
 
       </button>
 
-      <button (click)="sortArrow('imdb_rating')" class="btn-sort">По рейтингу imdb
-
+      <button (click)="sortArrow('imdb_rating')" class="btn-sort">По рейтингу IMDb
         <i [@enterAnimationArrow] *ngIf="sortField === 'imdb_rating' && sortDirection === 'asc'"
           class='fas fa-caret-up arrow'></i>
-
         <i [@enterAnimationArrow] *ngIf="sortField === 'imdb_rating' && sortDirection === 'desc'"
           class='fas fa-caret-down arrow'></i>
-
       </button>
-
     </div>
 
-    <div *ngIf="isSortAnime" class="filters">
-      <select class="select" id="year-select" (change)="onFiltersChange()" [(ngModel)]="selectedYear" name="year-select">
-        <option value="undefined">Год</option>
-        <option *ngFor="let year of years" [value]="year.value">{{year.title}}</option>
-      </select>
-
-      <select class="select" id="genre-select" (change)="onFiltersChange()"
-        [(ngModel)]="selectedGenre" name="genre-select">
-        <option value="undefined">Жанр</option>
-        <option *ngFor="let genre of genres" [value]="genre.id">{{genre.title}}</option>
-      </select>
-
-    </div>
-
-    <div *ngIf="isSort" class="filters">
+    <div class="filters">
       <select class="select" id="country-select" (change)="onFiltersChange()" [(ngModel)]="selectedCountry"
         name="country-select">
         <option value="undefined">Страна</option>
         <option *ngFor="let country of countries" [value]="country.id">{{country.title}}</option>
       </select>
-      <select class="select" id="year-select" (change)="onFiltersChange()" [(ngModel)]="selectedYear" name="year-select">
+      <select class="select" id="year-select" (change)="onFiltersChange()" [(ngModel)]="selectedYear"
+        name="year-select">
         <option value="undefined">Год</option>
         <option *ngFor="let year of years" [value]="year.value">{{year.title}}</option>
       </select>
-
       <select class="select" id="genre-select" (change)="onFiltersChange()" [(ngModel)]="selectedGenre"
         name="genre-select">
         <option value="undefined">Жанр</option>

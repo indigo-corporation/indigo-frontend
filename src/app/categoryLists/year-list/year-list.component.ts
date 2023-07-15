@@ -113,8 +113,10 @@ export class YearListComponent implements OnInit {
 
     if (this.typeName === "Аниме") {
       this.getGenreAnime()
+      this.getCountryAnime()
     } else {
       this.getGenre()
+      this.getCountryList()
     }
     this.getYearFilmsList(1)
     this.title.setTitle("Смотреть " + this.typeName + " " + this.year + " в хорошем качестве в 720p hd")
@@ -162,15 +164,17 @@ export class YearListComponent implements OnInit {
     this.onPageChange(1)
   }
 
+
   getGenre() {
     let ls = localStorage.getItem("genres")
     if (ls) {
       this.genres = JSON.parse(ls)
-    }
-    else {
+      this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+    } else {
       this.api2Service.getGenre().subscribe((data) => {
-        localStorage.setItem("genres", JSON.stringify(data.data))
         this.genres = data.data.items
+        this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+        localStorage.setItem("genres", JSON.stringify(this.genres))
       });
     }
   }
@@ -179,12 +183,41 @@ export class YearListComponent implements OnInit {
     let ls = localStorage.getItem("genresAnime")
     if (ls) {
       this.genres = JSON.parse(ls)
+      this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+    } else {
+      this.api2Service.getGenre(1).subscribe((data) => {
+        this.genres = data.data
+        this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+        localStorage.setItem("genresAnime", JSON.stringify(this.genres))
+      });
+    }
+  }
+
+  getCountryList() {
+    let ls = localStorage.getItem("countryList")
+    if (ls) {
+      this.countries = JSON.parse(ls)
+      this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
     }
     else {
-      this.api2Service.getGenre(1).subscribe((data) => {
-        localStorage.setItem("genresAnime", JSON.stringify(data.data))
-        this.genres = data.data
-      });
+      this.api2Service.getCountryList().subscribe((data)=> {
+        localStorage.setItem("countryList", JSON.stringify(data.data))
+        this.countries = data.data
+        this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+      })
+    }
+  }
+
+  getCountryAnime() {
+    let ls = localStorage.getItem("countryAnime")
+    if (ls) {
+      this.countries = JSON.parse(ls)
+    } else {
+      this.api2Service.getCountryList().subscribe((data)=> {
+        this.countries = data.data
+        this.countries = this.countries.filter(x=>x.id === 45 || x.id === 110)
+        localStorage.setItem("countryAnime", JSON.stringify(this.countries))
+      })
     }
   }
 

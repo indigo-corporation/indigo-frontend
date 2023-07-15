@@ -26,15 +26,7 @@ position:relative" class="container main block">
       </button>
     </div>
 
-    <div *ngIf="isSortAnime" class="filters">
-      <select class="select" id="genre-select" (change)="onFiltersChange()" [(ngModel)]="selectedGenre"
-        name="genre-select">
-        <option value="undefined">Жанр</option>
-        <option *ngFor="let genre of genres" [value]="genre.id">{{genre.title}}</option>
-      </select>
-    </div>
-
-    <div *ngIf="isSort" class="filters">
+    <div class="filters">
       <select class="select" id="country-select" (change)="onFiltersChange()" [(ngModel)]="selectedCountry"
         name="country-select">
         <option value="undefined">Страна</option>

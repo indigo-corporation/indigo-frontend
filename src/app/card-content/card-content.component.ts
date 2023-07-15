@@ -74,8 +74,6 @@ export class CardContentComponent implements OnInit {
     this.spinner.show();
     this.category = this.route.snapshot.url[0].path
     this.typeName = this.nameTypeRu[this.category]
-    debugger
-    
     this.urlSite = "https://indigofilms.online"
     this.url = this.urlSite  + this.route.snapshot["_routerState"].url
     var slug: string = this.route.snapshot.params.id;

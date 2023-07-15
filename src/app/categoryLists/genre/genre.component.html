@@ -39,14 +39,7 @@ class="container main block">
     </button>
   </div>
 
-  <div *ngIf="isSortAnime" class="filters">
-    <select class="select" id="year-select" (change)="onFiltersChange()" [(ngModel)]="selectedYear" name="year-select">
-      <option value="undefined">Год</option>
-      <option *ngFor="let year of years" [value]="year.value">{{year.title}}</option>
-    </select>
-  </div>
-
-  <div *ngIf="isSort" class="filters">
+  <div class="filters">
     <select class="select" id="country-select" (change)="onFiltersChange()" [(ngModel)]="selectedCountry"
       name="country-select">
       <option value="undefined">Страна</option>

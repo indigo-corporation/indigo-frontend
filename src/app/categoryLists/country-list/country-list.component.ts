@@ -109,15 +109,21 @@ export class CountryListComponent implements OnInit {
     var slug: string = this.route.snapshot.params.slug;
     this.slug = slug.split("-")
     this.id = this.slug.pop()
+
     let ls = localStorage.getItem("years")
     if (ls) {
       this.years = JSON.parse(ls)
+    } else {
+      this.years = this.getYearRange(2023,1910);
+      localStorage.setItem("years", JSON.stringify(this.years))
     }
+
     if (this.typeName === "Аниме") {
       this.getGenreAnime()
     } else {
       this.getGenre()
     }
+
     this.getCountryList()
     this.getCountryFilmsList(1)
     if(this.country && this.country.title) {
@@ -143,15 +149,17 @@ export class CountryListComponent implements OnInit {
     this.meta.updateTag({ name: 'og:site_name', content: 'IndigoFilms' });
   }
 
+ 
   getGenre() {
     let ls = localStorage.getItem("genres")
     if (ls) {
       this.genres = JSON.parse(ls)
-    }
-    else {
+      this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+    } else {
       this.api2Service.getGenre().subscribe((data) => {
-        localStorage.setItem("genres", JSON.stringify(data.data))
         this.genres = data.data.items
+        this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+        localStorage.setItem("genres", JSON.stringify(this.genres))
       });
     }
   }
@@ -160,13 +168,21 @@ export class CountryListComponent implements OnInit {
     let ls = localStorage.getItem("genresAnime")
     if (ls) {
       this.genres = JSON.parse(ls)
-    }
-    else {
+      this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+    } else {
       this.api2Service.getGenre(1).subscribe((data) => {
-        localStorage.setItem("genresAnime", JSON.stringify(data.data))
         this.genres = data.data
+        this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+        localStorage.setItem("genresAnime", JSON.stringify(this.genres))
       });
     }
+  }
+  getYearRange(startYear: number, endYear: number): { value: string; title: string; }[] {
+    const years: { value: string; title: string; }[] = [];
+    for (let year = startYear; year >= endYear; year--) {
+      years.push({ value: year.toString(), title: year.toString() });
+    }
+    return years;
   }
 
   sortArrow(sortField) {

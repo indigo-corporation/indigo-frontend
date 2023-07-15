@@ -95,7 +95,6 @@ export class CardsComponent implements OnInit {
   }
 
   ngOnInit() {
-
     let ls = localStorage.getItem("years")
     if (ls) {
       this.years = JSON.parse(ls)
@@ -190,10 +189,12 @@ export class CardsComponent implements OnInit {
     let ls = localStorage.getItem("genres")
     if (ls) {
       this.genres = JSON.parse(ls)
+      this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
     } else {
       this.api2Service.getGenre().subscribe((data) => {
-        localStorage.setItem("genres", JSON.stringify(data.data))
         this.genres = data.data.items
+        this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+        localStorage.setItem("genres", JSON.stringify(this.genres))
       });
     }
   }
@@ -202,10 +203,12 @@ export class CardsComponent implements OnInit {
     let ls = localStorage.getItem("genresAnime")
     if (ls) {
       this.genres = JSON.parse(ls)
+      this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
     } else {
       this.api2Service.getGenre(1).subscribe((data) => {
-        localStorage.setItem("genresAnime", JSON.stringify(data.data))
         this.genres = data.data
+        this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+        localStorage.setItem("genresAnime", JSON.stringify(this.genres))
       });
     }
   }
@@ -270,11 +273,16 @@ export class CardsComponent implements OnInit {
   }
 
   getCountryAnime() {
+    let ls = localStorage.getItem("countryAnime")
+    if (ls) {
+      this.countries = JSON.parse(ls)
+    } else {
       this.api2Service.getCountryList().subscribe((data)=> {
         this.countries = data.data
         this.countries = this.countries.filter(x=>x.id === 45 || x.id === 110)
         localStorage.setItem("countryAnime", JSON.stringify(this.countries))
       })
+    }
   }
 
 

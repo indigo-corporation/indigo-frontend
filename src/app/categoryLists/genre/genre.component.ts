@@ -82,17 +82,6 @@ export class GenreComponent implements OnInit {
 
   ngOnInit() {
     this.spinner.show();
-    let ls = localStorage.getItem("years")
-    if(ls) {
-      this.years = JSON.parse(ls)
-    }
-
-    let lsCountry = localStorage.getItem("countryList")
-    if (lsCountry) {
-      this.countries = JSON.parse(lsCountry)
-      this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
-    }
-   
     this.auth.user$.subscribe(x => {
       this.login = x != null
       if (this.login) {
@@ -124,10 +113,20 @@ export class GenreComponent implements OnInit {
     this.id = this.slug.pop()
     this.getGenreFilms(1)
 
+    let ls = localStorage.getItem("years")
+    if (ls) {
+      this.years = JSON.parse(ls)
+    } else {
+      this.years = this.getYearRange(2023,1910);
+      localStorage.setItem("years", JSON.stringify(this.years))
+    }
+
     if (this.typeName === "Аниме") {
       this.getGenreAnime()
+      this.getCountryAnime()
       this.title.setTitle("Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd")
     } else {
+      this.getCountryList()
       this.getGenre()
       this.title.setTitle("Смотреть " + this.typeName + " " + this.genre.title + " в хорошем качестве в 720p hd")
     }
@@ -184,6 +183,34 @@ export class GenreComponent implements OnInit {
     }
   }
 
+  getCountryList() {
+    let ls = localStorage.getItem("countryList")
+    if (ls) {
+      this.countries = JSON.parse(ls)
+      this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+    }
+    else {
+      this.api2Service.getCountryList().subscribe((data)=> {
+        localStorage.setItem("countryList", JSON.stringify(data.data))
+        this.countries = data.data
+        this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+      })
+    }
+  }
+
+  getCountryAnime() {
+    let ls = localStorage.getItem("countryAnime")
+    if (ls) {
+      this.countries = JSON.parse(ls)
+    } else {
+      this.api2Service.getCountryList().subscribe((data)=> {
+        this.countries = data.data
+        this.countries = this.countries.filter(x=>x.id === 45 || x.id === 110)
+        localStorage.setItem("countryAnime", JSON.stringify(this.countries))
+      })
+    }
+  }
+
   genreArrow(sortField) {
     let sortDirection = "desc"
     if (this.sortField === sortField) {
@@ -202,6 +229,14 @@ export class GenreComponent implements OnInit {
         (arrowElm as HTMLElement).style.color = "";
       });
     }
+  }
+
+  getYearRange(startYear: number, endYear: number): { value: string; title: string; }[] {
+    const years: { value: string; title: string; }[] = [];
+    for (let year = startYear; year >= endYear; year--) {
+      years.push({ value: year.toString(), title: year.toString() });
+    }
+    return years;
   }
 
 

@@ -128,6 +128,7 @@ export class CardsComponent implements OnInit {
     if (!this.page) {
       this.page = 1
     }
+    
     if (this.category === "anime") {
       this.isSortAnime = true
       this.isSort = false

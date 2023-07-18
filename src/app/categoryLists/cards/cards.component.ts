@@ -193,8 +193,10 @@ export class CardsComponent implements OnInit {
     } else {
       this.api2Service.getGenre().subscribe((data) => {
         this.genres = data.data.items
-        this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
-        localStorage.setItem("genres", JSON.stringify(this.genres))
+        if(this.genres) {
+          this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+          localStorage.setItem("genres", JSON.stringify(this.genres))
+        }
       });
     }
   }
@@ -207,8 +209,10 @@ export class CardsComponent implements OnInit {
     } else {
       this.api2Service.getGenre(1).subscribe((data) => {
         this.genres = data.data
-        this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
-        localStorage.setItem("genresAnime", JSON.stringify(this.genres))
+        if(this.genres) {
+          this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+          localStorage.setItem("genresAnime", JSON.stringify(this.genres))
+        }
       });
     }
   }

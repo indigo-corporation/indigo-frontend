@@ -85,8 +85,12 @@ export class api2Service {
         return this.get("favorite-films/all", {page:page})
     }
 
-    search(find, page): Observable<search> {
-        return this.get("films/search", {page:page, find:find } )
+    search(find, page = 1, category = "", genre_id = "", country_id = "", year= ""): Observable<search> {
+        let params = {page:page, find:find, genre_id:genre_id, country_id:country_id, year:year }
+        if(category) {
+            params["category"] = category
+       }
+        return this.get("films/search", params)
     }
 
     getData(category = "", page = 1, sortField ="date", sortDirection="desc", genre_id = "", country_id = "", year= ""): Observable<Result> {

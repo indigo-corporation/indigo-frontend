@@ -55,6 +55,7 @@ export class PlayerComponent implements OnInit {
   ngOnInit() {
 
     if (this.film.has_player === true ) {
+      debugger
       this.api2.getIndigoPlayer().subscribe((data) => {
         this.indigoplayer = data.data
         debugger
@@ -67,6 +68,8 @@ export class PlayerComponent implements OnInit {
         this.onPlayer('cdn');
         this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id="+this.film.imdb_id+"&domain=indigofilms.online");
       } 
+      this.isIndigo =false
+      this.isHiddenIndigo =true
  
     }
 

@@ -103,6 +103,10 @@ export class api2Service {
     getCountryList(): Observable<any> {
     return this.get("world/film-countries")
     }
+
+    getIndigoPlayer(): Observable<any> {
+        return this.get("films/5413/data-for-player")
+    }
     
     getFilmsMain(): Observable<any> {
         return this.get("films/main")

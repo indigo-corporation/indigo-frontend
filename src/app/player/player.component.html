@@ -1,12 +1,22 @@
-<div [@enterAnimationPage]  class="player-buttons">
-  <button *ngIf="!isHiddenKodic" mat-raised-button (click)="onPlayer('kodic')" [ngClass]="{'active': currentPlayer === 'kodic'}"><i class="	fa fa-play-circle fa-play"></i>Плеер
+<div [@enterAnimationPage] class="player-buttons">
+  <button *ngIf="!isHiddenIndigo" mat-raised-button (click)="onPlayer('indigo')"
+  [ngClass]="{'active': currentPlayer === 'ASHDI'}"><i class="	fa fa-play-circle fa-play"></i>Плеер
+  IndigoFilms</button>
+  <button *ngIf="!isHiddenKodic" mat-raised-button (click)="onPlayer('kodic')"
+    [ngClass]="{'active': currentPlayer === 'kodic'}"><i class="	fa fa-play-circle fa-play"></i>Плеер
     RU</button>
-  <button *ngIf="!isHiddenCdn" mat-raised-button (click)="onPlayer('cdn')" [ngClass]="{'active': currentPlayer === 'cdn'}"><i class="	fa fa-play-circle fa-play"></i>Плеер
+  <button *ngIf="!isHiddenCdn" mat-raised-button (click)="onPlayer('cdn')"
+    [ngClass]="{'active': currentPlayer === 'cdn'}"><i class="	fa fa-play-circle fa-play"></i>Плеер
     RU</button>
-   <button *ngIf="!isHiddenUa" mat-raised-button (click)="onPlayer('ASHDI')" [ngClass]="{'active': currentPlayer === 'ASHDI'}"><i class="	fa fa-play-circle fa-play"></i>Плеер
-    UA</button>  
+  <button *ngIf="!isHiddenUa" mat-raised-button (click)="onPlayer('ASHDI')"
+    [ngClass]="{'active': currentPlayer === 'ASHDI'}"><i class="	fa fa-play-circle fa-play"></i>Плеер
+    UA</button>
 </div>
 
-<div [@enterAnimationPage]  class="player-container">
+<div *ngIf="currentPlayer !== 'indigo'" [@enterAnimationPage] class="player-container">
   <iframe [src]="this.srcPlayer" width="100%" height="480" scrolling="no" frameborder="0" allowfullscreen></iframe>
-</div> 
+</div>
+
+<div *ngIf="currentPlayer === 'indigo'" id="player">
+
+</div>

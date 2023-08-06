@@ -99,7 +99,6 @@ export class SearchPageComponent implements OnInit {
     this.selectedYear = this.route.snapshot.queryParams.year
     this.selectedGenre = this.route.snapshot.queryParams.genre
     this.selectedCategory = this.route.snapshot.queryParams.category
-    debugger
     
     let ls = localStorage.getItem("years")
     if (ls) {
@@ -178,7 +177,6 @@ export class SearchPageComponent implements OnInit {
       this.loader = false
       return
     }
-    debugger
     if (term.length >= 2) {
       this.api2Service.search( term, page, selectedCategory, selectedGenre, selectedCountry, selectedYear).subscribe((data) => {
         this.data = data.data.items

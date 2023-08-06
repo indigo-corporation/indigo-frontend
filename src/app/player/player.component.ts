@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { Input } from '@angular/core'
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { api2Service } from '../services/api2.service';
+import { IpService } from '../services/ip.service';
 
 declare var Playerjs: any;
 
@@ -25,7 +26,7 @@ declare var Playerjs: any;
   ],
   styleUrls: ['./player.component.scss']
 })
-export class PlayerComponent implements OnInit {
+export class PlayerComponent implements OnInit, AfterViewInit {
   @Input() film: any
   @Output() filmPost = new EventEmitter<string>();
   imdb_id
@@ -39,6 +40,25 @@ export class PlayerComponent implements OnInit {
   isHiddenIndigo: boolean = false
   isIndigo: boolean = true
   data
+
+  blockFilms = [
+    {
+      filmId: 82595
+    },
+    {
+      filmId: 22836
+    },
+    {
+      filmId: 78226
+    },
+    {
+      filmId: 82024
+    }
+  ]
+
+  country
+  isRussia: boolean = false
+  isOther: boolean = true
   indigoplayer
   ashdiUrl: string
   active1: boolean = true
@@ -48,29 +68,26 @@ export class PlayerComponent implements OnInit {
   public safeSrc: SafeResourceUrl;
   constructor(
     private api2: api2Service,
+    private ipService: IpService,
     private sanitizer: DomSanitizer,
     private http: HttpClient
   ) { }
 
   ngOnInit() {
-
-    if (this.film.has_player === true ) {
-      debugger
+    if (this.film.has_player === true) {
       this.api2.getIndigoPlayer().subscribe((data) => {
         this.indigoplayer = data.data
-        debugger
         new Playerjs({ id: 'player', file: this.indigoplayer });
       })
       this.onPlayer('indigo');
-     
+
     } else {
-      if(!this.film.shiki_id) {    
+      if (!this.film.shiki_id) {
         this.onPlayer('cdn');
-        this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id="+this.film.imdb_id+"&domain=indigofilms.online");
-      } 
-      this.isIndigo =false
-      this.isHiddenIndigo =true
- 
+        this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id=" + this.film.imdb_id + "&domain=indigofilms.online");
+      }
+      this.isIndigo = false
+      this.isHiddenIndigo = true
     }
 
 
@@ -91,15 +108,25 @@ export class PlayerComponent implements OnInit {
       });
     }
 
-    if(!this.film.shiki_id) {    
-      this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id="+this.film.imdb_id+"&domain=indigofilms.online");
-    } 
-
+    if (!this.film.shiki_id) {
+      this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id=" + this.film.imdb_id + "&domain=indigofilms.online");
+    }
     if (!this.film.imdb_id) {
       this.isHiddenCdn = true
     }
-
   }
+
+  ngAfterViewInit(): void {
+    this.ipService.getIpAddress().subscribe((data) => {
+      this.country = data.country;
+      const filmIds = this.blockFilms.map(item => item.filmId);
+      if (this.country === 'RU' && filmIds.includes(this.film.id)) {
+        this.isRussia = true
+        this.isOther = false
+      }
+    })
+  }
+
 
   onPlayer(player: string) {
     this.currentPlayer = player;
@@ -120,7 +147,6 @@ export class PlayerComponent implements OnInit {
     if (player === 'indigo') {
       this.api2.getIndigoPlayer().subscribe((data) => {
         this.indigoplayer = data.data
-        debugger
         new Playerjs({ id: 'player', file: this.indigoplayer });
       })
       this.srcPlayer = null

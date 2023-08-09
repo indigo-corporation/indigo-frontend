@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class IpService {
     
   private apiUrl = 'https://ipinfo.io';
-  token = "f0030ac657bbb0"
+  token = "48ef4cc7fd9710"
   constructor(private http: HttpClient) { }
 
   

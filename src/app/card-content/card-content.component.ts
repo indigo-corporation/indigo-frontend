@@ -119,7 +119,13 @@ export class CardContentComponent implements OnInit {
 
 
   updateMetaTags() {
-    this.meta.updateTag({ name: "description", content: "Смотреть" + " " +  this.typeName + " " + this.film.title + " " + "онлайн в хорошем качестве совершенно бесплатно и без регистрации! Приятного просмотра!" });
+    if(this.film.id === 5413) {
+      this.title.setTitle("Смотреть" + " " + this.film.title + " " + "8 сезон 3 серия" + " " + "онлайн бесплатно в хорошем качестве")
+      this.meta.updateTag({ name: 'og:title', content: this.film.title + "8 сезон 3 серия" });
+      this.meta.updateTag({ name: "description", content: "Смотреть" + " " +  this.typeName + "8 сезон 3 серия" + " " + this.film.title + " " + "онлайн в хорошем качестве совершенно бесплатно и без регистрации! Приятного просмотра!" });
+    } else {
+      this.meta.updateTag({ name: "description", content: "Смотреть" + " " +  this.typeName + " " + this.film.title + " " + "онлайн в хорошем качестве совершенно бесплатно и без регистрации! Приятного просмотра!" });
+    }
     this.meta.updateTag({ name: 'og:title', content: this.film.title });
     this.meta.updateTag({ name: 'og:description', content: this.film.overview });
     this.meta.updateTag({ name: 'og:image', content: this.film.poster });

@@ -91,6 +91,7 @@ import { NewPassComponent } from './new-pass/new-pass.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { YearListComponent } from './categoryLists/year-list/year-list.component';
 import { CountryListComponent } from './categoryLists/country-list/country-list.component'
+import { VoiceComponent } from './voice/voice.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent },
@@ -174,7 +175,8 @@ const appRoutes: Routes = [
     NewPassComponent,
     ResetPasswordComponent,
     YearListComponent,
-    CountryListComponent
+    CountryListComponent,
+    VoiceComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),

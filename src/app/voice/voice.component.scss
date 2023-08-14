@@ -1,0 +1,89 @@
+.voice-wrapper {
+    height: 505px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.voice {
+    font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
+    font-weight: bold;
+    background: linear-gradient(222deg, #2222a0, #a81c9c);
+    box-shadow: inset 0px 3px 32px 1px rgba(0, 0, 0, 0.76);
+    border-radius: 5px;
+    max-width: 100%;
+    width: 100%;
+    padding: 10px 10px;
+    color: white;
+    font-size: 18px;
+    display: block;
+    text-decoration: none;
+    margin: 0;
+}
+
+.voice-title {
+    font-weight: bold;
+    color: white;
+    letter-spacing: 2px;
+    font-size: 27px;
+}
+
+.voice-details {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    max-width: 500px;
+    padding: 13px;
+    border-radius: 10px;
+    padding: 10px;
+    background: rgb(0 0 0 / 72%);
+}
+
+.voice-overview {
+    color: #f5f5fffc;
+    letter-spacing: 2px;
+    max-width: 543px;
+}
+
+img {
+    width: 100%;
+}
+
+.voice-original_title {
+    font-weight: bold;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.voice-items {
+    border: 1px solid #ffffff4a;
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.imdb-raiting {
+    font: 13px/1 Impact, "HelveticaNeue-CondensedBold", sans-serif;
+    color: #000;
+    text-shadow: 0 0 0.15em #fff;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: bottom;
+    padding: 9px 3px 9px 3px;
+    border-radius: 0.15em;
+    background: radial-gradient(#ffffb8, #ce981d);
+    width: 100%;
+    max-width: 87px;
+    height: 100%;
+    text-align: center;
+    font-size: 16px;
+    margin: 0;
+    &:hover {
+        background: radial-gradient(lighten(#ffffb8, 10%), lighten(#ce981d, 10%));
+    }
+}
+
+p{
+    font-size: 14px;
+    color: white;
+}

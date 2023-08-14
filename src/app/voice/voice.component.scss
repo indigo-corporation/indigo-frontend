@@ -3,6 +3,7 @@
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .voice {
@@ -19,6 +20,7 @@
     display: block;
     text-decoration: none;
     margin: 0;
+    margin-bottom: 10px
 }
 
 .voice-title {
@@ -30,18 +32,16 @@
 
 .voice-details {
     position: absolute;
-    top: 95px;
-    left: 20px;
-    max-width: 500px;
-    padding: 13px;
-    border-radius: 10px;
+    top: 0px;
+    max-width: 100%;
+    width: 100%;
     padding: 10px;
+    height: 100%;
     background: rgb(0 0 0 / 72%);
 }
 
 .voice-overview {
     color: #f5f5fffc;
-    letter-spacing: 2px;
     max-width: 543px;
 }
 
@@ -52,7 +52,6 @@ img {
 .voice-original_title {
     font-weight: bold;
     color: white;
-    letter-spacing: 2px;
 }
 
 .voice-items {
@@ -78,32 +77,39 @@ img {
     text-align: center;
     font-size: 16px;
     margin: 0;
+    margin-left: 19px;
+
     &:hover {
         background: radial-gradient(lighten(#ffffb8, 10%), lighten(#ce981d, 10%));
     }
 }
 
-p{
+p {
     font-size: 14px;
     color: white;
 }
 
 @media all and (max-width: 900px) {
-    .voice-details{
+    .voice-details {
         position: absolute;
-        top: 43px;
+        top: 0px;
         left: 0;
-        max-width: 500px;
+        height: 100%;
+        max-width: 100%;
+        width: 100%;
         border-radius: 0;
         padding: 10px;
         background: rgba(0, 0, 0, 0.72);
     }
+
     .voice-wrapper {
+        padding: 0;
         overflow: hidden;
         position: relative;
         cursor: pointer;
         height: 100%;
     }
+
     .imdb-raiting {
         font: 13px/1 Impact, "HelveticaNeue-CondensedBold", sans-serif;
         color: #000;
@@ -111,23 +117,24 @@ p{
         text-decoration: none;
         display: inline-block;
         vertical-align: bottom;
-        padding: 9px 3px 9px 3px;
+        padding: 3px 0px 3px 0px;
         border-radius: 0.15em;
         background: radial-gradient(#ffffb8, #ce981d);
         width: 100%;
-        max-width: 87px;
+        max-width: 65px;
         height: 100%;
         text-align: center;
-        font-size: 14px;
+        font-size: 13px;
         margin: 0;
+        margin-left: 10px;
     }
 
     .voice-title {
         font-weight: 700;
         color: #fff;
-        letter-spacing: 2px;
         font-size: 16px;
     }
+
     p {
         font-size: 10px;
         color: #fff;

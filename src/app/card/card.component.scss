@@ -95,15 +95,15 @@ p {
 
 .imdb {
   color: #f5c965;
-    font-size: 12px;
-    margin-top: 1px;
-    font-weight: bold;
-    position: absolute;
-    bottom: 0;
-    background: #000000bd;
-    width: 100%;
-    padding: 6px 6px;
-    border-radius: 5px;
+  font-size: 12px;
+  margin-top: 1px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  background: #000000bd;
+  width: 100%;
+  padding: 6px 6px;
+  border-radius: 5px;
 }
 
 .shiki {
@@ -219,7 +219,7 @@ p {
 }
 
 .info-icon {
-  color:black;
+  color: black;
   background: rgba(185, 164, 247, 0.68);
   position: absolute;
   z-index: 0;
@@ -235,6 +235,7 @@ p {
   align-items: center;
   justify-content: center;
   transition: 0.6s;
+
   &:hover {
     transition: 0.6s;
     font-size: 20px;
@@ -261,6 +262,7 @@ p {
   align-items: center;
   justify-content: center;
   transition: 0.1s;
+
   &:hover {
     transition: 0.1s;
     color: red;
@@ -340,7 +342,7 @@ input[type="checkbox"]:checked+.favorite-ic {
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.1882352941);
   border-radius: 5px;
-  aspect-ratio:2/3;
+  aspect-ratio: 2/3;
   width: 100%;
   object-fit: unset;
   transition: 0.5s;
@@ -435,7 +437,7 @@ input[type="checkbox"]:checked+.favorite-ic {
 
 
   .tooltip-div {
-   display: none;
+    display: none;
   }
 
 
@@ -706,6 +708,7 @@ input[type="checkbox"]:checked+.favorite-ic {
     box-orient: vertical;
     margin-top: 5px;
   }
+
   .tooltip-div {
     width: 200px;
   }
@@ -800,7 +803,7 @@ input[type="checkbox"]:checked+.favorite-ic {
 
   .favorite {
     color: #fff;
-    background: rgba(185,164,247,.68);
+    background: rgba(185, 164, 247, .68);
     position: absolute;
     z-index: 0;
     right: 0px;
@@ -816,7 +819,7 @@ input[type="checkbox"]:checked+.favorite-ic {
     align-items: center;
     justify-content: center;
     transition: .1s;
-}
+  }
 
   .filters__img {
     height: 100%;

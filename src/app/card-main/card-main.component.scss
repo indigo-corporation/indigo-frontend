@@ -54,21 +54,12 @@ a {
 }
 
 
-@media all and (max-width: 900px) {
-  .container {
-    padding: 10px 0;
-  }
- 
-}
 
 
 
 
-@media screen and (max-width: 1024px) {
-  .main {
-    height: 377px;
-  }
-}
+
+
 
 @media screen and (min-width: 1400px) {
   .main {
@@ -77,5 +68,25 @@ a {
 }
 
 
+/* @media screen and (max-width: 1024px) {
+ 
+} */
 
 
+@media all and (max-width: 900px) {
+  .container {
+    padding: 10px 0;
+    
+  }
+
+  .main {
+    height: 330px;
+  }
+ 
+}
+
+@media screen and (min-width: 768px) and (max-width: 1300px) {
+  .main {
+    height: 431px;
+  }
+}

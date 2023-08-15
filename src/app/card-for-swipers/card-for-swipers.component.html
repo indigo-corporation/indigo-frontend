@@ -3,6 +3,10 @@
     <a routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}">
       <img onerror="if(this.src != 'error.jpg') this.src = 'assets/error-404.avif';" class="filters__img" alt="{{card.title}}"  [src]="card.poster">
     </a>
+    <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
+    <div *ngIf="card.shiki_rating">
+      <div class="shiki">SHIKIMORI {{card.shiki_rating}} </div>
+    </div>
     <button [@enterAnimationText]  (click)="postFavorite()" *ngIf="!card.isFavorite" class="favorite">
       <input style="display: none" id="favorite" type="checkbox">
       <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
@@ -18,10 +22,6 @@
       <p class="tooltip-genre"><span class="genre-div" *ngFor="let genre of card.genres">{{genre.title}}, </span>
         <span class="card-year">
           {{card.year}}</span> </p>
-      <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
-      <div *ngIf="card.shiki_rating">
-        <div class="shiki">SHIKIMORI {{card.shiki_rating}} </div>
-      </div>
       <p class="tooltip-overview" style="text-align: left;">{{card.overview}}<span id="dot">...</span></p>
     </div>
     <a class="card-play-ic" routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}">
@@ -35,9 +35,5 @@
     <p class="card-genre"><span class="genre-div"
         *ngFor="let genre of card.genres.slice (0, 1);">{{genre.title}},</span> <span class="card-year">
         {{card.year}}</span> </p>
-    <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
-    <div *ngIf="card.shiki_rating">
-      <div class="shiki">SHIKIMORI {{card.shiki_rating}} </div>
-    </div>
   </div>
 </div>

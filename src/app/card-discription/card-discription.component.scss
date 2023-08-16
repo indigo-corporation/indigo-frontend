@@ -97,6 +97,7 @@ div.stars {
     padding-top: 2px;
     font-size: 26px;
     margin: 0;
+    margin-top: 10px;
 }
 
 .content-card {
@@ -540,18 +541,33 @@ iframe {
 
 
 #imdb {
-    color: #f3c45b;
+    color: #e7bd5f;
     margin-right: 10px;
+    border-bottom: 1px solid #797878;
+    border-top: 1px solid #7d7d89b0;
+    padding: 3px 27px;
+    background: #0a090938;
+    border-radius: 5px;
+    border-left: 1px solid #bf2c2c3b;
+    border-right: 1px solid #a7373747;
 }
 
 #shiki {
     color: #c67aed;
+    border-bottom: 1px solid #797878;
+    border-top: 1px solid #7d7d89b0;
+    padding: 3px 27px;
+    background: #0a090938;
+    border-radius: 5px;
+    border-left: 1px solid #bf2c2c3b;
+    border-right: 1px solid #a7373747;
 }
 
 .up-btn {
     background: #bb0fc794;
     color: white;
     margin-right: 5px;
+    padding: 0px 22px;
     &:hover {
         background: rgb(187 15 199 / 52%);
     }
@@ -562,6 +578,7 @@ iframe {
     background: #3c3cab;
     margin-right: 5px;
     margin-top: 10px;
+    padding: 0px 22px;
     &:hover {
         background: #3c3cabc2;
     }

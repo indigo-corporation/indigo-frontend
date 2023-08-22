@@ -187,12 +187,14 @@ export class CardsComponent implements OnInit {
 
   getGenre() {
     let ls = localStorage.getItem("genres")
+    debugger
     if (ls) {
+      
       this.genres = JSON.parse(ls)
       this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
     } else {
       this.api2Service.getGenre().subscribe((data) => {
-        this.genres = data.data.items
+        this.genres = data.data
         if(this.genres) {
           this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
           localStorage.setItem("genres", JSON.stringify(this.genres))

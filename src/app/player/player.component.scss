@@ -46,6 +46,10 @@ button.active {
   font-size: 20px;
 }
 
+#player {
+  z-index: 1;
+}
+
 
 
 @media (max-width: 480px) {

@@ -1,10 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { api2Service } from '../services/api2.service';
 import { authService } from "../services/authService.service";
 import { ModalLoginComponent } from '../modal-login/modal-login.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import 'intersection-observer';
+
 
 @Component({
   selector: 'app-card-for-swipers',
@@ -21,21 +23,41 @@ import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
   styleUrls: ['./card-for-swipers.component.scss']
 })
 export class CardForSwipersComponent implements OnInit {
-
+  private intersectionObserver: IntersectionObserver;
   @Input() card: any;
   login
   private subscription = new Subscription();
   sliderWidth:number
   userFavorite 
   modalRef: MdbModalRef<ModalLoginComponent> | null = null;
+  defaultImage = "../../assets/favicon.ico"  
   constructor(
     private api2Service: api2Service,
     private auth: authService,
+    private elementRef: ElementRef,
     private modalService: MdbModalService,
   ) 
   { }
 
   ngOnInit() {
+
+    this.intersectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Изображение стало видимым, загрузить его
+          const img = entry.target.querySelector('.swiper-lazy') as HTMLImageElement;
+          img.src = img.getAttribute('data-src') || '';
+          this.intersectionObserver.unobserve(entry.target);
+        }
+      });
+    });
+
+    // Найдите элементы, которые вы хотите следить, и начните наблюдение за ними
+    const swiperSlides = this.elementRef.nativeElement.querySelectorAll('.swiper-slide');
+    swiperSlides.forEach(slide => {
+      this.intersectionObserver.observe(slide);
+    });
+    
     this.auth.user$.subscribe(x => {
       this.login = x != null
       if (this.login) {

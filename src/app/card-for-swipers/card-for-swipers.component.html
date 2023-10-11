@@ -1,7 +1,10 @@
 <div class="card" style="width: 13rem;">
   <div class="card-head">
     <a routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}">
-      <img onerror="if(this.src != 'error.jpg') this.src = 'assets/error-404.avif';" class="filters__img" alt="{{card.title}}"  [src]="card.poster">
+      <div class="swiper-slide">
+        <img [attr.data-src]="card.poster" class="swiper-lazy" alt="{{card.title}}" />
+        <div class="swiper-lazy-preloader"></div>
+      </div>
     </a>
     <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
     <div *ngIf="card.shiki_rating">

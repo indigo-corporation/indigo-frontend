@@ -3,7 +3,7 @@
     <div style="position: relative;
     top: 0px;">
         <div class="img-wrapper">
-            <img src="https://www.themoviedb.org/t/p/original/pMCvRynXABgLBMKHYa2UXjTBMsU.jpg"> 
+            <img onerror="if(this.src != 'error.jpg') this.src = 'assets/favicon.ico';" [defaultImage] ="defaultImage" alt="Футурама" [lazyLoad]="futurama"> 
         </div>
         
         <div class="voice-details">
@@ -21,7 +21,7 @@
             </div>
             <p class="voice-overview">Накануне Нового 2000 года, неудачливый нью-йоркский разносчик пиццы Филип Джей Фрай, 
               которого только что бросила девушка, доставляет заказ в инновационную криогенную лабораторию, но понимает, 
-              что его разыграли. По неосторожности он случайно попадает в камеру заморозки и приходит в сознание только 
+              что его разыграли. По неосторожности он случайно попадает в камеру заморозки и приходит в сознание только
               31 декабря 2999 года, оказавшись в футуристическом мире.</p> 
         </div>
     </div>

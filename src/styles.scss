@@ -71,6 +71,7 @@ a:not([href]):not([class]) {
 
 html,
 body {
+  color: white !important;
   height: 100%;
  /*  padding-top: 200px; */
   /* position: relative;
@@ -254,7 +255,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-  background-image: url(./back.jpg) !important;
+  background-image: url(./back.webp) !important;
   background-attachment: fixed;
   background-size:100%;
   background-position: inherit;
@@ -366,7 +367,7 @@ body {
   body {
     margin: 0;
     padding: 0;
-    background-image: url(./back.jpg) !important;
+    background-image: url(./back.webp) !important;
     background-attachment: fixed;
     background-position: inherit;
     background-size:cover;

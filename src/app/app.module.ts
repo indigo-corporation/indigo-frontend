@@ -67,18 +67,10 @@ import { LayoutComponent } from './layout/layout.component';
 import { GenreMenuComponent } from './header/genre-menu/genre-menu.component';
 import { GenreComponent } from './categoryLists/genre/genre.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { MessangerComponent } from './messanger/messanger.component';
-import { MessageContactsComponent } from './messanger/message-contacts/message-contacts.component';
-import { MessageChatComponent } from './messanger/message-chat/message-chat.component';
 import { MoreFilmsComponent } from './more-films/more-films.component';
 import { RememberPassComponent } from './remember-pass/remember-pass.component';
 import { FavoriteComponent } from './user-page/favorite/favorite.component';
 import { FavoritePageComponent } from './user-page/favorite/favorite-page/favorite-page.component';
-import { MessageHistoryComponent } from './messanger/message-history/message-history.component';
-import { ModalAddContactComponent } from './messanger/message-contacts/modal-add-contact/modal-add-contact.component';
-import { BlockContactsComponent } from './messanger/message-contacts/block-contacts/block-contacts.component';
-import { IncomeRequestsComponent } from './messanger/message-contacts/income-requests/income-requests.component';
-import { OutcomeRequestsComponent } from './messanger/message-contacts/outcome-requests/outcome-requests.component';
 import { InfiniteScrollComponent } from './infinite-scroll/infinite-scroll.component';
 import { CopyrightComponent } from './copyright/copyright.component';
 import { AllNotificationsComponent } from './all-notifications/all-notifications.component';
@@ -152,18 +144,10 @@ const appRoutes: Routes = [
     GenreMenuComponent,
     GenreComponent,
     NotfoundComponent,
-    MessangerComponent,
-    MessageContactsComponent,
-    MessageChatComponent,
     MoreFilmsComponent,
     RememberPassComponent,
     FavoriteComponent,
     FavoritePageComponent,
-    MessageHistoryComponent,
-    ModalAddContactComponent,
-    BlockContactsComponent,
-    IncomeRequestsComponent,
-    OutcomeRequestsComponent,
     InfiniteScrollComponent,
     CopyrightComponent,
     AllNotificationsComponent,
@@ -176,7 +160,7 @@ const appRoutes: Routes = [
     ResetPasswordComponent,
     YearListComponent,
     CountryListComponent,
-    VoiceComponent
+    VoiceComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),

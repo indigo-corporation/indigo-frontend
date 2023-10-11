@@ -126,6 +126,7 @@ export class CardContentComponent implements OnInit {
     } else {
       this.meta.updateTag({ name: "description", content: "Смотреть" + " " +  this.typeName + " " + this.film.title + " " + "онлайн в хорошем качестве совершенно бесплатно и без регистрации! Приятного просмотра!" });
     }
+    this.meta.updateTag({ name:"keywords", content: this.film.title + " " + this.film.original_title + " " + "indigofilms" });
     this.meta.updateTag({ name: 'og:title', content: this.film.title });
     this.meta.updateTag({ name: 'og:description', content: this.film.overview });
     this.meta.updateTag({ name: 'og:image', content: this.film.poster });

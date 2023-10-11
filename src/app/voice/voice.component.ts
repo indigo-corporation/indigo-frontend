@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VoiceComponent implements OnInit {
 
+  defaultImage = "../../assets/favicon.ico"  
+  futurama = "../../assets/futuramaBack.webp"
+
   constructor() { }
 
   ngOnInit(): void {

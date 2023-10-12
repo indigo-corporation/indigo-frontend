@@ -45,8 +45,9 @@ export class MainComponent implements OnInit {
     this.getData()
   }
 
-  
   updateMetaTags() {
+    this.meta.updateTag({ name:"keywords", content: "Фильмы, Аниме, Мультсериалы, Дорамы, смотреть онлайн, Сериалы, indigofilms" });
+    this.meta.updateTag({ name: "description", content: "Смотреть фильмы сериалы, мультфильмы и аниме онлайн в хорошем качестве 720p 1080p hd и без регистрации"});
     this.meta.updateTag({ name: 'og:title', content: 'IndigoFilms' });
     this.meta.updateTag({ name: 'og:description', content: "Смотреть фильмы сериалы, мультфильмы и аниме онлайн в хорошем качестве 720p 1080p hd и без регистрации"});
     this.meta.updateTag({ name: 'og:image', content: this.defaultImage});

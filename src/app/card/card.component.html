@@ -1,7 +1,7 @@
 
   <div [@enterAnimationPage] class="card" style="width: 13rem;" >
     <div class="card-head">
-      <a routerLink="/{{card.category}}/{{card.slug}}">
+      <a routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}">
         <img onerror="if(this.src != 'error.jpg')  this.src = 'assets/favicon.ico';" class="filters__img" alt="{{card.title}}" offset="100"  [defaultImage] ="defaultImage" [lazyLoad]="card.poster">
       </a>
         <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
@@ -19,19 +19,19 @@
   </button>
       <mat-icon (mouseover)="mOver($event)" (click)="toolTipClick($event)" (mouseout)="mOut($event)" class="info-icon">info</mat-icon>
         <div class="tooltip-div">
-          <a routerLink="/{{card.category}}/{{card.slug}}" class="tooltip-title">{{card.title}}</a>
+          <a routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}" class="tooltip-title">{{card.title}}</a>
           <p class="tooltip-genre"><span class="genre-div" *ngFor="let genre of card.genres">{{genre.title}}, </span>
             <span class="card-year">
               {{card.year}}</span> </p>
           <p class="tooltip-overview" style="text-align: left;">{{card.overview}}<span id="dot">...</span></p>
         </div>
-      <div routerLink="/{{card.category}}/{{card.slug}}" class="card-play-ic">
+      <div routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}" class="card-play-ic">
         <i class="fa fa-play" aria-hidden="true"></i>
         <p class="card-icon_text">Смотреть</p>
       </div>
     </div>
     <div class="card_body">
-      <a routerLink="/{{card.category}}/{{card.slug}}" class="film-title">{{card.title}}</a>
+      <a routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}" class="film-title">{{card.title}}</a>
       <p class="card-genre"><span class="genre-div"
           *ngFor="let genre of card.genres.slice (0, 1);">{{genre.title}},</span> <span class="card-year">
           {{card.year}}</span> </p>

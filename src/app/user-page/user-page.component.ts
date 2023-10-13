@@ -71,7 +71,7 @@ export class UserPageComponent implements OnInit, AfterViewInit {
       this.user = x
       let userId = Number(this.route.snapshot.paramMap.get('id'));
       if (userId) {
-        debugger
+
         this.userGet(userId)
       }
 
@@ -91,7 +91,6 @@ export class UserPageComponent implements OnInit, AfterViewInit {
 
    ngAfterViewInit() {
     let userId = Number(this.route.snapshot.paramMap.get('id'));
-    debugger
     if (userId) {
 /*       this.localStorageOutComes(userId)
       this.getIsContact(userId) */
@@ -217,13 +216,19 @@ export class UserPageComponent implements OnInit, AfterViewInit {
   }
 
   userGet(user_id) {
-    debugger
     this.api2Service.userGet(user_id).subscribe((data) => {
-     
       let myUser = this.user
       this.user = data.data
-      this.isMyUser = myUser.id == this.user.id
+      this.isMyUser = myUser.id !== this.user.id
     });
+  }
+
+  getStyle() {
+    if (this.isMyUser) {
+      return { 'height': '950px' }; // Если пользователь - ваш, высота будет автоматически рассчитываться
+    } else {
+      return { 'height': '560px' }; // Если пользователь не ваш, установите высоту в 500px
+    }
   }
 /* 
   getfind(id) {

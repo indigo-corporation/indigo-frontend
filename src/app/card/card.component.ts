@@ -75,7 +75,7 @@ export class CardComponent implements OnInit {
     }
     this.api2Service.postFavorite(this.card.id).subscribe((data) => {
       if(this.userFavorite) {
-        this.userFavorite.push(this.card.id)
+        this.userFavorite = this.userFavorite.push(this.card.id)
         this.addCard.next(this.card.id)
         this.user.favorite_film_ids = this.userFavorite
         localStorage.setItem("user",JSON.stringify(this.user))

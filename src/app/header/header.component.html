@@ -19,7 +19,7 @@
         <ul [@subMenuAnimation] class="menu-user" *ngIf="isMenuOpen">
           <li class="name-menu item-menu" href="/user-page"  routerLink="/user-page"> <i class="fa fa-user menu-user-i" aria-hidden="true"></i>Профиль</li>
           <li class="name-menu item-menu" href="/user-settings" routerLink="/user-settings"> <i class="fa fa-cog menu-user-i" aria-hidden="true"></i>Настройки</li>
-          <li class="name-menu item-menu" (click)="signOut()"> <i class="fas fa-sign-out-alt menu-user-i" aria-hidden="true"></i>Выход</li>
+          <li class="name-menu item-menu" (click)="signOut()"> <i class="fa fa-sign-out menu-user-i" aria-hidden="true"></i>Выход</li>
           </ul>
     </div> 
   </div>
@@ -38,7 +38,7 @@
           <a class="nav-link" routerLink="/film" href="/film" routerLinkActive="active">Фильмы
           </a>
           <button class="btn-menu" (click)="genreArrow($event)">
-            <i id="isArrow1" class='fas fa-caret-down arrow btn-menu'></i>
+            <i id="isArrow1" class='fa fa-caret-down arrow btn-menu'></i>
           </button>
           <app-genre-menu [@subMenuAnimation] type="film" *ngIf="isArrow1"></app-genre-menu>
         </li>
@@ -46,7 +46,7 @@
           <a class="nav-link" routerLink="/serial" href="/serial">Сериалы
           </a>
           <button class="btn-menu" (click)="genreArrow($event)">
-            <i id="isArrow2" class='fas fa-caret-down arrow'></i>
+            <i id="isArrow2" class='fa fa-caret-down arrow'></i>
           </button>
           <app-genre-menu [@subMenuAnimation] type="serial" *ngIf="isArrow2"></app-genre-menu>
         </li>
@@ -55,7 +55,7 @@
           <a class="nav-link" routerLink="/cartoon" href="/cartoon">Мультфильмы
           </a>
           <button class="btn-menu" (click)="genreArrow($event)">
-            <i id="isArrow3" class='fas fa-caret-down arrow'></i>
+            <i id="isArrow3" class='fa fa-caret-down arrow'></i>
           </button>
           <app-genre-menu [@subMenuAnimation] type="cartoon" *ngIf="isArrow3"></app-genre-menu>
         </li>
@@ -64,16 +64,16 @@
           <a class="nav-link" routerLink="/anime" href="/anime">Аниме
           </a>
           <button class="btn-menu" (click)="genreArrow($event)">
-            <i id="isArrow4" class='fas fa-caret-down arrow'></i>
+            <i id="isArrow4" class='fa fa-caret-down arrow'></i>
           </button>
           <app-genre-menu [@subMenuAnimation] *ngIf="isArrow4" type="anime"></app-genre-menu>
         </li>
 
         <li *ngIf="isLargeScreen" class="nav-item">
-          <button class="nav-link" (click)="toggleSearch()"><i class="fas fa-search search-icon"></i></button>
+          <button class="nav-link" (click)="toggleSearch()"><i class="fa fa-search search-icon"></i></button>
         </li>
         <li *ngIf="!isLargeScreen" class="nav-item">
-          <button class="nav-link" (click)="toggleSearchMobile(search.value)"><i class="fas fa-search search-icon"></i></button>
+          <button class="nav-link" (click)="toggleSearchMobile(search.value)"><i class="fa fa-search search-icon"></i></button>
         </li> 
       </ul>
     </div>

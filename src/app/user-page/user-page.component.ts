@@ -1,4 +1,4 @@
-import { Component, ErrorHandler, OnChanges, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ErrorHandler, OnChanges, OnInit, ChangeDetectorRef,AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { api } from '../services/api.service';
 import { api2Service } from '../services/api2.service';
@@ -29,7 +29,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
   ],
   styleUrls: ['./user-page.component.scss']
 })
-export class UserPageComponent implements OnInit {
+export class UserPageComponent implements OnInit, AfterViewInit {
   term: any;
   totalRecords: any
   isMyUser: boolean = true
@@ -71,6 +71,7 @@ export class UserPageComponent implements OnInit {
       this.user = x
       let userId = Number(this.route.snapshot.paramMap.get('id'));
       if (userId) {
+        debugger
         this.userGet(userId)
       }
 
@@ -88,14 +89,15 @@ export class UserPageComponent implements OnInit {
     this.meta.updateTag({ name:'og:site_name', content:'IndigoFilms' });
   }
 
-/*   ngAfterViewInit() {
-  
+   ngAfterViewInit() {
+    let userId = Number(this.route.snapshot.paramMap.get('id'));
+    debugger
     if (userId) {
-      this.localStorageOutComes(userId)
-      this.getIsContact(userId)
+/*       this.localStorageOutComes(userId)
+      this.getIsContact(userId) */
       this.userGet(userId)
     }
-  } */
+  } 
 
   updatingUserInfo(userInfo) {
     this.user = userInfo
@@ -215,7 +217,9 @@ export class UserPageComponent implements OnInit {
   }
 
   userGet(user_id) {
+    debugger
     this.api2Service.userGet(user_id).subscribe((data) => {
+     
       let myUser = this.user
       this.user = data.data
       this.isMyUser = myUser.id == this.user.id

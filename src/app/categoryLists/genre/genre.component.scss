@@ -23,7 +23,6 @@
 
 .paginate {
   padding-top: 11px;
-  border-top: 1px solid;
   position: absolute !important;
   bottom: 0px;
   margin-top: 17px;
@@ -32,6 +31,7 @@
   text-align: center;
   background: linear-gradient(222deg, #1a1a6a, rgb(116, 19, 108));
   box-shadow: inset 0px 3px 155px 1px rgb(0 0 0 / 76%);
+  border-top: 1px solid #ffffff24;
 }
 
 .block {

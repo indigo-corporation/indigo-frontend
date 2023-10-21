@@ -96,7 +96,7 @@
         </div>
         <div *ngIf="film" class="block-title">
             <div style="position: relative;">
-                <h1 class="overviewFilm">Про что {{nameType[category]}} «{{film.title}}» :</h1>
+                <h1 *ngIf="film.overview" class="overviewFilm">Про что {{nameType[category]}} «{{film.title}}»</h1>
                 <div *ngIf="!textView">
                     <p class="t">{{film.overview}}
                     </p>

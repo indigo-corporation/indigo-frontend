@@ -70,6 +70,10 @@
   transition: 0.6s;
 }
 
+select {
+  cursor: pointer;
+}
+
 .paginate {
   padding-top: 11px;
   border-top: 1px solid;

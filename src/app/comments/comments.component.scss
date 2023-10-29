@@ -254,22 +254,15 @@ button {
     margin-bottom: 35px;
     padding: 10px;
     background: #4c3f936b;
+    font-weight: bold;
 }
 
 .login {
-    color: red;
+    color: #ff7c7c;;
     cursor: pointer;
 }
 
 .login:hover {
-    color: rgb(134 227 128);
+    color: rgb(77 159 231);
     cursor: pointer;
-}
-
-
-@media all and (max-width: 900px) {
-    .comment-guard {
-        font-size: 11px;
-    }
-    
 }

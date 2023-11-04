@@ -75,7 +75,7 @@ export class PlayerComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     if (this.film.has_player === true) {
-      this.api2.getIndigoPlayer().subscribe((data) => {
+      this.api2.getIndigoPlayer(this.film.id).subscribe((data) => {
         this.indigoplayer = data.data
         new Playerjs({ id: 'player', file: this.indigoplayer });
       })
@@ -149,7 +149,7 @@ export class PlayerComponent implements OnInit, AfterViewInit {
     }
 
     if (player === 'indigo') {
-      this.api2.getIndigoPlayer().subscribe((data) => {
+      this.api2.getIndigoPlayer(this.film.id).subscribe((data) => {
         this.indigoplayer = data.data
         new Playerjs({ id: 'player', file: this.indigoplayer });
       })

@@ -104,8 +104,8 @@ export class api2Service {
     return this.get("world/film-countries")
     }
 
-    getIndigoPlayer(): Observable<any> {
-        return this.get("films/5413/data-for-player")
+    getIndigoPlayer(id): Observable<any> {
+        return this.get("films/"+id +"/data-for-player")
     }
     
     getFilmsMain(): Observable<any> {

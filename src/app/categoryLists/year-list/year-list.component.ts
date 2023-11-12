@@ -118,7 +118,24 @@ export class YearListComponent implements OnInit {
       this.getGenre()
       this.getCountryList()
     }
-    this.getYearFilmsList(1)
+
+    this.route.queryParams.subscribe(params => {
+
+      if (params.sortDirection) {
+        this.sortDirection = params.sortDirection
+      }
+
+      if (params.sortField) {
+        this.sortField = params.sortField
+      }
+
+      if (this.selectedGenre) {
+        this.selectedGenre = params.genre;
+      }
+      this.getYearFilmsList(1)
+    });
+    
+ 
     this.title.setTitle("Смотреть " + this.typeName + " " + this.year + " в хорошем качестве в 720p hd")
     this.updateMetaTagsYear()
     this.changeCanonicalLinkPath(this.url);
@@ -147,7 +164,17 @@ export class YearListComponent implements OnInit {
     }
     this.sortField = sortField
     this.sortDirection = sortDirection
-    this.getYearFilmsList(1)
+    
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        page: 1,
+        sortField: this.sortField,
+        sortDirection: this.sortDirection
+      },
+      queryParamsHandling: 'merge', // Объединение существующих параметров
+    });
+
   }
 
   arrowsUp(): void {
@@ -161,7 +188,7 @@ export class YearListComponent implements OnInit {
   }
 
   onFiltersChange() {
-    this.onPageChange(1)
+    this.getYearFilmsList(1)
   }
 
 
@@ -250,9 +277,13 @@ export class YearListComponent implements OnInit {
       queryParams["country"] = this.selectedCountry
     }
 
-    /*  if (this.selectedYear && this.selectedYear != 'undefined') {
-       queryParams["year"] = this.selectedYear
-     } */
+    if (this.sortField && this.sortField != 'undefined') {
+      queryParams["sortField"] = this.sortField
+    }
+
+    if (this.sortDirection && this.sortDirection != 'undefined') {
+      queryParams["sortDirection"] = this.sortDirection
+    }
 
     if (this.selectedGenre && this.selectedGenre != 'undefined') {
       queryParams["genre"] = this.selectedGenre;
@@ -262,8 +293,6 @@ export class YearListComponent implements OnInit {
       relativeTo: this.route,
       queryParams: queryParams
     });
-
-    this.getYearFilmsList(page)
   }
 }
 

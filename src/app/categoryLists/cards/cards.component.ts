@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef} from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { api2Service } from '../../services/api2.service';
 import { ActivatedRoute } from '@angular/router';
@@ -65,7 +65,7 @@ export class CardsComponent implements OnInit {
     cartoon: "Мультфильмы"
   }
 
-  countries : any
+  countries: any
 
   selectedCountry: string = 'undefined'
   selectedYear: string = 'undefined'
@@ -79,7 +79,9 @@ export class CardsComponent implements OnInit {
   genre: string
   country: string
   loader: boolean = true
-  urlSite:string
+  urlSite: string
+
+
   constructor(
     private api2Service: api2Service,
     private el: ElementRef,
@@ -99,12 +101,12 @@ export class CardsComponent implements OnInit {
     if (ls) {
       this.years = JSON.parse(ls)
     } else {
-      this.years = this.getYearRange(2023,1910);
+      this.years = this.getYearRange(2023, 1910);
       localStorage.setItem("years", JSON.stringify(this.years))
     }
     this.urlSite = "https://indigofilms.online"
-    this.url = this.urlSite  + this.route.snapshot["_routerState"].url
-    
+    this.url = this.urlSite + this.route.snapshot["_routerState"].url
+
     this.spinner.show();
     this.auth.user$.subscribe(x => {
       this.login = x != null
@@ -119,6 +121,10 @@ export class CardsComponent implements OnInit {
     this.selectedYear = this.route.snapshot.queryParams.year
     this.selectedGenre = this.route.snapshot.queryParams.genre
 
+    if (this.sortField === "date") {
+      this.sortField = "release_date"
+    }
+
     this.category = this.route.snapshot.url[0].path
     this.typeName = this.nameTypeRu[this.category]
 
@@ -127,7 +133,7 @@ export class CardsComponent implements OnInit {
     if (!this.page) {
       this.page = 1
     }
-    
+
     if (this.category === "anime") {
       this.isSortAnime = true
       this.isSort = false
@@ -167,20 +173,29 @@ export class CardsComponent implements OnInit {
         { name: "description", content: "Аниме, Анимесериалы, Анимесериал, Смотреть Аниме онлайн, Аниме HD, совместный просмотр, индигофилмс, индиго филмс, indigofilms, indigo films" })
     }
     this.route.queryParams.subscribe(params => {
+
+      if (params.sortDirection) {
+        this.sortDirection = params.sortDirection
+      }
+
+      if (params.sortField) {
+        this.sortField = params.sortField
+      }
+
       if (this.selectedCountry) {
-         this.selectedCountry = params.country 
+        this.selectedCountry = params.country
       }
-    
+
       if (this.selectedYear) {
-        this.selectedYear = params.year 
+        this.selectedYear = params.year
       }
-    
+
       if (this.selectedGenre) {
-        this.selectedGenre = params.genre ;
+        this.selectedGenre = params.genre;
       }
       this.getData(1);
     });
-    
+
     this.changeCanonicalLinkPath(this.url);
   }
 
@@ -193,7 +208,7 @@ export class CardsComponent implements OnInit {
     } else {
       this.api2Service.getGenre().subscribe((data) => {
         this.genres = data.data
-        if(this.genres) {
+        if (this.genres) {
           this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
           localStorage.setItem("genres", JSON.stringify(this.genres))
         }
@@ -209,7 +224,7 @@ export class CardsComponent implements OnInit {
     } else {
       this.api2Service.getGenre(1).subscribe((data) => {
         this.genres = data.data
-        if(this.genres) {
+        if (this.genres) {
           this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
           localStorage.setItem("genresAnime", JSON.stringify(this.genres))
         }
@@ -218,7 +233,28 @@ export class CardsComponent implements OnInit {
   }
 
   onFiltersChange() {
-    this.onPageChange(1)
+    
+    let queryParams = {
+      page: 1,
+      sortField: this.sortField,
+      sortDirection: this.sortDirection,
+    }
+
+    if (this.selectedGenre) {
+      queryParams["genre"] = this.selectedGenre
+    }
+    if (this.selectedCountry) {
+      queryParams["country"] = this.selectedCountry
+    }
+    if (this.selectedYear) {
+      queryParams["year"] = this.selectedYear
+    }
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: queryParams,
+      queryParamsHandling: 'merge', // Объединение существующих параметров
+    });
   }
 
   changeCanonicalLinkPath(newPath: string) {
@@ -268,7 +304,7 @@ export class CardsComponent implements OnInit {
       this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
     }
     else {
-      this.api2Service.getCountryList().subscribe((data)=> {
+      this.api2Service.getCountryList().subscribe((data) => {
         localStorage.setItem("countryList", JSON.stringify(data.data))
         this.countries = data.data
         this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
@@ -281,9 +317,9 @@ export class CardsComponent implements OnInit {
     if (ls) {
       this.countries = JSON.parse(ls)
     } else {
-      this.api2Service.getCountryList().subscribe((data)=> {
+      this.api2Service.getCountryList().subscribe((data) => {
         this.countries = data.data
-        this.countries = this.countries.filter(x=>x.id === 45 || x.id === 110)
+        this.countries = this.countries.filter(x => x.id === 45 || x.id === 110)
         localStorage.setItem("countryAnime", JSON.stringify(this.countries))
       })
     }
@@ -313,6 +349,14 @@ export class CardsComponent implements OnInit {
       page: this.page
     };
 
+    if (this.sortField && this.sortField != 'undefined') {
+      queryParams["sortField"] = this.sortField
+    }
+
+    if (this.sortDirection && this.sortDirection != 'undefined') {
+      queryParams["sortDirection"] = this.sortDirection
+    }
+
     if (this.selectedCountry && this.selectedCountry != 'undefined') {
       queryParams["country"] = this.selectedCountry
     }
@@ -324,13 +368,11 @@ export class CardsComponent implements OnInit {
     if (this.selectedGenre && this.selectedGenre != 'undefined') {
       queryParams["genre"] = this.selectedGenre;
     }
-  
+
     this.router.navigate(["/" + this.category], {
       relativeTo: this.route,
       queryParams: queryParams
     });
-
-    this.getData(page);
   }
 
   sortArrow(sortField) {
@@ -338,9 +380,19 @@ export class CardsComponent implements OnInit {
     if (this.sortField === sortField) {
       sortDirection = this.sortDirection === "desc" ? "asc" : "desc"
     }
+
     this.sortField = sortField
     this.sortDirection = sortDirection
-    this.getData(1)
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        page: 1,
+        sortField: this.sortField,
+        sortDirection: this.sortDirection
+      },
+      queryParamsHandling: 'merge', // Объединение существующих параметров
+    });
   }
 
   arrowsUp(): void {

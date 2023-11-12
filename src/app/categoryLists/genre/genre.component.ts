@@ -111,7 +111,23 @@ export class GenreComponent implements OnInit {
     var slug: string = this.route.snapshot.params.slug;
     this.slug = slug.split("-")
     this.id = this.slug.pop()
-    this.getGenreFilms(1)
+   
+    this.route.queryParams.subscribe(params => {
+
+      if (params.sortDirection) {
+        this.sortDirection = params.sortDirection
+      }
+
+      if (params.sortField) {
+        this.sortField = params.sortField
+      }
+
+      if (this.selectedYear) {
+        this.selectedYear = params.year
+      }
+
+      this.getGenreFilms(1)
+    });
 
     let ls = localStorage.getItem("years")
     if (ls) {
@@ -218,7 +234,16 @@ export class GenreComponent implements OnInit {
     }
     this.sortField = sortField
     this.sortDirection = sortDirection
-    this.getGenreFilms(1)
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        page: 1,
+        sortField: this.sortField,
+        sortDirection: this.sortDirection
+      },
+      queryParamsHandling: 'merge', // Объединение существующих параметров
+    });
   }
 
   arrowsUp(): void {
@@ -258,7 +283,7 @@ export class GenreComponent implements OnInit {
   }
 
   onFiltersChange() {
-    this.onPageChange(1)
+    this.getGenreFilms(1)
   }
 
   onPageChange(page) {
@@ -267,6 +292,14 @@ export class GenreComponent implements OnInit {
     let queryParams = {
       page: this.page
     };
+
+    if (this.sortField && this.sortField != 'undefined') {
+      queryParams["sortField"] = this.sortField
+    }
+
+    if (this.sortDirection && this.sortDirection != 'undefined') {
+      queryParams["sortDirection"] = this.sortDirection
+    }
 
     if (this.selectedCountry && this.selectedCountry != 'undefined') {
       queryParams["country"] = this.selectedCountry
@@ -280,7 +313,5 @@ export class GenreComponent implements OnInit {
       relativeTo: this.route,
       queryParams: queryParams
     });
-
-    this.getGenreFilms(this.page)
   }
 }

@@ -59,12 +59,12 @@ export class CountryListComponent implements OnInit {
   selectedCountry: string = 'undefined'
   selectedYear: string = 'undefined'
 
-  country:any
+  country: any
   countrySlug
   genres
   countries
   years
-  urlSite:string
+  urlSite: string
   constructor(
     private api2Service: api2Service,
     private router: Router,
@@ -102,7 +102,7 @@ export class CountryListComponent implements OnInit {
       this.isSort = true
     }
     this.urlSite = "https://indigofilms.online"
-    this.url = this.urlSite  + this.route.snapshot["_routerState"].url
+    this.url = this.urlSite + this.route.snapshot["_routerState"].url
     this.id = this.route.snapshot.paramMap.get('id')
     this.type = this.route.snapshot.paramMap.get("type")
     this.typeName = this.nameTypeRu[this.type]
@@ -114,7 +114,7 @@ export class CountryListComponent implements OnInit {
     if (ls) {
       this.years = JSON.parse(ls)
     } else {
-      this.years = this.getYearRange(2023,1910);
+      this.years = this.getYearRange(2023, 1910);
       localStorage.setItem("years", JSON.stringify(this.years))
     }
 
@@ -125,8 +125,28 @@ export class CountryListComponent implements OnInit {
     }
 
     this.getCountryList()
-    this.getCountryFilmsList(1)
-    if(this.country && this.country.title) {
+
+    this.route.queryParams.subscribe(params => {
+
+      if (params.sortDirection) {
+        this.sortDirection = params.sortDirection
+      }
+
+      if (params.sortField) {
+        this.sortField = params.sortField
+      }
+
+      if (this.selectedYear) {
+        this.selectedYear = params.year
+      }
+
+      if (this.selectedGenre) {
+        this.selectedGenre = params.genre;
+      }
+      this.getCountryFilmsList(1)
+    });
+
+    if (this.country && this.country.title) {
       this.title.setTitle("Смотреть " + this.typeName + " " + this.country.title + " в хорошем качестве в 720p hd")
       this.updateMetaTags()
     }
@@ -149,7 +169,7 @@ export class CountryListComponent implements OnInit {
     this.meta.updateTag({ name: 'og:site_name', content: 'IndigoFilms' });
   }
 
- 
+
   getGenre() {
     let ls = localStorage.getItem("genres")
     if (ls) {
@@ -192,7 +212,16 @@ export class CountryListComponent implements OnInit {
     }
     this.sortField = sortField
     this.sortDirection = sortDirection
-    this.getCountryFilmsList(1)
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        page: 1,
+        sortField: this.sortField,
+        sortDirection: this.sortDirection
+      },
+      queryParamsHandling: 'merge', // Объединение существующих параметров
+    });
   }
 
   arrowsUp(): void {
@@ -242,7 +271,7 @@ export class CountryListComponent implements OnInit {
   }
 
   onFiltersChange() {
-    this.onPageChange(1)
+    this.getCountryFilmsList(1)
   }
 
   onPageChange(page) {
@@ -252,9 +281,13 @@ export class CountryListComponent implements OnInit {
       page: this.page
     };
 
-    /* if (this.selectedCountry && this.selectedCountry != 'undefined') {
-      queryParams["country"] = this.selectedCountry
-    } */
+    if (this.sortField && this.sortField != 'undefined') {
+      queryParams["sortField"] = this.sortField
+    }
+
+    if (this.sortDirection && this.sortDirection != 'undefined') {
+      queryParams["sortDirection"] = this.sortDirection
+    }
 
     if (this.selectedYear && this.selectedYear != 'undefined') {
       queryParams["year"] = this.selectedYear
@@ -268,7 +301,5 @@ export class CountryListComponent implements OnInit {
       relativeTo: this.route,
       queryParams: queryParams
     });
-
-    this.getCountryFilmsList(1)
   }
 }

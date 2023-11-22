@@ -78,7 +78,7 @@ export class YearListComponent implements OnInit {
     let lsCountry = localStorage.getItem("countryList")
     if (lsCountry) {
       this.countries = JSON.parse(lsCountry)
-      this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+      this.countries.sort();
     }
 
     this.selectedCountry = this.route.snapshot.queryParams.country
@@ -196,11 +196,11 @@ export class YearListComponent implements OnInit {
     let ls = localStorage.getItem("genres")
     if (ls) {
       this.genres = JSON.parse(ls)
-      this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+      this.genres.sort();
     } else {
       this.api2Service.getGenre().subscribe((data) => {
         this.genres = data.data.items
-        this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+        this.genres.sort();
         localStorage.setItem("genres", JSON.stringify(this.genres))
       });
     }
@@ -210,11 +210,11 @@ export class YearListComponent implements OnInit {
     let ls = localStorage.getItem("genresAnime")
     if (ls) {
       this.genres = JSON.parse(ls)
-      this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+      this.genres.sort();
     } else {
       this.api2Service.getGenre(1).subscribe((data) => {
         this.genres = data.data
-        this.genres.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+        this.genres.sort();
         localStorage.setItem("genresAnime", JSON.stringify(this.genres))
       });
     }
@@ -224,13 +224,13 @@ export class YearListComponent implements OnInit {
     let ls = localStorage.getItem("countryList")
     if (ls) {
       this.countries = JSON.parse(ls)
-      this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+      this.countries.sort();
     }
     else {
       this.api2Service.getCountryList().subscribe((data)=> {
         localStorage.setItem("countryList", JSON.stringify(data.data))
         this.countries = data.data
-        this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+        this.countries.sort();
       })
     }
   }

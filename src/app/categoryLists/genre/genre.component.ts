@@ -203,13 +203,13 @@ export class GenreComponent implements OnInit {
     let ls = localStorage.getItem("countryList")
     if (ls) {
       this.countries = JSON.parse(ls)
-      this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+      this.countries.sort();
     }
     else {
       this.api2Service.getCountryList().subscribe((data)=> {
         localStorage.setItem("countryList", JSON.stringify(data.data))
         this.countries = data.data
-        this.countries.sort((a, b) => a.title.localeCompare(b.title, "ru"));
+        this.countries.sort();
       })
     }
   }

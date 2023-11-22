@@ -16,14 +16,15 @@
         </button>
 
     </div>
- <!--    <div>
+    <!--    <div>
         <h1>Реклама</h1>
       </div> -->
     <div class="buttons-bl">
         <div class="content-card">
             <div *ngIf="film" class="poster">
                 <div style="position: relative;">
-                    <img onerror="if(this.src != 'error.jpg') this.src = 'assets/favicon.ico';" class="card-image" alt="{{film.title}}" [defaultImage] ="defaultImage" [lazyLoad]="film.poster">         
+                    <img onerror="if(this.src != 'error.jpg') this.src = 'assets/favicon.ico';" class="card-image"
+                        alt="{{film.title}}" [defaultImage]="defaultImage" [lazyLoad]="film.poster">
                     <div class="buttons">
                         <!--  <button style="margin-left: 0" (click)="change(false)" mat-raised-button class="card-btn">
                             <i class="fas fa-play-circle"></i>
@@ -31,14 +32,14 @@
                         </button> -->
                         <button [@enterAnimationText] (click)="postFavorite()" *ngIf="!film.isFavorite"
                             class="favorite">
-                           
+
                             <input style="display: none" id="favorite" type="checkbox">
                             <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
                         </button>
 
                         <button [@enterAnimationText] (click)="removeFavorite()" *ngIf="film.isFavorite"
                             class="favorite">
-                          
+
                             <input style="display: none" id="favorite" checked type="checkbox">
                             <i class="fa fa-heart favorite-ic" aria-hidden="true"></i>
                         </button>
@@ -46,20 +47,20 @@
                 </div>
 
                 <div class="discriptionforfilm">
-                   <div>
-                    <div class="title-and-raiting">
-                        <div class="raiting-box">
-                            <div id="imdb" *ngIf="film.imdb_rating">IMDb {{film.imdb_rating}}</div>
-                            <div id="shiki" *ngIf="film.shiki_rating && film.shiki_rating !== '0.00'">
-                              SHIKIMORI {{film.shiki_rating}}
+                    <div>
+                        <div class="title-and-raiting">
+                            <div class="raiting-box">
+                                <div id="imdb" *ngIf="film.imdb_rating">IMDb {{film.imdb_rating}}</div>
+                                <div id="shiki" *ngIf="film.shiki_rating && film.shiki_rating !== '0.00'">
+                                    SHIKIMORI {{film.shiki_rating}}
+                                </div>
                             </div>
+                            <h1 class="card-title-ru">{{film.title}}</h1>
+                            <h1 style="margin-left: 0" class="card-title-original">{{film.original_title}}</h1>
                         </div>
-                        <h1 class="card-title-ru">{{film.title}}</h1>
-                        <h1 style="margin-left: 0" class="card-title-original">{{film.original_title}}</h1>
                     </div>
-                   </div>
-                    
-                    
+
+
                     <div class="cont">
                         <div class="stars">
                             <ngb-rating [max]="5" ([film])="film" (click)="postStars()"
@@ -74,12 +75,12 @@
                     <div class="discription-text-block">
                         <span class="overview-item">
                             <p class="discription-text up-btn" routerLink="/{{category}}/year/{{film.year}}"
-                            href="/{{category}}/year/{{film.year}}">{{film.year}}</p>
+                                href="/{{category}}/year/{{film.year}}">{{film.year}}</p>
                         </span>
 
                         <span class="overview-item" *ngFor="let country of film.countries.slice(0,2)">
                             <p class="discription-text up-btn" routerLink="/{{category}}/country/{{country.slug}}"
-                            href="/{{category}}/country/{{country.slug}}">{{country.title}}</p>
+                                href="/{{category}}/country/{{country.slug}}">{{country.title}}</p>
                         </span>
                         <!--   <p *ngIf="film.runtime" class="discription-text">{{film.runtime}} минуты</p> -->
                     </div>
@@ -95,19 +96,21 @@
             </div>
         </div>
         <div *ngIf="film" class="block-title">
-            <div style="position: relative;">
-                <h1 *ngIf="film.overview" class="overviewFilm">Про что {{nameType[category]}} «{{film.title}}»</h1>
-                <div *ngIf="!textView">
-                    <p class="t">{{film.overview}}
-                    </p>
-                </div>
-                <div [@enterAnimationPage] *ngIf="textView">
-                    <p class="textOverview">{{film.overview}}
-                    </p>
-                </div>
-                <div *ngIf="isFilmOverviewButtons">
-                    <a *ngIf="!textView" class="moreTextBtn" (click)="moreText()">Подробнеe</a>
-                    <a *ngIf="textView" class="moreTextBtn" (click)="backText()">Свернуть</a>
+            <div [ngStyle]="{ 'display': isEnglish ? 'none' : 'block' }">
+                <div style="position: relative;">
+                    <h1 *ngIf="film.overview" class="overviewFilm">Про что {{nameType[category]}} «{{film.title}}»</h1>
+                    <div *ngIf="!textView">
+                        <p class="t">{{film.overview}}
+                        </p>
+                    </div>
+                    <div [@enterAnimationPage] *ngIf="textView">
+                        <p class="textOverview">{{film.overview}}
+                        </p>
+                    </div>
+                    <div *ngIf="isFilmOverviewButtons">
+                        <a *ngIf="!textView" class="moreTextBtn" (click)="moreText()">Подробнеe</a>
+                        <a *ngIf="textView" class="moreTextBtn" (click)="backText()">Свернуть</a>
+                    </div>
                 </div>
             </div>
         </div>

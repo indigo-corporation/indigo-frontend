@@ -102,8 +102,10 @@ export class CardDiscriptionComponent implements OnInit, AfterViewInit {
     cartoon: "Мультфильм"
   }
 
-
+  isEnglish: boolean = false;
+  
   ngOnInit() {
+    this.checkLanguage();
     window.location.href
     this.auth.user$.subscribe(x => {
       this.login = x != null
@@ -114,6 +116,15 @@ export class CardDiscriptionComponent implements OnInit, AfterViewInit {
     }) 
    
     this.category = this.route.snapshot.params.category
+  }
+
+  checkLanguage() {
+    this.isEnglish = this.containsEnglishCharacters(this.film.overview);
+  }
+
+  containsEnglishCharacters(text: string): boolean {
+    const englishAlphabetRegex = /[a-zA-Z]/;
+    return englishAlphabetRegex.test(text);
   }
 
   ngAfterViewInit() {

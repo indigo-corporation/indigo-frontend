@@ -81,7 +81,6 @@ export class CardsComponent implements OnInit {
   loader: boolean = true
   urlSite: string
 
-
   constructor(
     private api2Service: api2Service,
     private el: ElementRef,

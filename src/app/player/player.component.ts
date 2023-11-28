@@ -4,7 +4,6 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { api2Service } from '../services/api2.service';
-import { IpService } from '../services/ip.service';
 
 declare var Playerjs: any;
 
@@ -68,7 +67,6 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   public safeSrc: SafeResourceUrl;
   constructor(
     private api2: api2Service,
-    private ipService: IpService,
     private sanitizer: DomSanitizer,
     private http: HttpClient
   ) { }

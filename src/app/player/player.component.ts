@@ -117,17 +117,9 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const filmIds = this.blockFilms.map(item => item.filmId);
-    if(filmIds.includes(this.film.id)) {
-      this.ipService.getIpAddress().subscribe((data) => {
-        this.country = data.country;
-        console.log();
-        
-        if (this.country === 'RU' && filmIds.includes(this.film.id)) {
-          this.isRussia = true
-          this.isOther = false
-        }
-      })
+    if (this.film.is_hidden === true) {
+      this.isRussia = true
+      this.isOther = false
     }
   }
 

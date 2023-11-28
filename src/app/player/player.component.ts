@@ -40,21 +40,7 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   isIndigo: boolean = true
   data
 
-  blockFilms = [
-    {
-      filmId: 82595
-    },
-    {
-      filmId: 22836
-    },
-    {
-      filmId: 78226
-    },
-    {
-      filmId: 82024
-    }
-  ]
-
+ 
   country
   isRussia: boolean = false
   isOther: boolean = true
@@ -72,46 +58,51 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
-    if (this.film.has_player === true) {
-      this.api2.getIndigoPlayer(this.film.id).subscribe((data) => {
-        this.indigoplayer = data.data
-        new Playerjs({ id: 'player', file: this.indigoplayer });
-      })
-      this.onPlayer('indigo');
-
+    if(this.film.is_hidden === true) {
+       return
     } else {
+      if (this.film.has_player === true) {
+        this.api2.getIndigoPlayer(this.film.id).subscribe((data) => {
+          this.indigoplayer = data.data
+          new Playerjs({ id: 'player', file: this.indigoplayer });
+        })
+        this.onPlayer('indigo');
+  
+      } else {
+        if (!this.film.shiki_id) {
+          this.onPlayer('cdn');
+          this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id=" + this.film.imdb_id + "&domain=indigofilms.online");
+        }
+        this.isIndigo = false
+        this.isHiddenIndigo = true
+      }
+  
+  
+      let ashdiUrl = 'https://base.ashdi.vip/api/product/read_one.php?imdb=' + this.film.imdb_id + '&api_key=99a660-8378e4-4adb0a-eeeb92-86b677';
+      this.http.get<any>(ashdiUrl).subscribe(
+        data => this.ashdiUrl = data.url,
+        err => this.isHiddenUa = true,
+      );
+  
+      if (this.film.shiki_id) {
+        this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://kodik.cc/find-player?shikimoriID=" + this.film.shiki_id);
+      } else {
+        let kodiciUrl = "https://kodikapi.com/search?token=c93d194dd1a2f6cc95b3095a9940dfb2&imdb_id=" + this.film.imdb_id;
+        this.http.get<any>(kodiciUrl).subscribe((data) => {
+          if (!data.total) {
+            this.isHiddenKodic = true
+          }
+        });
+      }
+  
       if (!this.film.shiki_id) {
-        this.onPlayer('cdn');
         this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id=" + this.film.imdb_id + "&domain=indigofilms.online");
       }
-      this.isIndigo = false
-      this.isHiddenIndigo = true
+      if (!this.film.imdb_id) {
+        this.isHiddenCdn = true
+      }
     }
-
-
-    let ashdiUrl = 'https://base.ashdi.vip/api/product/read_one.php?imdb=' + this.film.imdb_id + '&api_key=99a660-8378e4-4adb0a-eeeb92-86b677';
-    this.http.get<any>(ashdiUrl).subscribe(
-      data => this.ashdiUrl = data.url,
-      err => this.isHiddenUa = true,
-    );
-
-    if (this.film.shiki_id) {
-      this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://kodik.cc/find-player?shikimoriID=" + this.film.shiki_id);
-    } else {
-      let kodiciUrl = "https://kodikapi.com/search?token=c93d194dd1a2f6cc95b3095a9940dfb2&imdb_id=" + this.film.imdb_id;
-      this.http.get<any>(kodiciUrl).subscribe((data) => {
-        if (!data.total) {
-          this.isHiddenKodic = true
-        }
-      });
-    }
-
-    if (!this.film.shiki_id) {
-      this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id=" + this.film.imdb_id + "&domain=indigofilms.online");
-    }
-    if (!this.film.imdb_id) {
-      this.isHiddenCdn = true
-    }
+    
   }
 
   ngAfterViewInit(): void {

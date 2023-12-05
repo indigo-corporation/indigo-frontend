@@ -129,9 +129,31 @@ summary {
     align-items: center;
 }
 
+.tg-block {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    background: #231818;
+}
+
+.tg-txt {
+    color: white;
+    font-size: 16px;
+    padding: 5px 21px;
+    background: #1695e0ba;
+    border-radius: 19px;
+    &:hover {
+        color: black;
+    }
+}
+
+
+
 .share-txt {
     color: white;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 

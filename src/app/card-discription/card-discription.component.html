@@ -1,4 +1,5 @@
 <div [@enterAnimationPage] class="container container-card">
+   
     <div *ngIf="isPlayer">
         <app-player *ngIf="film" style="height: 500px;" [film]="film"></app-player>
     </div>
@@ -16,6 +17,7 @@
         </button>
 
     </div>
+  
     <!--    <div>
         <h1>Реклама</h1>
       </div> -->
@@ -113,5 +115,19 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="tg-block">
+            <div>
+                <p style="color: white;
+                font-size: 16px; margin-right: 10px;">
+                    Подпишись на наш Телеграм канал c новостями кино, рекомендации, новинками 2023
+                </p>
+            </div>
+            <div class="btn-share">
+                <a style="text-decoration: none;" href="https://t.me/indigofilmsonline">
+                    <p class="tg-txt">IndigoFilms <img class="share-icon" src="assets/icons-telegram.png"></p>
+                </a>
+            </div>
+            
         </div>
     </div>

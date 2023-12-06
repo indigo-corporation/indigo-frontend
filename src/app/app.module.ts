@@ -18,7 +18,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipe } from './filter.pipe';
 import { SafePipe } from './safe.pipe';
-import { PickerModule } from '@ctrl/ngx-emoji-mart';
+/* import { PickerModule } from '@ctrl/ngx-emoji-mart'; */
 import { api2Service } from './services/api2.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -189,7 +189,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     Ng2SearchPipeModule,
-    PickerModule,
+/*     PickerModule, */
     MatButtonModule,
     MatDatepickerModule,
     AngularTelegramLoginWidgetModule,

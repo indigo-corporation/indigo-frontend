@@ -9,7 +9,7 @@ import * as alertyfy from 'alertifyjs';
 import { AlertifyService } from '../../services/alertify.service';
 import { Observable, ObservableInput } from 'rxjs';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Options } from "select2";
+/* import { Options } from "select2"; */
 import { BehaviorSubject, of } from "rxjs";
 import { authService } from '../../services/authService.service';
 declare var $: any;
@@ -69,8 +69,8 @@ export class UserSettingComponent implements OnInit {
   termAbout:string
   termName:string
   termUserName:string
-  public options: Options;
-  public options2: Options;
+/*   public options: Options;
+  public options2: Options; */
 
   selectedFile: File
   constructor(

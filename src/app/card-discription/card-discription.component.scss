@@ -119,6 +119,8 @@ summary {
 .card-image {
     width: 250px;
     border-radius: 14px;
+  /*   background-color: black;
+    opacity: 0.3; */
 }
 
 .share {
@@ -205,6 +207,8 @@ p {
 }
 
 .moreTextBtn {
+    background: none;
+    border: none;
     position: absolute;
     right: 1px;
     font-size: 15px;

@@ -1,6 +1,16 @@
-<nav id="navbar" (scroll)="onWindowScroll($event)" class="container navbar navbar-expand-lg navbar-light bg-light header">
-  <a class="brand" routerLink="" href="">INDIGOFILMS</a>
-  <button *ngIf="!login" mat-button (click)="openModal()" class="login2">Войти
+<nav id="navbar" (scroll)="onWindowScroll($event)"
+  class="container navbar navbar-expand-lg navbar-light bg-light header">
+  <div *ngIf="!isLargeScreen">
+    <button class="search-icon-mobile" (click)="toggleSearchMobile(search.value)"><i
+        class="fa fa-search search-icon"></i></button>
+  </div>
+
+  <div>
+    <a class="brand" routerLink="" href="">INDIGOFILMS</a>
+  </div>
+
+<div *ngIf="!isLargeScreen">
+  <button *ngIf="!login" mat-button (click)="openModal()" class="login2"><i class="fa fa-user-circle" aria-hidden="true"></i>
   </button>
   <div *ngIf="login" class="login">
     <!--  <i routerLink="/friends" class="fa fa-users user-nav" aria-hidden="true">
@@ -12,23 +22,60 @@
       <i (click)="toggleBell()" class="far fa-bell user-nav" aria-hidden="true">
         <span class="icon-info">1</span>
       </i>  -->
-      <i routerLink="/favorite" href="/favorite" class="fa fa-heart favorite-item" aria-hidden="true"></i>
+    <i routerLink="/favorite" href="/favorite" class="fa fa-heart favorite-item" aria-hidden="true"></i>
     <div style="position: relative;">
-      <img (click)="toggleMenu()" class="user-photo" onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';"
-        [src]="user.poster_small" alt="">
-        <ul [@subMenuAnimation] class="menu-user" *ngIf="isMenuOpen">
-          <li class="name-menu item-menu" href="/user-page"  routerLink="/user-page"> <i class="fa fa-user menu-user-i" aria-hidden="true"></i>Профиль</li>
-          <li class="name-menu item-menu" href="/user-settings" routerLink="/user-settings"> <i class="fa fa-cog menu-user-i" aria-hidden="true"></i>Настройки</li>
-          <li class="name-menu item-menu" (click)="signOut()"> <i class="fa fa-sign-out menu-user-i" aria-hidden="true"></i>Выход</li>
-          </ul>
-    </div> 
+      <img (click)="toggleMenu()" class="user-photo"
+        onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" [src]="user.poster_small" alt="">
+      <ul [@subMenuAnimation] class="menu-user" *ngIf="isMenuOpen">
+        <li class="name-menu item-menu" href="/user-page" routerLink="/user-page"> <i class="fa fa-user menu-user-i"
+            aria-hidden="true"></i>Профиль</li>
+        <li class="name-menu item-menu" href="/user-settings" routerLink="/user-settings"> <i
+            class="fa fa-cog menu-user-i" aria-hidden="true"></i>Настройки</li>
+        <li class="name-menu item-menu" (click)="signOut()"> <i class="fa fa-sign-out menu-user-i"
+            aria-hidden="true"></i>Выход</li>
+      </ul>
+    </div>
   </div>
 
+</div>
+<div *ngIf="isLargeScreen">
+  <div *ngIf="login" class="login">
+    <!--  <i routerLink="/friends" class="fa fa-users user-nav" aria-hidden="true">
+      <span class="icon-info">1</span>
+    </i>
+    <i routerLink="/message" class="far fa-envelope user-nav" aria-hidden="true">
+      <span class="icon-info">1</span>
+    </i>
+      <i (click)="toggleBell()" class="far fa-bell user-nav" aria-hidden="true">
+        <span class="icon-info">1</span>
+      </i>  -->
+    <i routerLink="/favorite" href="/favorite" class="fa fa-heart favorite-item" aria-hidden="true"></i>
+    <div style="position: relative;">
+      <img (click)="toggleMenu()" class="user-photo"
+        onerror="if(this.src != 'error.jpg') this.src = 'assets/avatar.jpg';" [src]="user.poster_small" alt="">
+      <ul [@subMenuAnimation] class="menu-user" *ngIf="isMenuOpen">
+        <li class="name-menu item-menu" href="/user-page" routerLink="/user-page"> <i class="fa fa-user menu-user-i"
+            aria-hidden="true"></i>Профиль</li>
+        <li class="name-menu item-menu" href="/user-settings" routerLink="/user-settings"> <i
+            class="fa fa-cog menu-user-i" aria-hidden="true"></i>Настройки</li>
+        <li class="name-menu item-menu" (click)="signOut()"> <i class="fa fa-sign-out menu-user-i"
+            aria-hidden="true"></i>Выход</li>
+      </ul>
+    </div>
+  </div>
+</div>
+  
+<div *ngIf="isLargeScreen">
+  <button *ngIf="!login" mat-button (click)="openModal()" class="login2">Войти
+  </button>
+</div>
+ 
+
   <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
-  [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
-  <mat-icon *ngIf="isCollapsed">reorder</mat-icon>
-  <mat-icon *ngIf="!isCollapsed">clear</mat-icon>
-</button>
+    [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+    <mat-icon *ngIf="isCollapsed">reorder</mat-icon>
+    <mat-icon *ngIf="!isCollapsed">clear</mat-icon>
+  </button>
 
 
   <div [@subMenuAnimation] class="collapse navbar-collapse menu-header" [ngbCollapse]="isCollapsed">
@@ -72,12 +119,10 @@
         <li *ngIf="isLargeScreen" class="nav-item">
           <button class="nav-link" (click)="toggleSearch()"><i class="fa fa-search search-icon"></i></button>
         </li>
-        <li *ngIf="!isLargeScreen" class="nav-item">
-          <button class="nav-link" (click)="toggleSearchMobile(search.value)"><i class="fa fa-search search-icon"></i></button>
-        </li> 
       </ul>
     </div>
-    <app-search autofocus [@enterAnimation] class="input-search" *ngIf="isShown" appAutoFocusDirective  (onSearchSubmmited)="searchClose($event)"></app-search>
+    <app-search autofocus [@enterAnimation] class="input-search" *ngIf="isShown" appAutoFocusDirective
+      (onSearchSubmmited)="searchClose($event)"></app-search>
   </div>
   <app-all-notifications *ngIf="isNotification"></app-all-notifications>
 </nav>

@@ -1,7 +1,4 @@
-.player-container {
-  display: flex;
-  justify-content: center;
-}
+
 
 #close-icon {
   color: white;
@@ -54,8 +51,8 @@ button.active {
 
 @media (max-width: 480px) {
   iframe {
-    height: 340px;
-    width:340px;
+    height: 400px;
+    width: 100%;
   }
 }
 

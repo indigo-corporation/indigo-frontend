@@ -37,7 +37,7 @@
      right: 0;
      left: 0;
      height: 45px;
-    /*  padding: 0; */
+     /*  padding: 0; */
  }
 
  .brand {
@@ -93,12 +93,12 @@
  }
 
  .btn-outline-primary:hover {
-    background-color: #fff0;
-}
+     background-color: #fff0;
+ }
 
-.menu-header {
-    width: 100%;
-}
+ .menu-header {
+     width: 100%;
+ }
 
  .btn-menu {
      color: white;
@@ -118,11 +118,11 @@
  }
 
  .btn-outline-primary {
-    color: #ecebf7;
-    border-color: transparent;
-    position: relative;
-    bottom: 5px;
-    border: none;
+     color: #ecebf7;
+     border-color: transparent;
+     position: relative;
+     bottom: 5px;
+     border: none;
  }
 
  .swiper-img {
@@ -246,11 +246,8 @@
  .login2 {
      color: white;
      display: block;
-     position: absolute;
      top: 7px;
      font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
-     right: 56px;
-     height: 32px;
      font-size: 18px;
      background: none;
      border: none;
@@ -428,8 +425,8 @@
      }
 
      .brand {
-        position: relative;
-        bottom: 6px;
+         position: relative;
+         bottom: 6px;
      }
 
      .arrow {
@@ -522,7 +519,8 @@
          font-weight: bold;
          letter-spacing: 0.1em;
      }
-/* 
+
+     /* 
      .header {
          top: 0px;
          z-index: 3;
@@ -530,7 +528,8 @@
          left: 0px;
      } */
  }
-/*  @media screen and (max-width: 1024px) {
+
+ /*  @media screen and (max-width: 1024px) {
     .header {
       padding: 0;
     }
@@ -556,19 +555,60 @@
 
 
  @media screen and (max-width: 900px) {
-    .menu-search {
-        position: relative;
-        top: -5px;
-    }
-    .brand {
-        position: relative;
-        top: -4px;
-        font-size: 16px;
+     .menu-search {
+         position: relative;
+         top: -5px;
      }
 
+     .brand {
+         position: relative;
+         top: -4px;
+         font-size: 16px;
+     }
  }
 
- @media screen and (max-width: 600px) {
+ @media screen and (max-width: 840px) {
+     .search-icon-mobile {
+         right: 7px;
+         position: absolute;
+         background: none;
+         color: white;
+         border: none;
+         top: 8px;
+     }
+
+     .header {
+         display: flex;
+         flex-direction: row-reverse;
+         justify-content: flex-end;
+     }
+
+     .brand {
+         position: absolute;
+         top: 12px;
+         font-size: 16px;
+         margin: 0;
+         left: 40px;
+     }
+
+     .login2 {
+        position: absolute;
+        top: 0px;
+        font-size: 24px;
+        margin: 0;
+        font-weight: bold;
+        padding: 0;
+        right: 29px;
+     }
+
+     .btn-outline-primary {
+         position: relative;
+         bottom: 3px;
+         right: 5px;
+     }
+ }
+
+ @media screen and (max-width: 640px) {
      .navbar-light .navbar-nav .nav-link {
          color: white;
          padding: 9px 11px !important;
@@ -579,8 +619,13 @@
          margin-left: 3px;
      }
 
-     .search-icon {
-         margin-left: 18px;
+     .search-icon-mobile {
+         right: 7px;
+         position: absolute;
+         background: none;
+         color: white;
+         border: none;
+         top: 8px;
      }
 
      .nav-link {
@@ -591,9 +636,11 @@
      }
 
      .brand {
-        position: relative;
-        top: -4px;
+        position: absolute;
+        top: 12px;
         font-size: 16px;
+        margin: 0;
+        left: 40px;
      }
 
 
@@ -612,33 +659,41 @@
          font-size: 12px;
      }
 
+     .header {
+         display: flex;
+         flex-direction: row-reverse;
+         justify-content: flex-end;
+     }
+
      .btn-outline-primary {
          color: #dfdee7;
          border-color: transparent;
          position: relative;
          bottom: 0px;
          position: relative;
-         bottom: 4px;
+         bottom: 3px;
          left: -2px;
      }
-   
-     .login2 {
+
+     /*  .login2 {
          display: block;
          color: white;
-         position: absolute;
-         top: 7px;
-         right: 56px;
          font-weight: bold;
          font-family: "TT Norms Pro Regular,Helvetica,sans-serif";
          border: none;
-     }
+         padding: 0;
+         position: absolute;
+         height: 0;
+         left: 30px !important;
+         top: 5px;
+     } */
  }
 
- 
+
  @media screen and (min-width: 820px) and (max-width: 1200px) {
      .btn-outline-primary {
-        position: relative;
-        bottom: 4px;
-        right: 5px;
-    }
+         position: relative;
+         bottom: 4px;
+         right: 5px;
+     }
  }

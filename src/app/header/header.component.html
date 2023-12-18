@@ -10,8 +10,8 @@
   </div>
 
 <div *ngIf="!isLargeScreen">
-  <button *ngIf="!login" mat-button (click)="openModal()" class="login2"><i class="fa fa-user-circle" aria-hidden="true"></i>
-  </button>
+  <div *ngIf="!login" mat-button (click)="openModal()" class="login2"><i class="fa fa-user-circle" aria-hidden="true"></i>
+  </div>
   <div *ngIf="login" class="login">
     <!--  <i routerLink="/friends" class="fa fa-users user-nav" aria-hidden="true">
       <span class="icon-info">1</span>
@@ -115,6 +115,11 @@
           </button>
           <app-genre-menu [@subMenuAnimation] *ngIf="isArrow4" type="anime"></app-genre-menu>
         </li>
+
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/collections" href="/collections">Подборки
+          </a>
+        </li> -->
 
         <li *ngIf="isLargeScreen" class="nav-item">
           <button class="nav-link" (click)="toggleSearch()"><i class="fa fa-search search-icon"></i></button>

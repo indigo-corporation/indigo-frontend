@@ -153,7 +153,7 @@ export class HeaderComponent implements OnInit {
   }
 
   checkScreenSize() {
-    this.isLargeScreen = window.innerWidth >= 825; // Здесь вы можете задать свою ширину экрана для разделения на большие и маленькие экраны
+    this.isLargeScreen = window.innerWidth >= 991; // Здесь вы можете задать свою ширину экрана для разделения на большие и маленькие экраны
   }
 
   toggleMenu() {

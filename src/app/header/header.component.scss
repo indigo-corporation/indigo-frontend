@@ -567,14 +567,14 @@
      }
  }
 
- @media screen and (max-width: 840px) {
+ @media screen and (max-width: 992px) {
      .search-icon-mobile {
-         right: 7px;
-         position: absolute;
-         background: none;
-         color: white;
-         border: none;
-         top: 8px;
+        right: 4px;
+        position: absolute;
+        background: none;
+        color: white;
+        border: none;
+        top: 8px;
      }
 
      .header {
@@ -598,7 +598,7 @@
         margin: 0;
         font-weight: bold;
         padding: 0;
-        right: 29px;
+        right: 34px;
      }
 
      .btn-outline-primary {
@@ -620,12 +620,12 @@
      }
 
      .search-icon-mobile {
-         right: 7px;
-         position: absolute;
-         background: none;
-         color: white;
-         border: none;
-         top: 8px;
+        right: 4px;
+        position: absolute;
+        background: none;
+        color: white;
+        border: none;
+        top: 8px;
      }
 
      .nav-link {

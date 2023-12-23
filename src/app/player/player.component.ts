@@ -40,7 +40,12 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   isIndigo: boolean = true
   data
 
- 
+  isChrome: boolean = false
+  isSafari: boolean = false
+  isAndroid: boolean = false
+  isAllBrowser: boolean = true
+  isFirefox: boolean = false
+
   country
   isRussia: boolean = false
   isOther: boolean = true
@@ -106,10 +111,28 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.checkBrowser()
     if (this.film.is_hidden === true) {
       this.isRussia = true
       this.isOther = false
     }
+  }
+
+  checkBrowser() {
+    const userAgent = window.navigator.userAgent;
+    if (userAgent.includes('Chrome')) {
+      this.isChrome = true
+      this.isAllBrowser = false
+    } else if (userAgent.includes('Firefox')) {
+      this.isFirefox = true
+      this.isAllBrowser = false
+    } else if (userAgent.includes('Safari')) {
+      this.isSafari = true
+      this.isAllBrowser = false
+    } else if (userAgent.includes('Android')) {
+      this.isAndroid = true
+      this.isAllBrowser = false
+    } 
   }
 
 

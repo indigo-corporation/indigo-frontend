@@ -111,6 +111,7 @@ export class CardDiscriptionComponent implements OnInit, AfterViewInit {
   isEnglish: boolean = false;
   
   ngOnInit() {
+    this.checkBrowser()
     this.checkLanguage();
     window.location.href
     this.auth.user$.subscribe(x => {
@@ -134,26 +135,35 @@ export class CardDiscriptionComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.checkBrowser()
     this.checkOverviewLength();
   }
 
   
   checkBrowser() {
     const userAgent = window.navigator.userAgent;
-    if (userAgent.includes('Android')) {
-      this.isAndroid = true
-      this.isAllBrowser = false
-    } else if (userAgent.includes('Firefox')) {
-      this.isFirefox = true
-      this.isAllBrowser = false
-    } else if (userAgent.includes('Safari')) {
-      this.isSafari = true
-      this.isAllBrowser = false
-    } else if (userAgent.includes('Chrome')) {
-      this.isChrome = true
-      this.isAllBrowser = false
-    } 
+
+    this.isChrome = userAgent.includes('Chrome');
+    this.isSafari = userAgent.includes('Safari');
+    this.isAndroid = userAgent.includes('Android');
+    this.isFirefox = userAgent.includes('Firefox');
+    
+    if (this.isChrome) {
+      this.isAllBrowser = false;
+      this.isSafari = false
+    } else if (this.isSafari) {
+      this.isAllBrowser = false;
+      this.isChrome = false
+    } else if (this.isAndroid) {
+      this.isAllBrowser = false;
+      this.isChrome = false
+    } else if (this.isFirefox) {
+      this.isAllBrowser = false;
+      this.isChrome = false
+      this.isSafari = false
+      this.isAndroid = false
+    } else {
+      this.isAllBrowser = true;
+    }
   }
 
 

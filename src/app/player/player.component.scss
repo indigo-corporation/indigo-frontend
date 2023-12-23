@@ -27,11 +27,6 @@ button.active {
   background-color: #6847cd; // Здесь указываются стили для активной кнопки
 }
 
-.browserNotification {
-  padding: 5px;
-  background: #494444;
-}
-
 
 .fa-play {
   font-size: 23px;
@@ -39,13 +34,6 @@ button.active {
   margin-bottom: 3px;
 }
 
-.link-adblock {
-  text-decoration: none;
-  color: #da00ff;
-  &:hover {
-    color: red;
-  }
-}
 
 .blocked {
   color: white;

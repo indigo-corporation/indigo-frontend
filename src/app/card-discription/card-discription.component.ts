@@ -71,6 +71,12 @@ export class CardDiscriptionComponent implements OnInit, AfterViewInit {
   
   url: string = window.location.href;
   userFavorite
+
+  isChrome: boolean = false
+  isSafari: boolean = false
+  isAndroid: boolean = false
+  isAllBrowser: boolean = true
+  isFirefox: boolean = false
  
   srcKodic: any
   srcSveta: any
@@ -128,8 +134,28 @@ export class CardDiscriptionComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.checkBrowser()
     this.checkOverviewLength();
   }
+
+  
+  checkBrowser() {
+    const userAgent = window.navigator.userAgent;
+    if (userAgent.includes('Android')) {
+      this.isAndroid = true
+      this.isAllBrowser = false
+    } else if (userAgent.includes('Firefox')) {
+      this.isFirefox = true
+      this.isAllBrowser = false
+    } else if (userAgent.includes('Safari')) {
+      this.isSafari = true
+      this.isAllBrowser = false
+    } else if (userAgent.includes('Chrome')) {
+      this.isChrome = true
+      this.isAllBrowser = false
+    } 
+  }
+
 
   checkOverviewLength() {
     this.isFilmOverviewButtons = this.film.overview && this.film.overview.length > 578;

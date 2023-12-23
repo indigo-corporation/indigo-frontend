@@ -299,7 +299,18 @@ span {
     margin-left: 8px;
 }
 
+.browserNotification {
+    padding: 5px;
+    background: #494444;
+  }
 
+.link-adblock {
+    text-decoration: none;
+    color: #da00ff;
+    &:hover {
+      color: red;
+    }
+  }
 
 .card-btn:hover {
     box-shadow: inset 34px 0px 26px 0px rgb(0 16 22);

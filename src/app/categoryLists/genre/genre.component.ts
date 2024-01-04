@@ -133,7 +133,7 @@ export class GenreComponent implements OnInit {
     if (ls) {
       this.years = JSON.parse(ls)
     } else {
-      this.years = this.getYearRange(2023,1910);
+      this.years = this.getYearRange(2024,1910);
       localStorage.setItem("years", JSON.stringify(this.years))
     }
 

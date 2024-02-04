@@ -76,14 +76,12 @@ export class PlayerComponent implements OnInit, AfterViewInit {
         this.isIndigo = false
         this.isHiddenIndigo = true
       }
-  
-  
-      let ashdiUrl = 'https://base.ashdi.vip/api/product/read_one.php?imdb=' + this.film.imdb_id + '&api_key=99a660-8378e4-4adb0a-eeeb92-86b677';
-      this.http.get<any>(ashdiUrl).subscribe(
-        data => this.ashdiUrl = data.url,
+
+      let ashdiUrl = "https://base.ashdi.vip/api/product/read_one.php?imdb=" + this.film.imdb_id + "&api_key=99a660-8378e4-4adb0a-eeeb92-86b677";
+      this.http.get<any>(ashdiUrl).subscribe((data) => this.ashdiUrl = data.url,
         err => this.isHiddenUa = true,
       );
-  
+      
       if (this.film.shiki_id) {
         this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://kodik.cc/find-player?shikimoriID=" + this.film.shiki_id);
       } else {
@@ -121,7 +119,7 @@ export class PlayerComponent implements OnInit, AfterViewInit {
     }
 
     if (player === 'cdn' && this.film.imdb_id) {
-      this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id=" + this.film.imdb_id);
+      this.srcPlayer = this.sanitizer.bypassSecurityTrustResourceUrl("https://12.svetacdn.in/vDqR81AxhrhI?imdb_id=" + this.film.imdb_id+"&domain=indigofilms.online");
     }
 
     if (player === 'ASHDI' && this.film.imdb_id) {

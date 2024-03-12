@@ -2,7 +2,7 @@
   <div class="card-head">
     <a routerLink="/{{card.category}}/{{card.slug}}" href="/{{card.category}}/{{card.slug}}">
       <div class="swiper-slide">
-        <img [attr.data-src]="card.poster" class="filters__img swiper-lazy" alt="{{card.title}}" />
+        <img onerror="if(this.src != 'error.jpg')  this.src = 'assets/favicon.ico';" [attr.data-src]="card.poster" class="filters__img swiper-lazy" alt="{{card.title}}" />
       </div>
     </a>
     <div *ngIf="card.imdb_rating" class="imdb">IMDB {{card.imdb_rating}}</div>
